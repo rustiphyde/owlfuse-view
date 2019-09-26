@@ -15,7 +15,7 @@ import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 // Redux
-import { connect } from 'redux-react';
+import { connect } from 'react-redux';
 import { loginUser } from '../redux/actions/userActions';
 
 const styles = (theme) => ({
@@ -32,6 +32,11 @@ class login extends Component {
       errors: {}
     };
   }
+  UNSAFE_componentWillReceiveProps(nextProps){
+    if(nextProps.UI.errors){
+      this.setState({ errors: nextProps.UI.errors });
+    }
+}
   handleSubmit = event => {
     event.preventDefault();
     // Save input to userData variable
