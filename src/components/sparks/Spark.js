@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+
 // MUI Stuff
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -41,6 +44,7 @@ const styles = {
 
 class Spark extends Component {
   render() {
+    dayjs.extend(relativeTime);
     const {
       classes,
       spark: {
@@ -67,7 +71,7 @@ class Spark extends Component {
             <strong>>{alias}</strong>
           </Typography>
           <Typography variant="body2" color="textSecondary">
-            {createdAt}
+          {dayjs(createdAt).fromNow()}
           </Typography>
           <Typography variant="body1">{body}</Typography>
         </CardContent>
