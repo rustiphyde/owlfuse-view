@@ -27,6 +27,24 @@ a:hover {
   color: var(--hover);
 }
 
+.bar-separator {
+  margin: 6px 0 6px 0;
+  height: 1px;
+  background-color: #ff9800;
+  border: none;
+  width: 100%;
+}
+
+.sparkTitle {
+  color: #ff9800;
+  text-align: center;
+  font-size: 2rem;
+}
+
+body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div.MuiDialogTitle-root > h2 {
+  color: #ff9800 !important;
+}
+
 em, strong, h2 {
   font-family: 'Baloo', cursive !important;
   font-size: 1.1em;

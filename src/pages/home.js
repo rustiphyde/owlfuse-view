@@ -48,8 +48,17 @@ class home extends Component {
     return (
       <Grid container spacing={2}>
         <Grid item sm={8} xs={12}>
-          {recentFiresMarkup}
+        
+          <div className="sparkTitle">
+            <strong>SPARKS</strong>
+            <hr className="bar-separator"/>
+          </div>
           {recentSparksMarkup}
+          <div className="sparkTitle">
+            <strong>FIRES</strong>
+            <hr className="bar-separator"/>
+          </div>
+          {recentFiresMarkup}
         </Grid>
         <Grid item sm={4} xs={12}>
           <p>Profile...</p>
