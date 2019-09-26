@@ -104,6 +104,7 @@ class login extends Component {
               variant="contained"
               color="secondary"
               className={classes.button}
+              disabled={loading}
             >
               <strong>LOGIN</strong>
               {loading && (
