@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
-
 import jwtDecode from "jwt-decode";
+
+// Redux
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 // Util imports
 import themeFile from "./util/theme";
@@ -39,6 +42,7 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
+        <Provider store={store}>
         <BrowserRouter>
           <Navbar />
           <div className="container">
@@ -59,6 +63,7 @@ class App extends Component {
             </Switch>
           </div>
         </BrowserRouter>
+        </Provider>
       </MuiThemeProvider>
     );
   }
