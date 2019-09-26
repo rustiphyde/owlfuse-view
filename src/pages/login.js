@@ -36,31 +36,19 @@ class login extends Component {
     event.preventDefault();
     // Save input to userData variable
     const userData = {
-        email: this.state.email,
-        password: this.state.password
-    }
-    axios.post('/login', userData)
-    .then(res => {
-        this.setState({
-            loading: false
-        });
-        this.props.history.push('/');
-    })
-    .catch(err => {
-        this.setState({
-            errors: err.response.data,
-            loading: false
-        })
-    })
-  };
+      email: this.state.email,
+      password: this.state.password
+    };
+    this.props.loginUser(userData, this.props.history)
+  }
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
   };
   render() {
-    const { classes } = this.props;
-    const { errors, loading } = this.state;
+    const { classes, UI: loading } = this.props;
+    const { errors } = this.state;
     return (
       <Grid container className={classes.form}>
         <Grid item sm />
@@ -113,7 +101,7 @@ class login extends Component {
             >
               <strong>LOGIN</strong>
               {loading && (
-                <CircularProgress size={30} className={classes.progress}/>
+                <CircularProgress size={30} className={classes.progress} />
               )}
             </Button>
             <br />
@@ -127,7 +115,21 @@ class login extends Component {
     );
   }
 }
+
 login.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-export default withStyles(styles)(login);
+  classes: PropTypes.object.isRequired,
+  loginUser: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired,
+  UI: PropTypes.object.isRequired
+  };
+  
+  // Bring elements in from Global State and maps them to the Component State
+const mapStateToProps = (state) => ({
+  user: state.user,
+  UI: state.UI
+});
+const mapActionsToProps = {
+  loginUser
+  }
+  
+export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(login));

@@ -1,0 +1,37 @@
+import {
+  SET_USER,
+  SET_AUTHENTICATED,
+  SET_UNAUTHENTICATED,
+  SET_ERRORS,
+  CLEAR_ERRORS,
+  LOADING_UI
+} from "../types";
+
+const initialState = {
+  authenticated: false,
+  credentials: {},
+  burns: [],
+  sizzles: []
+};
+
+export default function(state = initialState, action) {
+  // perform appropriate actions according to type
+  switch (action.type) {
+    //catch the various type cases
+    case SET_AUTHENTICATED:
+      return {
+        // spreads the state as it already exists and then changes certain elements as specified
+        ...state,
+        authenticated: true
+      };
+    case SET_UNAUTHENTICATED:
+      return initialState;
+    case SET_USER:
+      return {
+        authenticated: true,
+        ...action.payload
+      };
+    default:
+      return state;
+  }
+}
