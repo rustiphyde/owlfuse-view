@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-
 // MUI Stuff
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -15,20 +14,23 @@ import Typography from "@material-ui/core/Typography";
 
 const styles = {
   card: {
-    position: 'relative',
+    // position: 'relative',
+
     display: "flex",
     marginBottom: 8,
     borderRadius: "16px 0 16px 0",
-    backgroundColor: "#37474f"
+    backgroundColor: "#ff9800 !important"
   },
   content: {
     padding: 25,
     width: 600,
-    borderRadius: "0 0 16px 0",
-    borderTop: "2px solid #ff9800",
-    borderRight: "2px solid #ff9800",
+    borderRadius: "0 0 16px 16px",
+    borderTop: "2px solid firebrick",
+    borderRight: "2px solid firebrick",
+    borderBottom: "2px solid firebrick",
+    borderLeft: "2px solid #ff9800",
     margin: "8px 8px 8px 0",
-    backgroundColor: "#fff"
+    backgroundColor: "#fefaf4"
   },
   image: {
     margin: "8px 0 8px 8px",
@@ -36,18 +38,18 @@ const styles = {
     maxHeight: 120,
     objectFit: "cover",
     borderRadius: "16px 0 16px 0",
-    borderTop: "2px solid #ff9800",
-    borderLeft: "2px solid #ff9800",
-    borderBottom: "2px solid #ff9800"
+    borderTop: "2px solid firebrick",
+    borderLeft: "2px solid firebrick",
+    borderBottom: "2px solid firebrick"
   }
 };
 
-class Spark extends Component {
+class Fire extends Component {
   render() {
     dayjs.extend(relativeTime);
     const {
       classes,
-      spark: {
+      fire: {
         alias,
         clozang,
         userImage,
@@ -55,7 +57,8 @@ class Spark extends Component {
         stokeCount,
         body,
         createdAt,
-        sparkId
+        sparkId,
+        fireId
       }
     } = this.props;
     return (
@@ -71,7 +74,7 @@ class Spark extends Component {
             <strong>>{alias}</strong>
           </Typography>
           <Typography variant="body2" color="textSecondary">
-          {dayjs(createdAt).fromNow()}
+           {dayjs(createdAt).fromNow()}
           </Typography>
           <Typography variant="body1" color="primary"><strong>{body}</strong></Typography>
         </CardContent>
@@ -80,4 +83,4 @@ class Spark extends Component {
   }
 }
 
-export default withStyles(styles)(Spark);
+export default withStyles(styles)(Fire);
