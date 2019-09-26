@@ -1,0 +1,56 @@
+import orange from "@material-ui/core/colors/orange";
+import blueGrey from "@material-ui/core/colors/blueGrey";
+import amber from "@material-ui/core/colors/amber";
+
+export default {
+  palette: {
+    primary: {
+      light: blueGrey[700],
+      main: blueGrey[800],
+      dark: [900],
+      contrastText: amber["A100"]
+    },
+    secondary: {
+      light: orange[400],
+      main: orange[500],
+      dark: orange[600],
+      contrastText: blueGrey[900]
+    }
+  },
+  themeMinusPalette: {
+    typography: {
+      useNextVariants: true
+    },
+    form: {
+      textAlign: "center"
+    },
+    image: {
+      margin: "0 auto"
+    },
+    pageTitle: {
+      margin: "0 auto 10px auto"
+    },
+    textField: {
+      margin: "10px auto 10px auto",
+      textAlign: "center"
+    },
+    button: {
+      margin: "20px auto",
+      width: "200px",
+      position: "relative"
+    },
+    customError: {
+      color: "red",
+      fontSize: "0.8rem",
+      marginTop: "10px"
+    },
+    customMessage: {
+      color: "#ff9800",
+      fontSize: "1rem",
+      marginTop: "10px"
+    },
+    progress: {
+      position: "absolute"
+    }
+  }
+};
