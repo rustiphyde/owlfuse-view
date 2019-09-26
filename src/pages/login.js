@@ -77,6 +77,8 @@ class login extends Component {
               type="email"
               label="EMAIL ADDRESS"
               className={classes.textField}
+              helperText={errors.email}
+              error={errors.email ? true : false}
               value={this.state.email}
               onChange={this.handleChange}
               fullWidth
@@ -86,10 +88,17 @@ class login extends Component {
               type="password"
               label="PASSWORD"
               className={classes.textField}
+              helperText={errors.password}
+              error={errors.password ? true : false}
               value={this.state.password}
               onChange={this.handleChange}
               fullWidth
             />
+            {errors.general && (
+              <Typography variant="body2" className={classes.customError}>
+                {errors.general}
+              </Typography>
+            )}
             <Button
               type="submit"
               variant="contained"
@@ -97,10 +106,13 @@ class login extends Component {
               className={classes.button}
             >
               <strong>LOGIN</strong>
+              {loading && (
+                <CircularProgress size={30} className={classes.progress}/>
+              )}
             </Button>
             <br />
             <small>
-              DON'T HAVE AN ACCOUNT? SIGN UP <Link to="/signup">HERE</Link>
+              NEED AN ACCOUNT? SIGN UP <Link to="/signup">HERE</Link>
             </small>
           </form>
         </Grid>
