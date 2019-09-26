@@ -74,6 +74,7 @@ class login extends Component {
           <form noValidate onSubmit={this.handleSubmit}>
             <TextField
               id="email"
+              name="email"
               type="email"
               label="EMAIL ADDRESS"
               className={classes.textField}
@@ -85,6 +86,7 @@ class login extends Component {
             />
             <TextField
               id="password"
+              name="password"
               type="password"
               label="PASSWORD"
               className={classes.textField}
