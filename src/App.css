@@ -9,3 +9,8 @@ body {
     sans-serif;
     background-color: var(--background-one);  
 }
+
+.container {
+  margin: 80px auto 8px auto;
+  max-width: 1200px;
+}
