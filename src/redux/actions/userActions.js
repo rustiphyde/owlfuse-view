@@ -14,7 +14,7 @@ export const loginUser = (userData, history) => dispatch => {
     .post("/login", userData)
     .then(res => {
       setAuthorizationHeader(res.data.token);
-      dispatch(getUserData());
+      dispatch(getUserDetails());
       dispatch({ type: CLEAR_ERRORS });
       history.push("/");
     })
@@ -32,7 +32,7 @@ export const signupUser = (newUserData, history) => dispatch => {
     .post("/signup", newUserData)
     .then(res => {
       setAuthorizationHeader(res.data.token);
-      dispatch(getUserData());
+      dispatch(getUserDetails());
       dispatch({ type: CLEAR_ERRORS });
       history.push("/");
     })
@@ -50,7 +50,7 @@ export const logoutUser = () => dispatch => {
   dispatch({ type: SET_UNAUTHENTICATED });
 };
 
-export const getUserData = () => dispatch => {
+export const getUserDetails = () => dispatch => {
   dispatch({ type: LOADING_USER })
   axios
     .get("/user")
@@ -68,7 +68,17 @@ export const uploadImage = formData => dispatch => {
   axios
     .post("/user/image", formData)
     .then(res => {
-      dispatch(getUserData());
+      dispatch(getUserDetails());
+    })
+    .catch(err => console.log(err));
+};
+
+export const editUserDetails = userDetails => dispatch => {
+  dispatch({ type: LOADING_USER });
+  axios
+    .post("/user", userDetails)
+    .then(() => {
+      dispatch(getUserDetails());
     })
     .catch(err => console.log(err));
 };
