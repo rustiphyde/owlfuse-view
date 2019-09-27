@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import OwlFuseTitle from '../images/owlfuse-title.png'
 
 
 // MUI Components
@@ -12,6 +13,10 @@ export class Navbar extends Component {
     render() {
         return (
             <AppBar>
+            <Fragment>
+            <img src={OwlFuseTitle} alt="OwlFuse Title Logo" className="nav-logo"/>          
+            <hr className="bar-separator"/>
+            </Fragment> 
                 <Toolbar className="nav-container">
                     <Button color="inherit" component={Link} to="/login"><strong>LOGIN</strong></Button>
                     <Button color="inherit" component={Link} to="/"><strong>HOME</strong></Button>

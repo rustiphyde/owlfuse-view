@@ -185,8 +185,8 @@ class Candle extends Component {
         </Paper>
       ) : (
         <Paper className={classes.paper}>
-          <Typography variant="body2" align="center">
-            NO Candle FOUND, PLEASE LOGIN AGAIN OR SIGN UP FOR A NEW ACCOUNT
+          <Typography variant="body2" align="center" color="secondary">
+            <strong>NO CANDLE FOUND, PLEASE LOGIN AGAIN OR SIGN UP FOR A NEW ACCOUNT</strong>
           </Typography>
           <div className={classes.buttons}>
             <Button
