@@ -102,6 +102,9 @@ class Candle extends Component {
     const fileInput = document.getElementById("imageInput");
     fileInput.click();
   };
+  handleLogout = () => {
+    this.props.logoutUser();
+  };
   render() {
     const {
       classes,
@@ -172,10 +175,12 @@ class Candle extends Component {
               <CandleIcon color="secondary" className="icon2"/>
               <Typography variant="body2"><b>Candle was ignited in {dayjs(createdAt).format("MMMM")} of{" "}
                 {dayjs(createdAt).format("YYYY")}</b></Typography>
-              <span>
-                
-              </span>
             </div>
+            <OwlFuseButton
+              tip="LOGOUT"
+              onClick={this.handleLogout}>
+            <LogoutIcon color="primary" className="icon2"/>
+            </OwlFuseButton>
           </div>
         </Paper>
       ) : (
@@ -216,7 +221,8 @@ class Candle extends Component {
 Candle.propTypes = {
   classes: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
-  uploadImage: PropTypes.func.isRequired
+  uploadImage: PropTypes.func.isRequired,
+  logoutUser: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -224,7 +230,8 @@ const mapStateToProps = state => ({
 });
 
 const mapActionsToProps = {
-  uploadImage
+  uploadImage,
+  logoutUser
 };
 
 export default connect(
