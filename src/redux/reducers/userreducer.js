@@ -8,6 +8,7 @@ import {
 const initialState = {
   authenticated: false,
   credentials: {},
+  loading: false,
   burns: [],
   sizzles: []
 };
@@ -27,6 +28,7 @@ export default function(state = initialState, action) {
     case SET_USER:
       return {
         authenticated: true,
+        loading: false,
         ...action.payload
       };
     case LOADING_USER:
