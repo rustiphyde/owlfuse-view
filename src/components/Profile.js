@@ -16,7 +16,7 @@ class Profile extends Component {
     const {
       classes,
       user: {
-        credentiials: { alias, clozang, createdAt, imageUrl, bio, website, location },
+        credentials: { alias, clozang, createdAt, imageUrl, bio, website, location },
         loading
       }
     } = this.props;
