@@ -63,6 +63,16 @@ export const getUserData = () => dispatch => {
     .catch(err => console.log(err));
 };
 
+export const uploadImage = formData => dispatch => {
+  dispatch({ type: LOADING_USER });
+  axios
+    .post("/user/image", formData)
+    .then(res => {
+      dispatch(getUserData());
+    })
+    .catch(err => console.log(err));
+};
+
 // Helper fxn for setting authorization header in various places
 const setAuthorizationHeader = token => {
   const FBIdToken = `Bearer ${token}`;

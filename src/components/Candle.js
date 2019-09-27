@@ -2,15 +2,18 @@ import React, { Fragment, Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
-import { logoutUser } from '../redux/actions/userActions';
+import { logoutUser, uploadImage } from "../redux/actions/userActions";
 import withStyles from "@material-ui/core/styles/withStyles";
 // MUI Stuff
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import MuiLink from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
+import Tooltip from '@material-ui/core/Tooltip';
+import IconButton from '@material-ui/core/IconButton';
 // Icons
-import LocationIcon from './icons/LocationIcon';
+import LocationIcon from "./icons/LocationIcon";
+import SelfieIcon from "./icons/SelfieIcon";
 // Redux Stuff
 import { connect } from "react-redux";
 
@@ -23,7 +26,7 @@ const styles = theme => ({
     borderLeft: "2px solid #ff9800",
     backgroundColor: "#37474f"
   },
-  Candle: {
+  candle: {
     margin: 8,
     borderTop: "2px solid #ff9800",
     borderBottom: "2px solid #ff9800",
@@ -40,7 +43,7 @@ const styles = theme => ({
         padding: "16px"
       }
     },
-    "& .Candle-image": {
+    "& .candle-image": {
       border: "2px solid #ff9800",
       width: 144,
       height: 144,
@@ -49,7 +52,7 @@ const styles = theme => ({
       borderRadius: "50%",
       margin: 8
     },
-    "& .Candle-details": {
+    "& .candle-details": {
       margin: 8,
       textAlign: "center",
       "& span, svg": {
@@ -78,71 +81,119 @@ const styles = theme => ({
 });
 
 class Candle extends Component {
+  handleImageChange = event => {
+    const image = event.target.files[0];
+    const formData = new FormData();
+    formData.append("image", image, image.name);
+    this.props.uploadImage(formData);
+  };
+  handleEditPicture = () => {
+    const fileInput = document.getElementById("imageInput");
+    fileInput.click();
+  };
   render() {
     const {
       classes,
       user: {
-        credentials: { alias, clozang, createdAt, imageUrl, bio, website, location },
+        credentials: {
+          alias,
+          clozang,
+          createdAt,
+          imageUrl,
+          bio,
+          website,
+          location
+        },
         loading,
         authenticated
       }
     } = this.props;
 
-    let CandleMarkup = !loading ? (authenticated ? (
-      <Paper className={classes.paper}>
-        <div className={classes.Candle}>
-          <div className="image-wrapper">
-            <img src={imageUrl} alt="Candle" className="Candle-image" />
-          </div>
-          <hr />
-          <div className="Candle-details">
-            <MuiLink component={Link} to={`/users/${clozang}`} color="primary" variant="h5">
-              <strong>>{alias}</strong>
-            </MuiLink>
+    let CandleMarkup = !loading ? (
+      authenticated ? (
+        <Paper className={classes.paper}>
+          <div className={classes.candle}>
+            <div className="image-wrapper">
+              <img src={imageUrl} alt="candle" className="candle-image" />
+              <input
+                type="file"
+                id="imageInput"
+                hidden="hidden"
+                onChange={this.handleImageChange}
+              />
+              <Tooltip title="EDIT PROFILE IMAGE">
+              <IconButton onClick={this.handleEditPicture} className="button">
+                <SelfieIcon color="secondary" className="icon8"/>
+                </IconButton>
+              </Tooltip>
+            </div>
             <hr />
-            {bio && <Typography variant="body2">{bio}</Typography>}
-            <hr />
-            {location && (
-              <Fragment>
-                <LocationIcon color="secondary" /> <span>{location}</span>
-                <hr />
-              </Fragment>
-            )}
-            {website && (
-              <Fragment>
-                <a href={website} target="_blank" rel="noopener noreferrer">
-                  {' '}{website}
-                </a>
-                <hr />
-              </Fragment>
-            )}
-                    
-            <span>Member since {dayjs(createdAt).format('MMM YYYY')}</span>
+            <div className="candle-details">
+              <MuiLink
+                component={Link}
+                to={`/users/${clozang}`}
+                color="primary"
+                variant="h5"
+              >
+                <strong>>{alias}</strong>
+              </MuiLink>
+              <hr />
+              {bio && <Typography variant="body2">{bio}</Typography>}
+              <hr />
+              {location && (
+                <Fragment>
+                  <LocationIcon color="secondary" className="icon2" />{" "}
+                  <span>{location}</span>
+                  <hr />
+                </Fragment>
+              )}
+              {website && (
+                <Fragment>
+                  <a href={website} target="_blank" rel="noopener noreferrer">
+                    {" "}
+                    {website}
+                  </a>
+                  <hr />
+                </Fragment>
+              )}
+
+              <span>
+                Candle was ignited in {dayjs(createdAt).format("MMMM")} of{" "}
+                {dayjs(createdAt).format("YYYY")}
+              </span>
+            </div>
           </div>
-        </div>
-      </Paper>
-    ) : (
+        </Paper>
+      ) : (
         <Paper className={classes.paper}>
           <Typography variant="body2" align="center">
             NO Candle FOUND, PLEASE LOGIN AGAIN OR SIGN UP FOR A NEW ACCOUNT
-                </Typography>
+          </Typography>
           <div className={classes.buttons}>
-            <Button variant="contained" color="primary"
-              component={Link} to="/login">
+            <Button
+              variant="contained"
+              color="primary"
+              component={Link}
+              to="/login"
+            >
               LOGIN
-                    </Button>
-            <Button variant="contained" color="secondary"
-              component={Link} to="/signup">
+            </Button>
+            <Button
+              variant="contained"
+              color="secondary"
+              component={Link}
+              to="/signup"
+            >
               SIGN UP
-                    </Button>
+            </Button>
           </div>
         </Paper>
       )
     ) : (
-        <p className="loading">
-    <strong>Loading...</strong>
-  </p>
-      );
+      <p className="loading">
+        <strong>Loading...</strong>
+      </p>
+    );
 
     return CandleMarkup;
   }
@@ -150,11 +201,19 @@ class Candle extends Component {
 
 Candle.propTypes = {
   classes: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired
+  user: PropTypes.object.isRequired,
+  uploadImage: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   user: state.user
 });
 
-export default connect(mapStateToProps)(withStyles(styles)(Candle));
+const mapActionsToProps = {
+  uploadImage
+};
+
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(withStyles(styles)(Candle));
