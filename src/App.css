@@ -53,3 +53,36 @@ em, strong, h2 {
 input {
   font-family: 'Palanquin Dark', sans-serif !important;
 }
+
+.icon {
+  font-size: 3.5rem !important;
+}
+
+.icon2 {
+  font-size: 2.5rem !important;
+}
+.icon4{
+  font-size: 2rem !important; 
+}
+.icon5 {
+  font-size: 4rem !important;
+}
+.icon6 {
+  font-size: 1.5rem !important;
+}
+.icon4:hover{
+  font-size: 2.5rem !important;
+  color:#fc4a04;
+}
+
+.icon3:hover {
+  font-size: 2rem;
+  color: #fc4a04;
+}
+.nav-container svg {
+  color: #fefaf4;
+  font-size: 150%;
+}
+.nav-container svg:hover {
+  color: #ff9800;
+}
