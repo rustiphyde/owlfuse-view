@@ -1,6 +1,8 @@
 :root {
   --background-one: #fefaf4;
   --hover: #ff9800;
+  --background-two: #263238;
+  --delete: #fc4a04;
 }
 
 html,
@@ -29,7 +31,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #263238;
+  color: var(--background-two);
 }
 a:hover {
   color: var(--hover);
@@ -38,19 +40,19 @@ a:hover {
 .bar-separator {
   margin: 6px 0 6px 0;
   height: 1px;
-  background-color: #ff9800;
+  background-color: var(--hover);
   border: none;
   width: 100%;
 }
 
 .sparkTitle {
-  color: #ff9800;
+  color: var(--hover);
   text-align: center;
   font-size: 2rem;
 }
 
 body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div.MuiDialogTitle-root > h2 {
-  color: #ff9800 !important;
+  color: var(--hover) !important;
 }
 
 em, strong, h2 {
@@ -62,7 +64,7 @@ input {
 }
 
 .MuiSvgIcon-root:hover  {
-  color: #ff9800;
+  color: var(--hover);
   }
 
 .icon {
@@ -83,7 +85,7 @@ input {
 }
 .icon7 {
   font-size: 7rem !important;
-  color: #ff9800;
+  color: var(--hover);
   align-self: center !important;
 }
 .icon8 {
@@ -91,19 +93,19 @@ input {
 }
 .icon4:hover{
   font-size: 2.5rem !important;
-  color:#fc4a04;
+  color: var(--delete);
 }
 
 .icon3:hover {
   font-size: 2rem;
-  color: #fc4a04;
+  color:  var(--delete);
 }
 .nav-container svg {
-  color: #fefaf4;
+  color: var(--background-one);
   font-size: 150%;
 }
 .nav-container svg:hover {
-  color: #ff9800;
+  color: var(--hover);
 }
 .candle {
   display: flex;
