@@ -65,12 +65,12 @@ class Spark extends Component {
             component={Link}
             to={`/users/${clozang}`}
           >
-            <strong>>{alias}</strong>
+            <strong>>{alias.replace(/\s/g, "-")}</strong>
           </Typography>
           <Typography variant="body2" color="textSecondary">
           {dayjs(createdAt).fromNow()}
           </Typography>
-          <Typography variant="body1" color="primary"><strong>{body}</strong></Typography>
+          <Typography variant="body1" color="primary"><b>{body}</b></Typography>
         </CardContent>
       </Card>
     );
