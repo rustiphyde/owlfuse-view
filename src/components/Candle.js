@@ -25,6 +25,9 @@ import LogoutIcon from './icons/LogoutIcon';
 // Redux Stuff
 import { connect } from "react-redux";
 
+// Utils
+import OwlFuseButton from '../util/OwlFuseButton';
+
 const styles = theme => ({
   paper: {
     padding: 16,
@@ -129,11 +132,13 @@ class Candle extends Component {
                 hidden="hidden"
                 onChange={this.handleImageChange}
               />
-              <Tooltip title="EDIT PROFILE IMAGE">
-              <IconButton onClick={this.handleEditPicture} className="button">
-                <SelfieIcon color="secondary" className="icon6"/>
-                </IconButton>
-              </Tooltip>
+              <OwlFuseButton
+                tip="EDIT CANDLE IMAGE"
+                onClick={this.handleEditPicture}
+                className="button"
+                >
+                <SelfieIcon color="primary" className="icon6"/>
+                </OwlFuseButton>
             </div>
             <hr />
             <div className="candle-details">
@@ -151,7 +156,7 @@ class Candle extends Component {
               {location && (
                 <Fragment>
                   <LocationIcon color="secondary" className="icon2" />{" "}
-                  <span>{location}</span>
+                  <Typography variant="body2"><b>{location}</b></Typography>
                   <hr />
                 </Fragment>
               )}
@@ -165,9 +170,10 @@ class Candle extends Component {
                 </Fragment>
               )}
               <CandleIcon color="secondary" className="icon2"/>
+              <Typography variant="body2"><b>Candle was ignited in {dayjs(createdAt).format("MMMM")} of{" "}
+                {dayjs(createdAt).format("YYYY")}</b></Typography>
               <span>
-                Candle was ignited in {dayjs(createdAt).format("MMMM")} of{" "}
-                {dayjs(createdAt).format("YYYY")}
+                
               </span>
             </div>
           </div>

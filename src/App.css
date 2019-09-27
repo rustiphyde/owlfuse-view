@@ -54,6 +54,10 @@ input {
   font-family: 'Palanquin Dark', sans-serif !important;
 }
 
+.MuiSvgIcon-root:hover  {
+  color: #ff9800;
+  }
+
 .icon {
   font-size: 3.5rem !important;
 }

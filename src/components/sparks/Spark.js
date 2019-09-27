@@ -21,7 +21,7 @@ const styles = {
   content: {
     padding: 25,
     width: 600,
-    borderRadius: "0 0 16px 0",
+    borderRadius: "0 0 16px 16px",
     borderTop: "2px solid #ff9800",
     borderRight: "2px solid #ff9800",
     margin: "8px 8px 8px 0",
@@ -29,8 +29,8 @@ const styles = {
   },
   image: {
     margin: "8px 0 8px 8px",
-    minWidth: 120,
-    maxHeight: 120,
+    minWidth: 112,
+    maxHeight: 112,
     objectFit: "cover",
     borderRadius: "16px 0 16px 0",
     borderTop: "2px solid #ff9800",
@@ -70,7 +70,7 @@ class Spark extends Component {
           <Typography variant="body2" color="textSecondary">
           {dayjs(createdAt).fromNow()}
           </Typography>
-          <Typography variant="body1" color="primary"><b>{body}</b></Typography>
+          <Typography variant="body2" color="primary"><b>{body}</b></Typography>
         </CardContent>
       </Card>
     );
