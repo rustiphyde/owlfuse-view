@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import { logoutUser, uploadImage } from "../redux/actions/userActions";
 import withStyles from "@material-ui/core/styles/withStyles";
+
 // MUI Stuff
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
@@ -11,9 +12,16 @@ import MuiLink from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
+
+// Components
+
 // Icons
 import LocationIcon from "./icons/LocationIcon";
 import SelfieIcon from "./icons/SelfieIcon";
+import CandleIcon from './icons/CandleIcon';
+import EditDetailsIcon from './icons/EditDetailsIcon';
+import LogoutIcon from './icons/LogoutIcon';
+
 // Redux Stuff
 import { connect } from "react-redux";
 
@@ -156,7 +164,7 @@ class Candle extends Component {
                   <hr />
                 </Fragment>
               )}
-
+              <CandleIcon color="secondary" className="icon2"/>
               <span>
                 Candle was ignited in {dayjs(createdAt).format("MMMM")} of{" "}
                 {dayjs(createdAt).format("YYYY")}
