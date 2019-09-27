@@ -23,7 +23,7 @@ const styles = theme => ({
     borderLeft: "2px solid #ff9800",
     backgroundColor: "#37474f"
   },
-  profile: {
+  Candle: {
     margin: 8,
     borderTop: "2px solid #ff9800",
     borderBottom: "2px solid #ff9800",
@@ -40,16 +40,16 @@ const styles = theme => ({
         padding: "16px"
       }
     },
-    "& .profile-image": {
+    "& .Candle-image": {
       border: "2px solid #ff9800",
-      width: 160,
-      height: 160,
+      width: 144,
+      height: 144,
       objectFit: "cover",
       maxWidth: "100%",
       borderRadius: "50%",
       margin: 8
     },
-    "& .profile-details": {
+    "& .Candle-details": {
       margin: 8,
       textAlign: "center",
       "& span, svg": {
@@ -77,7 +77,7 @@ const styles = theme => ({
   }
 });
 
-class Profile extends Component {
+class Candle extends Component {
   render() {
     const {
       classes,
@@ -88,14 +88,14 @@ class Profile extends Component {
       }
     } = this.props;
 
-    let profileMarkup = !loading ? (authenticated ? (
+    let CandleMarkup = !loading ? (authenticated ? (
       <Paper className={classes.paper}>
-        <div className={classes.profile}>
+        <div className={classes.Candle}>
           <div className="image-wrapper">
-            <img src={imageUrl} alt="profile" className="profile-image" />
+            <img src={imageUrl} alt="Candle" className="Candle-image" />
           </div>
           <hr />
-          <div className="profile-details">
+          <div className="Candle-details">
             <MuiLink component={Link} to={`/users/${clozang}`} color="primary" variant="h5">
               <strong>>{alias}</strong>
             </MuiLink>
@@ -124,7 +124,7 @@ class Profile extends Component {
     ) : (
         <Paper className={classes.paper}>
           <Typography variant="body2" align="center">
-            NO PROFILE FOUND, PLEASE LOGIN AGAIN OR SIGN UP FOR A NEW ACCOUNT
+            NO Candle FOUND, PLEASE LOGIN AGAIN OR SIGN UP FOR A NEW ACCOUNT
                 </Typography>
           <div className={classes.buttons}>
             <Button variant="contained" color="primary"
@@ -144,11 +144,11 @@ class Profile extends Component {
   </p>
       );
 
-    return profileMarkup;
+    return CandleMarkup;
   }
 }
 
-Profile.propTypes = {
+Candle.propTypes = {
   classes: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired
 };
@@ -157,4 +157,4 @@ const mapStateToProps = state => ({
   user: state.user
 });
 
-export default connect(mapStateToProps)(withStyles(styles)(Profile));
+export default connect(mapStateToProps)(withStyles(styles)(Candle));

@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import AppIcon from "../images/owlfuse-logo-big.png";
 // Components
 import Spark from '../components/sparks/Spark';
 import Fire from '../components/fires/Fire';
-import Profile from '../components/Profile';
+import Candle from '../components/Candle';
+
+// Icons
+import FlameIcon from '../components/icons/FlameIcon';
 
 // MUI Components
 import Grid from '@material-ui/core/Grid';
@@ -62,7 +65,15 @@ class home extends Component {
           {recentFiresMarkup}
         </Grid>
         <Grid item sm={4} xs={12}>
-          <Profile/>
+        <div className="sparkTitle">
+            <strong>CANDLE</strong>
+            <hr className="bar-separator"/>
+          </div>
+          <div className="candle" width="100%">
+            <FlameIcon className="icon7"/>
+        </div>
+         
+          <Candle/>
         </Grid>
       </Grid>
     );

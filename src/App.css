@@ -70,6 +70,11 @@ input {
 .icon6 {
   font-size: 1.5rem !important;
 }
+.icon7 {
+  font-size: 7rem !important;
+  color: #ff9800;
+  align-self: center !important;
+}
 .icon4:hover{
   font-size: 2.5rem !important;
   color:#fc4a04;
@@ -85,4 +90,9 @@ input {
 }
 .nav-container svg:hover {
   color: #ff9800;
+}
+.candle {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
 }

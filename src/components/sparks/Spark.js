@@ -57,7 +57,7 @@ class Spark extends Component {
     } = this.props;
     return (
       <Card className={classes.card}>
-        <CardMedia image={userImage} title="Profile" className={classes.image} />
+        <CardMedia image={userImage} title="Candle" className={classes.image} />
         <CardContent className={classes.content}>
           <Typography
             variant="h5"
