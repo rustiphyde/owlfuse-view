@@ -4,6 +4,7 @@ import axios from 'axios';
 // Components
 import Spark from '../components/sparks/Spark';
 import Fire from '../components/fires/Fire';
+import Profile from '../components/Profile';
 
 // MUI Components
 import Grid from '@material-ui/core/Grid';
@@ -61,7 +62,7 @@ class home extends Component {
           {recentFiresMarkup}
         </Grid>
         <Grid item sm={4} xs={12}>
-          <p>Profile...</p>
+          <Profile/>
         </Grid>
       </Grid>
     );
