@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import AppIcon from "../images/owlfuse-logo-big.png";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
 // Redux
 import { connect } from 'react-redux';

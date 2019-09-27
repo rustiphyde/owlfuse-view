@@ -3,8 +3,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import AppIcon from "../images/owlfuse-logo-big.png";
 import { Link } from "react-router-dom";
-import axios from "axios";
-
 
 // MUI Stuff
 import withStyles from "@material-ui/core/styles/withStyles";
