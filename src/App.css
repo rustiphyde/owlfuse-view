@@ -29,6 +29,22 @@ body {
   margin: auto;
 }
 
+.MuiDialogActions-root, .MuiDialogTitle-root {
+  justify-content: center !important;
+  background-color: #37474f;
+}
+.MuiDialog-paper {
+  border-radius: 16px !important;
+  border: 16px solid #ff9800;
+}
+.MuiSvgIcon-root:hover  {
+color: #ff9800;
+}
+.MuiToolbar-gutters {
+  padding-left: 0 !important;
+  padding-right: 0 !important; 
+}
+
 a {
   text-decoration: none;
   color: var(--background-two);

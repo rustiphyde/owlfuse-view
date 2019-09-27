@@ -14,12 +14,11 @@ import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 
 // Components
-
+import EditCandleDetails from './EditCandleDetails';
 // Icons
 import LocationIcon from "./icons/LocationIcon";
 import SelfieIcon from "./icons/SelfieIcon";
 import CandleIcon from './icons/CandleIcon';
-import EditDetailsIcon from './icons/EditDetailsIcon';
 import LogoutIcon from './icons/LogoutIcon';
 
 // Redux Stuff
@@ -181,6 +180,7 @@ class Candle extends Component {
               onClick={this.handleLogout}>
             <LogoutIcon color="primary" className="icon2"/>
             </OwlFuseButton>
+            <EditCandleDetails />
           </div>
         </Paper>
       ) : (
