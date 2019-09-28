@@ -80,3 +80,16 @@ export const getBoozulas = () => dispatch => {
       });
     });
 };
+
+// Add heat to spark
+export const addHeat = sparkId => dispatch => {
+  axios
+    .get(`/spark/${sparkId}/burn`)
+    .then(res => {
+      dispatch({
+        type: ADD_HEAT,
+        payload: res.data
+      });
+    })
+    .catch(err => console.log(err));
+};
