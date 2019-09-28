@@ -25,6 +25,7 @@ import Navbar from "./components/Navbar";
 import home from "./pages/home";
 import login from "./pages/login";
 import signup from "./pages/signup";
+import reset from './pages/reset';
 
 const theme = createMuiTheme(themeFile);
 
@@ -62,6 +63,11 @@ class App extends Component {
                 exact
                 path="/signup"
                 component={signup}
+                />
+                <AuthRoute
+                exact
+                path="/reset"
+                component={reset}
               />
             </Switch>
           </div>
