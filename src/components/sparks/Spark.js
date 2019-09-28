@@ -66,7 +66,7 @@ class Spark extends Component {
         <CardMedia image={userImage} title="Candle" className={classes.image} />
         <CardContent className={classes.content}>
           <Typography
-            variant="h5"
+            variant="h6"
             color="primary"
             component={Link}
             to={`/users/${clozang}`}
