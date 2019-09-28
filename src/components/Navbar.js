@@ -14,6 +14,7 @@ import Button from "@material-ui/core/Button";
 import AddSparkIcon from "./icons/AddSparkIcon";
 import SizzleIcon from "./icons/SizzleIcon";
 import HomeIcon from "./icons/HomeIcon";
+import OkelistIcon from "./icons/OkelistIcon";
 
 export class Navbar extends Component {
   render() {
@@ -37,6 +38,11 @@ export class Navbar extends Component {
               <Link to="/">
                 <OwlFuseButton tip="GO HOME">
                   <HomeIcon />
+                </OwlFuseButton>
+              </Link>
+              <Link to="/okelists">
+                <OwlFuseButton tip="OKELISTS">
+                  <OkelistIcon />
                 </OwlFuseButton>
               </Link>
               <OwlFuseButton tip="VIEW YOUR SIZZLES">
