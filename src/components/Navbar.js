@@ -15,6 +15,7 @@ import AddSparkIcon from "./icons/AddSparkIcon";
 import SizzleIcon from "./icons/SizzleIcon";
 import HomeIcon from "./icons/HomeIcon";
 import OkelistIcon from "./icons/OkelistIcon";
+import BoozulaIcon from './icons/BoozulaIcon';
 
 export class Navbar extends Component {
   render() {
@@ -34,7 +35,12 @@ export class Navbar extends Component {
             <Fragment>
               <OwlFuseButton tip="SPARK AN INTEREST">
                 <AddSparkIcon />
-              </OwlFuseButton>
+                        </OwlFuseButton>
+                        <Link to="/boozulas">
+                <OwlFuseButton tip="BOOZULAS">
+                  <BoozulaIcon />
+                </OwlFuseButton>
+              </Link>
               <Link to="/">
                 <OwlFuseButton tip="GO HOME">
                   <HomeIcon />
