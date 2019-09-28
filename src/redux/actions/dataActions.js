@@ -61,3 +61,22 @@ export const getOkelists = () => dispatch => {
       });
     });
 };
+
+// fetch all boozulas
+export const getBoozulas = () => dispatch => {
+  dispatch({ type: LOADING_DATA });
+  axios
+    .get("/boozulas")
+    .then(res => {
+      dispatch({
+        type: SET_BOOZULAS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: SET_BOOZULAS,
+        payload: []
+      });
+    });
+};
