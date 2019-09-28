@@ -51,6 +51,12 @@ export default function(state = initialState, action) {
           ...state,
           okelists: action.payload,
           loading: false
+      };
+      case SET_BOOZULAS:
+        return {
+          ...state,
+          boozulas: action.payload,
+          loading: false
         };
       default:
         return state;
