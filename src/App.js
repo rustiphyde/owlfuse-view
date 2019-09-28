@@ -27,6 +27,7 @@ import login from "./pages/login";
 import signup from "./pages/signup";
 import reset from './pages/reset';
 import okelists from './pages/okelists';
+import boozulas from './pages/boozulas';
 
 const theme = createMuiTheme(themeFile);
 
@@ -56,6 +57,7 @@ class App extends Component {
             <Switch>
                 <Route exact path="/" component={home} />
                 <Route exact path="/okelists" component={okelists} />
+                <Route exact path="/boozulas" component={boozulas} />
               <AuthRoute
                   exact
                   path="/login"
