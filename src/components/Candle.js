@@ -20,6 +20,7 @@ import LocationIcon from "./icons/LocationIcon";
 import SelfieIcon from "./icons/SelfieIcon";
 import CandleIcon from './icons/CandleIcon';
 import LogoutIcon from './icons/LogoutIcon';
+import LinkIcon from './icons/LinkIcon';
 
 // Redux Stuff
 import { connect } from "react-redux";
@@ -157,7 +158,7 @@ class Candle extends Component {
               <hr />
               {location && (
                 <Fragment>
-                  <LocationIcon color="secondary" className="icon2" />{" "}
+                  <LocationIcon color="secondary" className="icon" />{" "}
                   <Typography variant="body2"><b>{location}</b></Typography>
                   <hr />
                 </Fragment>
@@ -166,19 +167,21 @@ class Candle extends Component {
                 <Fragment>
                   <a href={website} target="_blank" rel="noopener noreferrer">
                     {" "}
-                    {website}
+                    <OwlFuseButton tip={`${website.toUpperCase()}`}>
+                    <LinkIcon className="icon" color="primary" />
+                    </OwlFuseButton>
                   </a>
                   <hr />
                 </Fragment>
               )}
-              <CandleIcon color="secondary" className="icon2"/>
+              <CandleIcon color="secondary" className="icon"/>
               <Typography variant="body2"><strong>Candle was ignited in {dayjs(createdAt).format("MMMM")} of{" "}
                 {dayjs(createdAt).format("YYYY")}</strong></Typography>
             </div>
             <OwlFuseButton
               tip="LOGOUT"
               onClick={this.handleLogout}>
-            <LogoutIcon color="primary" className="icon2"/>
+            <LogoutIcon color="primary" className="icon"/>
             </OwlFuseButton>
             <EditCandleDetails />
           </div>

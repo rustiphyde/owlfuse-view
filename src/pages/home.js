@@ -35,7 +35,7 @@ class home extends Component {
         
         <Grid item sm={8} xs={12}>
           <div className="sparkTitle">
-            <strong><em>SPARKS</em></strong>
+            <strong>SPARKS</strong>
             <hr className="bar-separator"/>
           </div>
           {recentSparksMarkup}

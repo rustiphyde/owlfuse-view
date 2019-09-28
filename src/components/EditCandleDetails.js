@@ -80,7 +80,7 @@ class EditDetails extends Component {
     return (
       <Fragment>
           <OwlFuseButton tip="EDIT CANDLE DETAILS" onClick={this.handleOpen} btnClassName={classes.button}>
-            <EditDetailsIcon color="primary" className="icon2"/>
+            <EditDetailsIcon color="primary" className="icon"/>
           </OwlFuseButton>
         <Dialog
           open={this.state.open}
