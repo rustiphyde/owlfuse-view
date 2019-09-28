@@ -153,7 +153,7 @@ class Candle extends Component {
                 <strong>>{alias.replace(/\s/g, "-")}</strong>
               </MuiLink>
               <hr />
-              {bio && <Typography variant="body2">{bio}</Typography>}
+              {bio && <Typography variant="body2"><strong>{bio}</strong></Typography>}
               <hr />
               {location && (
                 <Fragment>
@@ -172,8 +172,8 @@ class Candle extends Component {
                 </Fragment>
               )}
               <CandleIcon color="secondary" className="icon2"/>
-              <Typography variant="body2"><b>Candle was ignited in {dayjs(createdAt).format("MMMM")} of{" "}
-                {dayjs(createdAt).format("YYYY")}</b></Typography>
+              <Typography variant="body2"><strong>Candle was ignited in {dayjs(createdAt).format("MMMM")} of{" "}
+                {dayjs(createdAt).format("YYYY")}</strong></Typography>
             </div>
             <OwlFuseButton
               tip="LOGOUT"
