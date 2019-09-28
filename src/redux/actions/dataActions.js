@@ -50,13 +50,13 @@ export const getOkelists = () => dispatch => {
     .get("/okelists")
     .then(res => {
       dispatch({
-        type: SET_OKES,
+        type: SET_OKELISTS,
         payload: res.data
       });
     })
     .catch(err => {
       dispatch({
-        type: SET_OKES,
+        type: SET_OKELISTS,
         payload: []
       });
     });
