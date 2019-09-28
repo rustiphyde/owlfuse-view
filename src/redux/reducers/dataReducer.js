@@ -57,7 +57,21 @@ export default function(state = initialState, action) {
           ...state,
           boozulas: action.payload,
           loading: false
-        };
+      };
+      case ADD_HEAT:
+    case REMOVE_HEAT:
+      let index = state.sparks.findIndex(
+        spark => spark.sparkId === action.payload.sparkId
+      );
+      state.sparks[index] = action.payload;
+      if (state.spark.sparkId === action.payload.sparkId){
+        let temp = state.spark.stokes;
+        state.spark = action.payload;
+        state.spark.stokes = temp;
+      }
+      return {
+        ...state
+      };
       default:
         return state;
     }
