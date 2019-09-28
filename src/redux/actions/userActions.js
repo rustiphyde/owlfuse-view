@@ -4,7 +4,9 @@ import {
   CLEAR_ERRORS,
   LOADING_UI,
   SET_UNAUTHENTICATED,
-  LOADING_USER
+  LOADING_USER,
+  SET_SUCCESS,
+  CLEAR_SUCCESS
 } from "../types";
 import axios from "axios";
 
@@ -81,6 +83,27 @@ export const editUserDetails = userDetails => dispatch => {
       dispatch(getUserDetails());
     })
     .catch(err => console.log(err));
+};
+
+export const resetPassword = (userData) => dispatch => {
+  dispatch({ type: LOADING_UI });
+  axios
+  .post("/reset", userData)
+  .then(res => {
+    dispatch({ type: CLEAR_ERRORS });
+    dispatch({ type: SET_SUCCESS,
+      payload: res.data
+    });
+  })
+  .then(() => {
+    dispatch({ type: CLEAR_SUCCESS })
+  })
+  .catch(err => {
+    dispatch({
+      type: SET_ERRORS,
+      payload: err.response.data
+    });
+  });
 };
 
 // Helper fxn for setting authorization header in various places
