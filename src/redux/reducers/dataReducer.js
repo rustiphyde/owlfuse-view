@@ -46,6 +46,12 @@ export default function(state = initialState, action) {
         sparks: action.payload,
         loading: false
       };
+      case SET_OKELISTS:
+        return {
+          ...state,
+          okelists: action.payload,
+          loading: false
+        };
       default:
         return state;
     }
