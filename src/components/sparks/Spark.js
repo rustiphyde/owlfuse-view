@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import OwlFuseButton from '../../util/OwlFuseButton';
 
 // MUI Stuff
 import { withStyles } from "@material-ui/core/styles";
@@ -10,8 +11,12 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 
+// Icons
+import FireIcon from '../icons/FireIcon';
+
 const styles = {
   card: {
+    maxWidth: '98vw',
     position: 'relative',
     display: "flex",
     marginBottom: 8,
@@ -73,6 +78,9 @@ class Spark extends Component {
           </Typography>
           <Typography variant="body2" color="primary"><b>{body}</b></Typography>
         </CardContent>
+        {fire === true && (
+          <FireIcon color="secondary" className="icon9" />
+        )}
       </Card>
     );
   }
