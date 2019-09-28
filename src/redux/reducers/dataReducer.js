@@ -72,6 +72,14 @@ export default function(state = initialState, action) {
       return {
         ...state
       };
+      case EXTINGUISH_SPARK:
+        index = state.sparks.findIndex(
+          spark => spark.sparkId === action.payload
+        );
+        state.sparks.splice(index, 1);
+        return {
+          ...state
+        };
       default:
         return state;
     }
