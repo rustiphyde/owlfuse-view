@@ -42,3 +42,22 @@ export const getSparks = () => dispatch => {
       });
     });
 };
+
+// fetch all okelists
+export const getOkelists = () => dispatch => {
+  dispatch({ type: LOADING_DATA });
+  axios
+    .get("/okelists")
+    .then(res => {
+      dispatch({
+        type: SET_OKES,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: SET_OKES,
+        payload: []
+      });
+    });
+};
