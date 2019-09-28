@@ -93,3 +93,16 @@ export const addHeat = sparkId => dispatch => {
     })
     .catch(err => console.log(err));
 };
+
+// Remove heat from spark
+export const removeHeat = sparkId => dispatch => {
+  axios
+    .get(`/spark/${sparkId}/snuff`)
+    .then(res => {
+      dispatch({
+        type: REMOVE_HEAT,
+        payload: res.data
+      });
+    })
+    .catch(err => console.log(err));
+};
