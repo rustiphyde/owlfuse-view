@@ -50,14 +50,14 @@ class Okelist extends Component {
       okelist: {
         listName,
         description,
-        okeClozang,
+        klozang,
         createdAt,
         okeId,
         songCount
       },
       user: { authenticated, credentials: { clozang }  }
     } = this.props;
-    const okeListsMarkup = authenticated && okeClozang === clozang ? (
+    const okeListsMarkup = authenticated && klozang === clozang ? (
       <Card className={classes.card}>
     <CardContent className={classes.content}>
   

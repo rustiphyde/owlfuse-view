@@ -51,7 +51,7 @@ class Spark extends Component {
       classes,
       spark: {
         alias,
-        clozang,
+        klozang,
         userImage,
         heatCount,
         stokeCount,
@@ -69,7 +69,7 @@ class Spark extends Component {
             variant="h6"
             color="primary"
             component={Link}
-            to={`/users/${clozang}`}
+            to={`/users/${klozang}`}
           >
             <strong>>{alias.replace(/\s/g, "-")}</strong>
           </Typography>
