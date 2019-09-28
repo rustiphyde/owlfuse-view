@@ -20,6 +20,7 @@ import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 
 // Components
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 // Pages
 import home from "./pages/home";
@@ -74,7 +75,8 @@ class App extends Component {
                 component={reset}
               />
             </Switch>
-          </div>
+            </div>
+            <Footer />
         </BrowserRouter>
         </Provider>
       </MuiThemeProvider>
