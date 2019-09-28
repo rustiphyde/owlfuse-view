@@ -3,7 +3,6 @@ import axios from 'axios';
 import AppIcon from "../images/owlfuse-logo-big.png";
 // Components
 import Spark from '../components/sparks/Spark';
-import Fire from '../components/fires/Fire';
 import Candle from '../components/Candle';
 
 // Icons
@@ -15,8 +14,7 @@ import Grid from '@material-ui/core/Grid';
 class home extends Component {
   // Initialize Component State for storing the Sparks
   state = {
-    sparks: null,
-    fires: null
+    sparks: null
   };
   componentDidMount() {
     axios
@@ -27,27 +25,12 @@ class home extends Component {
         });
       })
       .catch(err => console.log(err));
-    
-      axios
-      .get("/fires")
-      .then(res => {
-        this.setState({
-          fires: res.data
-        });
-      })
-      .catch(err => console.log(err));
   }
   render() {
     let recentSparksMarkup = this.state.sparks ? (
       this.state.sparks.map(spark => <Spark key={spark.sparkId} spark={spark}/>)
     ) : (
       <p>Loading...</p>
-      );
-    
-      let recentFiresMarkup = this.state.fires ? (
-        this.state.fires.map(fire => <Fire key={fire.fireId} fire={fire}/>)
-      ) : (
-        <p>Loading...</p>
       );
     return (
       <Grid container spacing={2}>
@@ -58,11 +41,6 @@ class home extends Component {
             <hr className="bar-separator"/>
           </div>
           {recentSparksMarkup}
-          <div className="sparkTitle">
-            <strong>FIRES</strong>
-            <hr className="bar-separator"/>
-          </div>
-          {recentFiresMarkup}
         </Grid>
         <Grid item sm={4} xs={12}>
         <div className="sparkTitle">

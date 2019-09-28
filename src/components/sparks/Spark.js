@@ -48,10 +48,11 @@ class Spark extends Component {
         alias,
         clozang,
         userImage,
-        heat,
+        heatCount,
         stokeCount,
         body,
         createdAt,
+        fire,
         sparkId
       }
     } = this.props;

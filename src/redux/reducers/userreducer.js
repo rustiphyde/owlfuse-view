@@ -9,7 +9,7 @@ const initialState = {
   authenticated: false,
   credentials: {},
   loading: false,
-  burns: [],
+  heat: [],
   sizzles: []
 };
 
