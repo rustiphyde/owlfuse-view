@@ -29,7 +29,7 @@ const styles = {
     borderRight: "2px solid firebrick",
     borderLeft: "2px solid #ff9800",
     margin: "8px 8px 8px 0",
-    backgroundColor: "#fefaf4"
+    backgroundColor: "#fff"
   },
   image: {
     margin: "8px 0 8px 8px",
