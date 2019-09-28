@@ -26,6 +26,7 @@ import home from "./pages/home";
 import login from "./pages/login";
 import signup from "./pages/signup";
 import reset from './pages/reset';
+import okelists from './pages/okelists';
 
 const theme = createMuiTheme(themeFile);
 
@@ -53,7 +54,8 @@ class App extends Component {
           <Navbar />
           <div className="container">
             <Switch>
-              <Route exact path="/" component={home} />
+                <Route exact path="/" component={home} />
+                <Route exact path="/okelists" component={okelists} />
               <AuthRoute
                   exact
                   path="/login"
