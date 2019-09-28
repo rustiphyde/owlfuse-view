@@ -2,7 +2,9 @@ import {
   SET_USER,
   SET_AUTHENTICATED,
   SET_UNAUTHENTICATED,
-  LOADING_USER
+  LOADING_USER,
+  ADD_HEAT,
+  REMOVE_HEAT
 } from "../types";
 
 const initialState = {
@@ -36,6 +38,24 @@ export default function(state = initialState, action) {
         ...state,
         loading: true
       };
+      case ADD_HEAT:
+        return {
+          ...state,
+          heat: [
+            ...state.heat,
+            {
+              alias: state.credentials.alias,
+              sparkId: action.payload.sparkId
+            }
+          ]
+      };
+      case REMOVE_HEAT:
+        return {
+          ...state,
+          heat: state.heat.filter(
+            burn => burn.sparkId !== action.payload.sparkId
+          )
+        };
     default:
       return state;
   }
