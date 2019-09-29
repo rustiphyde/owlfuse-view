@@ -18,7 +18,7 @@ import Typography from "@material-ui/core/Typography";
 import CheersIcon from '../icons/CheersIcon';
 
 // Components
-
+import EmptyBoozula from './EmptyBoozula';
 
 const styles = {
   card: {
@@ -102,6 +102,9 @@ class Boozula extends Component {
         credentials: { clozang }
       }
     } = this.props;
+    const deleteButton = authenticated && klozang === clozang ? (
+      <EmptyBoozula boozId={boozId}/>
+    ) : null
     const cheersButton = !authenticated ? (
       <OwlFuseButton tip="ADD CHEERS">
         <Link to="/login">
@@ -136,10 +139,12 @@ class Boozula extends Component {
           </Typography>
           <hr />
           {cheersButton}
-          <span>{cheersCount} CHEERS</span>
+          <span>{cheersCount}</span>
           <Typography variant="body1" color="primary">
             <strong>Main Alcohol:</strong> {mainAlcohol}
           </Typography>
+
+          {deleteButton}
         </CardContent>
       </Card>
     );
