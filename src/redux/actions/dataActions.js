@@ -119,6 +119,18 @@ export const removeHeat = sparkId => dispatch => {
     .catch(err => console.log(err));
 };
 
+export const removeCheers = boozId => dispatch => {
+  axios
+    .get(`boozula/${boozId}/uncheers`)
+    .then(res => {
+      dispatch({
+        type: REMOVE_CHEERS,
+        payload: res.data
+      });
+    })
+    .catch(err => console.log(err));
+};
+
 export const extinguishSpark = sparkId => dispatch => {
   axios
     .delete(`/spark/${sparkId}`)

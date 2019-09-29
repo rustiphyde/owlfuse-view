@@ -1,13 +1,49 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import PropTypes from 'prop-types';
+// MUI Stuff
+import Grid from "@material-ui/core/Grid";
+// Components
+import Boozula from "../components/boozFiles/Boozula";
+// Redux Stuff
+import { connect } from 'react-redux';
+import { getBoozulas } from '../redux/actions/dataActions';
 
-export class boozulas extends Component {
+class boozulas extends Component {
+
+  componentDidMount() {
+    this.props.getBoozulas();
+  }
   render() {
+    const { boozulas, loading } = this.props.data;
+    let recentBoozulasMarkup = !loading ? (
+      boozulas.map(boozula => <Boozula key={boozula.boozId} boozula={boozula} />)
+    ) : (
+      <p className="loading"><strong>Loading...</strong></p>
+    );
     return (
-      <div>
-        
-      </div>
-    )
+      <Grid container spacing={1}>
+        <Grid item sm={2}/>
+        <Grid item sm={8} xs={12}>
+          <div className="boozTitle">
+          <strong><em>BOOZULAS</em></strong>
+          <hr className="bar-separator"/>
+          <hr className="bar-separator"/>
+          </div>
+          {recentBoozulasMarkup}
+        </Grid>
+        <Grid item sm={2}/>
+      </Grid>
+    );
   }
 }
 
-export default boozulas
+boozulas.propTypes = {
+  getBoozulas: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired
+}
+
+const mapStateToProps = state => ({
+  data: state.data
+})
+
+export default connect(mapStateToProps, { getBoozulas })(boozulas);
