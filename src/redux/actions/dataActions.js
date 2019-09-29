@@ -94,6 +94,18 @@ export const addHeat = sparkId => dispatch => {
     .catch(err => console.log(err));
 };
 
+export const addCheers = boozId => dispatch => {
+  axios
+    .get(`boozula/${boozId}/cheers`)
+    .then(res => {
+      dispatch({
+        type: ADD_CHEERS,
+        payload: res.data
+      });
+    })
+    .catch(err => console.log(err));
+};
+
 // Remove heat from spark
 export const removeHeat = sparkId => dispatch => {
   axios
