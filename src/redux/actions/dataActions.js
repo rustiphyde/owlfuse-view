@@ -139,3 +139,12 @@ export const extinguishSpark = sparkId => dispatch => {
     })
     .catch(err => console.log(err));
 };
+
+export const emptyBoozula = boozId => dispatch => {
+  axios
+    .delete(`/boozula/${boozId}`)
+    .then(() => {
+      dispatch({ type: EMPTY_BOOZULA, payload: boozId });
+    })
+    .catch(err => console.log(err));
+};
