@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import OwlFuseButton from "../util/OwlFuseButton";
 import OwlFuseTitle from "../images/owlfuse-title.png";
+import PostSpark from './sparks/PostSpark';
 
 // MUI Components
 import AppBar from "@material-ui/core/AppBar";
@@ -33,9 +34,7 @@ export class Navbar extends Component {
         <Toolbar className="nav-container">
           {authenticated ? (
             <Fragment>
-              <OwlFuseButton tip="SPARK AN INTEREST">
-                <AddSparkIcon />
-                        </OwlFuseButton>
+              <PostSpark/>
                         <Link to="/boozulas">
                 <OwlFuseButton tip="BOOZULAS">
                   <BoozulaIcon />

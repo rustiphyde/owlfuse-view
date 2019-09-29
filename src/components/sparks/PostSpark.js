@@ -64,7 +64,7 @@ class PostSpark extends Component {
   }
   handleSubmit = (event) => {
       event.preventDefault();
-      this.props.lightSpark({ body: this.state.body })
+      this.props.postSpark({ body: this.state.body })
   }
   render() {
     const { errors } = this.state;
@@ -74,7 +74,7 @@ class PostSpark extends Component {
     } = this.props;
     return (
       <Fragment>
-        <OwlFuseButton onClick={this.handleOpen} tip="POST A SPARK">
+        <OwlFuseButton onClick={this.handleOpen} tip="SPARK AN INTEREST">
           <AddSparkIcon />
         </OwlFuseButton>
         <Dialog

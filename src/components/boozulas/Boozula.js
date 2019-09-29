@@ -76,7 +76,7 @@ class Boozula extends Component {
   addCheers = () => {
     this.props.addCheers(this.props.boozula.boozId);
   };
-  unCheers = () => {
+  removeCheers = () => {
     this.props.removeCheers(this.props.boozula.boozId);
   };
   render() {
@@ -124,7 +124,7 @@ class Boozula extends Component {
       <Card className={classes.card}>
         <CardMedia image={boozImage} title="Drink" className={classes.image} />
         <CardContent className={classes.content}>
-        <Typography variant="h6" color="secondary"><strong>{drinkName}</strong></Typography>
+        <Typography variant="h5" color="secondary"><strong>:{drinkName}:</strong></Typography>
           <Typography
             variant="body2"
             component={Link}
