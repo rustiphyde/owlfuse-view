@@ -106,3 +106,12 @@ export const removeHeat = sparkId => dispatch => {
     })
     .catch(err => console.log(err));
 };
+
+export const extinguishSpark = sparkId => dispatch => {
+  axios
+    .delete(`/spark/${sparkId}`)
+    .then(() => {
+      dispatch({ type: EXTINGUISH_SPARK, payload: sparkId });
+    })
+    .catch(err => console.log(err));
+};
