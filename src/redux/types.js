@@ -14,7 +14,7 @@ export const CLEAR_SUCCESS = 'CLEAR_SUCCESS';
 // Data Reducer Types
 export const SET_SPARKS = 'SET_SPARKS';
 export const SET_SPARK = 'SET_SPARK';
-export const DELETE_SPARK = 'DELETE_SPARK';
+export const EXTINGUISH_SPARK = 'EXTINGUISH_SPARK';
 export const POST_SPARK = 'POST_SPARK';
 export const LOADING_DATA = 'LOADING_DATA';
 export const ADD_STOKE = 'ADD_STOKE';
