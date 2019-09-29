@@ -93,6 +93,14 @@ export default function(state = initialState, action) {
         state.sparks.splice(exIndex, 1);
         return {
           ...state
+      };
+      case EMPTY_BOOZULA:
+        let emptyIndex = state.boozulas.findIndex(
+          boozula => boozula.boozId === action.payload
+        );
+        state.boozulas.splice(emptyIndex, 1);
+        return {
+          ...state
         };
       default:
         return state;
