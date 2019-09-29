@@ -72,6 +72,11 @@ export default function(state = initialState, action) {
       return {
         ...state
       };
+      case POST_SPARK:
+        return {
+          ...state,
+          sparks: [action.payload, ...state.sparks]
+        };
       case ADD_CHEERS:
         case REMOVE_CHEERS:
           let boozIndex = state.boozulas.findIndex(
