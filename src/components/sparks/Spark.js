@@ -12,6 +12,9 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 
+// Components
+import ExtinguishSpark from './ExtinguishSpark';
+
 // Icons
 import FireIcon from "../icons/FireIcon";
 import HeatIcon from "../icons/HeatIcon";
@@ -83,8 +86,11 @@ class Spark extends Component {
         fire,
         sparkId
       },
-      user: { authenticated }
+      user: { authenticated,  credentials: { clozang }   }
     } = this.props;
+    const deleteButton = authenticated && klozang === clozang ? (
+      <ExtinguishSpark sparkId={sparkId}/>
+    ) : null
     const heatButton = !authenticated ? (
       <OwlFuseButton tip="ADD HEAT">
         <Link to="/login">
@@ -124,6 +130,7 @@ class Spark extends Component {
             <StokeIcon color="primary" />
           </OwlFuseButton>
           <span>{stokeCount}</span>
+          <span>{deleteButton}</span>
         </CardContent>
         {fire === true && <FireIcon color="secondary" className="icon9" />}
       </Card>
