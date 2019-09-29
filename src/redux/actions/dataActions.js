@@ -20,7 +20,13 @@ import {
   ERASE_OKE,
   ADD_SONG,
   ADD_STOKE,
-  ADD_TOAST
+  ADD_TOAST,
+  SET_ERRORS,
+  CLEAR_ERRORS,
+  LOADING_UI,
+  CLEAR_SUCCESS,
+  SET_SUCCESS,
+  STOP_LOADING_UI
 } from "../types";
 import axios from "axios";
 
@@ -77,6 +83,24 @@ export const getBoozulas = () => dispatch => {
       dispatch({
         type: SET_BOOZULAS,
         payload: []
+      });
+    });
+};
+
+// Post a spark
+export const postSpark = newSpark => dispatch => {
+  dispatch({ type: LOADING_UI });
+  axios
+    .post("/spark", newSpark)
+    .then(res => {
+      dispatch({ type: POST_SPARK, payload: res.data });
+      dispatch(clearErrors());
+      dispatch({ type: STOP_LOADING_UI });
+    })
+    .catch(err => {
+      dispatch({
+        type: SET_ERRORS,
+        payload: err.response.data
       });
     });
 };
@@ -147,4 +171,14 @@ export const emptyBoozula = boozId => dispatch => {
       dispatch({ type: EMPTY_BOOZULA, payload: boozId });
     })
     .catch(err => console.log(err));
+};
+
+// action creator for clearing errors
+export const clearErrors = () => dispatch => {
+  dispatch({ type: CLEAR_ERRORS });
+};
+
+// action creator for clearing successes
+export const clearSuccess = () => dispatch => {
+  dispatch({ type: CLEAR_SUCCESS });
 };
