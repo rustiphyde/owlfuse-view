@@ -60,10 +60,10 @@ export default function(state = initialState, action) {
       };
       case ADD_HEAT:
     case REMOVE_HEAT:
-      let index = state.sparks.findIndex(
+      let sparkIndex = state.sparks.findIndex(
         spark => spark.sparkId === action.payload.sparkId
       );
-      state.sparks[index] = action.payload;
+      state.sparks[sparkIndex] = action.payload;
       if (state.spark.sparkId === action.payload.sparkId){
         let temp = state.spark.stokes;
         state.spark = action.payload;
@@ -72,11 +72,25 @@ export default function(state = initialState, action) {
       return {
         ...state
       };
+      case ADD_CHEERS:
+        case REMOVE_CHEERS:
+          let boozIndex = state.boozulas.findIndex(
+            boozula => boozula.boozId === action.payload.boozId
+          );
+          state.boozulas[boozIndex] = action.payload;
+          if (state.boozula.boozId === action.payload.boozId){
+            let temp = state.boozula.toasts;
+            state.boozula = action.payload;
+            state.boozula.toasts = temp;
+          }
+          return {
+            ...state
+          };
       case EXTINGUISH_SPARK:
-        index = state.sparks.findIndex(
+        let exIndex = state.sparks.findIndex(
           spark => spark.sparkId === action.payload
         );
-        state.sparks.splice(index, 1);
+        state.sparks.splice(exIndex, 1);
         return {
           ...state
         };
