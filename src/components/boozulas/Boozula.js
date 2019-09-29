@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import PropTypes from 'prop-types';
+import OwlFuseButton from '../../util/OwlFuseButton';
 import relativeTime from "dayjs/plugin/relativeTime";
 import { connect } from "react-redux";
+import { addCheers, removeCheers } from '../../redux/actions/dataActions';
 
 // MUI Stuff
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -13,7 +15,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 
 // Icons
-
+import CheersIcon from '../icons/CheersIcon';
 
 // Components
 
@@ -61,7 +63,22 @@ const styles = {
 }
 
 class Boozula extends Component {
-  
+  hasCheers = () => {
+    if (
+      this.props.user.cheers &&
+      this.props.user.cheers.find(
+        cheer => cheer.boozId === this.props.boozula.boozId
+      )
+    )
+      return true;
+    else return false;
+  };
+  addCheers = () => {
+    this.props.addCheers(this.props.boozula.boozId);
+  };
+  unCheers = () => {
+    this.props.removeCheers(this.props.boozula.boozId);
+  };
   render() {
     dayjs.extend(relativeTime);
     const {
@@ -70,7 +87,7 @@ class Boozula extends Component {
         drinkName,
         mainAlcohol,
         alias,
-        boozang,
+        klozang,
         boozImage,
         createdAt,
         ingredients,
@@ -78,7 +95,6 @@ class Boozula extends Component {
         drinkWare,
         cheersCount,
         toastCount,
-        firstCandle,
         boozId
       },
       user: {
@@ -86,11 +102,26 @@ class Boozula extends Component {
         credentials: { clozang }
       }
     } = this.props;
+    const cheersButton = !authenticated ? (
+      <OwlFuseButton tip="ADD CHEERS">
+        <Link to="/login">
+          <CheersIcon color="primary" className="icon" />
+        </Link>
+      </OwlFuseButton>
+    ) : this.hasCheers() ? (
+      <OwlFuseButton tip="REMOVE CHEERS" onClick={this.removeCheers}>
+        <CheersIcon color="secondary" className="icon" />
+      </OwlFuseButton>
+    ) : (
+      <OwlFuseButton tip="ADD CHEERS" onClick={this.addCheers}>
+        <CheersIcon color="primary" className="icon" />
+      </OwlFuseButton>
+    );
     return (
       <Card className={classes.card}>
         <CardMedia image={boozImage} title="Drink" className={classes.image} />
         <CardContent className={classes.content}>
-        <Typography variant="h5" color="secondary"><strong>{drinkName}</strong></Typography>
+        <Typography variant="h6" color="secondary"><strong>{drinkName}</strong></Typography>
           <Typography
             variant="body2"
             component={Link}
@@ -104,7 +135,8 @@ class Boozula extends Component {
             {dayjs(createdAt).fromNow()}
           </Typography>
           <hr />
-
+          {cheersButton}
+          <span>{cheersCount} CHEERS</span>
           <Typography variant="body1" color="primary">
             <strong>Main Alcohol:</strong> {mainAlcohol}
           </Typography>
@@ -115,6 +147,8 @@ class Boozula extends Component {
 }
 
 Boozula.propTypes = {
+  addCheers: PropTypes.func.isRequired,
+  removeCheers: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   boozula: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired
@@ -125,6 +159,8 @@ const mapStateToProps = state => ({
 });
 
 const mapActionsToProps = {
+  addCheers,
+  removeCheers
 }
 
 export default connect(
