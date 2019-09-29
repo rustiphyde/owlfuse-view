@@ -4,7 +4,9 @@ import {
   SET_UNAUTHENTICATED,
   LOADING_USER,
   ADD_HEAT,
-  REMOVE_HEAT
+  REMOVE_HEAT,
+  ADD_CHEERS,
+  REMOVE_CHEERS
 } from "../types";
 
 const initialState = {
@@ -49,11 +51,29 @@ export default function(state = initialState, action) {
             }
           ]
       };
+      case ADD_CHEERS:
+        return {
+          ...state,
+          cheers: [
+            ...state.cheers,
+            {
+              alias: state.credentials.alias,
+              boozId: action.payload.boozId
+            }
+          ]
+        };
       case REMOVE_HEAT:
         return {
           ...state,
           heat: state.heat.filter(
             burn => burn.sparkId !== action.payload.sparkId
+          )
+      };
+      case REMOVE_CHEERS:
+        return {
+          ...state,
+          cheers: state.cheers.filter(
+            cheer => cheer.boozId !== action.payload.boozId
           )
         };
     default:
