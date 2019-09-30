@@ -14,7 +14,9 @@ const initialState = {
   credentials: {},
   loading: false,
   heat: [],
-  sizzles: []
+  sizzles: [],
+  cheers: [],
+  clinks: []
 };
 
 export default function(state = initialState, action) {
