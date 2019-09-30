@@ -123,6 +123,24 @@ export const buildNewBoozula = newBoozula => dispatch => {
     });
 };
 
+// Post a new Okelist
+export const buildNewOkeList = newOkeList => dispatch => {
+  dispatch({ type: LOADING_UI });
+  axios
+    .post("/okelist", newOkeList)
+    .then(res => {
+      dispatch({ type: BUILD_OKE, payload: res.data });
+      dispatch({ type: CLEAR_ERRORS });
+      dispatch({ type: STOP_LOADING_UI });
+    })
+    .catch(err => {
+      dispatch({
+        type: SET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};
+
 // Add heat to spark
 export const addHeat = sparkId => dispatch => {
   axios
