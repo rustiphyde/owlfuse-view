@@ -85,10 +85,6 @@ a:hover {
   font-size: 2rem;
 }
 
-/* body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div.MuiDialogTitle-root > h2 {
-  color: var(--hover) !important;
-} */
-
 em, strong, h2 {
   font-family: 'Baloo', cursive !important;
   font-size: 1.1em;

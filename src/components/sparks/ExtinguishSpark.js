@@ -49,7 +49,7 @@ class ExtinguishSpark extends Component {
                 fullWidth
                 maxWidth="sm"
                 >
-                <DialogTitle variant="h5">
+                <DialogTitle variant="h5" className="orng">
                    Are you sure you wish to extinguish all light from this spark? This action is irreversible.
                 </DialogTitle>
                 <DialogActions>

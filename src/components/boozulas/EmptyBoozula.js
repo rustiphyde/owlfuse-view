@@ -49,7 +49,7 @@ class EmptyBoozula extends Component {
                 maxWidth="sm"
                 className="container"
                 >
-                <DialogTitle variant="h5">
+                <DialogTitle variant="h5" className="rusty">
                    Are you sure you wish to empty this boozula? This action is irreversible.
                 </DialogTitle>
                 <DialogActions>
