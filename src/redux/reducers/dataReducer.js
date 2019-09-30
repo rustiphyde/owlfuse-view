@@ -117,6 +117,14 @@ export default function(state = initialState, action) {
         return {
           ...state,
           okelists: [action.payload, ...state.okelists]
+      };
+      case ADD_SONG:
+        return {
+          ...state,
+          okelist: {
+            ...state.okelist,
+            songs: [action.payload, ...state.okelist.songs]
+          }
         };
       case ADD_CHEERS:
         case REMOVE_CHEERS:
