@@ -164,6 +164,14 @@ export default function(state = initialState, action) {
         return {
           ...state
       };
+      case CHOOZ_BY_LIST:
+        let songIndex = state.okelists.findIndex(
+          okelist => okelist.okeId === action.payload.okeId
+        );
+        state.okelists[songIndex] = action.payload;
+        return {
+          ...state
+        }
       default:
         return state;
     }
