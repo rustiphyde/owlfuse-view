@@ -116,6 +116,14 @@ export default function(state = initialState, action) {
         state.boozulas.splice(emptyIndex, 1);
         return {
           ...state
+      };
+      case CHANGE_BOOZ_IMAGE:
+        let imgIndex = state.boozulas.findIndex(
+          boozula => boozula.boozId === action.payload.boozId
+        );
+        state.boozulas[imgIndex] = action.payload;
+        return {
+          ...state
         };
       default:
         return state;
