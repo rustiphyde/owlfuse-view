@@ -105,6 +105,24 @@ export const postSpark = newSpark => dispatch => {
     });
 };
 
+// Post a Boozula
+export const buildNewBoozula = newBoozula => dispatch => {
+  dispatch({ type: LOADING_UI });
+  axios
+    .post("/boozula", newBoozula)
+    .then(res => {
+      dispatch({ type: BUILD_BOOZULA, payload: res.data });
+      dispatch({ type: CLEAR_ERRORS });
+      dispatch({ type: STOP_LOADING_UI });
+    })
+    .catch(err => {
+      dispatch({
+        type: SET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};
+
 // Add heat to spark
 export const addHeat = sparkId => dispatch => {
   axios
