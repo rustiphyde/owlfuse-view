@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Grid from "@material-ui/core/Grid";
 // Components
 import Boozula from "../components/boozulas/Boozula";
+import PostBoozula from "../components/boozulas/PostBoozula";
 // Redux Stuff
 import { connect } from 'react-redux';
 import { getBoozulas } from '../redux/actions/dataActions';
@@ -26,6 +27,8 @@ class boozulas extends Component {
         <Grid item sm={8} xs={12}>
         <div className="boozTitle1">
             <strong>BOOZULAS</strong>
+            <hr className="bar-separator-booz" />
+            <PostBoozula />
             <hr className="bar-separator-booz"/>
           </div>
           {recentBoozulasMarkup}

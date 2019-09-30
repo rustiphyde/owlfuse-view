@@ -5,7 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 import { buildNewBoozula, clearErrors } from "../../redux/actions/dataActions";
 import AddBoozulaIcon from "../icons/AddBoozulaIcon";
-import MyButton from "../../util/MyButton";
+import OwlFuseButton from "../../util/OwlFuseButton";
 import CloseIcon from "../icons/CloseIcon";
 // MUI Stuff
 import Button from "@material-ui/core/Button";
@@ -98,24 +98,24 @@ class PostBoozula extends Component {
     } = this.props;
     return (
       <Fragment>
-        <MyButton onClick={this.handleOpen} tip="POST A BOOZULA">
-          <AddBoozulaIcon className="icon5" color="primary" />
-        </MyButton>
+        <OwlFuseButton onClick={this.handleOpen} tip="POST A BOOZULA">
+          <AddBoozulaIcon className="icon5 rust" color="primary" />
+        </OwlFuseButton>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
           fullWidth
           maxWidth="sm"
         >
-          <MyButton
+          <OwlFuseButton
             tip="CLOSE"
             onClick={this.handleClose}
             tipClassName={classes.closeButton}
           >
-            <CloseIcon />
-          </MyButton>
-          <DialogTitle variant="h5">POST A BOOZULA</DialogTitle>
-          <DialogContent>
+            <CloseIcon className="rust"/>
+          </OwlFuseButton>
+          <DialogTitle variant="h5" className="rusty">POST A NEW BOOZULA</DialogTitle>
+          <DialogContent className="rust-border">
             <form onSubmit={this.handleSubmit}>
               <TextField
                 name="drinkName"
@@ -145,7 +145,7 @@ class PostBoozula extends Component {
                 label="What are the Ingredients?"
                 placeholder="INGREDIENTS"
                 multiline
-                rows="3"
+                rows="2"
                 className={classes.textField}
                 onChange={this.handleChange}
                 fullWidth
@@ -156,7 +156,7 @@ class PostBoozula extends Component {
                 label="How do you make it?"
                 placeholder="PREPARATION"
                 multiline
-                rows="3"
+                rows="2"
                 className={classes.textField}
                 onChange={this.handleChange}
                 fullWidth

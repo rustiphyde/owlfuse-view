@@ -88,17 +88,17 @@ class PostSpark extends Component {
             onClick={this.handleClose}
             tipClassName={classes.closeButton}
           >
-            <CloseIcon/>
+            <CloseIcon className="orange"/>
           </OwlFuseButton>
-          <DialogTitle variant="h5">POST A NEW SPARK</DialogTitle>
-          <DialogContent>
+          <DialogTitle variant="h5" className="orng">POST A NEW SPARK</DialogTitle>
+          <DialogContent className="orange-border">
             <form onSubmit={this.handleSubmit}>
               <TextField
                 name="body"
                 type="text"
                 label="SPARK AN INTEREST"
                 multiline
-                rows="6"
+                rows="3"
                 placeholder="SPARK IT"
                 error={errors.spark ? true : false}
                 helperText={errors.spark}

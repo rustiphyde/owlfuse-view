@@ -88,8 +88,8 @@ class EditDetails extends Component {
           fullWidth
           maxwidth="sm"
         >
-          <DialogTitle>Edit Your Details</DialogTitle>
-          <DialogContent>
+          <DialogTitle className="orng">Edit Your Details</DialogTitle>
+          <DialogContent className="orange-border">
             <form>
             <TextField
                 name="alias"
