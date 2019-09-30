@@ -76,6 +76,11 @@ export default function(state = initialState, action) {
         return {
           ...state,
           sparks: [action.payload, ...state.sparks]
+      };
+      case BUILD_BOOZULA:
+        return {
+          ...state,
+          boozulas: [action.payload, ...state.boozulas]
         };
       case ADD_CHEERS:
         case REMOVE_CHEERS:
