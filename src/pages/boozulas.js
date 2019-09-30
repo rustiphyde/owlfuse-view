@@ -24,9 +24,9 @@ class boozulas extends Component {
       <Grid container spacing={1}>
         <Grid item sm={2}/>
         <Grid item sm={8} xs={12}>
-        <div className="sparkTitle">
+        <div className="boozTitle1">
             <strong>BOOZULAS</strong>
-            <hr className="bar-separator"/>
+            <hr className="bar-separator-booz"/>
           </div>
           {recentBoozulasMarkup}
         </Grid>

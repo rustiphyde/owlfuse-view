@@ -3,6 +3,7 @@
   --hover: #ff9800;
   --background-two: #263238;
   --delete: #fc4a04;
+  --rust: #b7410e;
 }
 
 html,
@@ -37,9 +38,7 @@ body {
   border-radius: 16px !important;
   border: 16px solid #ff9800;
 }
-.MuiSvgIcon-root:hover  {
-color: #ff9800;
-}
+
 .MuiToolbar-gutters {
   padding-left: 0 !important;
   padding-right: 0 !important; 
@@ -61,9 +60,28 @@ a:hover {
   width: 100%;
 }
 
+.bar-separator-booz {
+  margin: 6px 0 6px 0;
+  height: 1px;
+  background-color: var(--rust);
+  border: none;
+  width: 100%;
+}
+
 .sparkTitle {
   color: var(--hover);
   text-align: center;
+  font-size: 2rem;
+}
+
+.boozTitle1 {
+  color: var(--rust);
+  text-align: center;
+  font-size: 2rem;
+}
+
+.boozTitle2 {
+  color: var(--rust);
   font-size: 2rem;
 }
 
@@ -78,10 +96,6 @@ em, strong, h2 {
 input {
   font-family: 'Palanquin Dark', sans-serif !important;
 }
-
-.MuiSvgIcon-root:hover  {
-  color: var(--hover);
-  }
 
 .icon {
   font-size: 3.5rem !important;
@@ -105,7 +119,14 @@ input {
   align-self: center !important;
 }
 .icon8 {
-  font-size: 2rem !important;
+  font-size: 2.5rem !important;
+}
+.icon8-2 {
+  font-size: 2.5rem !important;
+  color: var(--rust);
+}
+.icon8:hover, icon8-2:hover {
+  color: var(--rust) !important;
 }
 .icon9 {
   font-size: 2rem !important;
@@ -145,4 +166,8 @@ input {
   padding: 16px 16px 0 16px;
   margin: 8px auto 0 auto;
   border-radius: 16px 0 16px 0;
+}
+
+.orange:hover {
+  color: var(--hover);
 }

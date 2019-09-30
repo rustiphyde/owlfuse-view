@@ -26,15 +26,15 @@ const styles = {
     display: "flex",
     marginBottom: 8,
     borderRadius: "16px 0 16px 0",
-    backgroundColor: "#37474f"
+    backgroundColor: "#361002"
   },
   content: {
     padding: 25,
     width: 600,
     borderRadius: "0 0 16px 16px",
-    borderTop: "2px solid #ff9800",
-    borderRight: "2px solid #ff9800",
-    borderBottom: "2px solid #ff9800",
+    borderTop: "2px solid #f4db9d",
+    borderRight: "2px solid #f4db9d",
+    borderBottom: "2px solid #f4db9d",
     margin: "8px 8px 8px 0",
     backgroundColor: "#fefaf4"
   },
@@ -44,9 +44,9 @@ const styles = {
     maxHeight: 120,
     objectFit: "cover",
     borderRadius: "16px 0 16px 0",
-    borderTop: "2px solid #ff9800",
-    borderLeft: "2px solid #ff9800",
-    borderBottom: "2px solid #ff9800"
+    borderTop: "2px solid #f4db9d",
+    borderLeft: "2px solid #f4db9d",
+    borderBottom: "2px solid #f4db9d"
   },
   name: {
     textAlign: "center",
@@ -108,23 +108,23 @@ class Boozula extends Component {
     const cheersButton = !authenticated ? (
       <OwlFuseButton tip="ADD CHEERS">
         <Link to="/login">
-          <CheersIcon color="primary" className="icon" />
+          <CheersIcon color="primary" className="icon8" />
         </Link>
       </OwlFuseButton>
     ) : this.hasCheers() ? (
       <OwlFuseButton tip="REMOVE CHEERS" onClick={this.removeCheers}>
-        <CheersIcon color="secondary" className="icon" />
+        <CheersIcon className="icon8-2" />
       </OwlFuseButton>
     ) : (
       <OwlFuseButton tip="ADD CHEERS" onClick={this.addCheers}>
-        <CheersIcon color="primary" className="icon" />
+        <CheersIcon color="primary" className="icon8" />
       </OwlFuseButton>
     );
     return (
       <Card className={classes.card}>
         <CardMedia image={boozImage} title="Drink" className={classes.image} />
         <CardContent className={classes.content}>
-        <Typography variant="h5" color="secondary"><strong>:{drinkName}:</strong></Typography>
+        <Typography variant="h5" className="boozTitle2"><strong>:{drinkName}:</strong></Typography>
           <Typography
             variant="body2"
             component={Link}

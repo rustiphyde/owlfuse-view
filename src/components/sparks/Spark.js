@@ -94,7 +94,7 @@ class Spark extends Component {
     const heatButton = !authenticated ? (
       <OwlFuseButton tip="ADD HEAT">
         <Link to="/login">
-          <HeatIcon color="primary" />
+          <HeatIcon color="primary" className="orange" />
         </Link>
       </OwlFuseButton>
     ) : this.hotSpark() ? (
@@ -103,7 +103,7 @@ class Spark extends Component {
       </OwlFuseButton>
     ) : (
       <OwlFuseButton tip="ADD HEAT" onClick={this.addHeat}>
-        <HeatIcon color="primary" />
+        <HeatIcon color="primary" className="orange"/>
       </OwlFuseButton>
     );
     return (
@@ -127,7 +127,7 @@ class Spark extends Component {
           {heatButton}
           <span>{heatCount}</span>
           <OwlFuseButton tip="STOKES">
-            <StokeIcon color="primary" />
+            <StokeIcon color="primary" className="orange" />
           </OwlFuseButton>
           <span>{stokeCount}</span>
           <span>{deleteButton}</span>

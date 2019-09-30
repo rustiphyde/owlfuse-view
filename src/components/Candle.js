@@ -140,7 +140,7 @@ class Candle extends Component {
                 onClick={this.handleEditPicture}
                 className="button"
                 >
-                <SelfieIcon color="primary" className="icon6"/>
+                <SelfieIcon color="primary" className="icon6 orange"/>
                 </OwlFuseButton>
             </div>
             <hr />
@@ -168,7 +168,7 @@ class Candle extends Component {
                   <a href={website} target="_blank" rel="noopener noreferrer">
                     {" "}
                     <OwlFuseButton tip={`${website.toUpperCase()}`}>
-                    <LinkIcon className="icon" color="primary" />
+                    <LinkIcon className="icon orange" color="primary" />
                     </OwlFuseButton>
                   </a>
                   <hr />
@@ -181,7 +181,7 @@ class Candle extends Component {
             <OwlFuseButton
               tip="LOGOUT"
               onClick={this.handleLogout}>
-            <LogoutIcon color="primary" className="icon"/>
+            <LogoutIcon color="primary" className="icon orange"/>
             </OwlFuseButton>
             <EditCandleDetails />
           </div>
