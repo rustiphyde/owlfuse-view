@@ -105,6 +105,14 @@ export default function(state = initialState, action) {
           ...state,
           boozulas: [action.payload, ...state.boozulas]
       };
+      case ADD_TOAST:
+        return {
+          ...state,
+          boozula: {
+            ...state.boozula,
+            toasts: [action.payload, ...state.boozula.toasts]
+          }
+        }
       case BUILD_OKE:
         return {
           ...state,
