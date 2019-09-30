@@ -56,8 +56,8 @@ const styles = theme => ({
     },
     "& .candle-image": {
       border: "2px solid #ff9800",
-      width: 144,
-      height: 144,
+      width: 160,
+      height: 160,
       objectFit: "cover",
       maxWidth: "100%",
       borderRadius: "50%",
@@ -140,7 +140,7 @@ class Candle extends Component {
                 onClick={this.handleEditPicture}
                 className="button"
                 >
-                <SelfieIcon color="primary" className="icon6 orange"/>
+                <SelfieIcon color="primary" className="icon2 orange"/>
                 </OwlFuseButton>
             </div>
             <hr />
