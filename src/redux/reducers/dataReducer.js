@@ -81,6 +81,11 @@ export default function(state = initialState, action) {
         return {
           ...state,
           boozulas: [action.payload, ...state.boozulas]
+      };
+      case BUILD_OKE:
+        return {
+          ...state,
+          okelists: [action.payload, ...state.okelists]
         };
       case ADD_CHEERS:
         case REMOVE_CHEERS:
