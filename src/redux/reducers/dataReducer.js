@@ -46,18 +46,33 @@ export default function(state = initialState, action) {
         sparks: action.payload,
         loading: false
       };
+      case SET_SPARK:
+        return {
+          ...state,
+          spark: action.payload
+        }
       case SET_OKELISTS:
         return {
           ...state,
           okelists: action.payload,
           loading: false
       };
+      case SET_OKELIST:
+        return {
+          ...state,
+          okelist: action.payload
+        }
       case SET_BOOZULAS:
         return {
           ...state,
           boozulas: action.payload,
           loading: false
       };
+      case SET_BOOZULA:
+        return {
+          ...state,
+          boozula: action.payload
+        };
       case ADD_HEAT:
     case REMOVE_HEAT:
       let sparkIndex = state.sparks.findIndex(
@@ -124,7 +139,7 @@ export default function(state = initialState, action) {
         state.boozulas[imgIndex] = action.payload;
         return {
           ...state
-        };
+      };
       default:
         return state;
     }
