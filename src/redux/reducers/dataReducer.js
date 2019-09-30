@@ -92,6 +92,14 @@ export default function(state = initialState, action) {
           ...state,
           sparks: [action.payload, ...state.sparks]
       };
+      case ADD_STOKE:
+        return {
+          ...state,
+          spark: {
+            ...state.spark,
+            stokes: [action.payload, ...state.spark.stokes]
+          }
+        }
       case BUILD_BOOZULA:
         return {
           ...state,
