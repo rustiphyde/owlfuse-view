@@ -218,3 +218,19 @@ export const clearErrors = () => dispatch => {
 export const clearSuccess = () => dispatch => {
   dispatch({ type: CLEAR_SUCCESS });
 };
+
+export const getBoozData = boozId => dispatch => {
+  dispatch({ type: LOADING_UI });
+  axios
+    .get("/boozulas")
+    .then(res => {
+      console.log(res.data);
+      dispatch({
+        type: SET_BOOZULAS,
+        payload: res.data
+      });
+
+      dispatch({ type: STOP_LOADING_UI });
+    })
+    .catch(err => console.log(err));
+};
