@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 
 // Components
 import EraseOkelist from './EraseOkelist';
+import ListChoozer from './ListChoozer';
 
 // MUI Stuff
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -76,10 +77,10 @@ class Okelist extends Component {
       <Typography variant="body2" color="textSecondary">
         composed {dayjs(createdAt).fromNow()}
       </Typography>
-      <Typography variant="body2" color="primary"><span className={classes.clef2}>𝄆</span><strong className="oaky">{description}</strong><span className={classes.clef2}>𝄇</span></Typography>
+      <Typography variant="body2" color="primary"><span className={classes.clef2}>𝄆</span><strong className={classes.oaktree}>{description}</strong><span className={classes.clef2}>𝄇</span></Typography>
       <hr className="bar-separator-oak"/>
       <hr className="bar-separator-oak"/><hr className="bar-separator-oak"/>
-      
+      <ListChoozer okeId={okeId}/><span>{songCount} SONGS</span>
       
     </CardContent>
   </Card>

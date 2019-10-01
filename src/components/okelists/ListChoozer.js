@@ -9,7 +9,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogActions from '@material-ui/core/DialogActions';
 import Button from '@material-ui/core/Button';
 // Icons
-import ChoozByListIcon from "../icon/ChoozByListIcon";
+import ChoozByListIcon from "../icons/ChoozByListIcon";
 // Redux
 import { connect } from "react-redux";
 import { choozByList, clearSuccess } from "../../redux/actions/dataActions";
@@ -48,7 +48,7 @@ class ListChoozer extends Component {
         <CircularProgress className={classes.progress}/>
     ) : (
         <Fragment>
-        {this.state.success.message && (<DialogTitle variant="h5">
+        {this.state.success.message && (<DialogTitle variant="h5" className="oaky">
                    {this.state.success.message}
                 </DialogTitle>)}
                 <DialogActions>
@@ -65,7 +65,7 @@ class ListChoozer extends Component {
      <Fragment>
                 <OwlFuseButton tip="CHOOZ FROM THIS LIST"
                 onClick={this.handleOpen}>
-                <ChoozByListIcon color="primary" className="icon2"/>
+                <ChoozByListIcon color="primary" className="icon2 oakleaf"/>
                 </OwlFuseButton>
                 <Dialog
                 open={this.state.open}
