@@ -249,3 +249,14 @@ export const uploadBoozImage = (boozId, formData) => dispatch => {
     })
     .catch(err => console.log(err));
 };
+
+export const editBoozDetails = (boozId, boozDetails) => dispatch => {
+  dispatch({ type: LOADING_UI });
+  axios
+    .post(`/boozula/${boozId}/add`, boozDetails)
+    .then(() => {
+      dispatch(getBoozData());
+      dispatch({ STOP_LOADING_UI });
+    })
+    .catch(err => console.log(err));
+};
