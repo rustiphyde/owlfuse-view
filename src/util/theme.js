@@ -1,20 +1,19 @@
 import orange from "@material-ui/core/colors/orange";
 import blueGrey from "@material-ui/core/colors/blueGrey";
-import amber from "@material-ui/core/colors/amber";
 
 export default {
   palette: {
     primary: {
       light: blueGrey[700],
       main: blueGrey[800],
-      dark: [900],
-      contrastText: amber["A100"]
+      dark: blueGrey[900],
+      contrastText: '#fefaf4'
     },
     secondary: {
       light: orange[400],
       main: orange[500],
       dark: orange[600],
-      contrastText: blueGrey[900]
+      contrastText: '#000000'
     }
   },
   themeMinusPalette: {

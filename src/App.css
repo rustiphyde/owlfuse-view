@@ -5,6 +5,7 @@
   --delete: #fc4a04;
   --rust: #b7410e;
   --bg-light: #37474f;
+  --stout: #361002;
 }
 
 html,
@@ -187,3 +188,8 @@ input {
 .orng {
   color: var(--hover);
 } 
+
+.not-orng:hover {
+  color: var(--bg-light);
+  background-color: var(--rust);
+}

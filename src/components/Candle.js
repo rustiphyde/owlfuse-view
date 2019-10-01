@@ -202,9 +202,9 @@ class Candle extends Component {
             </Button>
             <Button
               variant="contained"
-              color="secondary"
-              component={Link}
-              to="/signup"
+                component={Link}
+                color="primary"
+                to="/signup"
             >
               SIGN UP
             </Button>
