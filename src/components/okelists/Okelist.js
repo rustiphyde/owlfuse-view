@@ -4,6 +4,9 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
+// Components
+import EraseOkelist from './EraseOkelist';
+
 // MUI Stuff
 import withStyles from "@material-ui/core/styles/withStyles";
 import Card from "@material-ui/core/Card";
@@ -56,10 +59,13 @@ class Okelist extends Component {
       },
       user: { authenticated, credentials: { clozang }  }
     } = this.props;
+    const deleteButton = authenticated && klozang === clozang ? (
+      <EraseOkelist okeId={okeId}/>
+    ) : null;
     const okeListsMarkup = authenticated && klozang === clozang ? (
       <Card className={classes.card}>
     <CardContent className={classes.content}>
-  
+      {deleteButton}
       <hr className="bar-separator-oak"/>
       <hr className="bar-separator-oak"/>
       <hr className="bar-separator-oak"/>

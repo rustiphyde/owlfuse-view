@@ -10,7 +10,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogActions from '@material-ui/core/DialogActions';
 
 // Icons
-import EraseOkelistIcon from '../icon/EraseOkelistIcon';
+import EraseOkelistIcon from '../icons/EraseOkelistIcon';
 
 
 import { connect } from 'react-redux';
