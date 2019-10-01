@@ -269,3 +269,25 @@ export const editBoozDetails = (boozId, boozDetails) => dispatch => {
     })
     .catch(err => console.log(err));
 };
+
+export const choozByList = (okeId) => dispatch => {
+  dispatch({ type: LOADING_UI });
+  axios
+    .get(`/song/${okeId}/list/chooz`)
+    .then(res => {
+      dispatch({
+        type: CHOOZ_BY_LIST,
+        payload: res.data,
+      });
+      dispatch({
+        type: SET_SUCCESS,
+        payload: res.data
+      });
+      console.log(res.data);
+      dispatch({ type: STOP_LOADING_UI });
+    })
+    .then(() => {
+      dispatch({ type: CLEAR_SUCCESS })
+    })
+    .catch(err => console.log(err));
+}
