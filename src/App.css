@@ -187,6 +187,7 @@ input {
 
 .rusty {
   color: var(--rust);
+  text-align: center;
 }
 
 .orng {

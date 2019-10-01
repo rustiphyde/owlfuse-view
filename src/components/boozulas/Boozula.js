@@ -20,6 +20,7 @@ import CheersIcon from '../icons/CheersIcon';
 
 // Components
 import EmptyBoozula from './EmptyBoozula';
+import EditBoozDetails from './EditBoozDetails';
 
 const styles = {
   card: {
@@ -96,7 +97,8 @@ class Boozula extends Component {
         drinkWare,
         cheersCount,
         toastCount,
-        boozId
+        boozId,
+        garnish
       },
       user: {
         authenticated,
@@ -108,6 +110,18 @@ class Boozula extends Component {
     ) : null
     const imageUpdater = authenticated && klozang === clozang ? (
       <EditBoozulaImage boozId={boozId}/>
+    ) : null
+    const infoUpdater = authenticated && klozang === clozang ? (
+      <EditBoozDetails 
+      boozId={boozId}
+      drinkName={drinkName}
+      mainAlcohol={mainAlcohol}
+      ingredients={ingredients}
+      preparation={preparation}
+      drinkWare={drinkWare}
+      garnish={garnish}
+      boozImage={boozImage}
+      />
     ) : null
     const cheersButton = !authenticated ? (
       <OwlFuseButton tip="ADD CHEERS">
@@ -143,6 +157,8 @@ class Boozula extends Component {
           </Typography>
           <hr />
           {imageUpdater}
+          {infoUpdater}
+          <hr />
 
           {cheersButton}
           <span>{cheersCount}</span>

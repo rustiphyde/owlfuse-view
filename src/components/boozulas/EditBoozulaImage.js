@@ -57,7 +57,7 @@ class EditBoozulaImage extends Component {
           className={classes.dialog}
         >
           <DialogTitle variant="h5" className="rusty">
-            EDIT YOUR IMAGE
+            EDIT YOUR BOOZULA IMAGE?
           </DialogTitle>
           <DialogContent>
             <form className={classes.form}>
@@ -71,9 +71,8 @@ class EditBoozulaImage extends Component {
                 <OwlFuseButton
                   tip="EDIT BOOZULA IMAGE"
                   onClick={this.handleEditPicture}
-                  className={classes.button}
                 >
-                  <EditBoozulaImageIcon color="primary" className="icon" />
+                  <EditBoozulaImageIcon color="primary" className="icon rust" />
                 </OwlFuseButton>
               </div>
             </form>
