@@ -81,6 +81,10 @@ a:hover {
   font-size: 2rem;
 }
 
+form {
+  text-align: center;
+}
+
 .boozTitle2 {
   color: var(--rust);
   font-size: 2rem;

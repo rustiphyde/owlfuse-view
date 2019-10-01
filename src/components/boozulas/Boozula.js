@@ -13,6 +13,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
+import EditBoozulaImage from './EditBoozulaImage';
 
 // Icons
 import CheersIcon from '../icons/CheersIcon';
@@ -105,6 +106,9 @@ class Boozula extends Component {
     const deleteButton = authenticated && klozang === clozang ? (
       <EmptyBoozula boozId={boozId}/>
     ) : null
+    const imageUpdater = authenticated && klozang === clozang ? (
+      <EditBoozulaImage boozId={boozId}/>
+    ) : null
     const cheersButton = !authenticated ? (
       <OwlFuseButton tip="ADD CHEERS">
         <Link to="/login">
@@ -138,12 +142,13 @@ class Boozula extends Component {
             {dayjs(createdAt).fromNow()}
           </Typography>
           <hr />
+          {imageUpdater}
+
           {cheersButton}
           <span>{cheersCount}</span>
           <Typography variant="body1" color="primary">
             <strong>Main Alcohol:</strong> {mainAlcohol}
           </Typography>
-
           {deleteButton}
         </CardContent>
       </Card>
