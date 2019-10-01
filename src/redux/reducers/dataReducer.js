@@ -164,6 +164,14 @@ export default function(state = initialState, action) {
         return {
           ...state
       };
+      case ERASE_OKE:
+        let eraseIndex = state.okelists.findIndex(
+          okelist => okelist.okeId === action.payload
+        );
+        state.okelists.splice(eraseIndex, 1);
+        return {
+          ...state
+        };
       case CHOOZ_BY_LIST:
         let songIndex = state.okelists.findIndex(
           okelist => okelist.okeId === action.payload.okeId
