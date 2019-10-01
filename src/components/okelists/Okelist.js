@@ -11,14 +11,14 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 
 const styles = {
-    orange: {
-      color: '#ff9800'
+    oaktree: {
+      color: '#5f3c0f'
     },
     card: {
       position: 'relative',
         display: "flex",
         marginBottom: 8,
-        borderRadius: '16px 0 16px 16px',
+        borderRadius: '16px 16px 16px 16px',
         backgroundColor: '#37474f'
       },
       clef: {
@@ -26,18 +26,17 @@ const styles = {
       },
       clef2: {
         fontSize: '20px',
-        color: '#ff9800'
+        color: '#087520'
       },
       content: {
-        // textAlign: 'center',
+        margin: 'auto',
         padding: 25,
         width: 800,
-        borderRadius: '16px 0 16px 16px',
-        borderTop: '2px solid #ff9800',
-        borderRight: '2px solid #ff9800',
-        borderLeft: '2px solid #37474f',
-        margin: '8px 8px 8px 0',
-        backgroundColor: '#fefaf4'
+        borderRadius: '16px 16px 16px 16px',
+        borderTop: '2px solid #11a36b',
+        borderBottom: '2px solid #11a36b',
+        margin: '8px 0 8px 0',
+        backgroundColor: '#f7efdd'
       }
   
 };
@@ -61,19 +60,19 @@ class Okelist extends Component {
       <Card className={classes.card}>
     <CardContent className={classes.content}>
   
-      <hr className="bar-separator"/>
-      <hr className="bar-separator"/>
-      <hr className="bar-separator"/>
-      <hr className="bar-separator"/>
-      <hr className="bar-separator"/>
-      <Typography variant="h6" color="primary" className={classes.name}><strong><span className={classes.orange}><span className={classes.clef}>𝄞</span> {listName}</span></strong></Typography>
-      <hr className="bar-separator"/>
+      <hr className="bar-separator-oak"/>
+      <hr className="bar-separator-oak"/>
+      <hr className="bar-separator-oak"/>
+      <hr className="bar-separator-oak"/>
+      <hr className="bar-separator-oak"/>
+      <Typography variant="h6" color="primary" className={classes.name}><strong><span className={classes.oaktree}><span className={classes.clef}>𝄞</span> {listName}</span></strong></Typography>
+      <hr className="bar-separator-oak"/>
       <Typography variant="body2" color="textSecondary">
         composed {dayjs(createdAt).fromNow()}
       </Typography>
-      <Typography variant="body2" color="primary"><span className={classes.clef2}>𝄆</span> {description} <span className={classes.clef2}>𝄇</span></Typography>
-      <hr className="bar-separator"/>
-      <hr className="bar-separator"/><hr className="bar-separator"/>
+      <Typography variant="body2" color="primary"><span className={classes.clef2}>𝄆</span><strong className="oaky">{description}</strong><span className={classes.clef2}>𝄇</span></Typography>
+      <hr className="bar-separator-oak"/>
+      <hr className="bar-separator-oak"/><hr className="bar-separator-oak"/>
       
       
     </CardContent>

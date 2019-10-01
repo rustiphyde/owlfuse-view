@@ -6,6 +6,9 @@
   --rust: #b7410e;
   --bg-light: #37474f;
   --stout: #361002;
+  --leaf: #11a36b;
+  --bark: #5f3c0f;
+  --beerfoam: #f7efdd;
 }
 
 html,
@@ -14,6 +17,11 @@ body {
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
     background-color: var(--background-one);  
+}
+
+.sheet {
+  background-image: url("./images/sheet-music.png");
+  background-size: cover;
 }
 
 .container {
@@ -61,6 +69,14 @@ a:hover {
   width: 100%;
 }
 
+.bar-separator-oak {
+  margin: 6px 0 6px 0;
+  height: 2px;
+  background-color: var(--leaf);
+  border: none;
+  width: 100%;
+}
+
 .bar-separator-booz {
   margin: 6px 0 6px 0;
   height: 1px;
@@ -77,6 +93,12 @@ a:hover {
 
 .boozTitle1 {
   color: var(--rust);
+  text-align: center;
+  font-size: 2rem;
+}
+
+.okeTitle {
+  color: var(--leaf);
   text-align: center;
   font-size: 2rem;
 }
@@ -185,6 +207,10 @@ input {
   border: 16px solid var(--hover);
 }
 
+.oke-border {
+  border: 16px solid var(--leaf);
+}
+
 .rusty {
   color: var(--rust);
   text-align: center;
@@ -197,4 +223,12 @@ input {
 .not-orng:hover {
   color: var(--bg-light);
   background-color: var(--rust);
+}
+
+.oakleaf:hover {
+  color: var(--leaf);
+}
+
+.oaky {
+  color: var(--leaf);
 }

@@ -84,7 +84,7 @@ class PostOkelist extends Component {
     return (
       <Fragment>
         <OwlFuseButton onClick={this.handleOpen} tip="COMPOSE A NEW OKE LIST">
-          <AddOkelistIcon className="icon5" color="primary" />
+          <AddOkelistIcon className="icon5 oakleaf" color="primary" />
         </OwlFuseButton>
         <Dialog
           open={this.state.open}
@@ -97,10 +97,10 @@ class PostOkelist extends Component {
             onClick={this.handleClose}
             tipClassName={classes.closeButton}
           >
-            <CloseIcon />
+            <CloseIcon className="oakleaf"/>
           </OwlFuseButton>
-          <DialogTitle variant="h5">CREATE AN OKE LIST</DialogTitle>
-          <DialogContent>
+          <DialogTitle variant="h5" className="oaky">CREATE AN OKE LIST</DialogTitle>
+          <DialogContent className="oke-border">
             <form onSubmit={this.handleSubmit}>
               <TextField
                 name="listName"
