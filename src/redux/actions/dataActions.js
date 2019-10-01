@@ -234,3 +234,18 @@ export const getBoozData = boozId => dispatch => {
     })
     .catch(err => console.log(err));
 };
+
+export const uploadBoozImage = (boozId, formData) => dispatch => {
+  dispatch({ type: LOADING_UI });
+  axios
+    .post(`/boozula/${boozId}/image`, formData)
+    .then(res => {
+      dispatch({
+        type: CHANGE_BOOZ_IMAGE,
+        payload: res.data
+      });
+      dispatch(getBoozData());
+      dispatch({ type: STOP_LOADING_UI });
+    })
+    .catch(err => console.log(err));
+};
