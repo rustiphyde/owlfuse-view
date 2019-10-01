@@ -181,7 +181,6 @@ input {
 
 .footer {
   background-color: var(--bg-light);
-  height: 60px;
   width: auto;
   max-width: 1600px;
   text-align: right;

@@ -43,7 +43,7 @@ class EraseOkelist extends Component {
                 <OwlFuseButton tip="ERASE THIS OKELIST"
                 onClick={this.handleOpen}
                 btnClassName ={classes.deleteButton}>
-                <EraseOkelistIcon color="primary" className="icon3"/>
+                <EraseOkelistIcon color="primary" className="icon4"/>
                 </OwlFuseButton>
                 <Dialog
                 open={this.state.open}
@@ -52,7 +52,7 @@ class EraseOkelist extends Component {
                 maxWidth="sm"
                 className="container"
                 >
-                <DialogTitle variant="h5">
+                <DialogTitle variant="h5" className="oaky">
                    Are you sure you wish to erase this Oke List? This action is irreversible.
                 </DialogTitle>
                 <DialogActions>

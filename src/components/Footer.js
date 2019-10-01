@@ -7,7 +7,9 @@ export class Footer extends Component {
           <div className="footer">
           <hr className="bar-separator"/>
           <p><strong>© 2019 Rusty Hoppins</strong></p>
-          </div>
+          <hr className="bar-separator"/>
+        </div>
+        
       )
   }
 }
