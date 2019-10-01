@@ -49,6 +49,20 @@ export const getSparks = () => dispatch => {
     });
 };
 
+export const getSpark = sparkId => dispatch => {
+  dispatch({ type: LOADING_UI });
+  axios
+    .get(`/spark/${sparkId}`)
+    .then(res => {
+      dispatch({
+        type: SET_SPARK,
+        payload: res.data
+      });
+      dispatch({ type: STOP_LOADING_UI });
+    })
+    .catch(err => console.log(err));
+};
+
 // fetch all okelists
 export const getOkelists = () => dispatch => {
   dispatch({ type: LOADING_DATA });
