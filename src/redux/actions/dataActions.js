@@ -209,6 +209,15 @@ export const emptyBoozula = boozId => dispatch => {
     .catch(err => console.log(err));
 };
 
+export const eraseOkelist = okeId => dispatch => {
+  axios
+    .delete(`okelist/${okeId}`)
+    .then(() => {
+      dispatch({ type: ERASE_OKE, payload: okeId });
+    })
+    .catch(err => console.log(err));
+};
+
 // action creator for clearing errors
 export const clearErrors = () => dispatch => {
   dispatch({ type: CLEAR_ERRORS });
