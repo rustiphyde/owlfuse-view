@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 
 import { buildNewOkeList, clearErrors } from "../../redux/actions/dataActions";
-import AddOkelistIcon from "../icon/AddOkelistIcon";
-import MyButton from "../../util/MyButton";
+import AddOkelistIcon from "../icons/AddOkelistIcon";
+import OwlFuseButton from "../../util/OwlFuseButton";
 import CloseIcon from "../icons/CloseIcon";
 // MUI Stuff
 import Button from "@material-ui/core/Button";
@@ -83,22 +83,22 @@ class PostOkelist extends Component {
     } = this.props;
     return (
       <Fragment>
-        <MyButton onClick={this.handleOpen} tip="COMPOSE A NEW OKE LIST">
+        <OwlFuseButton onClick={this.handleOpen} tip="COMPOSE A NEW OKE LIST">
           <AddOkelistIcon className="icon5" color="primary" />
-        </MyButton>
+        </OwlFuseButton>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
           fullWidth
           maxWidth="sm"
         >
-          <MyButton
+          <OwlFuseButton
             tip="CLOSE"
             onClick={this.handleClose}
             tipClassName={classes.closeButton}
           >
             <CloseIcon />
-          </MyButton>
+          </OwlFuseButton>
           <DialogTitle variant="h5">CREATE AN OKE LIST</DialogTitle>
           <DialogContent>
             <form onSubmit={this.handleSubmit}>
