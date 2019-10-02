@@ -5,6 +5,9 @@ import OwlFuseButton from "../../util/OwlFuseButton";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 
+// Components
+import Stokes from './Stokes';
+
 // MUI Stuff
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -124,7 +127,8 @@ class SparkBox extends Component {
           </OwlFuseButton>
           <span>{stokeCount}</span>
         </Grid>
-        <hr className="bar-separator"/>
+          <hr className="bar-separator" />
+          <Stokes stokes={stokes}/>
       </Grid>
     );
     return (
