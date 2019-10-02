@@ -248,6 +248,10 @@ input {
 }
 
 .dark {
-  background-color: var(--bg-light);
+  background-color: var(--background-two);
   width: 100vw;
+}
+
+.foam {
+  color: #f4db9d;
 }
