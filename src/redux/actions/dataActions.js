@@ -152,6 +152,24 @@ export const addStoke = (sparkId, stokeData) => dispatch => {
     });
 };
 
+export const addToast = (boozId, toastData) => dispatch => {
+  axios
+    .post(`/boozula/${boozId}/toast`, toastData)
+    .then(res => {
+      dispatch({
+        type: ADD_TOAST,
+        payload: res.data
+      });
+      dispatch(clearErrors());
+    })
+    .catch(err => {
+      dispatch({
+        type: SET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};
+
 // Post a Boozula
 export const buildNewBoozula = newBoozula => dispatch => {
   dispatch({ type: LOADING_UI });
