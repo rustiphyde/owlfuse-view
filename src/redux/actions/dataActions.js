@@ -101,6 +101,20 @@ export const getBoozulas = () => dispatch => {
     });
 };
 
+export const getBoozula = boozId => dispatch => {
+  dispatch({ type: LOADING_UI });
+  axios
+    .get(`/boozula/${boozId}`)
+    .then(res => {
+      dispatch({
+        type: SET_BOOZULA,
+        payload: res.data
+      });
+      dispatch({ type: STOP_LOADING_UI });
+    })
+    .catch(err => console.log(err));
+};
+
 // Post a spark
 export const postSpark = newSpark => dispatch => {
   dispatch({ type: LOADING_UI });
