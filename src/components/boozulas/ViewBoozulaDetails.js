@@ -27,27 +27,23 @@ const styles = theme => ({
     },
     visibleSeparator: {
         margin: '6px 0 6px 0',
-        height: '1px',
-        backgroundColor: '#ff9800',
+        height: '3px',
+        backgroundColor: '#b7410e',
         border: 'none'
       },
       boozulaImage: {
-        margin: "8px 0 8px 8px",
-        maxWidth: 180,
-        height: 180,
+        margin: "0 auto",
+        maxWidth: 208,
+        height: 208,
         objectFit: "cover",
         borderRadius: "16px 0 16px 0",
-        borderTop: "2px solid #ff9800",
-        borderLeft: "2px solid #ff9800",
-        borderBottom: "2px solid #ff9800"
+        border: "2px solid #b7410e",
+
       },
       dialogContent: {
-        padding: 20,
-        borderRadius: "60px 0px 60px 0",
-        color: "#ff9800",
         overflowY: "auto",
         overflowX: "hidden",
-        backgroundColor: "primary !important"
+        backgroundColor: "#fefaf4"
       },
       closeButton: {
         position: "absolute",
@@ -80,17 +76,16 @@ class ViewBoozulaDetails extends Component {
       boozula: {
         drinkName,
         mainAlcohol,
-        userCandle,
+        alias,
+        klozang,
         boozImage,
         createdAt,
         ingredients,
         preparation,
-        served,
         drinkWare,
         garnish,
         cheers,
         toastCount,
-        firstCandle,
         boozId
       },
       UI: { loading }
@@ -99,58 +94,58 @@ class ViewBoozulaDetails extends Component {
     const dialogMarkup = loading ? (
       <CircularProgress size={200} className={classes.progress}/>
     ) : (
-     <Grid container spacing={10}>
+     <Grid container spacing={10} className="dark">
         <Grid item sm={4}>
           <img src={boozImage} alt="Boozula" className={classes.boozulaImage} />
         </Grid>
         <Grid item sm={6} className={classes.stuff}>
-        <Typography variant="h5"><strong>{drinkName}</strong></Typography>
+        <Typography variant="h5" className="rusty"><strong>:{drinkName}:</strong></Typography>
           <Typography
             component={Link}
             color="primary"
             variant="body2"
-            to={`/users/>${firstCandle}`}
+            to={`/users/>${klozang}`}
           >
-            <strong>Posted by >{userCandle}</strong>
+            <strong className="rust foam">Posted by >{alias}</strong>
           </Typography>
           <hr className={classes.invisibleSeparator} />
-          <Typography variant="body2" color="textSecondary">
+          <Typography variant="body2" className="foam">
             {dayjs(createdAt).format("h:mm a, MMMM DD, YYYY")}
           </Typography>
           <hr className={classes.invisibleSeparator} />
           
-         <CheersIcon color="primary"/>
+         <OwlFuseButton tip="CHEERS"><CheersIcon className="icon2 rust foam"/></OwlFuseButton>
           <span>{cheers}</span>
           <OwlFuseButton tip={`THIS BOOZULA HAS ${toastCount} TOASTS`}>
-            <ToastIcon color="primary" />
+            <ToastIcon className="icon6 rust foam"/>
           </OwlFuseButton>
-          <span>{toastCount}</span>
-          <Typography variant="body1" color="primary">
-            <strong>Main Alcohol:</strong> {mainAlcohol}
+          <span className="rusty">{toastCount}</span>
+          <Typography variant="body1" className="foam">
+            <strong className="rusty">Main Alcohol:</strong> {mainAlcohol}
           </Typography>
           {ingredients && 
           <Fragment>
-          <hr className="bar-separator"/>
-          <Typography variant="body1" color="primary">
-            <strong>Ingredients:</strong> {ingredients}
+          <hr className="bar-separator-booz"/>
+          <Typography variant="body1" className="foam">
+            <strong className="rusty">Ingredients:</strong> {ingredients}
           </Typography>
             </Fragment>}
           {preparation && <Fragment>
-            <hr className="bar-separator"/>
-          <Typography variant="body1" color="primary">
-            <strong>Preparation:</strong> {preparation}
+            <hr className="bar-separator-booz"/>
+          <Typography variant="body1" className="foam">
+            <strong className="rusty">Preparation:</strong> {preparation}
           </Typography>
             </Fragment>}
           {drinkWare && <Fragment>
-            <hr className="bar-separator"/>
-          <Typography variant="body1" color="primary">
-            <strong>Drinkware:</strong> {drinkWare}
+            <hr className="bar-separator-booz"/>
+          <Typography variant="body1" className="foam">
+            <strong className="rusty">Drinkware:</strong> {drinkWare}
           </Typography>
           </Fragment>}
           {garnish && <Fragment>
-            <hr className="bar-separator"/>
-          <Typography variant="body1" color="primary">
-            <strong>Garnish:</strong> {garnish}
+            <hr className="bar-separator-booz"/>
+          <Typography variant="body1" className="foam">
+            <strong className="rusty">Garnish:</strong> {garnish}
           </Typography>
             </Fragment>}
         </Grid>
@@ -169,13 +164,14 @@ class ViewBoozulaDetails extends Component {
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
-          fullWidth maxWidth="sm" >
+          fullWidth maxWidth="sm"
+          className="charcoal-border">
           <OwlFuseButton
             tip="CLOSE"
             onClick={this.handleClose}
             tipClassName={classes.closeButton}
           >
-            <CloseIcon />
+            <CloseIcon className="foam rust"/>
           </OwlFuseButton>
           <DialogContent className={classes.dialogContent}>
             {dialogMarkup}
@@ -189,7 +185,7 @@ class ViewBoozulaDetails extends Component {
 ViewBoozulaDetails.propTypes = {
   getBoozula: PropTypes.func.isRequired,
   boozId: PropTypes.string.isRequired,
-  userCandle: PropTypes.string.isRequired,
+  alias: PropTypes.string.isRequired,
   boozula: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired
 };
