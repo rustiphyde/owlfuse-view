@@ -42,7 +42,7 @@ class ExtinguishSpark extends Component {
                 btnClassName ={classes.deleteButton}>
                 <ExtinguishIcon color="primary" className="icon3"/>
                 </OwlFuseButton>
-                <span>IN CASE OF EMERGENCY</span>
+                <span className="warning-label"><b>IN CASE OF EMERGENCY</b></span>
                 <Dialog
                 open={this.state.open}
                 onClose={this.handleClose}

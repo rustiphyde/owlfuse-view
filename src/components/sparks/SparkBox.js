@@ -132,7 +132,8 @@ class SparkBox extends Component {
         </Grid>
           <hr className="bar-separator" />
           <StokeForm sparkId={sparkId} className="center"/>
-          <Stokes stokes={stokes}/>
+          <Stokes stokes={stokes} />
+          <span className="orng center dark"><strong>END OF STOKES</strong></span>
       </Grid>
     );
     return (

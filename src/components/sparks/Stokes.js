@@ -23,16 +23,13 @@ const styles = theme => ({
     padding: '8px 16px',
     borderRadius: "16px 0 16px 0",
     backgroundColor: '#fefaf4'
-  },
-  dark: {
-    backgroundColor: '#37474f'
   }
 });
 class Stokes extends Component {
   render() {
     const { classes, stokes } = this.props;
     return (
-      <Grid container className={classes.dark}>
+      <Grid container className="dark">
         {stokes.map((stoke, index) => {
           const { body, createdAt, userImage, klozang, alias } = stoke;
           return (
