@@ -17,10 +17,12 @@ import EditBoozulaImage from './EditBoozulaImage';
 
 // Icons
 import CheersIcon from '../icons/CheersIcon';
+import ToastIcon from '../icons/ToastIcon';
 
 // Components
 import EmptyBoozula from './EmptyBoozula';
 import EditBoozDetails from './EditBoozDetails';
+import ViewBoozulaDetails from './ViewBoozulaDetails';
 
 const styles = {
   card: {
@@ -142,7 +144,8 @@ class Boozula extends Component {
       <Card className={classes.card}>
         <CardMedia image={boozImage} title="Drink" className={classes.image} />
         <CardContent className={classes.content}>
-        <Typography variant="h5" className="boozTitle2"><strong>:{drinkName}:</strong></Typography>
+        <Typography variant="h5" className="boozTitle2"><strong>:{drinkName.toUpperCase()}:</strong></Typography>
+        <span><ViewBoozulaDetails boozId={boozId} alias={alias}/></span>
           <Typography
             variant="body2"
             component={Link}
@@ -162,6 +165,10 @@ class Boozula extends Component {
 
           {cheersButton}
           <span>{cheersCount}</span>
+          <OwlFuseButton tip="TOASTS">
+          <ToastIcon className="rusty" />
+         </OwlFuseButton>
+          <span>{toastCount}</span>
           <Typography variant="body1" color="primary">
             <strong>Main Alcohol:</strong> {mainAlcohol}
           </Typography>
