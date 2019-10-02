@@ -82,6 +82,20 @@ export const getOkelists = () => dispatch => {
     });
 };
 
+export const getOkelist = okeId => dispatch => {
+  dispatch({ type: LOADING_UI });
+  axios
+    .get(`/okelist/${okeId}`)
+    .then(res => {
+      dispatch({
+        type: SET_OKELIST,
+        payload: res.data
+      });
+      dispatch({ type: STOP_LOADING_UI });
+    })
+    .catch(err => console.log(err));
+};
+
 // fetch all boozulas
 export const getBoozulas = () => dispatch => {
   dispatch({ type: LOADING_DATA });
