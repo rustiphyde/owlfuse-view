@@ -119,6 +119,25 @@ export const postSpark = newSpark => dispatch => {
     });
 };
 
+// Submit a stoke
+export const addStoke = (sparkId, stokeData) => dispatch => {
+  axios
+    .post(`/spark/${sparkId}/stoke`, stokeData)
+    .then(res => {
+      dispatch({
+        type: ADD_STOKE,
+        payload: res.data
+      });
+      dispatch(clearErrors());
+    })
+    .catch(err => {
+      dispatch({
+        type: SET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};
+
 // Post a Boozula
 export const buildNewBoozula = newBoozula => dispatch => {
   dispatch({ type: LOADING_UI });

@@ -49,7 +49,7 @@ const styles = theme => ({
       position: "relative",
       "& button": {
         position: "absolute",
-        top: "68%",
+        top: "80%",
         left: "70%",
         padding: "16px"
       }
@@ -140,7 +140,7 @@ class Candle extends Component {
                 onClick={this.handleEditPicture}
                 className="button"
                 >
-                <SelfieIcon color="primary" className="icon2 orange"/>
+                <SelfieIcon color="primary" className="icon6 orange"/>
                 </OwlFuseButton>
             </div>
             <hr />
@@ -151,7 +151,7 @@ class Candle extends Component {
                 color="primary"
                 variant="h5"
               >
-                <strong>>{alias.replace(/\s/g, "-")}</strong>
+                <strong>>{alias}</strong>
               </MuiLink>
               <hr />
               {bio && <Typography variant="body2"><strong>{bio}</strong></Typography>}

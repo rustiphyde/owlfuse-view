@@ -14,6 +14,7 @@ import Typography from "@material-ui/core/Typography";
 
 // Components
 import ExtinguishSpark from './ExtinguishSpark';
+import SparkBox from './SparkBox';
 
 // Icons
 import FireIcon from "../icons/FireIcon";
@@ -76,8 +77,8 @@ class Spark extends Component {
     const {
       classes,
       spark: {
-        alias,
         klozang,
+        alias,
         userImage,
         heatCount,
         stokeCount,
@@ -116,7 +117,7 @@ class Spark extends Component {
             component={Link}
             to={`/users/${klozang}`}
           >
-            <strong>>{alias.replace(/\s/g, "-")}</strong>
+            <strong>>{alias}</strong>
           </Typography>
           <Typography variant="body2" color="textSecondary">
             {dayjs(createdAt).fromNow()}
@@ -126,9 +127,7 @@ class Spark extends Component {
           </Typography>
           {heatButton}
           <span>{heatCount}</span>
-          <OwlFuseButton tip="STOKES">
-            <StokeIcon color="primary" className="orange" />
-          </OwlFuseButton>
+          <SparkBox sparkId={sparkId} klozang={klozang}/>
           <span>{stokeCount}</span>
           <span>{deleteButton}</span>
         </CardContent>

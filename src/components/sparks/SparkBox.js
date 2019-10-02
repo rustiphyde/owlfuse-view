@@ -81,7 +81,7 @@ class SparkBox extends Component {
         sparkId,
         body,
         createdAt,
-        heat,
+        heatCount,
         stokeCount,
         klozang,
         userImage,
@@ -107,7 +107,7 @@ class SparkBox extends Component {
             variant="h5"
             to={`/users/${klozang}`}
           >
-            <strong>>{alias.replace(/\s/g, "-")}</strong>
+          <strong>>{alias}</strong>
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body2" color="textSecondary">
@@ -115,8 +115,10 @@ class SparkBox extends Component {
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body1"><strong>{body}</strong></Typography>
-          <HeatIcon color="secondary"/>
-          <span>{heat}</span>
+            <OwlFuseButton tip="HEAT"><HeatIcon color="secondary"/>
+              
+          </OwlFuseButton>
+          <span>{heatCount}</span>
           <OwlFuseButton tip="STOKES">
             <StokeIcon color="secondary" />
           </OwlFuseButton>
@@ -132,7 +134,7 @@ class SparkBox extends Component {
           tip="VIEW STOKES"
           tipClassName={classes.expandButton}
         >
-          <StokeIcon color="primary" className="icon6" />
+          <StokeIcon color="primary" className="icon6 orange" />
         </OwlFuseButton>
         <Dialog
           open={this.state.open}
@@ -143,7 +145,7 @@ class SparkBox extends Component {
             onClick={this.handleClose}
             tipClassName={classes.closeButton}
           >
-            <CloseIcon />
+            <CloseIcon className="orange"/>
           </OwlFuseButton>
           <DialogContent className={classes.dialogContent}>
             {dialogMarkup}

@@ -148,7 +148,7 @@ class Boozula extends Component {
             component={Link}
             to={`/users/${clozang}`}
           >
-            <strong>>{alias.replace(/\s/g, "-")}</strong>
+            <strong>>{alias}</strong>
           </Typography>
           
           <hr />
