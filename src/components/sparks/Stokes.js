@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 
 // MUI Stuff
 import Grid from "@material-ui/core/Grid";
@@ -11,32 +11,33 @@ import Typography from "@material-ui/core/Typography";
 const styles = theme => ({
   ...theme.themeMinusPalette,
   stokeImg: {
-    maxWidth: 80,
-    height: 80,
-    objectFit: 'cover',
-    borderRadius: '16px 0 16px 0',
-    marginLeft: '32px',
-    border: '3px solid #ff9800'
-},
-stokeData: {
-    marginLeft: 16,
-    width: 176,
-    padding: 16,
-    borderRadius: '16px 0 16px 0',
-    borderTop: '3px solid #ff9800',
-    borderBottom: '3px solid #ff9800'
-},
+    maxWidth: 64,
+    height: 64,
+    objectFit: "cover",
+    borderRadius: "16px 0 16px 0",
+    marginLeft: "8px",
+    border: "3px solid #ff9800"
+  },
+  stokeData: {
+    width: 'auto',
+    padding: '8px 16px',
+    borderRadius: "16px 0 16px 0",
+    backgroundColor: '#fefaf4'
+  },
+  dark: {
+    backgroundColor: '#37474f'
+  }
 });
 class Stokes extends Component {
   render() {
     const { classes, stokes } = this.props;
     return (
-      <Grid container>
+      <Grid container className={classes.dark}>
         {stokes.map((stoke, index) => {
           const { body, createdAt, userImage, klozang, alias } = stoke;
           return (
             <Fragment key={createdAt}>
-            <hr className="bar-separator"/>
+              <hr className="bar-separator" />
               <Grid item sm={12}>
                 <Grid container>
                   <Grid item sm={3}>
@@ -46,25 +47,26 @@ class Stokes extends Component {
                       className={classes.stokeImg}
                     />
                   </Grid>
-                  <Grid item sm={9}>
+                  <Grid item sm={8}>
                     <div className={classes.stokeData}>
                       <Typography
-                        variant="h6"
+                        variant="body2"
                         component={Link}
                         to={`/user/>${klozang}`}
                         color="primary"
+                        className="orange"
                       >
                         <strong>>{alias}</strong>
                       </Typography>
                       <Typography variant="body2" color="textSecondary">
-                        {dayjs(createdAt).format('h:mm a, MMMM DD, YYYY')}
+                        {dayjs(createdAt).format("h:mm a, MM/DD/YY")}
                       </Typography>
-                      <Typography variant="body1">{body}</Typography>
+                      <Typography variant="body2">{body}</Typography>
                     </div>
                   </Grid>
                 </Grid>
               </Grid>
-              <hr className="bar-separator"/>
+              <hr className="bar-separator" />
             </Fragment>
           );
         })}

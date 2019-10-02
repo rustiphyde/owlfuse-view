@@ -198,6 +198,10 @@ input {
   color: var(--rust);
 }
 
+.charcoal-border {
+  border: 16px solid var(--bg-light);
+}
+
 .rust-border{
   border: 16px solid var(--rust);
 } 
@@ -230,4 +234,8 @@ input {
 
 .oaky {
   color: var(--leaf);
+}
+
+.center {
+  margin: 0 auto;
 }

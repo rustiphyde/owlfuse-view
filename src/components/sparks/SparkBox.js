@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 // Components
 import Stokes from './Stokes';
+import StokeForm from './StokeForm';
 
 // MUI Stuff
 import Grid from "@material-ui/core/Grid";
@@ -36,8 +37,8 @@ const styles = theme => ({
         marginBottom: 20
       },
       profileImage: {
-        maxWidth: 160,
-        maxHeight: 160,
+        maxWidth: 144,
+        maxHeight: 144,
         borderRadius: "50%",
         objectFit: "cover",
         border: "6px double #ff9800"
@@ -51,7 +52,9 @@ const styles = theme => ({
       },
       closeButton: {
         position: "absolute",
-        left: "82%"
+        left: "86%",
+        top: "5%"
+
       },
       spinnerDiv: {
         textAlign: 'center',
@@ -99,7 +102,7 @@ class SparkBox extends Component {
         <CircularProgress color="secondary"size={200} thickness={2}/>
         </div>
     ) : (
-     <Grid container spacing={6}>
+     <Grid container spacing={6} className="charcoal-border">
         <Grid item sm={4}>
           <img src={userImage} alt="Profile" className={classes.profileImage} />
         </Grid>
@@ -128,6 +131,7 @@ class SparkBox extends Component {
           <span>{stokeCount}</span>
         </Grid>
           <hr className="bar-separator" />
+          <StokeForm sparkId={sparkId} className="center"/>
           <Stokes stokes={stokes}/>
       </Grid>
     );
@@ -143,7 +147,8 @@ class SparkBox extends Component {
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
-          fullWidth maxWidth="sm" >
+          fullWidth maxWidth="sm"
+          >
           <OwlFuseButton
             tip="CLOSE"
             onClick={this.handleClose}

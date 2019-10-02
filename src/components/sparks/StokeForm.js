@@ -15,19 +15,22 @@ const styles = {
     form: {
         borderRadius: 16,
         padding: 16,
-      border: '6px double #ff9800',
+    border: '6px double #ff9800',
+      backgroundColor: '#fefaf4'
     },
     textField: {
       margin: "16px auto",
     },
     button: {
-      margin: "20px auto",
+      margin: "20px auto 2px",
       width: "144px",
       position: 'relative',
       color: '#ff9800'
     },
     gridItem: {
-      textAlign: "center"
+      textAlign: "center",
+      margin: '0 auto',
+      backgroundColor: '#37474f'
     }
   };
 
