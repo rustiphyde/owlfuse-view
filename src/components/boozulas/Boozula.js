@@ -23,6 +23,7 @@ import ToastIcon from '../icons/ToastIcon';
 import EmptyBoozula from './EmptyBoozula';
 import EditBoozDetails from './EditBoozDetails';
 import ViewBoozulaDetails from './ViewBoozulaDetails';
+import ToastDialog from './ToastDialog';
 
 const styles = {
   card: {
@@ -165,9 +166,7 @@ class Boozula extends Component {
 
           {cheersButton}
           <span>{cheersCount}</span>
-          <OwlFuseButton tip="TOASTS">
-          <ToastIcon className="rusty" />
-         </OwlFuseButton>
+          <ToastDialog boozId={boozId} alias={alias}/>
           <span>{toastCount}</span>
           <Typography variant="body1" color="primary">
             <strong>Main Alcohol:</strong> {mainAlcohol}
