@@ -33,7 +33,6 @@ const styles = {
         color: '#087520'
       },
       content: {
-        margin: 'auto',
         padding: 25,
         width: 800,
         borderRadius: '16px 16px 16px 16px',
