@@ -30,14 +30,14 @@ const styles = theme => ({
     visibleSeparator: {
         width: '100%',
 
-        borderBottom: '1px solid #ff9800',
+        borderBottom: '1px solid #b7410e',
         marginBottom: 20
       },
       outerRing: {
         width: 172,
         height: 172,
         alignSelf: 'center',
-        border: "6px double #ff9800",
+        border: "6px double #b7410e",
         borderRadius: "50%",
       },
       boozulaImage: {
@@ -45,12 +45,11 @@ const styles = theme => ({
         height: 180,
         borderRadius: "50%",
         objectFit: "cover",
-        border: "6px double #ff9800"
+        border: "6px double #b7410e"
       },
       dialogContent: {
         padding: 20,
-        borderRadius: "60px 0px 60px 0",
-        color: "#ff9800",
+        color: "#b7410e",
         overflowY: "auto",
         overflowX: "hidden",
         backgroundColor: "primary"
@@ -95,38 +94,38 @@ class ToastDialog extends Component {
     } = this.props;
 
     const dialogMarkup = loading ? (
-      <CircularProgress size={200} className={classes.progress}/>
+      <CircularProgress className={classes.progress} />
     ) : (
-     <Grid container spacing={10}>
+     <Grid container spacing={10} className="dark">
         <Grid item sm={4}>
           <img src={boozImage} alt="Boozula" className={classes.boozulaImage} />
         </Grid>
         <Grid item sm={6} className={classes.stuff}>
-        <Typography variant="h5" className="rusty"><strong>:{drinkName.toUpperCase()}:</strong></Typography>
+        <Typography variant="h5" className="rusty"><strong>:{drinkName}:</strong></Typography>
           <Typography
             component={Link}
-            color="primary"
+              className="rust foam"
             variant="body2"
             to={`/users/${klozang}`}
           >
             <strong>Posted by >{alias}</strong>
           </Typography>
           <hr className={classes.invisibleSeparator} />
-          <Typography variant="body2" color="textSecondary">
+          <Typography variant="body2" className="foam">
             {dayjs(createdAt).format("h:mm a, MMMM DD, YYYY")}
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <OwlFuseButton tip={`THIS BOOZULA HAS ${cheersCount} CHEERS`}>
-            <CheersIcon className="icon6 rusty" />
+            <CheersIcon className="icon6 rust foam" />
           </OwlFuseButton>
           <span>{cheersCount}</span>
           <OwlFuseButton tip={`THIS BOOZULA HAS ${toastCount} TOASTS`}>
-            <ToastIcon className="icon6 rusty" />
+            <ToastIcon className="icon6 rust foam" />
           </OwlFuseButton>
           <span>{toastCount}</span>
           
         </Grid>
-        <hr className="bar-separator"/>
+        <hr className="bar-separator-booz"/>
       </Grid>
     );
     return (
@@ -141,13 +140,14 @@ class ToastDialog extends Component {
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
-          fullWidth maxWidth="sm" >
+          fullWidth maxWidth="sm"
+        >
           <OwlFuseButton
             tip="CLOSE"
             onClick={this.handleClose}
             tipClassName={classes.closeButton}
           >
-            <CloseIcon />
+            <CloseIcon className="rust foam"/>
           </OwlFuseButton>
           <DialogContent className={classes.dialogContent}>
             {dialogMarkup}

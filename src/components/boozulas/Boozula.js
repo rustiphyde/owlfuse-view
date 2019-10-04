@@ -150,6 +150,7 @@ class Boozula extends Component {
           <Typography
             variant="body2"
             component={Link}
+            className="rust"
             to={`/users/${clozang}`}
           >
             <strong>>{alias}</strong>

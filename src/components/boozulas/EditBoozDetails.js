@@ -24,7 +24,7 @@ const styles = {
     padding: 16
   },
   title: {
-    color: "#ff9800",
+    color: "#b7410e",
     textAlign: "center"
   }
 };
