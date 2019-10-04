@@ -15,6 +15,7 @@ import Typography from "@material-ui/core/Typography";
 // Components
 import ExtinguishSpark from './ExtinguishSpark';
 import SparkBox from './SparkBox';
+import HeatButton from './HeatButton';
 
 // Icons
 import FireIcon from "../icons/FireIcon";
@@ -56,22 +57,6 @@ const styles = {
 };
 
 class Spark extends Component {
-  hotSpark = () => {
-    if (
-      this.props.user.heat &&
-      this.props.user.heat.find(
-        burn => burn.sparkId === this.props.spark.sparkId
-      )
-    )
-      return true;
-    else return false;
-  };
-  addHeat = () => {
-    this.props.addHeat(this.props.spark.sparkId);
-  };
-  removeHeat = () => {
-    this.props.removeHeat(this.props.spark.sparkId);
-  };
   render() {
     dayjs.extend(relativeTime);
     const {
@@ -92,21 +77,6 @@ class Spark extends Component {
     const deleteButton = authenticated && klozang === clozang ? (
       <ExtinguishSpark sparkId={sparkId}/>
     ) : null
-    const heatButton = !authenticated ? (
-      <OwlFuseButton tip="ADD HEAT">
-        <Link to="/login">
-          <HeatIcon color="primary" className="orange" />
-        </Link>
-      </OwlFuseButton>
-    ) : this.hotSpark() ? (
-      <OwlFuseButton tip="REMOVE HEAT" onClick={this.removeHeat}>
-        <HeatIcon color="secondary" />
-      </OwlFuseButton>
-    ) : (
-      <OwlFuseButton tip="ADD HEAT" onClick={this.addHeat}>
-        <HeatIcon color="primary" className="orange"/>
-      </OwlFuseButton>
-    );
     return (
       <Card className={classes.card}>
         <CardMedia image={userImage} title="Candle" className={classes.image} />
@@ -125,7 +95,7 @@ class Spark extends Component {
           <Typography variant="body2" color="primary">
             <b>{body}</b>
           </Typography>
-          {heatButton}
+          <HeatButton sparkId={sparkId}/>
           <span>{heatCount}</span>
           <SparkBox sparkId={sparkId} klozang={klozang}/>
           <span>{stokeCount}</span>
