@@ -19,7 +19,6 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 // Icons
 import CloseIcon from "../icons/CloseIcon";
 import StokeIcon from '../icons/StokeIcon';
-import HeatIcon from '../icons/HeatIcon';
 
 // Redux
 import { connect } from "react-redux";

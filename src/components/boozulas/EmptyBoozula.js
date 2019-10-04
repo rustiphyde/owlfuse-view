@@ -36,11 +36,11 @@ class EmptyBoozula extends Component {
         const { classes } = this.props;
         return (
             <Fragment>
-            <hr />
+            <hr className="bar-separator-booz"/>
                 <OwlFuseButton tip="EMPTY THIS BOOZULA"
                 onClick={this.handleOpen}
                 btnClassName ={classes.deleteButton}>
-                <EmptyIcon color="primary" className="icon4"/>
+                <EmptyIcon className="icon4 foam"/>
                 </OwlFuseButton>
                 <Dialog
                 open={this.state.open}

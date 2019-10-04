@@ -135,7 +135,7 @@ class ToastDialog extends Component {
           tip="TOASTS"
           tipClassName={classes.expandButton}
         >
-          <ToastIcon color="primary" className="icon6 rust" />
+          <ToastIcon className="icon6 rust foam" />
         </OwlFuseButton>
         <Dialog
           open={this.state.open}

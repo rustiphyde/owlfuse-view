@@ -88,7 +88,7 @@ class EditBoozDetails extends Component {
           onClick={this.handleOpen}
           btnClassName={classes.button}
         >
-          <EditBoozulaIcon color="primary" className="icon8" />
+          <EditBoozulaIcon className="icon8 foam" />
         </OwlFuseButton>
         <Dialog
           open={this.state.open}

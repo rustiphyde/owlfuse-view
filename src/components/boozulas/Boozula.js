@@ -16,14 +16,13 @@ import Typography from "@material-ui/core/Typography";
 import EditBoozulaImage from './EditBoozulaImage';
 
 // Icons
-import CheersIcon from '../icons/CheersIcon';
-import ToastIcon from '../icons/ToastIcon';
 
 // Components
 import EmptyBoozula from './EmptyBoozula';
 import EditBoozDetails from './EditBoozDetails';
 import ViewBoozulaDetails from './ViewBoozulaDetails';
 import ToastDialog from './ToastDialog';
+import CheersButton from './CheersButton';
 
 const styles = {
   card: {
@@ -31,7 +30,8 @@ const styles = {
     display: "flex",
     marginBottom: 8,
     borderRadius: "16px 0 16px 0",
-    backgroundColor: "#361002"
+    backgroundColor: "#361002",
+    padding: '16px'
   },
   content: {
     padding: 25,
@@ -41,7 +41,7 @@ const styles = {
     borderRight: "2px solid #f4db9d",
     borderBottom: "2px solid #f4db9d",
     margin: "8px 8px 8px 0",
-    backgroundColor: "#fefaf4"
+    backgroundColor: "#361002"
   },
   image: {
     margin: "8px 0 8px 8px",
@@ -68,22 +68,6 @@ const styles = {
 }
 
 class Boozula extends Component {
-  hasCheers = () => {
-    if (
-      this.props.user.cheers &&
-      this.props.user.cheers.find(
-        cheer => cheer.boozId === this.props.boozula.boozId
-      )
-    )
-      return true;
-    else return false;
-  };
-  addCheers = () => {
-    this.props.addCheers(this.props.boozula.boozId);
-  };
-  removeCheers = () => {
-    this.props.removeCheers(this.props.boozula.boozId);
-  };
   render() {
     dayjs.extend(relativeTime);
     const {
@@ -126,21 +110,6 @@ class Boozula extends Component {
       boozImage={boozImage}
       />
     ) : null
-    const cheersButton = !authenticated ? (
-      <OwlFuseButton tip="ADD CHEERS">
-        <Link to="/login">
-          <CheersIcon color="primary" className="icon8" />
-        </Link>
-      </OwlFuseButton>
-    ) : this.hasCheers() ? (
-      <OwlFuseButton tip="REMOVE CHEERS" onClick={this.removeCheers}>
-        <CheersIcon className="icon8-2" />
-      </OwlFuseButton>
-    ) : (
-      <OwlFuseButton tip="ADD CHEERS" onClick={this.addCheers}>
-        <CheersIcon color="primary" className="icon8" />
-      </OwlFuseButton>
-    );
     return (
       <Card className={classes.card}>
         <CardMedia image={boozImage} title="Drink" className={classes.image} />
@@ -150,27 +119,27 @@ class Boozula extends Component {
           <Typography
             variant="body2"
             component={Link}
-            className="rust"
+            className="rust foam"
             to={`/users/${clozang}`}
           >
             <strong>>{alias}</strong>
           </Typography>
           
-          <hr />
-          <Typography variant="body2" color="textSecondary">
+          <hr className="bar-separator-booz"/>
+          <Typography variant="body2" className="foam">
             {dayjs(createdAt).fromNow()}
           </Typography>
-          <hr />
+          <hr className="bar-separator-booz"/>
           {imageUpdater}
           {infoUpdater}
-          <hr />
+          <hr className="bar-separator-booz"/>
 
-          {cheersButton}
-          <span>{cheersCount}</span>
+          <CheersButton boozId={boozId}/>
+          <span className="foam">{cheersCount}</span>
           <ToastDialog boozId={boozId} alias={alias}/>
-          <span>{toastCount}</span>
-          <Typography variant="body1" color="primary">
-            <strong>Main Alcohol:</strong> {mainAlcohol}
+          <span className="foam">{toastCount}</span>
+          <Typography variant="body1" className="foam">
+            <strong className="rusty">Main Alcohol:</strong> {mainAlcohol}
           </Typography>
           {deleteButton}
         </CardContent>

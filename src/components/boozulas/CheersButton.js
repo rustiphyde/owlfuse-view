@@ -3,7 +3,7 @@ import OwlFuseButton from "../../util/OwlFuseButton";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 // Icons
-import CheersIcon from "../icon/CheersIcon";
+import CheersIcon from "../icons/CheersIcon";
 // Redux
 import { connect } from "react-redux";
 import { addCheers, removeCheers } from "../../redux/actions/dataActions";
@@ -31,16 +31,16 @@ class CheersButton extends Component {
     const cheersButton = !authenticated ? (
       <Link to="/login">
         <OwlFuseButton tip="ADD CHEERS">
-          <CheersIcon color="primary" className="icon2"/>
+          <CheersIcon className="icon2 foam"/>
         </OwlFuseButton>
       </Link>
     ) : this.hasCheers() ? (
       <OwlFuseButton tip="REMOVE CHEERS" onClick={this.removeCheers}>
-        <CheersIcon color="secondary" className="icon2"/>
+        <CheersIcon className="icon2 rusty"/>
       </OwlFuseButton>
     ) : (
       <OwlFuseButton tip="ADD CHEERS" onClick={this.addCheers}>
-        <CheersIcon color="primary" className="icon2"/>
+        <CheersIcon className="icon2 foam"/>
       </OwlFuseButton>
     );
     return cheersButton;

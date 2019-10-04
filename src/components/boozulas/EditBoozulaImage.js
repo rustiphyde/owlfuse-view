@@ -47,7 +47,7 @@ class EditBoozulaImage extends Component {
           onClick={this.handleOpen}
           btnClassName={classes.button}
         >
-          <EditBoozulaImageIcon color="primary" className="icon8" />
+          <EditBoozulaImageIcon className="icon8 rust foam" />
         </OwlFuseButton>
         <Dialog
           open={this.state.open}
@@ -72,7 +72,7 @@ class EditBoozulaImage extends Component {
                   tip="EDIT BOOZULA IMAGE"
                   onClick={this.handleEditPicture}
                 >
-                  <EditBoozulaImageIcon color="primary" className="icon rust" />
+                  <EditBoozulaImageIcon className="icon rust foam" />
                 </OwlFuseButton>
               </div>
             </form>

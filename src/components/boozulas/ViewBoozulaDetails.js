@@ -33,8 +33,8 @@ const styles = theme => ({
       },
       boozulaImage: {
         margin: "0 auto",
-        maxWidth: 208,
-        height: 208,
+        maxWidth: 160,
+        height: 160,
         objectFit: "cover",
         borderRadius: "16px 0 16px 0",
         border: "2px solid #b7410e",
@@ -108,11 +108,11 @@ class ViewBoozulaDetails extends Component {
           >
             <strong className="rust foam">Posted by >{alias}</strong>
           </Typography>
-          <hr className={classes.invisibleSeparator} />
+          <hr className="bar-separator-booz" />
           <Typography variant="body2" className="foam">
             {dayjs(createdAt).format("h:mm a, MMMM DD, YYYY")}
           </Typography>
-          <hr className={classes.invisibleSeparator} />
+          <hr className="bar-separator-booz" />
           
          <OwlFuseButton tip="CHEERS"><CheersIcon className="icon2 rust foam"/></OwlFuseButton>
           <span>{cheers}</span>
@@ -159,7 +159,7 @@ class ViewBoozulaDetails extends Component {
           tip="VIEW DETAILS"
           tipClassName={classes.expandButton}
         >
-          <ViewBoozIcon color="primary" className="icon2 rust" />
+          <ViewBoozIcon className="icon2 rust foam" />
         </OwlFuseButton>
         <Dialog
           open={this.state.open}
