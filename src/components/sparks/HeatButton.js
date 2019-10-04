@@ -34,7 +34,7 @@ export class HeatButton extends Component {
           <HeatIcon color="primary" />
         </OwlFuseButton>
       </Link>
-    ) : this.heatedSpark() ? (
+    ) : this.hotSpark() ? (
       <OwlFuseButton tip="REMOVE HEAT" onClick={this.removeHeat}>
         <HeatIcon color="secondary" />
       </OwlFuseButton>
