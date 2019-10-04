@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 // Components
 import Stokes from './Stokes';
 import StokeForm from './StokeForm';
+import HeatButton from './HeatButton';
 
 // MUI Stuff
 import Grid from "@material-ui/core/Grid";
@@ -52,7 +53,7 @@ const styles = theme => ({
       },
       closeButton: {
         position: "absolute",
-        left: "86%",
+        left: "82%",
         top: "5%"
 
       },
@@ -121,9 +122,7 @@ class SparkBox extends Component {
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body1"><strong>{body}</strong></Typography>
-            <OwlFuseButton tip="HEAT"><HeatIcon color="secondary"/>
-              
-          </OwlFuseButton>
+            <HeatButton sparkId={sparkId}/>
           <span>{heatCount}</span>
           <OwlFuseButton tip="STOKES">
             <StokeIcon color="secondary" />
