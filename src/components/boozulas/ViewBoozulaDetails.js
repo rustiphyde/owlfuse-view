@@ -32,7 +32,6 @@ const styles = theme => ({
         border: 'none'
       },
       boozulaImage: {
-        margin: "0 auto",
         maxWidth: 160,
         height: 160,
         objectFit: "cover",
@@ -84,7 +83,7 @@ class ViewBoozulaDetails extends Component {
         preparation,
         drinkWare,
         garnish,
-        cheers,
+        cheersCount,
         toastCount,
         boozId
       },
@@ -94,7 +93,7 @@ class ViewBoozulaDetails extends Component {
     const dialogMarkup = loading ? (
       <CircularProgress size={200} className={classes.progress}/>
     ) : (
-     <Grid container spacing={10} className="dark">
+     <Grid container spacing={10} className="dark viewer">
         <Grid item sm={4}>
           <img src={boozImage} alt="Boozula" className={classes.boozulaImage} />
         </Grid>
@@ -106,7 +105,7 @@ class ViewBoozulaDetails extends Component {
             variant="body2"
             to={`/users/>${klozang}`}
           >
-            <strong className="rust foam">Posted by >{alias}</strong>
+            <strong className="rust foam"><strong className="rusty">Posted By: </strong> >{alias}</strong>
           </Typography>
           <hr className="bar-separator-booz" />
           <Typography variant="body2" className="foam">
@@ -115,7 +114,7 @@ class ViewBoozulaDetails extends Component {
           <hr className="bar-separator-booz" />
           
          <OwlFuseButton tip="CHEERS"><CheersIcon className="icon2 rust foam"/></OwlFuseButton>
-          <span>{cheers}</span>
+          <span className="rusty">{cheersCount}</span>
           <OwlFuseButton tip={`THIS BOOZULA HAS ${toastCount} TOASTS`}>
             <ToastIcon className="icon6 rust foam"/>
           </OwlFuseButton>
@@ -126,14 +125,14 @@ class ViewBoozulaDetails extends Component {
           {ingredients && 
           <Fragment>
           <hr className="bar-separator-booz"/>
-          <Typography variant="body1" className="foam">
-            <strong className="rusty">Ingredients:</strong> {ingredients}
+          <Typography variant="body1" className="foam breaks">
+            <strong className="rusty">Ingredients:</strong><br/>{ingredients}
           </Typography>
             </Fragment>}
           {preparation && <Fragment>
             <hr className="bar-separator-booz"/>
-          <Typography variant="body1" className="foam">
-            <strong className="rusty">Preparation:</strong> {preparation}
+          <Typography variant="body1" className="foam breaks">
+            <strong className="rusty">Preparation:</strong><br/> {preparation}
           </Typography>
             </Fragment>}
           {drinkWare && <Fragment>

@@ -15,7 +15,10 @@ import { connect } from "react-redux";
 import { editBoozDetails } from "../../redux/actions/dataActions";
 
 const styles = {
- 
+  displayLinebreaks: {
+    whiteSpace: "pre-wrap"
+  },
+
   dialog: {
     padding: 16,
     borderRadius: "32px"
@@ -129,7 +132,7 @@ class EditBoozDetails extends Component {
                 multiline
                 rows="3"
                 placeholder="EDIT INGREDIENTS"
-                className={classes.textField}
+                className={classes.textField, classes.displayLinebreaks}
                 value={this.state.ingredients}
                 onChange={this.handleChange}
                 fullWidth
@@ -141,7 +144,7 @@ class EditBoozDetails extends Component {
                 multiline
                 rows="3"
                 placeholder="EDIT PREPARATION INSTRUCTIONS"
-                className={classes.textField}
+                className={classes.textField, classes.displayLineBreaks}
                 value={this.state.preparation}
                 onChange={this.handleChange}
                 fullWidth

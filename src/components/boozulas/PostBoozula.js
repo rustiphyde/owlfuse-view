@@ -17,7 +17,10 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 const styles = theme => ({
-    ...theme.themeMinusPalette,
+  ...theme.themeMinusPalette,
+  displayLinebreaks: {
+    whiteSpace: "pre-wrap"
+  },
     submitButton: {
       position: "relative",
       margin: '10px auto'
@@ -146,7 +149,7 @@ class PostBoozula extends Component {
                 placeholder="INGREDIENTS"
                 multiline
                 rows="2"
-                className={classes.textField}
+                className={classes.textField, classes.displayLinebreaks}
                 onChange={this.handleChange}
                 fullWidth
               />
@@ -157,7 +160,7 @@ class PostBoozula extends Component {
                 placeholder="PREPARATION"
                 multiline
                 rows="2"
-                className={classes.textField}
+                className={classes.textField, classes.displayLineBreaks}
                 onChange={this.handleChange}
                 fullWidth
               />
