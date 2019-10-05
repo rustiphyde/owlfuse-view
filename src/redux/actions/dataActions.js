@@ -382,6 +382,7 @@ export const choozByList = (okeId) => dispatch => {
         payload: res.data
       });
       dispatch(clearErrors());
+      console.log(res.data);
       dispatch({ type: STOP_LOADING_UI });
     })
     .then(() => {
