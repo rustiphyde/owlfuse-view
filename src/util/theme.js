@@ -34,7 +34,8 @@ export default {
     },
     textField: {
       margin: "10px auto 10px auto",
-      textAlign: "center"
+      textAlign: "center",
+      padding: "0 16px"
     },
     button: {
       margin: "20px auto",

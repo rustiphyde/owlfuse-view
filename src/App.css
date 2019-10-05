@@ -1,6 +1,5 @@
 :root {
   --background-one: #fefaf4;
-  --hover: #ff9800;
   --background-two: #263238;
   --delete: #fc4a04;
   --rust: #ff9800;
@@ -57,14 +56,15 @@ a {
   text-decoration: none;
   color: var(--background-two);
 }
+
 a:hover {
-  color: var(--hover);
+  color: var(--rust);
 }
 
 .bar-separator {
   margin: 6px 0 6px 0;
   height: 1px;
-  background-color: var(--hover);
+  background-color: var(--rust);
   border: none;
   width: 100%;
 }
@@ -86,7 +86,7 @@ a:hover {
 }
 
 .sparkTitle {
-  color: var(--hover);
+  color: var(--rust);
   text-align: center;
   font-size: 2rem;
 }
@@ -139,7 +139,7 @@ input {
 }
 .icon7 {
   font-size: 7rem !important;
-  color: var(--hover);
+  color: var(--rust);
   align-self: center !important;
 }
 .icon8 {
@@ -172,7 +172,7 @@ input {
   font-size: 150%;
 }
 .nav-container svg:hover {
-  color: var(--hover);
+  color: var(--rust);
 }
 .candle {
   display: flex;
@@ -185,14 +185,14 @@ input {
   width: auto;
   max-width: 1600px;
   text-align: right;
-  color:var(--hover);
+  color:var(--rust);
   padding: 16px 16px 0 16px;
   margin: 8px auto 0 auto;
   border-radius: 16px 0 16px 0;
 }
 
 .orange:hover {
-  color: var(--hover);
+  color: var(--rust);
 }
 
 .rust:hover {
@@ -208,7 +208,7 @@ input {
 } 
 
 .orange-border {
-  border: 16px solid var(--hover);
+  border: 16px solid var(--rust);
 }
 
 .oke-border {
@@ -225,7 +225,7 @@ input {
 }
 
 .orng {
-  color: var(--hover);
+  color: var(--rust);
 } 
 
 .not-orng:hover {
@@ -270,4 +270,12 @@ input {
 
 .load {
   font-size: 3rem;
+}
+
+.MuiInputLabel-formControl {
+  left: 16px !important;
+}
+
+.MuiGrid-container {
+  display: block !important;
 }

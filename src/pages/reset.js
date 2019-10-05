@@ -63,14 +63,14 @@ class reset extends Component {
             width="120"
           />
           <Typography variant="h4" className={classes.pageTitle}>
-            RESET PASSWORD
+            <strong>RESET PASSWORD</strong>
           </Typography>
           <form noValidate onSubmit={this.handleSubmit}>
-            <TextField
+          <TextField
               id="email"
               name="email"
               type="email"
-              label="EMAIL"
+              label="EMAIL ADDRESS"
               className={classes.textField}
               helperText={errors.email}
               error={errors.email ? true : false}
@@ -95,7 +95,7 @@ class reset extends Component {
               className={classes.button}
               disabled={loading}
             >
-              RESET PASSWORD
+              <strong>RESET PASSWORD</strong>
               {loading && (
                 <CircularProgress size={30} className={classes.progress}/>
               )}
