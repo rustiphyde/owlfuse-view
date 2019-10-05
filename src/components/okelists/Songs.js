@@ -30,7 +30,7 @@ class Songs extends Component {
             <Fragment key={songTitle}>
               <Grid item sm={12}>
                 <Grid container>
-                      <Typography variant="body1" color="secondary" className={classes.songData}>{index +1}. <strong>{songTitle}</strong> by <em><u>{songArtist}</u></em></Typography>
+                  <Typography variant="body1" className={`${this.props.classes.songData} foam`}>{index +1}. <strong>{songTitle}</strong> by <em><u>{songArtist}</u></em></Typography>
                 </Grid>
               </Grid>
               <hr className="bar-separator"/>

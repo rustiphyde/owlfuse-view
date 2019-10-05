@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 // Components
 import EraseOkelist from './EraseOkelist';
 import ListChoozer from './ListChoozer';
+import OkeView from './OkeView';
 
 // MUI Stuff
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -81,7 +82,7 @@ class Okelist extends Component {
       <hr className="bar-separator-oak"/>
       <hr className="bar-separator-oak"/><hr className="bar-separator-oak"/>
       <ListChoozer okeId={okeId}/><span className="rusty">{songCount} SONGS</span>
-      
+      <OkeView okeId={okeId}/>
     </CardContent>
   </Card>
     ) : null;
