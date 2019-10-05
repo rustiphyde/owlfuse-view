@@ -53,7 +53,7 @@ class reset extends Component {
     const { classes, UI: { loading } } = this.props;
     const { errors, success } = this.state;
     return (
-      <Grid container className={classes.form}>
+      <Grid className={classes.form}>
         <Grid item sm />
         <Grid item sm>
           <img
