@@ -3,7 +3,7 @@
   --hover: #ff9800;
   --background-two: #263238;
   --delete: #fc4a04;
-  --rust: #b7410e;
+  --rust: #b75a0e;
   --bg-light: #37474f;
   --stout: #361002;
   --leaf: #11a36b;
@@ -218,6 +218,10 @@ input {
 .rusty {
   color: var(--rust);
   text-align: center;
+}
+
+.rusty2 {
+  color: var(--rust);
 }
 
 .orng {

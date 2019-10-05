@@ -43,7 +43,7 @@ class EraseOkelist extends Component {
                 <OwlFuseButton tip="ERASE THIS OKELIST"
                 onClick={this.handleOpen}
                 btnClassName ={classes.deleteButton}>
-                <EraseOkelistIcon color="primary" className="icon4"/>
+                <EraseOkelistIcon className="icon4 rusty"/>
                 </OwlFuseButton>
                 <Dialog
                 open={this.state.open}
