@@ -52,7 +52,7 @@ class EraseOkelist extends Component {
                 maxWidth="sm"
                 className="container"
                 >
-                <DialogTitle variant="h5" className="oaky">
+                <DialogTitle variant="h5" className="rusty">
                    Are you sure you wish to erase this Oke List? This action is irreversible.
                 </DialogTitle>
                 <DialogActions>

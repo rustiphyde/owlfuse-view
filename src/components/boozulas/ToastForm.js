@@ -13,7 +13,9 @@ const styles = {
     form: {
         borderRadius: 16,
         padding: 16,
-      border: '6px double #f4db9d',
+    border: '6px double #f4db9d',
+    backgroundColor: '#fefaf4'
+    
     },
     textField: {
       margin: "16px auto",
@@ -68,7 +70,7 @@ class ToastForm extends Component {
             value={this.state.body}
             onChange={this.handleChange}
             fullWidth
-            className={classes.textField}
+            className={`${this.props.classes.textField} foam`}
           />
           <Button
             type="submit"

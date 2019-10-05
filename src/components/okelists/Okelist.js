@@ -23,7 +23,8 @@ const styles = {
         display: "flex",
         marginBottom: 8,
         borderRadius: '16px 16px 16px 16px',
-        backgroundColor: '#37474f'
+      backgroundColor: '#37474f',
+        textAlign: "center"
       },
       clef: {
         fontSize: '32px'

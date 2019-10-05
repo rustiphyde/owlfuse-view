@@ -72,7 +72,7 @@ class EditBoozulaImage extends Component {
                   tip="EDIT BOOZULA IMAGE"
                   onClick={this.handleEditPicture}
                 >
-                  <EditBoozulaImageIcon className="icon rust foam" />
+                  <EditBoozulaImageIcon className="icon rust oaky" />
                 </OwlFuseButton>
               </div>
             </form>
