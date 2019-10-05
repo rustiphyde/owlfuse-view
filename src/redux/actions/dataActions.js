@@ -386,9 +386,10 @@ export const choozByList = (okeId) => dispatch => {
       dispatch({ type: STOP_LOADING_UI });
     })
     .then(() => {
-      dispatch({ type: CLEAR_SUCCESS })
+      dispatch(clearSuccess())
     })
     .catch(err => {
+      console.log(err.response.data);
       dispatch({
         type: SET_ERRORS,
         payload: err.response.data
