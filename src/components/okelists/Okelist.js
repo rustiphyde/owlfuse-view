@@ -16,7 +16,7 @@ import Typography from "@material-ui/core/Typography";
 
 const styles = {
     oaktree: {
-      color: '#5f3c0f'
+      color: '#263238'
     },
     card: {
       position: 'relative',
@@ -30,16 +30,16 @@ const styles = {
       },
       clef2: {
         fontSize: '20px',
-        color: '#087520'
+        color: '#263238'
       },
       content: {
         padding: 25,
         width: 800,
         borderRadius: '16px 16px 16px 16px',
-        borderTop: '2px solid #11a36b',
-        borderBottom: '2px solid #11a36b',
+        borderTop: '2px solid #ff9800',
+        borderBottom: '2px solid #ff9800',
         margin: '8px 0 8px 0',
-        backgroundColor: '#f7efdd'
+        backgroundColor: '#fefaf4'
       }
   
 };

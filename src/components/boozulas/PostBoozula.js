@@ -99,7 +99,7 @@ class PostBoozula extends Component {
     return (
       <Fragment>
         <OwlFuseButton onClick={this.handleOpen} tip="POST A BOOZULA">
-          <AddBoozulaIcon className="icon5 rust" color="primary" />
+          <AddBoozulaIcon className="icon5 rust oaky" />
         </OwlFuseButton>
         <Dialog
           open={this.state.open}

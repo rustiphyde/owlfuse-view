@@ -25,7 +25,7 @@ const styles = (theme) => ({
     padding: 16
   },
   title: {
-    color: "#b7410e",
+    color: "#ff9800",
     textAlign: "center"
   }
 });

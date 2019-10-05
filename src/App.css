@@ -3,12 +3,12 @@
   --hover: #ff9800;
   --background-two: #263238;
   --delete: #fc4a04;
-  --rust: #b75a0e;
+  --rust: #ff9800;
   --bg-light: #37474f;
   --stout: #361002;
-  --leaf: #11a36b;
+  --leaf: #b75a0e;
   --bark: #5f3c0f;
-  --beerfoam: #f7efdd;
+  --beerfoam: #f4db9d;
 }
 
 html,
@@ -72,7 +72,7 @@ a:hover {
 .bar-separator-oak {
   margin: 6px 0 6px 0;
   height: 2px;
-  background-color: var(--leaf);
+  background-color: var(--background-two);
   border: none;
   width: 100%;
 }
@@ -98,7 +98,7 @@ a:hover {
 }
 
 .okeTitle {
-  color: var(--leaf);
+  color: var(--bg-light);
   text-align: center;
   font-size: 2rem;
 }
@@ -212,7 +212,7 @@ input {
 }
 
 .oke-border {
-  border: 16px solid var(--leaf);
+  border: 16px solid var(--beerfoam);
 }
 
 .rusty {
@@ -234,11 +234,11 @@ input {
 }
 
 .oakleaf:hover {
-  color: var(--leaf);
+  color: var(--background-two);
 }
 
 .oaky {
-  color: var(--leaf);
+  color: var(--background-two);
 }
 
 .center {
@@ -257,7 +257,7 @@ input {
 }
 
 .foam {
-  color: #f4db9d;
+  color: var(--beerfoam);
 }
 
 .viewer {

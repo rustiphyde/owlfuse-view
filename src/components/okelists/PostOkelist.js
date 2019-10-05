@@ -97,9 +97,9 @@ class PostOkelist extends Component {
             onClick={this.handleClose}
             tipClassName={classes.closeButton}
           >
-            <CloseIcon className="oakleaf"/>
+            <CloseIcon className="rust"/>
           </OwlFuseButton>
-          <DialogTitle variant="h5" className="oaky">CREATE AN OKE LIST</DialogTitle>
+          <DialogTitle variant="h5" className="rusty">CREATE AN OKE LIST</DialogTitle>
           <DialogContent className="oke-border">
             <form onSubmit={this.handleSubmit}>
               <TextField
