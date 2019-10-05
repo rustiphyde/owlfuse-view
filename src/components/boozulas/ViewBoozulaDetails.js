@@ -18,7 +18,6 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 // Icons
 import CloseIcon from "../icons/CloseIcon";
 import ToastIcon from '../icons/ToastIcon';
-import CheersIcon from '../icons/CheersIcon';
 import ViewBoozIcon from "../icons/ViewBoozIcon";
 
 // Redux Stuff
@@ -47,7 +46,7 @@ const styles = theme => ({
       dialogContent: {
         overflowY: "auto",
         overflowX: "hidden",
-        backgroundColor: "#fefaf4"
+        backgroundColor: "#263238"
       },
       closeButton: {
         position: "absolute",
@@ -55,6 +54,9 @@ const styles = theme => ({
       },
       expandButton: {
         float: 'right'
+  },
+  spinnerDiv: {
+        paddingLeft: "100px" 
       }
     });
 
@@ -96,7 +98,9 @@ class ViewBoozulaDetails extends Component {
     } = this.props;
 
     const dialogMarkup = loading ? (
-      <CircularProgress size={200} className={classes.progress}/>
+      <div className={classes.spinnerDiv}>
+        <CircularProgress className="rusty2" size={100} thickness={4}/>
+        </div>
     ) : (
      <Grid container spacing={10} className="dark viewer">
         <Grid item sm={4}>

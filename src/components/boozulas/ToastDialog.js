@@ -33,14 +33,14 @@ const styles = theme => ({
     visibleSeparator: {
         width: '100%',
 
-        borderBottom: '1px solid #b7410e',
+        borderBottom: '1px solid #b75a0e',
         marginBottom: 20
       },
       outerRing: {
         width: 172,
         height: 172,
         alignSelf: 'center',
-        border: "6px double #b7410e",
+        border: "6px double #b75a0e",
         borderRadius: "50%",
       },
       boozulaImage: {
@@ -48,11 +48,10 @@ const styles = theme => ({
         height: 180,
         borderRadius: "50%",
         objectFit: "cover",
-        border: "6px double #b7410e"
+        border: "6px double #b75a0e"
       },
       dialogContent: {
-        padding: 20,
-        color: "#b7410e",
+        color: "#b75a0e",
         overflowY: "auto",
         overflowX: "hidden",
         backgroundColor: "primary"
@@ -60,7 +59,11 @@ const styles = theme => ({
       closeButton: {
         position: "absolute",
         left: "82%"
-      }
+      },
+      spinnerDiv: {
+        padding: "80px 0 80px 160px" 
+        
+          }    
 });
 
 class ToastDialog extends Component {
@@ -97,7 +100,9 @@ class ToastDialog extends Component {
     } = this.props;
 
     const dialogMarkup = loading ? (
-      <CircularProgress className={classes.progress} />
+            <div className={`${this.props.classes.spinnerDiv} dark`}>
+        <CircularProgress className="rusty2" size={100} thickness={4}/>
+        </div>
     ) : (
      <Grid container spacing={10} className="dark">
         <Grid item sm={4}>

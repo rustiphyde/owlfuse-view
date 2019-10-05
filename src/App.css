@@ -221,7 +221,7 @@ input {
 }
 
 .rusty2 {
-  color: var(--rust);
+  color: var(--rust) !important;
 }
 
 .orng {
@@ -253,7 +253,7 @@ input {
 
 .dark {
   background-color: var(--background-two);
-  width: 100vw;
+  width: 960px;
 }
 
 .foam {
@@ -266,4 +266,8 @@ input {
 
 .breaks {
     white-space: pre-wrap;
+}
+
+.load {
+  font-size: 3rem;
 }
