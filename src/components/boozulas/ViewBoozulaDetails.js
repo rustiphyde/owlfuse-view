@@ -5,17 +5,22 @@ import OwlFuseButton from "../../util/OwlFuseButton";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 
+// Components
+import CheersButton from './CheersButton';
+
 // MUI Stuff
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import CircularProgress from "@material-ui/core/CircularProgress";
+
 // Icons
 import CloseIcon from "../icons/CloseIcon";
 import ToastIcon from '../icons/ToastIcon';
 import CheersIcon from '../icons/CheersIcon';
 import ViewBoozIcon from "../icons/ViewBoozIcon";
+
 // Redux Stuff
 import { connect } from "react-redux";
 import { getBoozula } from "../../redux/actions/dataActions";
@@ -111,9 +116,8 @@ class ViewBoozulaDetails extends Component {
           <Typography variant="body2" className="foam">
             {dayjs(createdAt).format("h:mm a, MMMM DD, YYYY")}
           </Typography>
-          <hr className="bar-separator-booz" />
-          
-         <OwlFuseButton tip="CHEERS"><CheersIcon className="icon2 rust foam"/></OwlFuseButton>
+          <hr className="bar-separator-booz" />          
+         <CheersButton boozId={boozId}/>
           <span className="rusty">{cheersCount}</span>
           <OwlFuseButton tip={`THIS BOOZULA HAS ${toastCount} TOASTS`}>
             <ToastIcon className="icon6 rust foam"/>
