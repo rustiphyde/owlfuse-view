@@ -5,6 +5,9 @@ import OwlFuseButton from "../../util/OwlFuseButton";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 
+// Components
+import CheersButton from './CheersButton';
+
 // MUI Stuff
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -115,9 +118,7 @@ class ToastDialog extends Component {
             {dayjs(createdAt).format("h:mm a, MMMM DD, YYYY")}
           </Typography>
           <hr className={classes.invisibleSeparator} />
-          <OwlFuseButton tip={`THIS BOOZULA HAS ${cheersCount} CHEERS`}>
-            <CheersIcon className="icon6 rust foam" />
-          </OwlFuseButton>
+          <CheersButton boozId={boozId}/>
           <span>{cheersCount}</span>
           <OwlFuseButton tip={`THIS BOOZULA HAS ${toastCount} TOASTS`}>
             <ToastIcon className="icon6 rust foam" />
