@@ -259,3 +259,11 @@ input {
 .foam {
   color: #f4db9d;
 }
+
+.viewer {
+  padding: 32px !important;
+}
+
+.breaks {
+    white-space: pre-wrap;
+}
