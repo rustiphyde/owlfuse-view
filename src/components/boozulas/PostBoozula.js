@@ -18,9 +18,6 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 const styles = theme => ({
   ...theme.themeMinusPalette,
-  displayLinebreaks: {
-    whiteSpace: "pre-wrap"
-  },
     submitButton: {
       position: "relative",
       margin: '10px auto'

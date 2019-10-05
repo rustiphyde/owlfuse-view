@@ -102,7 +102,7 @@ class PostSpark extends Component {
                 placeholder="SPARK IT"
                 error={errors.spark ? true : false}
                 helperText={errors.spark}
-                className={classes.textField}
+                className={`${this.props.classes.textField} ${this.props.classes.displayLinebreaks}`}
                 onChange={this.handleChange}
                 fullWidth
               />

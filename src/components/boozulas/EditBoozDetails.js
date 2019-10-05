@@ -14,10 +14,8 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import { connect } from "react-redux";
 import { editBoozDetails } from "../../redux/actions/dataActions";
 
-const styles = {
-  displayLinebreaks: {
-    whiteSpace: "pre-wrap"
-  },
+const styles = (theme) => ({
+  ...theme.themeMinusPalette,
 
   dialog: {
     padding: 16,
@@ -30,7 +28,7 @@ const styles = {
     color: "#b7410e",
     textAlign: "center"
   }
-};
+});
 
 class EditBoozDetails extends Component {
   state = {
@@ -89,7 +87,6 @@ class EditBoozDetails extends Component {
         <OwlFuseButton
           tip="EDIT YOUR BOOZULA"
           onClick={this.handleOpen}
-          btnClassName={classes.button}
         >
           <EditBoozulaIcon className="icon8 foam" />
         </OwlFuseButton>
@@ -132,7 +129,7 @@ class EditBoozDetails extends Component {
                 multiline
                 rows="3"
                 placeholder="EDIT INGREDIENTS"
-                className={classes.textField, classes.displayLinebreaks}
+                className={`${this.props.classes.textField} ${this.props.classes.displayLinebreaks}`}
                 value={this.state.ingredients}
                 onChange={this.handleChange}
                 fullWidth
@@ -144,7 +141,7 @@ class EditBoozDetails extends Component {
                 multiline
                 rows="3"
                 placeholder="EDIT PREPARATION INSTRUCTIONS"
-                className={classes.textField, classes.displayLineBreaks}
+                className={`${this.props.classes.textField} ${this.props.classes.displayLinebreaks}`}
                 value={this.state.preparation}
                 onChange={this.handleChange}
                 fullWidth

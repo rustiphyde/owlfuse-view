@@ -69,11 +69,11 @@ class StokeForm extends Component {
             type="text"
             label="ADD A STOKE"
             error={errors.stoke ? true : false}
-            helperText={errors.stoke}            
+            helperText={errors.stoke}
             value={this.state.body}
             onChange={this.handleChange}
             fullWidth
-            className={classes.textField}
+            className={classes.textField} 
           />
           <Button
             type="submit"

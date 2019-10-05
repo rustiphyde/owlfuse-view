@@ -92,7 +92,7 @@ class Spark extends Component {
           <Typography variant="body2" color="textSecondary">
             {dayjs(createdAt).fromNow()}
           </Typography>
-          <Typography variant="body2" color="primary">
+          <Typography variant="body2" color="primary" className="breaks">
             <b>{body}</b>
           </Typography>
           <HeatButton sparkId={sparkId}/>

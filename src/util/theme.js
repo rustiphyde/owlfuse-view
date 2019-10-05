@@ -29,6 +29,9 @@ export default {
     pageTitle: {
       margin: "0 auto 10px auto"
     },
+    displayLinebreaks: {
+      whiteSpace: "pre-wrap"
+    },
     textField: {
       margin: "10px auto 10px auto",
       textAlign: "center"
