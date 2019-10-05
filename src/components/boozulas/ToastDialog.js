@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 // Components
 import CheersButton from './CheersButton';
+import Toasts from './Toasts';
 
 // MUI Stuff
 import Grid from "@material-ui/core/Grid";
@@ -18,7 +19,6 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 // Icons
 import CloseIcon from "../icons/CloseIcon";
 import ToastIcon from '../icons/ToastIcon';
-import CheersIcon from '../icons/CheersIcon';
 
 // Redux Stuff
 import { connect } from "react-redux";
@@ -131,7 +131,8 @@ class ToastDialog extends Component {
           <span>{toastCount}</span>
           
         </Grid>
-        <hr className="bar-separator-booz"/>
+          <hr className="bar-separator-booz" />
+          <Toasts toasts={toasts}/>
       </Grid>
     );
     return (
