@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 // Components
 import CheersButton from './CheersButton';
 import Toasts from './Toasts';
+import ToastForm from './ToastForm';
 
 // MUI Stuff
 import Grid from "@material-ui/core/Grid";
@@ -132,6 +133,7 @@ class ToastDialog extends Component {
           
         </Grid>
           <hr className="bar-separator-booz" />
+          <ToastForm boozId={boozId}/>
           <Toasts toasts={toasts}/>
       </Grid>
     );

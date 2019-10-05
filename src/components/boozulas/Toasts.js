@@ -48,7 +48,7 @@ class Toasts extends Component {
                   <Grid item sm={9}>
                     <div className={classes.toastData}>
                       <Typography
-                        variant="h6"
+                        variant="body2"
                         component={Link}
                         to={`/user/>${klozang}`}
                         color="primary"
