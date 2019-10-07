@@ -365,7 +365,7 @@ export const editBoozDetails = (boozId, boozDetails) => dispatch => {
     .post(`/boozula/${boozId}/add`, boozDetails)
     .then(() => {
       dispatch(getBoozData());
-      dispatch({ STOP_LOADING_UI });
+      dispatch({ type: STOP_LOADING_UI });
     })
     .catch(err => console.log(err));
 };

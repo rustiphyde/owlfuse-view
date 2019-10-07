@@ -100,7 +100,7 @@ class EditBoozDetails extends Component {
           <DialogTitle variant="h5" className={classes.title}>
             EDIT YOUR DETAILS
           </DialogTitle>
-          <DialogContent>
+          <DialogContent className="rust-border">
             <form className={classes.form}>
               <TextField
                 name="drinkName"
