@@ -120,7 +120,7 @@ class PostBoozula extends Component {
               <TextField
                 name="drinkName"
                 type="text"
-                label="Name Your Boozula"
+                label="Boozula Name"
                 placeholder="BOOZULA NAME"
                 error={errors.drinkName ? true : false}
                 helperText={errors.drinkName}
@@ -131,7 +131,7 @@ class PostBoozula extends Component {
               <TextField
                 name="mainAlcohol"
                 type="text"
-                label="What type of Alcohol is it made with?"
+                label="Main Alcohol"
                 placeholder="MAIN ALCOHOL"
                 error={errors.mainAlcohol ? true : false}
                 helperText={errors.mainAlcohol}
@@ -142,7 +142,7 @@ class PostBoozula extends Component {
               <TextField
                 name="ingredients"
                 type="text"
-                label="What are the Ingredients?"
+                label="Ingredients"
                 placeholder="INGREDIENTS"
                 multiline
                 rows="2"
@@ -153,7 +153,7 @@ class PostBoozula extends Component {
               <TextField
                 name="preparation"
                 type="text"
-                label="How do you make it?"
+                label="Preparation"
                 placeholder="PREPARATION"
                 multiline
                 rows="2"
@@ -164,7 +164,7 @@ class PostBoozula extends Component {
               <TextField
                 name="drinkWare"
                 type="text"
-                label="What is it typically served in?"
+                label="Drink Ware"
                 placeholder="DRINK WARE"
                 className={classes.textField}
                 onChange={this.handleChange}
@@ -173,7 +173,7 @@ class PostBoozula extends Component {
               <TextField
                 name="garnish"
                 type="text"
-                label="How is it typically garnished?"
+                label="Garnish"
                 placeholder="GARNISH"
                 className={classes.textField}
                 onChange={this.handleChange}

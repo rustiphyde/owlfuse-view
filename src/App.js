@@ -23,6 +23,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 // Pages
+import user from "./pages/user";
 import home from "./pages/home";
 import login from "./pages/login";
 import signup from "./pages/signup";
@@ -73,7 +74,8 @@ class App extends Component {
                 exact
                 path="/reset"
                 component={reset}
-              />
+                />
+                <Route exact path="/users/:clozang" component={user} />
             </Switch>
             </div>
             <Footer />
