@@ -71,7 +71,11 @@ class user extends Component {
             <hr className="bar-separator" />
           </div>
           <div className="candle" width="100%"></div>
-          <StaticProfile profile={this.state.profile} />
+          {this.state.profile === null ? (
+            <p>Loading Candle...</p>
+          ) : (
+            <StaticProfile profile={this.state.profile} />
+          )}
         </Grid>
       </Grid>
     );
