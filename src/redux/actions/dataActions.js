@@ -96,8 +96,6 @@ export const getOkelist = okeId => dispatch => {
     .catch(err => console.log(err));
 };
 
-
-
 // fetch all boozulas
 export const getBoozulas = () => dispatch => {
   dispatch({ type: LOADING_DATA });
@@ -370,14 +368,14 @@ export const editBoozDetails = (boozId, boozDetails) => dispatch => {
     .catch(err => console.log(err));
 };
 
-export const choozByList = (okeId) => dispatch => {
+export const choozByList = okeId => dispatch => {
   dispatch({ type: LOADING_UI });
   axios
     .get(`/song/${okeId}/list/chooz`)
     .then(res => {
       dispatch({
         type: CHOOZ_BY_LIST,
-        payload: res.data,
+        payload: res.data
       });
       dispatch({
         type: SET_SUCCESS,
@@ -388,13 +386,39 @@ export const choozByList = (okeId) => dispatch => {
       dispatch({ type: STOP_LOADING_UI });
     })
     .then(() => {
-      dispatch(clearSuccess())
+      dispatch(clearSuccess());
     })
     .catch(err => {
       console.log(err.response.data);
       dispatch({
         type: SET_ERRORS,
         payload: err.response.data
-      })
+      });
     });
-}
+};
+
+export const getUserData = klozang => dispatch => {
+  dispatch({ type: LOADING_DATA });
+  axios
+    .get(`user/${klozang}`)
+    .then(res => {
+      dispatch({
+        type: SET_SPARKS,
+        payload: res.data.sparks
+      });
+      dispatch({
+        type: SET_BOOZULAS,
+        payload: res.data.boozulas
+      });
+    })
+    .catch(() => {
+      dispatch({
+        type: SET_SPARKS,
+        payload: null
+      });
+      dispatch({
+        type: SET_BOOZULAS,
+        payload: null
+      });
+    });
+};
