@@ -2,7 +2,10 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import OwlFuseButton from "../../util/OwlFuseButton";
+
+// Components
 import Songs from "./Songs";
+import SongForm from './SongForm';
 
 // MUI Stuff
 import Grid from "@material-ui/core/Grid";
@@ -10,9 +13,11 @@ import Typography from "@material-ui/core/Typography";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import CircularProgress from "@material-ui/core/CircularProgress";
+
 // Icons
 import CloseIcon from "../icons/CloseIcon";
 import ViewSongIcon from "../icons/ViewSongIcon";
+
 // Redux Stuff
 import { connect } from "react-redux";
 import { getOkelist } from "../../redux/actions/dataActions";
@@ -90,7 +95,8 @@ class OkeView extends Component {
           <hr className={classes.invisibleSeparator} />
           <hr className="bar-separator" />
         </Grid>
-        <hr className="bar-separator" />
+          <hr className="bar-separator" />
+          <SongForm okeId={okeId}/>
         <Songs songs={songs} />
       </Grid>
     );
