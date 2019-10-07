@@ -96,24 +96,7 @@ export const getOkelist = okeId => dispatch => {
     .catch(err => console.log(err));
 };
 
-export const addSong = (okeId, songData) => dispatch => {
-  axios
-    .post(`/okelist/${okeId}/song`, songData)
-    .then(res => {
-      dispatch({
-        type: ADD_SONG,
-        payload: res.data
-      });
-      console.log(res.data);
-      dispatch(clearErrors());
-    })
-    .catch(err => {
-      dispatch({
-        type: SET_ERRORS,
-        payload: err.response.data
-      });
-    });
-};
+
 
 // fetch all boozulas
 export const getBoozulas = () => dispatch => {
@@ -193,6 +176,25 @@ export const addToast = (boozId, toastData) => dispatch => {
         type: ADD_TOAST,
         payload: res.data
       });
+      dispatch(clearErrors());
+    })
+    .catch(err => {
+      dispatch({
+        type: SET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};
+
+export const addSong = (okeId, songData) => dispatch => {
+  axios
+    .post(`/okelist/${okeId}/song`, songData)
+    .then(res => {
+      dispatch({
+        type: ADD_SONG,
+        payload: res.data
+      });
+      console.log(res.data);
       dispatch(clearErrors());
     })
     .catch(err => {

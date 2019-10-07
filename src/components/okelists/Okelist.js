@@ -38,8 +38,8 @@ const styles = {
         padding: 25,
         width: 800,
         borderRadius: '16px 16px 16px 16px',
-        borderTop: '2px solid #ff9800',
-        borderBottom: '2px solid #ff9800',
+        borderTop: '6px double #ff9800',
+        borderBottom: '6px double #ff9800',
         margin: '8px 0 8px 0',
         backgroundColor: '#fefaf4'
       }

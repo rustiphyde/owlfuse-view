@@ -12,7 +12,6 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 
 // Icons
-import AddSparkIcon from "./icons/AddSparkIcon";
 import SizzleIcon from "./icons/SizzleIcon";
 import HomeIcon from "./icons/HomeIcon";
 import OkelistIcon from "./icons/OkelistIcon";

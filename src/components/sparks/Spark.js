@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import PropTypes from "prop-types";
 import relativeTime from "dayjs/plugin/relativeTime";
-import OwlFuseButton from "../../util/OwlFuseButton";
 
 // MUI Stuff
 import { withStyles } from "@material-ui/core/styles";
@@ -19,8 +18,6 @@ import HeatButton from './HeatButton';
 
 // Icons
 import FireIcon from "../icons/FireIcon";
-import HeatIcon from "../icons/HeatIcon";
-import StokeIcon from "../icons/StokeIcon";
 
 // Redux
 import { connect } from "react-redux";

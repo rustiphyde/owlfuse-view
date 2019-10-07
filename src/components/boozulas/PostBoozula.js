@@ -146,7 +146,7 @@ class PostBoozula extends Component {
                 placeholder="INGREDIENTS"
                 multiline
                 rows="2"
-                className={classes.textField, classes.displayLinebreaks}
+                className={`${this.props.classes.textField} ${this.props.classes.displayLinebreaks}`}
                 onChange={this.handleChange}
                 fullWidth
               />
@@ -157,7 +157,7 @@ class PostBoozula extends Component {
                 placeholder="PREPARATION"
                 multiline
                 rows="2"
-                className={classes.textField, classes.displayLineBreaks}
+                className={`${this.props.classes.textField} ${this.props.classes.displayLinebreaks}`}
                 onChange={this.handleChange}
                 fullWidth
               />
