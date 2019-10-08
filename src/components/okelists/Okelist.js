@@ -54,17 +54,17 @@ class Okelist extends Component {
       okelist: {
         listName,
         description,
-        klozang,
+        userAlias,
         createdAt,
         okeId,
         songCount
       },
-      user: { authenticated, credentials: { clozang }  }
+      user: { authenticated, credentials: { alias }  }
     } = this.props;
-    const deleteButton = authenticated && klozang === clozang ? (
+    const deleteButton = authenticated && userAlias === alias ? (
       <EraseOkelist okeId={okeId}/>
     ) : null;
-    const okeListsMarkup = authenticated && klozang === clozang ? (
+    const okeListsMarkup = authenticated && userAlias === alias ? (
       <Card className={classes.card}>
     <CardContent className={classes.content}>
       {deleteButton}
