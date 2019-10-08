@@ -109,7 +109,6 @@ class Candle extends Component {
       user: {
         credentials: {
           alias,
-          clozang,
           createdAt,
           imageUrl,
           bio,
@@ -145,7 +144,7 @@ class Candle extends Component {
             <div className="candle-details">
               <MuiLink
                 component={Link}
-                to={`/users/${clozang}`}
+                to={`/users/${alias}`}
                 color="primary"
                 variant="h5"
               >
