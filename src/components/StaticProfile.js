@@ -70,7 +70,7 @@ const StaticProfile = (props) => {
   const {
     classes,
       profile: {
-        clozang, alias, createdAt, imageUrl, bio, website, location }
+        alias, createdAt, imageUrl, bio, website, location }
   } = props;
 
    
@@ -87,11 +87,11 @@ const StaticProfile = (props) => {
         <div className="candle-details">
           <MuiLink
             component={Link}
-            to={`/users/${clozang}`}
+            to={`/users/${alias}`}
             color="primary"
             variant="h5"
           >
-            <strong>>{alias}</strong>
+            <strong>{alias}</strong>
           </MuiLink>
           <hr />
           {bio && <Typography variant="body2"><strong>{bio}</strong></Typography>}
