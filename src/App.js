@@ -75,7 +75,7 @@ class App extends Component {
                 path="/reset"
                 component={reset}
                 />
-                <Route exact path="/users/:alias" component={user} />
+                <Route exact path="/:alias" component={user} />
             </Switch>
             </div>
             <Footer />

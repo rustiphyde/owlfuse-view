@@ -110,7 +110,7 @@ class SparkBox extends Component {
             component={Link}
             color="primary"
             variant="h5"
-            to={`/users/${userAlias}`}
+            to={`/${userAlias}`}
           >
           <strong>>{userAlias}</strong>
           </Typography>

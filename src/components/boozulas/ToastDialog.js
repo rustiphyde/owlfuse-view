@@ -114,7 +114,7 @@ class ToastDialog extends Component {
             component={Link}
               className="rust foam"
             variant="body2"
-            to={`/users/${userAlias}`}
+            to={`/${userAlias}`}
           >
             <strong>Posted by >{userAlias}</strong>
           </Typography>
@@ -169,7 +169,7 @@ class ToastDialog extends Component {
 ToastDialog.propTypes = {
   getBoozula: PropTypes.func.isRequired,
   boozId: PropTypes.string.isRequired,
-  userAlias: PropTypes.string.isRequired,
+  userAlias: PropTypes.string,
   boozula: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired
 };

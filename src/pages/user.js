@@ -61,7 +61,7 @@ class user extends Component {
           </div>
           {sparksMarkup}
           <div className="sparkTitle">
-            <strong>BOOZULAS</strong>
+            <strong>{`BOOZULAS`}</strong>
             <hr className="bar-separator" />
           </div>
           {boozulasMarkup}
