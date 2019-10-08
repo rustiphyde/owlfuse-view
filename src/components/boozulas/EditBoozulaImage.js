@@ -53,7 +53,7 @@ class EditBoozulaImage extends Component {
           open={this.state.open}
           onClose={this.handleClose}
           fullWidth
-          maxwidth="sm"
+          maxWidth="sm"
           className={classes.dialog}
         >
           <DialogTitle variant="h5" className="rusty">
