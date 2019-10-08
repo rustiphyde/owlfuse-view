@@ -100,8 +100,8 @@ class ToastDialog extends Component {
     } = this.props;
 
     const dialogMarkup = loading ? (
-            <div className={`${this.props.classes.spinnerDiv} dark`}>
-        <CircularProgress className="rusty2" size={100} thickness={4}/>
+            <div className={classes.spinnerDiv}>
+        <CircularProgress color="secondary"size={200} thickness={2}/>
         </div>
     ) : (
      <Grid container spacing={10} className="dark">

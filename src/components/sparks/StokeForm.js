@@ -30,7 +30,7 @@ const styles = {
     gridItem: {
       textAlign: "center",
       margin: '0 auto',
-      backgroundColor: '#37474f'
+      backgroundColor: '#263238'
     }
   };
 

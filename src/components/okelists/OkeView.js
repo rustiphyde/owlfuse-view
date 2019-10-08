@@ -37,7 +37,7 @@ const styles = theme => ({
   dialogContent: {
     padding: 20,
     color: "#ff9800 !important",
-    backgroundColor: "##37474f",
+    backgroundColor: "##263238",
     overflowY: "auto",
     overflowX: "hidden"
   },
@@ -46,7 +46,7 @@ const styles = theme => ({
     left: "84%"
   },
   charcoal: {
-    backgroundColor: "#37474f !important"
+    backgroundColor: "#263238 !important"
   },
   spinnerDiv: {
     padding: "80px 0 80px 160px" 
@@ -78,9 +78,9 @@ class OkeView extends Component {
     } = this.props;
 
     const dialogMarkup = loading ? (
-      <div className={`${this.props.classes.spinnerDiv} dark`}>
-        <CircularProgress className="rusty2" size={100} thickness={4} />
-      </div>
+     <div className={classes.spinnerDiv}>
+        <CircularProgress color="secondary"size={200} thickness={2}/>
+        </div>
     ) : (
       <Grid container spacing={10} className={classes.charcoal}>
         <Grid item sm={10} className={classes.stuff}>

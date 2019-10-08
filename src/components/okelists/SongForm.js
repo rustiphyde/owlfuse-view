@@ -12,8 +12,6 @@ import { addSong } from "../../redux/actions/dataActions";
 const styles = {
   form: {
     backgroundColor: '#fefaf4 !important',
-    minWidth: 160,
-    maxWidth: 208,
       borderRadius: 16,
       padding: 16,
     border: '6px double #ff9800',
@@ -47,7 +45,8 @@ class SongForm extends Component {
       if(!nextProps.UI.errors && !nextProps.UI.loading){
           this.setState({ 
             songTitle: '',
-            songArtist: ''
+            songArtist: '',
+            errors: {}
           });
       }
   }
@@ -59,7 +58,8 @@ class SongForm extends Component {
     event.preventDefault();
     this.props.addSong(this.props.okeId, { 
       songTitle: this.state.songTitle,
-      songArtist: this.state.songArtist
+      songArtist: this.state.songArtist,
+      errors: this.state.errors
     });
   };
 

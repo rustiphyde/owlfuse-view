@@ -11,12 +11,12 @@ const styles = theme => ({
   songData: {
       marginLeft: 16,
       marginRight: 16,
-      backgroundColor: '#37474f',
+      backgroundColor: '#263238',
       padding: 16,
       maxWidth: 320,
   },
   frag: {
-      backgroundColor: '#37474f'
+      backgroundColor: '#263238'
   }
 });
 class Songs extends Component {

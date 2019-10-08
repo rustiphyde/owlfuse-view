@@ -29,7 +29,7 @@ const styles = {
     display: "flex",
     marginBottom: 8,
     borderRadius: "16px 0 16px 0",
-    backgroundColor: "#37474f",
+    backgroundColor: "#263238",
     padding: '16px'
   },
   content: {
@@ -40,7 +40,7 @@ const styles = {
     borderRight: "2px solid #f4db9d",
     borderBottom: "2px solid #f4db9d",
     margin: "8px 8px 8px 0",
-    backgroundColor: "#37474f"
+    backgroundColor: "#263238"
   },
   image: {
     margin: "8px 0 8px 8px",

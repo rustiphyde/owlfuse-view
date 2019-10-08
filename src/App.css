@@ -3,7 +3,6 @@
   --background-two: #263238;
   --delete: #fc4a04;
   --rust: #ff9800;
-  --bg-light: #37474f;
   --stout: #361002;
   --leaf: #b75a0e;
   --bark: #5f3c0f;
@@ -41,7 +40,7 @@ body {
 
 .MuiDialogActions-root, .MuiDialogTitle-root {
   justify-content: center !important;
-  background-color: var(--bg-light);
+  background-color: var(--background-two);
 }
 .MuiDialog-paper {
   border-radius: 16px !important;
@@ -98,7 +97,7 @@ a:hover {
 }
 
 .okeTitle {
-  color: var(--bg-light);
+  color: var(--background-two);
   text-align: center;
   font-size: 2rem;
 }
@@ -168,7 +167,7 @@ input {
   color:  var(--delete);
 }
 .nav-container svg {
-  color: var(--background-one);
+  color: var(--beerfoam);
   font-size: 150%;
 }
 .nav-container svg:hover {
@@ -181,7 +180,7 @@ input {
 }
 
 .footer {
-  background-color: var(--bg-light);
+  background-color: var(--background-two);
   width: auto;
   max-width: 1600px;
   text-align: right;
@@ -200,7 +199,7 @@ input {
 }
 
 .charcoal-border {
-  border: 16px solid var(--bg-light);
+  border: 16px solid var(--background-two);
 }
 
 .rust-border{
@@ -229,7 +228,7 @@ input {
 } 
 
 .not-orng:hover {
-  color: var(--bg-light);
+  color: var(--background-two);
   background-color: var(--rust);
 }
 

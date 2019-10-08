@@ -5,9 +5,9 @@ export default {
   palette: {
     primary: {
       light: blueGrey[700],
-      main: blueGrey[800],
+      main: blueGrey[900],
       dark: blueGrey[900],
-      contrastText: '#fefaf4'
+      contrastText: '#f4db9d'
     },
     secondary: {
       light: orange[400],
