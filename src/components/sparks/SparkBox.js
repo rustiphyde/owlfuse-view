@@ -89,9 +89,8 @@ class SparkBox extends Component {
         createdAt,
         heatCount,
         stokeCount,
-        klozang,
         userImage,
-        alias,
+        userAlias,
         stokes
       },
       UI: { loading }
@@ -111,9 +110,9 @@ class SparkBox extends Component {
             component={Link}
             color="primary"
             variant="h5"
-            to={`/users/${klozang}`}
+            to={`/users/${userAlias}`}
           >
-          <strong>>{alias}</strong>
+          <strong>>{userAlias}</strong>
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body2" color="textSecondary">
@@ -168,7 +167,7 @@ SparkBox.propTypes = {
   clearErrors: PropTypes.func.isRequired,
   getSpark: PropTypes.func.isRequired,
   sparkId: PropTypes.string.isRequired,
-  klozang: PropTypes.string.isRequired,
+  userAlias: PropTypes.string.isRequired,
   spark: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired
 };
