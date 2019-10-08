@@ -59,8 +59,7 @@ class Spark extends Component {
     const {
       classes,
       spark: {
-        klozang,
-        alias,
+        userAlias,
         userImage,
         heatCount,
         stokeCount,
@@ -69,9 +68,9 @@ class Spark extends Component {
         fire,
         sparkId
       },
-      user: { authenticated,  credentials: { clozang }   }
+      user: { authenticated,  credentials: { alias }   }
     } = this.props;
-    const deleteButton = authenticated && klozang === clozang ? (
+    const deleteButton = authenticated && userAlias === alias ? (
       <ExtinguishSpark sparkId={sparkId}/>
     ) : null
     return (
@@ -82,9 +81,9 @@ class Spark extends Component {
             variant="h6"
             color="primary"
             component={Link}
-            to={`/users/${klozang}`}
+            to={`/users/${userAlias}`}
           >
-            <strong>>{alias}</strong>
+            <strong>>{userAlias}</strong>
           </Typography>
           <Typography variant="body2" color="textSecondary">
             {dayjs(createdAt).fromNow()}
@@ -94,7 +93,7 @@ class Spark extends Component {
           </Typography>
           <HeatButton sparkId={sparkId}/>
           <span>{heatCount}</span>
-          <SparkBox sparkId={sparkId} klozang={klozang}/>
+          <SparkBox sparkId={sparkId} userAlias={userAlias}/>
           <span>{stokeCount}</span>
           <span>{deleteButton}</span>
         </CardContent>
