@@ -74,8 +74,7 @@ class Boozula extends Component {
       boozula: {
         drinkName,
         mainAlcohol,
-        alias,
-        klozang,
+        userAlias,
         boozImage,
         createdAt,
         ingredients,
@@ -88,16 +87,16 @@ class Boozula extends Component {
       },
       user: {
         authenticated,
-        credentials: { clozang }
+        credentials: { alias }
       }
     } = this.props;
-    const deleteButton = authenticated && klozang === clozang ? (
+    const deleteButton = authenticated && userAlias === alias ? (
       <EmptyBoozula boozId={boozId}/>
     ) : null
-    const imageUpdater = authenticated && klozang === clozang ? (
+    const imageUpdater = authenticated && userAlias === alias ? (
       <EditBoozulaImage boozId={boozId}/>
     ) : null
-    const infoUpdater = authenticated && klozang === clozang ? (
+    const infoUpdater = authenticated && userAlias === alias ? (
       <EditBoozDetails 
       boozId={boozId}
       drinkName={drinkName}
@@ -119,9 +118,9 @@ class Boozula extends Component {
             variant="body2"
             component={Link}
             className="rust foam"
-            to={`/users/${clozang}`}
+            to={`/users/${userAlias}`}
           >
-            <strong>>{alias}</strong>
+            <strong>>{userAlias}</strong>
           </Typography>
           
           <hr className="bar-separator-booz"/>
@@ -135,7 +134,7 @@ class Boozula extends Component {
 
           <CheersButton boozId={boozId}/>
           <span className="foam">{cheersCount}</span>
-          <ToastDialog boozId={boozId} alias={alias}/>
+          <ToastDialog boozId={boozId} userAlias={userAlias}/>
           <span className="foam">{toastCount}</span>
           <Typography variant="body1" className="foam">
             <strong className="rusty">Main Alcohol:</strong> {mainAlcohol}
