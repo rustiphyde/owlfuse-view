@@ -113,7 +113,7 @@ class Boozula extends Component {
         <CardMedia image={boozImage} title="Drink" className={classes.image} />
         <CardContent className={classes.content}>
         <Typography variant="h5" className="boozTitle2"><strong>:{drinkName.toUpperCase()}:</strong></Typography>
-        <span><ViewBoozulaDetails boozId={boozId} alias={alias}/></span>
+        <span><ViewBoozulaDetails boozId={boozId} userAlias={userAlias}/></span>
           <Typography
             variant="body2"
             component={Link}
