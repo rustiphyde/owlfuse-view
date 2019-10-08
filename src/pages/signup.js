@@ -49,7 +49,7 @@ class signup extends Component {
       confirmPassword: this.state.confirmPassword,
       alias: this.state.alias
     };
-    this.props.signUpUser(newUserData, this.props.history);
+    this.props.signupUser(newUserData, this.props.history);
   };
   handleChange = event => {
     this.setState({
