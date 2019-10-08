@@ -111,7 +111,7 @@ class ViewBoozulaDetails extends Component {
               component={Link}
               color="primary"
               variant="body2"
-              to={`/users/>${userAlias}`}
+              to={`/${userAlias}`}
           >
             <strong className="rust foam"><strong className="rusty">Posted By: </strong> >{userAlias}</strong>
           </Typography>

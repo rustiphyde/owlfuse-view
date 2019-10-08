@@ -133,7 +133,8 @@ class ToastDialog extends Component {
         </Grid>
           <hr className="bar-separator-booz" />
           <ToastForm boozId={boozId}/>
-          <Toasts toasts={toasts}/>
+          <Toasts toasts={toasts} />
+          <span className="foam center dark"><strong>END OF TOASTS</strong></span>
       </Grid>
     );
     return (

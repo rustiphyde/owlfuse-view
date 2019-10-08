@@ -10,6 +10,9 @@ import StaticProfile from "../components/StaticProfile";
 // MUI Stuff
 import Grid from "@material-ui/core/Grid";
 
+// Icons
+import FlameIcon from '../components/icons/FlameIcon';
+
 // Redux
 import { connect } from "react-redux";
 import { getUserData } from "../redux/actions/dataActions";
@@ -54,6 +57,21 @@ class user extends Component {
 
     return (
       <Grid container spacing={2}>
+        <Grid item sm={4} xs={12}>
+        
+          <div className="sparkTitle">
+            <strong>CANDLE</strong>
+            <hr className="bar-separator" />
+          </div>
+          <div className="candle" width="100%">
+            <FlameIcon className="icon7"/>
+        </div>
+          {this.state.profile === null ? (
+            <p>Loading Candle...</p>
+          ) : (
+            <StaticProfile profile={this.state.profile} />
+          )}
+        </Grid>
         <Grid item sm={8} xs={12}>
           <div className="sparkTitle">
             <strong>SPARKS</strong>
@@ -66,18 +84,7 @@ class user extends Component {
           </div>
           {boozulasMarkup}
         </Grid>
-        <Grid item sm={4} xs={12}>
-          <div className="sparkTitle">
-            <strong>CANDLE</strong>
-            <hr className="bar-separator" />
-          </div>
-          <div className="candle" width="100%"></div>
-          {this.state.profile === null ? (
-            <p>Loading Candle...</p>
-          ) : (
-            <StaticProfile profile={this.state.profile} />
-          )}
-        </Grid>
+        
       </Grid>
     );
   }
