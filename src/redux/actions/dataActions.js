@@ -397,11 +397,12 @@ export const choozByList = okeId => dispatch => {
     });
 };
 
-export const getUserData = klozang => dispatch => {
+export const getUserData = userAlias => dispatch => {
   dispatch({ type: LOADING_DATA });
   axios
-    .get(`user/${klozang}`)
+    .get(`user/${userAlias}`)
     .then(res => {
+      console.log(res.data)
       dispatch({
         type: SET_SPARKS,
         payload: res.data.sparks
