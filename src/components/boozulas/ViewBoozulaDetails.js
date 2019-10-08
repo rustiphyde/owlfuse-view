@@ -82,8 +82,7 @@ class ViewBoozulaDetails extends Component {
       boozula: {
         drinkName,
         mainAlcohol,
-        alias,
-        klozang,
+        userAlias,
         boozImage,
         createdAt,
         ingredients,
@@ -108,13 +107,13 @@ class ViewBoozulaDetails extends Component {
         </Grid>
         <Grid item sm={6} className={classes.stuff}>
         <Typography variant="h5" className="rusty"><strong>:{drinkName}:</strong></Typography>
-          <Typography
-            component={Link}
-            color="primary"
-            variant="body2"
-            to={`/users/>${klozang}`}
+            <Typography
+              component={Link}
+              color="primary"
+              variant="body2"
+              to={`/users/>${userAlias}`}
           >
-            <strong className="rust foam"><strong className="rusty">Posted By: </strong> >{alias}</strong>
+            <strong className="rust foam"><strong className="rusty">Posted By: </strong> >{userAlias}</strong>
           </Typography>
           <hr className="bar-separator-booz" />
           <Typography variant="body2" className="foam">
@@ -192,7 +191,7 @@ class ViewBoozulaDetails extends Component {
 ViewBoozulaDetails.propTypes = {
   getBoozula: PropTypes.func.isRequired,
   boozId: PropTypes.string.isRequired,
-  alias: PropTypes.string.isRequired,
+  userAlias: PropTypes.string.isRequired,
   boozula: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired
 };
