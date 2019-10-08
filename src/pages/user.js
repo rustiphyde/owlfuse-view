@@ -19,10 +19,11 @@ class user extends Component {
     profile: null
   };
   componentDidMount() {
-    const clozang = this.props.match.params.clozang;
-    this.props.getUserData(clozang);
+    const alias = this.props.match.params.alias;
+    
+    this.props.getUserData(alias);
     axios
-      .get(`/user/${clozang}`)
+      .get(`/user/${alias}`)
       .then(res => {
         this.setState({
           profile: res.data.user
@@ -33,7 +34,7 @@ class user extends Component {
   render() {
     const { sparks, boozulas, loading } = this.props.data;
 
-    const sparksMarkup = loading ? (
+    let sparksMarkup = loading ? (
       <p>Loading Data...</p>
     ) : sparks === null ? (
       <strong>This user has not lit any sparks yet.</strong>
@@ -41,7 +42,7 @@ class user extends Component {
       sparks.map(spark => <Spark key={spark.sparkId} spark={spark} />)
     );
 
-    const boozulasMarkup = loading ? (
+    let boozulasMarkup = loading ? (
       <p>Loading Data...</p>
     ) : boozulas === null ? (
       <strong>This user has not created any boozulas yet.</strong>
