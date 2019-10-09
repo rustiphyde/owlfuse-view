@@ -34,25 +34,18 @@ const styles = theme => ({
     visibleSeparator: {
         width: '100%',
 
-        borderBottom: '1px solid #b75a0e',
+        borderBottom: '1px solid #ff9800',
         marginBottom: 20
-      },
-      outerRing: {
-        width: 172,
-        height: 172,
-        alignSelf: 'center',
-        border: "6px double #b75a0e",
-        borderRadius: "50%",
       },
       boozulaImage: {
         maxWidth: 180,
         height: 180,
         borderRadius: "50%",
         objectFit: "cover",
-        border: "6px double #b75a0e"
+        border: "6px double #ff9800"
       },
   dialogContent: {
-        color: '#b75a0e',
+        color: '#ff9800',
         overflowY: "auto",
         overflowX: "hidden",
         backgroundColor: "#263238"
@@ -70,7 +63,9 @@ const styles = theme => ({
 
 class ToastDialog extends Component {
   state = {
-    open: false
+    open: false,
+    oldPath: '',
+    newPath: ''
   };
   componentDidMount(){
       if(this.props.openDialog){
@@ -78,10 +73,23 @@ class ToastDialog extends Component {
       }
   }
   handleOpen = () => {
-    this.setState({ open: true });
+    let oldPath = window.location.pathname;
+
+    const { userClozang, boozId } = this.props;
+    const newPath = `/${userClozang}/boozula/${boozId}`;
+
+    if (oldPath === newPath) oldPath = `/${userClozang}`;
+
+    window.history.pushState(null, null, newPath);
+
+
+
+
+    this.setState({ open: true, oldPath, newPath });
     this.props.getBoozula(this.props.boozId);
   };
   handleClose = () => {
+    window.history.pushState(null, null, this.state.oldPath);
     this.setState({ open: false });
   };
   render() {
