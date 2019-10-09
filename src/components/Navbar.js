@@ -49,7 +49,7 @@ export class Navbar extends Component {
                   <OkelistIcon />
                 </OwlFuseButton>
               </Link>
-              <OwlFuseButton tip="VIEW YOUR SIZZLES">
+              <OwlFuseButton tip="SIZZLES & CLINKS">
                 <SizzleIcon />
               </OwlFuseButton>
             </Fragment>

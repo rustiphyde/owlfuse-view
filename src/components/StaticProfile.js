@@ -107,7 +107,7 @@ const StaticProfile = (props) => {
             <Fragment>
               <a href={website} target="_blank" rel="noopener noreferrer">
                 {" "}
-                <OwlFuseButton tip={`${website.toUpperCase()}`}>
+                <OwlFuseButton tip={`${website}`}>
                   <LinkIcon className="icon orange" color="primary" />
                 </OwlFuseButton>
               </a>

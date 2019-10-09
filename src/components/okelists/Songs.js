@@ -13,7 +13,7 @@ const styles = theme => ({
       marginRight: 16,
       backgroundColor: '#263238',
       padding: 16,
-      maxWidth: 320,
+      maxWidth: 352,
   },
   frag: {
       backgroundColor: '#263238'

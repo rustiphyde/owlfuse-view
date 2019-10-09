@@ -240,11 +240,6 @@ input {
   color: var(--background-two);
 }
 
-.center {
-  margin: 0 auto;
-  text-align: center;
-}
-
 .warning-label {
   color: var(--delete);
   font-size: .75rem;
@@ -277,4 +272,9 @@ input {
 
 .reset-form-62 MuiGrid-container {
   display: block !important;
+}
+
+.center {
+  margin: 0 auto;
+  text-align: center;
 }

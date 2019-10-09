@@ -40,15 +40,15 @@ class user extends Component {
     let sparksMarkup = loading ? (
       <p>Loading Data...</p>
     ) : sparks === null ? (
-      <strong>This user has not lit any sparks yet.</strong>
+      <strong className="center">This user has not lit any sparks yet.</strong>
     ) : (
       sparks.map(spark => <Spark key={spark.sparkId} spark={spark} />)
     );
 
     let boozulasMarkup = loading ? (
       <p>Loading Data...</p>
-    ) : boozulas === null ? (
-      <strong>This user has not created any boozulas yet.</strong>
+    ) : boozulas === null || boozulas.length === 0 ? (
+      <strong className="center">This user has not created any boozulas yet.</strong>
     ) : (
       boozulas.map(boozula => (
         <Boozula key={boozula.boozId} boozula={boozula} />
