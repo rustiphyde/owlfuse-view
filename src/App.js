@@ -76,7 +76,9 @@ class App extends Component {
                 component={reset}
                 />
                 <Route exact path="/:clozang" component={user} />
-            </Switch>
+                <Route exact path="/:clozang/spark/:sparkId" component={user} />
+                <Route exact path="/:clozang/boozula/:boozId" component={user}/>
+              </Switch>
             </div>
             <Footer />
         </BrowserRouter>
