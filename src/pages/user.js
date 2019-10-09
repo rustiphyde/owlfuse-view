@@ -19,11 +19,18 @@ import { getUserData } from "../redux/actions/dataActions";
 
 class user extends Component {
   state = {
-    profile: null
+    profile: null,
+    sparkIdParam: null,
+    boozIdParam: null
   };
   componentDidMount() {
     const clozang = this.props.match.params.clozang;
+    const sparkId = this.props.match.params.sparkId;
+    const boozId = this.props.match.params.boozId;
     
+    if (sparkId) this.setState({ sparkIdParam: sparkId });
+    if (boozId) this.setState({ boozIdParam: boozId });
+
     this.props.getUserData(clozang);
     axios
       .get(`/user/${clozang}`)
@@ -36,23 +43,36 @@ class user extends Component {
   }
   render() {
     const { sparks, boozulas, loading } = this.props.data;
+    const { sparkIdParam, boozIdParam } = this.state;
 
     let sparksMarkup = loading ? (
       <p>Loading Data...</p>
     ) : sparks === null ? (
       <strong className="center">This user has not lit any sparks yet.</strong>
-    ) : (
+    ) : !sparkIdParam ? (
       sparks.map(spark => <Spark key={spark.sparkId} spark={spark} />)
+        ) : (
+            sparks.map(spark => {
+              if (spark.sparkId !== sparkIdParam)
+                return <Spark key={spark.sparkId} spark={spark} />
+              else return <Spark key={spark.sparkId} spark={spark} openDialog/>
+      })
     );
 
     let boozulasMarkup = loading ? (
       <p>Loading Data...</p>
     ) : boozulas === null || boozulas.length === 0 ? (
       <strong className="center">This user has not created any boozulas yet.</strong>
-    ) : (
+    ) : !boozIdParam ? (
       boozulas.map(boozula => (
         <Boozula key={boozula.boozId} boozula={boozula} />
       ))
+        ) : (
+            boozulas.map(boozula => {
+              if (boozula.boozId !== boozIdParam)
+                return <Boozula key={boozula.boozId} boozula={boozula} />
+              else return <Boozula key={boozula.boozId} boozula={boozula} openDialog/>
+        })    
     );
 
     return (
