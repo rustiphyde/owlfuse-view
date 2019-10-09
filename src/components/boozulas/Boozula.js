@@ -135,7 +135,7 @@ class Boozula extends Component {
 
           <CheersButton boozId={boozId}/>
           <span className="foam">{cheersCount}</span>
-          <ToastDialog boozId={boozId} userAlias={userAlias} userClozang={userClozang}/>
+          <ToastDialog boozId={boozId} userAlias={userAlias} userClozang={userClozang} openDialog={this.props.openDialog}/>
           <span className="foam">{toastCount}</span>
           <Typography variant="body1" className="foam">
             <strong className="rusty">Main Alcohol:</strong> {mainAlcohol}
@@ -152,7 +152,8 @@ Boozula.propTypes = {
   removeCheers: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   boozula: PropTypes.object.isRequired,
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  openDialog: PropTypes.bool
 }
 
 const mapStateToProps = state => ({
