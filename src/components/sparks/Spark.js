@@ -94,7 +94,7 @@ class Spark extends Component {
           </Typography>
           <HeatButton sparkId={sparkId}/>
           <span>{heatCount}</span>
-          <SparkBox sparkId={sparkId} userAlias={userAlias} userClozang={userClozang}/>
+          <SparkBox sparkId={sparkId} userAlias={userAlias} userClozang={userClozang} openDialog={this.props.openDialog}/>
           <span>{stokeCount}</span>
           <span>{deleteButton}</span>
         </CardContent>
@@ -109,7 +109,8 @@ Spark.propTypes = {
   removeHeat: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   spark: PropTypes.object.isRequired,
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  openDialog: PropTypes.bool
 };
 
 const mapStateToProps = state => ({
