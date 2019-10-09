@@ -6,7 +6,9 @@ import {
   ADD_HEAT,
   REMOVE_HEAT,
   ADD_CHEERS,
-  REMOVE_CHEERS
+  REMOVE_CHEERS,
+  MARK_SIZZLES_READ,
+  MARK_CLINKS_READ
 } from "../types";
 
 const initialState = {
@@ -77,7 +79,17 @@ export default function(state = initialState, action) {
           cheers: state.cheers.filter(
             cheer => cheer.boozId !== action.payload.boozId
           )
-        };
+      };
+    case MARK_SIZZLES_READ:
+      state.sizzles.foreach(sizz => sizz.read = true);
+      return {
+        ...state
+      }
+      case MARK_CLINKS_READ:
+          state.clinks.foreach(clink => clink.read = true);
+          return {
+            ...state
+          }
     default:
       return state;
   }
