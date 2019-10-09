@@ -131,7 +131,6 @@ class ToastDialog extends Component {
             <ToastIcon className="icon6 rust foam" />
           </OwlFuseButton>
           <span>{toastCount}</span>
-          
         </Grid>
           <hr className="bar-separator-booz" />
           <ToastForm boozId={boozId}/>

@@ -64,7 +64,9 @@ const styles = theme => ({
 
 class SparkBox extends Component {
   state = {
-    open: false
+    open: false,
+    oldPath: '',
+    newPath: ''
   };
   componentDidMount(){
       if(this.props.openDialog){
@@ -72,10 +74,19 @@ class SparkBox extends Component {
       }
   }
   handleOpen = () => {
-    this.setState({ open: true });
+    let oldPath = window.location.pathname;
+
+    const { userClozang, sparkId } = this.props;
+    const newPath = `/${userClozang}/spark/${sparkId}`;
+
+    window.history.pushState(null, null, newPath);
+
+
+    this.setState({ open: true, oldPath, newPath });
     this.props.getSpark(this.props.sparkId);
   };
   handleClose = () => {
+    window.history.pushState(null, null, this.state.oldPath)
     this.setState({ open: false });
     this.props.clearErrors();
   };
