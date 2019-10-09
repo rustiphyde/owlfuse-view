@@ -79,6 +79,8 @@ class SparkBox extends Component {
     const { userClozang, sparkId } = this.props;
     const newPath = `/${userClozang}/spark/${sparkId}`;
 
+    if (oldPath === newPath) oldPath = `/${userClozang}`;
+
     window.history.pushState(null, null, newPath);
 
 
