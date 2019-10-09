@@ -24,7 +24,7 @@ const styles = {
         display: "flex",
         marginBottom: 8,
         borderRadius: '16px 16px 16px 16px',
-      backgroundColor: '#37474f',
+      backgroundColor: '#263238',
         textAlign: "center"
       },
       clef: {

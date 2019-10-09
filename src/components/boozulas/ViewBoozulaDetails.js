@@ -83,6 +83,7 @@ class ViewBoozulaDetails extends Component {
         drinkName,
         mainAlcohol,
         userAlias,
+        userClozang,
         boozImage,
         createdAt,
         ingredients,
@@ -111,7 +112,7 @@ class ViewBoozulaDetails extends Component {
               component={Link}
               color="primary"
               variant="body2"
-              to={`/${userAlias}`}
+              to={`/${userClozang}`}
           >
             <strong className="rust foam"><strong className="rusty">Posted By: </strong> >{userAlias}</strong>
           </Typography>
@@ -192,6 +193,7 @@ ViewBoozulaDetails.propTypes = {
   getBoozula: PropTypes.func.isRequired,
   boozId: PropTypes.string.isRequired,
   userAlias: PropTypes.string.isRequired,
+  userClozang: PropTypes.string.isRequired,
   boozula: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired
 };

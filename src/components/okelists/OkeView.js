@@ -35,11 +35,9 @@ const styles = theme => ({
     marginBottom: 20
   },
   dialogContent: {
-    padding: 20,
-    color: "#ff9800 !important",
-    backgroundColor: "##263238",
     overflowY: "auto",
-    overflowX: "hidden"
+    overflowX: "hidden",
+    backgroundColor: "#263238"
   },
   closeButton: {
     position: "absolute",
@@ -49,7 +47,8 @@ const styles = theme => ({
     backgroundColor: "#263238 !important"
   },
   spinnerDiv: {
-    padding: "80px 0 80px 160px" 
+    textAlign: 'center',
+    margin: 'auto'
     
       }
 });
@@ -79,7 +78,7 @@ class OkeView extends Component {
 
     const dialogMarkup = loading ? (
      <div className={classes.spinnerDiv}>
-        <CircularProgress color="secondary"size={200} thickness={2}/>
+        <CircularProgress className="rusty2" size={100} thickness={4}/>
         </div>
     ) : (
       <Grid container spacing={10} className={classes.charcoal}>

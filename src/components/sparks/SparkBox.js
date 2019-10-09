@@ -58,8 +58,7 @@ const styles = theme => ({
       },
       spinnerDiv: {
         textAlign: 'center',
-        marginTop: 50,
-        marginBottom: 50
+        margin: 'auto'
       }
 });
 
@@ -91,6 +90,7 @@ class SparkBox extends Component {
         stokeCount,
         userImage,
         userAlias,
+        userClozang,
         stokes
       },
       UI: { loading }
@@ -98,7 +98,7 @@ class SparkBox extends Component {
 
     const dialogMarkup = loading ? (
       <div className={classes.spinnerDiv}>
-        <CircularProgress color="secondary"size={200} thickness={2}/>
+        <CircularProgress className="rusty2" size={100} thickness={4}/>
         </div>
     ) : (
      <Grid container spacing={6} className="charcoal-border">
@@ -110,7 +110,7 @@ class SparkBox extends Component {
             component={Link}
             color="primary"
             variant="h5"
-            to={`/${userAlias}`}
+            to={`/${userClozang}`}
           >
           <strong>>{userAlias}</strong>
           </Typography>

@@ -75,7 +75,7 @@ class App extends Component {
                 path="/reset"
                 component={reset}
                 />
-                <Route exact path="/:alias" component={user} />
+                <Route exact path="/:clozang" component={user} />
             </Switch>
             </div>
             <Footer />

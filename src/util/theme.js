@@ -4,9 +4,8 @@ import blueGrey from "@material-ui/core/colors/blueGrey";
 export default {
   palette: {
     primary: {
-      light: blueGrey[700],
+      light: blueGrey[800],
       main: blueGrey[900],
-      dark: blueGrey[900],
       contrastText: '#f4db9d'
     },
     secondary: {

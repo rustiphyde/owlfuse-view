@@ -22,11 +22,11 @@ class user extends Component {
     profile: null
   };
   componentDidMount() {
-    const alias = this.props.match.params.alias;
+    const clozang = this.props.match.params.clozang;
     
-    this.props.getUserData(alias);
+    this.props.getUserData(clozang);
     axios
-      .get(`/user/${alias}`)
+      .get(`/user/${clozang}`)
       .then(res => {
         this.setState({
           profile: res.data.user

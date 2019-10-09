@@ -30,7 +30,7 @@ const styles = {
     display: "flex",
     marginBottom: 8,
     borderRadius: "16px 0 16px 0",
-    backgroundColor: "#37474f"
+    backgroundColor: "#263238"
   },
   content: {
     padding: 25,
@@ -60,6 +60,7 @@ class Spark extends Component {
       classes,
       spark: {
         userAlias,
+        userClozang,
         userImage,
         heatCount,
         stokeCount,
@@ -68,9 +69,9 @@ class Spark extends Component {
         fire,
         sparkId
       },
-      user: { authenticated,  credentials: { alias }   }
+      user: { authenticated,  credentials: { clozang }   }
     } = this.props;
-    const deleteButton = authenticated && userAlias === alias ? (
+    const deleteButton = authenticated && userClozang === clozang ? (
       <ExtinguishSpark sparkId={sparkId}/>
     ) : null
     return (
@@ -81,7 +82,7 @@ class Spark extends Component {
             variant="h6"
             color="primary"
             component={Link}
-            to={`/${userAlias}`}
+            to={`/${userClozang}`}
           >
             <strong>>{userAlias}</strong>
           </Typography>
@@ -93,7 +94,7 @@ class Spark extends Component {
           </Typography>
           <HeatButton sparkId={sparkId}/>
           <span>{heatCount}</span>
-          <SparkBox sparkId={sparkId} userAlias={userAlias}/>
+          <SparkBox sparkId={sparkId} userAlias={userAlias} userClozang={userClozang}/>
           <span>{stokeCount}</span>
           <span>{deleteButton}</span>
         </CardContent>

@@ -33,7 +33,7 @@ const styles = theme => ({
     borderTop: "2px solid #ff9800",
     borderBottom: "2px solid #ff9800",
     borderLeft: "2px solid #ff9800",
-    backgroundColor: "#37474f"
+    backgroundColor: "#263238"
   },
   candle: {
     margin: 8,
@@ -109,6 +109,7 @@ class Candle extends Component {
       user: {
         credentials: {
           alias,
+          clozang,
           createdAt,
           imageUrl,
           bio,
@@ -144,7 +145,7 @@ class Candle extends Component {
             <div className="candle-details">
               <MuiLink
                 component={Link}
-                to={`/users/${alias}`}
+                to={`/${clozang}`}
                 color="primary"
                 variant="h5"
               >

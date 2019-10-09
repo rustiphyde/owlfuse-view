@@ -51,18 +51,19 @@ const styles = theme => ({
         objectFit: "cover",
         border: "6px double #b75a0e"
       },
-      dialogContent: {
-        color: "#b75a0e",
+  dialogContent: {
+        color: '#b75a0e',
         overflowY: "auto",
         overflowX: "hidden",
-        backgroundColor: "primary"
+        backgroundColor: "#263238"
       },
       closeButton: {
         position: "absolute",
         left: "82%"
       },
       spinnerDiv: {
-        padding: "80px 0 80px 160px" 
+        textAlign: 'center',
+        margin: 'auto'
         
           }    
 });
@@ -89,6 +90,7 @@ class ToastDialog extends Component {
       boozula: {
         drinkName,
         userAlias,
+        userClozang,
         boozImage,
         createdAt,
         cheersCount,
@@ -101,7 +103,7 @@ class ToastDialog extends Component {
 
     const dialogMarkup = loading ? (
             <div className={classes.spinnerDiv}>
-        <CircularProgress color="secondary"size={200} thickness={2}/>
+        <CircularProgress className="rusty2" size={100} thickness={4}/>
         </div>
     ) : (
      <Grid container spacing={10} className="dark">
@@ -114,7 +116,7 @@ class ToastDialog extends Component {
             component={Link}
               className="rust foam"
             variant="body2"
-            to={`/${userAlias}`}
+            to={`/${userClozang}`}
           >
             <strong>Posted by >{userAlias}</strong>
           </Typography>
@@ -170,7 +172,8 @@ class ToastDialog extends Component {
 ToastDialog.propTypes = {
   getBoozula: PropTypes.func.isRequired,
   boozId: PropTypes.string.isRequired,
-  userAlias: PropTypes.string,
+  userAlias: PropTypes.string.isRequired,
+  userClozang: PropTypes.string.isRequired,
   boozula: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired
 };

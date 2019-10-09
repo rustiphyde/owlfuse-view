@@ -26,7 +26,7 @@ const styles = theme => ({
     borderTop: "2px solid #ff9800",
     borderBottom: "2px solid #ff9800",
     borderLeft: "2px solid #ff9800",
-    backgroundColor: "#37474f"
+    backgroundColor: "#263238"
   },
   candle: {
     margin: 8,
@@ -70,7 +70,7 @@ const StaticProfile = (props) => {
   const {
     classes,
       profile: {
-        alias, createdAt, imageUrl, bio, website, location }
+        clozang, alias, createdAt, imageUrl, bio, website, location }
   } = props;
 
    
@@ -87,11 +87,11 @@ const StaticProfile = (props) => {
         <div className="candle-details">
           <MuiLink
             component={Link}
-            to={`/${alias}`}
+            to={`/${clozang}`}
             color="primary"
             variant="h5"
           >
-            <strong>{alias}</strong>
+            <strong>>{alias}</strong>
           </MuiLink>
           <hr />
           {bio && <Typography variant="body2"><strong>{bio}</strong></Typography>}

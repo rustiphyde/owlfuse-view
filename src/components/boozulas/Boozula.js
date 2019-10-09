@@ -75,6 +75,7 @@ class Boozula extends Component {
         drinkName,
         mainAlcohol,
         userAlias,
+        userClozang,
         boozImage,
         createdAt,
         ingredients,
@@ -87,16 +88,16 @@ class Boozula extends Component {
       },
       user: {
         authenticated,
-        credentials: { alias }
+        credentials: { clozang }
       }
     } = this.props;
-    const deleteButton = authenticated && userAlias === alias ? (
+    const deleteButton = authenticated && userClozang === clozang ? (
       <EmptyBoozula boozId={boozId}/>
     ) : null
-    const imageUpdater = authenticated && userAlias === alias ? (
+    const imageUpdater = authenticated && userClozang === clozang ? (
       <EditBoozulaImage boozId={boozId}/>
     ) : null
-    const infoUpdater = authenticated && userAlias === alias ? (
+    const infoUpdater = authenticated && userClozang === clozang ? (
       <EditBoozDetails 
       boozId={boozId}
       drinkName={drinkName}
@@ -113,12 +114,12 @@ class Boozula extends Component {
         <CardMedia image={boozImage} title="Drink" className={classes.image} />
         <CardContent className={classes.content}>
         <Typography variant="h5" className="boozTitle2"><strong>:{drinkName.toUpperCase()}:</strong></Typography>
-        <span><ViewBoozulaDetails boozId={boozId} userAlias={userAlias}/></span>
+          <span><ViewBoozulaDetails boozId={boozId} userAlias={userAlias} userClozang={userClozang}/></span>
           <Typography
             variant="body2"
             component={Link}
             className="rust foam"
-            to={`/${userAlias}`}
+            to={`/${userClozang}`}
           >
             <strong>>{userAlias}</strong>
           </Typography>
@@ -134,7 +135,7 @@ class Boozula extends Component {
 
           <CheersButton boozId={boozId}/>
           <span className="foam">{cheersCount}</span>
-          <ToastDialog boozId={boozId} userAlias={userAlias}/>
+          <ToastDialog boozId={boozId} userAlias={userAlias} userClozang={userClozang}/>
           <span className="foam">{toastCount}</span>
           <Typography variant="body1" className="foam">
             <strong className="rusty">Main Alcohol:</strong> {mainAlcohol}

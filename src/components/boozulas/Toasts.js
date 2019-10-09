@@ -32,7 +32,7 @@ class Toasts extends Component {
     return (
       <Grid container>
         {toasts.map((toast) => {
-          const { body, createdAt, userImage, userAlias } = toast;
+          const { body, createdAt, userImage, userAlias, userClozang } = toast;
           return (
             <Fragment key={createdAt}>
             <hr className="bar-separator"/>
@@ -50,7 +50,7 @@ class Toasts extends Component {
                       <Typography
                         variant="body2"
                         component={Link}
-                        to={`/${userAlias}`}
+                        to={`/${userClozang}`}
                         color="primary"
                       >
                         <strong className="foam rust">>{userAlias}</strong>
