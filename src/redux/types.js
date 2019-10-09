@@ -4,6 +4,7 @@ export const SET_UNAUTHENTICATED = 'SET_UNAUTHENTICATED';
 export const SET_USER = 'SET_USER';
 export const LOADING_USER = 'LOADING_USER';
 export const MARK_SIZZLES_READ = 'MARK_SIZZLES_READ';
+export const MARK_CLINKS_READ = 'MARK_CLINKS_READ';
 // UI Reducer Types
 export const SET_ERRORS = 'SET_ERRORS';
 export const LOADING_UI = 'LOADING_UI';
