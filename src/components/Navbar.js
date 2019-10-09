@@ -4,7 +4,10 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import OwlFuseButton from "../util/OwlFuseButton";
 import OwlFuseTitle from "../images/owlfuse-title.png";
+
+// Components
 import PostSpark from './sparks/PostSpark';
+import SizzlesAndClinks from './SizzlesAndClinks'
 
 // MUI Components
 import AppBar from "@material-ui/core/AppBar";
@@ -12,7 +15,6 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 
 // Icons
-import SizzleIcon from "./icons/SizzleIcon";
 import HomeIcon from "./icons/HomeIcon";
 import OkelistIcon from "./icons/OkelistIcon";
 import BoozulaIcon from './icons/BoozulaIcon';
@@ -49,9 +51,7 @@ export class Navbar extends Component {
                   <OkelistIcon />
                 </OwlFuseButton>
               </Link>
-              <OwlFuseButton tip="SIZZLES & CLINKS">
-                <SizzleIcon />
-              </OwlFuseButton>
+                <SizzlesAndClinks />
             </Fragment>
           ) : (
             <Fragment>
