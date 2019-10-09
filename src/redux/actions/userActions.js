@@ -6,7 +6,9 @@ import {
   SET_UNAUTHENTICATED,
   LOADING_USER,
   SET_SUCCESS,
-  CLEAR_SUCCESS
+  CLEAR_SUCCESS,
+  MARK_SIZZLES_READ,
+  MARK_CLINKS_READ
 } from "../types";
 import axios from "axios";
 
@@ -105,6 +107,26 @@ export const resetPassword = (userData) => dispatch => {
     });
   });
 };
+
+export const markSizzlesRead = (sizzleIds) => dispatch => {
+  axios.post('/sizzles', sizzleIds)
+    .then(res => {
+      dispatch({
+        type: MARK_SIZZLES_READ
+      })
+    })
+    .catch(err => console.log(err));
+} 
+
+export const markClinksRead = (clinkIds) => dispatch => {
+  axios.post('/clinks', clinkIds)
+    .then(res => {
+      dispatch({
+        type: MARK_CLINKS_READ
+      })
+    })
+    .catch(err => console.log(err));
+} 
 
 // Helper fxn for setting authorization header in various places
 const setAuthorizationHeader = token => {
