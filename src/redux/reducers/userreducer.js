@@ -81,12 +81,12 @@ export default function(state = initialState, action) {
           )
       };
     case MARK_SIZZLES_READ:
-      state.sizzles.foreach(sizz => sizz.read = true);
+      state.sizzles.forEach(sizz => sizz.read = true);
       return {
         ...state
       }
       case MARK_CLINKS_READ:
-          state.clinks.foreach(clink => clink.read = true);
+          state.clinks.forEach(clink => clink.read = true);
           return {
             ...state
           }

@@ -124,7 +124,7 @@ class ToastDialog extends Component {
             component={Link}
               className="rust foam"
             variant="body2"
-            to={`/${userClozang}`}
+            to={`/user/${userClozang}`}
           >
             <strong>Posted by >{userAlias}</strong>
           </Typography>

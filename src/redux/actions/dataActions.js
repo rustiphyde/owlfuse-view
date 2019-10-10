@@ -400,7 +400,7 @@ export const choozByList = okeId => dispatch => {
 export const getUserData = userClozang => dispatch => {
   dispatch({ type: LOADING_DATA });
   axios
-    .get(`user/${userClozang}`)
+    .get(`/user/${userClozang}`)
     .then(res => {
       dispatch({
         type: SET_SPARKS,

@@ -278,3 +278,14 @@ input {
   margin: 0 auto;
   text-align: center;
 }
+
+.menu {
+  max-width: 100vw;
+  font-size: .25rem;
+}
+
+body > div:nth-child(7) > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.MuiPopover-paper.MuiPaper-rounded > ul {
+  background-color: var(--background-two);
+  color: var(--rust);
+  text-align: center;
+}
