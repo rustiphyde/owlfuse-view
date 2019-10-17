@@ -6,6 +6,7 @@ import axios from "axios";
 import Spark from "../components/sparks/Spark";
 import Boozula from "../components/boozulas/Boozula";
 import StaticProfile from "../components/StaticProfile";
+import SparkSkeleton from '../util/SparkSkeleton';
 
 // MUI Stuff
 import Grid from "@material-ui/core/Grid";
@@ -46,7 +47,7 @@ class user extends Component {
     const { sparkIdParam, boozIdParam } = this.state;
 
     let sparksMarkup = loading ? (
-      <p>Loading Data...</p>
+      <SparkSkeleton/>
     ) : sparks === null ? (
       <strong className="center">This user has not lit any sparks yet.</strong>
     ) : !sparkIdParam ? (

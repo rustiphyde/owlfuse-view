@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 // Components
 import Spark from '../components/sparks/Spark';
 import Candle from '../components/Candle';
+import SparkSkeleton from '../util/SparkSkeleton';
 
 // Icons
 import FlameIcon from '../components/icons/FlameIcon';
@@ -27,7 +29,7 @@ class home extends Component {
     let recentSparksMarkup = !loading ? (
       sparks.map(spark => <Spark key={spark.sparkId} spark={spark} />)
     ) : (
-      <p className="loading"><strong>Loading...</strong></p>
+      <SparkSkeleton/>
     );
     return (
       <Grid container spacing={2}>        
