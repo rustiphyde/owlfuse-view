@@ -8,6 +8,7 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import withStyles from '@material-ui/core/styles/withStyles';
+import Typography from '@material-ui/core/Typography';
 
 // Icons
 import HeatIcon from '../components/icons/HeatIcon';
@@ -69,22 +70,29 @@ const styles = (theme) => ({
 })
 
 const SparkSkeleton = (props) => {
-  const { classes } = props;
+  const { classes, length } = props;
 
-  const content = Array.from({ length: 6 }).map((item, index) => (
+  const content = Array.from({ length }).map((item, index) => (
     <Card className={classes.card} key={index}>
       <CardMedia className={classes.cover} image={NoImg} />
       <CardContent className={classes.cardContent}>
-        <div className={classes.alias} />
-        <div className={classes.date} />
-        <div className={classes.fullLine} />
-        <div className={classes.fullLine} />
-        <div className={classes.halfLine} />
-        <OwlFuseButton>
+      <Typography
+            variant="h6"
+            color="primary"
+          >
+            <strong>>Owl-Fuser</strong>
+          </Typography>
+          <Typography variant="body2" color="textSecondary">
+            ? days ago
+          </Typography>
+          <Typography variant="body2" color="primary" className="breaks">
+            <b>Spark an interest</b>
+          </Typography>
+        <OwlFuseButton tip="HEAT">
           <HeatIcon color="primary"/>
         </OwlFuseButton>
         <span>?</span>
-        <OwlFuseButton>
+        <OwlFuseButton tip="STOKES">
           <StokeIcon color="primary"/>
         </OwlFuseButton>
         <span>?</span>
@@ -96,7 +104,8 @@ const SparkSkeleton = (props) => {
 }
 
 SparkSkeleton.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  length: PropTypes.number.isRequired
 }
 
 export default withStyles(styles)(SparkSkeleton);
