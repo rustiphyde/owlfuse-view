@@ -13,6 +13,8 @@ import Typography from "@material-ui/core/Typography";
 
 // Components
 import EditCandleDetails from './EditCandleDetails';
+import CandleSkeleton from '../util/CandleSkeleton';
+
 // Icons
 import LocationIcon from "./icons/LocationIcon";
 import SelfieIcon from "./icons/SelfieIcon";
@@ -210,9 +212,7 @@ class Candle extends Component {
         </Paper>
       )
     ) : (
-      <p className="loading">
-        <strong>Loading...</strong>
-      </p>
+     <CandleSkeleton/>
     );
 
     return CandleMarkup;

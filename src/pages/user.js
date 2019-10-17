@@ -8,6 +8,7 @@ import Boozula from "../components/boozulas/Boozula";
 import StaticProfile from "../components/StaticProfile";
 import SparkSkeleton from '../util/SparkSkeleton';
 import BoozulaSkeleton from '../util/BoozulaSkeleton';
+import CandleSkeleton from '../util/CandleSkeleton';
 
 // MUI Stuff
 import Grid from "@material-ui/core/Grid";
@@ -89,7 +90,7 @@ class user extends Component {
             <FlameIcon className="icon7"/>
         </div>
           {this.state.profile === null ? (
-            <p>Loading Candle...</p>
+            <CandleSkeleton/>
           ) : (
             <StaticProfile profile={this.state.profile} />
           )}
