@@ -8,6 +8,7 @@ import Grid from "@material-ui/core/Grid";
 // Components
 import Okelist from "../components/okelists/Okelist";
 import PostOkelist from '../components/okelists/PostOkelist';
+import OkelistSkeleton from '../util/OkelistSkeleton';
 
 class okelists extends Component {
   // Initialize Component State for storing the Sparks
@@ -22,7 +23,7 @@ class okelists extends Component {
     let recentOkelistsMarkup = !loading ? (
       okelists.map(okelist => <Okelist key={okelist.okeId} okelist={okelist} />)
     ) : (
-      <p className="loading"><strong>Loading...</strong></p>
+      <OkelistSkeleton/>
     );
     return (
       <Grid container spacing={2} className="sheet">
