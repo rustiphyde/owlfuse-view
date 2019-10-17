@@ -29,7 +29,7 @@ class home extends Component {
     let recentSparksMarkup = !loading ? (
       sparks.map(spark => <Spark key={spark.sparkId} spark={spark} />)
     ) : (
-      <SparkSkeleton/>
+        <SparkSkeleton length={6}/>
     );
     return (
       <Grid container spacing={2}>        

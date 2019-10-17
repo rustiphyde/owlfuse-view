@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
+
 // MUI Stuff
 import Grid from "@material-ui/core/Grid";
+
 // Components
 import Boozula from "../components/boozulas/Boozula";
 import PostBoozula from "../components/boozulas/PostBoozula";
+import BoozulaSkeleton from '../util/BoozulaSkeleton';
+
 // Redux Stuff
 import { connect } from 'react-redux';
 import { getBoozulas } from '../redux/actions/dataActions';
@@ -19,7 +23,7 @@ class boozulas extends Component {
     let recentBoozulasMarkup = !loading ? (
       boozulas.map(boozula => <Boozula key={boozula.boozId} boozula={boozula} />)
     ) : (
-      <p className="loading"><strong>Loading...</strong></p>
+      <BoozulaSkeleton/>
     );
     return (
       <Grid container spacing={1}>

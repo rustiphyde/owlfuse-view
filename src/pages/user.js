@@ -7,6 +7,7 @@ import Spark from "../components/sparks/Spark";
 import Boozula from "../components/boozulas/Boozula";
 import StaticProfile from "../components/StaticProfile";
 import SparkSkeleton from '../util/SparkSkeleton';
+import BoozulaSkeleton from '../util/BoozulaSkeleton';
 
 // MUI Stuff
 import Grid from "@material-ui/core/Grid";
@@ -47,7 +48,7 @@ class user extends Component {
     const { sparkIdParam, boozIdParam } = this.state;
 
     let sparksMarkup = loading ? (
-      <SparkSkeleton/>
+      <SparkSkeleton length={2}/>
     ) : sparks === null ? (
       <strong className="center">This user has not lit any sparks yet.</strong>
     ) : !sparkIdParam ? (
@@ -61,7 +62,7 @@ class user extends Component {
     );
 
     let boozulasMarkup = loading ? (
-      <p>Loading Data...</p>
+      <BoozulaSkeleton />
     ) : boozulas === null || boozulas.length === 0 ? (
       <strong className="center">This user has not created any boozulas yet.</strong>
     ) : !boozIdParam ? (
