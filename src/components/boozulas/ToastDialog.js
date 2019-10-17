@@ -78,7 +78,7 @@ class ToastDialog extends Component {
     const { userClozang, boozId } = this.props;
     const newPath = `/${userClozang}/boozula/${boozId}`;
 
-    if (oldPath === newPath) oldPath = `/${userClozang}`;
+    if (this.state.oldPath === this.state.newPath) oldPath = `/user/${userClozang}`;
 
     window.history.pushState(null, null, newPath);
 

@@ -104,7 +104,7 @@ class SizzlesAndClinks extends Component {
                 style={{ fontSize: ".75rem" }}
                 color={iconColor}
                 variant="body1"
-                to={`>${sizz.recipient
+                to={`/>${sizz.recipient
                   .replace(/\s/g, "-")
                   .toLowerCase()}/spark/${sizz.sparkId}`}
               >
@@ -147,7 +147,7 @@ class SizzlesAndClinks extends Component {
                   .replace(/\s/g, "-")
                   .toLowerCase()}/boozula/${clink.boozId}`}
               >
-                {clink.sender} {verb} your spark {time}!
+                {clink.sender} {verb} your boozula {time}!
               </Typography>
             </MenuItem>
           );
