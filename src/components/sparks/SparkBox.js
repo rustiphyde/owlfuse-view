@@ -88,7 +88,6 @@ class SparkBox extends Component {
     this.props.getSpark(this.props.sparkId);
   };
   handleClose = () => {
-    console.log(this.state.oldPath)
     window.history.pushState(null, null, this.state.oldPath)
     this.setState({ open: false });
     this.props.clearErrors();
