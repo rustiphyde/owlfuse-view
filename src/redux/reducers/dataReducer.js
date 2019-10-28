@@ -20,7 +20,9 @@ import {
   ERASE_OKE,
   ADD_SONG,
   ADD_STOKE,
-  ADD_TOAST
+  ADD_TOAST,
+  SET_INFERNALS,
+  SET_INFERNAL
 } from "../types";
 
 const initialState = {
@@ -30,6 +32,8 @@ const initialState = {
   okelist: {},
   boozulas: [],
   boozula: {},
+  infernals: [],
+  infernal: {},
   loading: false
 };
 
@@ -46,11 +50,17 @@ export default function(state = initialState, action) {
         sparks: action.payload,
         loading: false
       };
-      case SET_SPARK:
-        return {
-          ...state,
-          spark: action.payload
-        }
+    case SET_SPARK:
+      return {
+        ...state,
+        spark: action.payload
+      };
+    case SET_INFERNALS:
+      return {
+        ...state,
+        infernals: action.payload,
+        loading: false
+      };
       case SET_OKELISTS:
         return {
           ...state,
