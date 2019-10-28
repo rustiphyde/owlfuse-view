@@ -61,7 +61,7 @@ const BoozulaSkeleton = (props) => {
       <CardMedia className={classes.cover} image={NoImg} />
       <CardContent className={classes.cardContent}>
       <Typography variant="h5" className="boozTitle2"><strong>:BOOZULA:</strong></Typography>
-        <span><OwlFuseButton
+        <span><OwlFuseButton tip="VIEW BOOZULA"
         tipClassName={classes.expandButton}
         >
           <ViewBoozIcon className="icon2 rust foam" />
@@ -77,11 +77,11 @@ const BoozulaSkeleton = (props) => {
           </Typography>
         <hr className="bar-separator-booz" />
         <hr className="bar-separator-booz"/>
-        <OwlFuseButton>
+        <OwlFuseButton tip="CHEERS">
           <CheersIcon className="foam icon2"/>
         </OwlFuseButton>
         <span className="foam">?</span>
-        <OwlFuseButton>
+        <OwlFuseButton tip="TOASTS">
           <ToastIcon className="foam icon6"/>
         </OwlFuseButton>
         <span className="foam">?</span>
