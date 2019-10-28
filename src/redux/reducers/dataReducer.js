@@ -61,6 +61,11 @@ export default function(state = initialState, action) {
         infernals: action.payload,
         loading: false
       };
+    case SET_INFERNAL:
+      return {
+        ...state,
+        infernal: action.payload
+      }
       case SET_OKELISTS:
         return {
           ...state,
