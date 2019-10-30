@@ -24,6 +24,7 @@ const styles = {
     marginTop: 18,
     marginBottom: 8,
     border: "dashed 2px white",
+    borderRadius: "0 16px 0 ",
     backgroundColor: "#ff9800 !important",
     boxShadow: "0px 6px 16px #ff9800, 0px -6px 16px #ff9800, 6px 0px 16px #ff9800,  -6px 0px 16px #ff9800, 10px 10px 20px #000"
   },
