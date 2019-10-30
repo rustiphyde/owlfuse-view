@@ -289,3 +289,7 @@ body > div:nth-child(7) > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.Mu
   color: var(--rust);
   text-align: center;
 }
+
+.smaller {
+  font-size: 10px;
+}
