@@ -24,8 +24,8 @@ class infernals extends Component {
       <Grid container spacing={2} className="fireGrid">
         <Grid item sm={2}/>
         <Grid item sm={8} xs={12}>
-          <div className="fireTitle">
-          <strong><em>FIRES</em></strong>
+          <div className="sparkTitle">
+          <strong><em>INFERNALS</em></strong>
           <hr className="bar-separator"/>
           </div>
           {recentInfernalMarkup}
