@@ -84,6 +84,20 @@ export const getInfernals = () => dispatch => {
     });
 };
 
+export const getInfernal = infernalId => dispatch => {
+  dispatch({ type: LOADING_UI });
+  axios
+    .get(`/infernal/${infernalId}`)
+    .then(res => {
+      dispatch({
+        type: SET_INFERNAL,
+        payload: res.data
+      });
+      dispatch({ type: STOP_LOADING_UI });
+    })
+    .catch(err => console.log(err));
+};
+
 // fetch all okelists
 export const getOkelists = () => dispatch => {
   dispatch({ type: LOADING_DATA });
