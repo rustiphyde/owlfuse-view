@@ -8,6 +8,9 @@ import Infernal from "../components/infernals/Infernal";
 import { connect } from "react-redux";
 import { getInfernals } from "../redux/actions/dataActions";
 
+// Icons
+import InfernalIcon from '../components/icons/InfernalIcon';
+import InfernalMirrorIcon from '../components/icons/InfernalMirrorIcon';
 
 class infernals extends Component {
   componentDidMount() {
@@ -24,8 +27,10 @@ class infernals extends Component {
       <Grid container spacing={2} className="fireGrid">
         <Grid item sm={2}/>
         <Grid item sm={8} xs={12}>
-          <div className="sparkTitle">
-          <strong><em>INFERNALS</em></strong>
+          <div className="infernal-type">
+            <span><InfernalIcon color="secondary" className="icon2"/></span>
+            <strong className="infernal-type"> INFERNALS </strong>
+            <span><InfernalMirrorIcon color="secondary" className="icon2"/></span>
           <hr className="bar-separator"/>
           </div>
           {recentInfernalMarkup}

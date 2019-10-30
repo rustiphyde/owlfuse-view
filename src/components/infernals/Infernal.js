@@ -12,16 +12,20 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 
 import Typography from "@material-ui/core/Typography";
+
 // Icons
+
 
 const styles = {
   card: {
     // position: 'relative',
 
     display: "flex",
+    marginTop: 18,
     marginBottom: 8,
-    borderRadius: "16px 0 16px 0",
-    backgroundColor: "#ff9800 !important"
+    border: "dashed 2px white",
+    backgroundColor: "#ff9800 !important",
+    boxShadow: "0px 6px 6px #ff9800, 0px -6px 6px #ff9800, 6px 0px 6px #ff9800,  -6px 0px 6px #ff9800, 10px 10px 16px #000"
   },
   content: {
     padding: 25,
@@ -32,7 +36,8 @@ const styles = {
     borderBottom: "2px solid #37474f",
     borderLeft: "2px solid #ff9800",
     margin: "8px 8px 8px 0",
-    backgroundColor: "#fefaf4"
+    backgroundColor: "#fefaf4",
+    boxShadow: "0 0 28px #000"
   },
   image: {
     margin: "8px 0 8px 8px",
@@ -42,7 +47,8 @@ const styles = {
     borderRadius: "16px 0 16px 0",
     borderTop: "2px solid #37474f",
     borderLeft: "2px solid #37474f",
-    borderBottom: "2px solid #37474f"
+    borderBottom: "2px solid #37474f",
+    boxShadow: "0 10px 28px #000"
   }
 };
 

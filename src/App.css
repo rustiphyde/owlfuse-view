@@ -112,8 +112,21 @@ form {
   font-size: 2rem;
 }
 
+.infernal-type {
+  font-family: 'Freckle Face', cursive !important;
+  color: var(--rust);
+  text-align: center;
+  font-size: 2.5rem;
+  text-shadow: 
+  3px 0 2px var(--background-two),
+  -3px 0 2px var(--background-two),
+  0 3px 2px var(--background-two),
+  0 -3px 2px var(--background-two),
+  0 0 24px var(--beerfoam);
+}
+
 em, strong, h2 {
-  font-family: 'Baloo', cursive !important;
+  font-family: 'Baloo', cursive;
   font-size: 1.1em;
 }
 input {
@@ -292,4 +305,8 @@ body > div:nth-child(7) > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.Mu
 
 .smaller {
   font-size: 10px;
+}
+
+.fireGrid {
+  background-color: var(--background-two);
 }
