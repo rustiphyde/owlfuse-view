@@ -30,7 +30,7 @@ class okelists extends Component {
       <Grid item sm={2}/>
         <Grid item sm={8} xs={12}>
         <div className="okeTitle">
-          <strong><em>OKE LISTS</em></strong>
+          <strong>OKE LISTS</strong>
           <hr className="bar-separator-oke"/>
           <PostOkelist/>
           <hr className="bar-separator-oke"/>
