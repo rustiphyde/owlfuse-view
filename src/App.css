@@ -23,7 +23,7 @@ body {
 }
 
 .container {
-  margin: 170px auto 0 auto;
+  margin: 192px auto 0 auto;
   max-width: 1200px;
 }
 
@@ -181,7 +181,9 @@ input {
 }
 .nav-container svg {
   color: var(--beerfoam);
-  font-size: 150%;
+  font-size: 250%;
+  margin-left: -14px;
+  margin-right: -14px;
 }
 .nav-container svg:hover {
   color: var(--rust);
