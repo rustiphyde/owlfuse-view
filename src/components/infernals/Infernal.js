@@ -26,7 +26,7 @@ const styles = {
     border: "dashed 2px white",
     borderRadius: "0 16px 0 ",
     backgroundColor: "#ff9800 !important",
-    boxShadow: "0px 6px 16px #ff9800, 0px -6px 16px #ff9800, 6px 0px 16px #ff9800,  -6px 0px 16px #ff9800, 10px 10px 20px #000"
+    boxShadow: "0px 1px 8px #ff9800, 0px -3px 8px #ff9800, 3px 0px 8px #ff9800,  -3px 0px 8px #ff9800, 8px 8px 16px #000"
   },
   content: {
     padding: 25,

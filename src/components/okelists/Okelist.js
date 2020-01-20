@@ -78,7 +78,7 @@ class Okelist extends Component {
       <Typography variant="body2" className="rusty2">
         composed {dayjs(createdAt).fromNow()}
       </Typography>
-      <Typography variant="body2"><span className={classes.clef2}>𝄆</span><strong className="rusty">{description}</strong><span className={classes.clef2}>𝄇</span></Typography>
+      <Typography variant="body2"><span className={classes.clef2}>𝄆 </span><strong className="rusty">{description}</strong><span className={classes.clef2}> 𝄇</span></Typography>
       <hr className="bar-separator-oak"/>
       <hr className="bar-separator-oak"/><hr className="bar-separator-oak"/>
       <ListChoozer okeId={okeId}/><span className="rusty">{songCount} SONGS</span>

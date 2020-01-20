@@ -15,10 +15,11 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 
 // Icons
-import HomeIcon from "./icons/HomeIcon";
-import OkelistIcon from "./icons/OkelistIcon";
-import BoozulaIcon from './icons/BoozulaIcon';
-import InfernalIcon from './icons/InfernalIcon';
+import NavFuseIcon from "./icons/NavFuseIcon";
+import NavHomeIcon from "./icons/NavHomeIcon";
+import NavOkelistIcon from "./icons/NavOkelistIcon";
+import NavBoozulaIcon from './icons/NavBoozulaIcon';
+import NavFireIcon from './icons/NavFireIcon';
 
 export class Navbar extends Component {
   render() {
@@ -39,24 +40,30 @@ export class Navbar extends Component {
               <PostSpark />
               <Link to="/infernals">
                 <OwlFuseButton tip="INFERNALS">
-                  <InfernalIcon />
+                  <NavFireIcon />
                 </OwlFuseButton>
               </Link>
-                        <Link to="/boozulas">
-                <OwlFuseButton tip="BOOZULAS">
-                  <BoozulaIcon />
+              <Link to="/">
+                <OwlFuseButton tip="HOWL
+                ">
+                  <NavFuseIcon />
                 </OwlFuseButton>
               </Link>
               <Link to="/">
                 <OwlFuseButton tip="GO HOME">
-                  <HomeIcon />
+                  <NavHomeIcon />
                 </OwlFuseButton>
               </Link>
               <Link to="/okelists">
                 <OwlFuseButton tip="OKELISTS">
-                  <OkelistIcon />
+                  <NavOkelistIcon />
                 </OwlFuseButton>
               </Link>
+              <Link to="/boozulas">
+                <OwlFuseButton tip="BOOZULAS">
+                  <NavBoozulaIcon />
+                </OwlFuseButton>
+              </Link>              
                 <SizzlesAndClinks />
             </Fragment>
           ) : (
