@@ -18,6 +18,7 @@ import HeatButton from './HeatButton';
 
 // Icons
 import FireIcon from "../icons/FireIcon";
+import InfernalIcon from "../icons/InfernalIcon";
 
 // Redux
 import { connect } from "react-redux";
@@ -67,7 +68,9 @@ class Spark extends Component {
         body,
         createdAt,
         fire,
-        sparkId
+        sparkId,
+        emberable,
+        infernal
       },
       user: { authenticated,  credentials: { clozang }   }
     } = this.props;
@@ -99,6 +102,7 @@ class Spark extends Component {
           <span>{deleteButton}</span>
         </CardContent>
         {fire === true && <FireIcon color="secondary" className="icon9" />}
+        {infernal === true && <InfernalIcon color="secondary" className="icon9" />}
       </Card>
     );
   }
