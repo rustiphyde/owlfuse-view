@@ -181,9 +181,7 @@ input {
 }
 .nav-container svg {
   color: var(--beerfoam);
-  font-size: 250%;
-  margin-left: -14px;
-  margin-right: -14px;
+  font-size: 200%;
 }
 .nav-container svg:hover {
   color: var(--rust);
