@@ -27,7 +27,8 @@ const styles = theme => ({
   closeButton: {
     position: "absolute",
     left: "80%",
-    top: "4%"
+    top: "4%",
+    color: "#f4db9d"
   },
   textField: {
       textAlign: 'center'
