@@ -19,7 +19,6 @@ import NavFuseIcon from "./icons/NavFuseIcon";
 import NavHomeIcon from "./icons/NavHomeIcon";
 import NavOkelistIcon from "./icons/NavOkelistIcon";
 import NavBoozulaIcon from './icons/NavBoozulaIcon';
-import NavFireIcon from './icons/NavFireIcon';
 
 export class Navbar extends Component {
   render() {
@@ -38,11 +37,6 @@ export class Navbar extends Component {
           {authenticated ? (
             <Fragment>
               <PostSpark />
-              <Link to="/infernals">
-                <OwlFuseButton tip="INFERNALS">
-                  <NavFireIcon />
-                </OwlFuseButton>
-              </Link>
               <Link to="/">
                 <OwlFuseButton tip="HOWL
                 ">
