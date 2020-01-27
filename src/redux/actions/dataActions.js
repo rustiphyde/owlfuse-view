@@ -2,7 +2,6 @@ import {
   SET_SPARKS,
   SET_SPARK,
   SET_INFERNALS,
-  SET_INFERNAL,
   POST_SPARK,
   BUILD_BOOZULA,
   BUILD_OKE,
@@ -69,7 +68,7 @@ export const getSpark = sparkId => dispatch => {
 export const getInfernals = () => dispatch => {
   dispatch({ type: LOADING_DATA });
   axios
-    .get("/infernals")
+    .get("/hot/sparks")
     .then(res => {
       dispatch({
         type: SET_INFERNALS,
@@ -82,20 +81,6 @@ export const getInfernals = () => dispatch => {
         payload: []
       });
     });
-};
-
-export const getInfernal = infernalId => dispatch => {
-  dispatch({ type: LOADING_UI });
-  axios
-    .get(`/infernal/${infernalId}`)
-    .then(res => {
-      dispatch({
-        type: SET_INFERNAL,
-        payload: res.data
-      });
-      dispatch({ type: STOP_LOADING_UI });
-    })
-    .catch(err => console.log(err));
 };
 
 // fetch all okelists

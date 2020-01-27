@@ -14,18 +14,25 @@ import Grid from '@material-ui/core/Grid';
 
 // Redux
 import { connect } from 'react-redux';
-import { getSparks } from '../redux/actions/dataActions';
+import { getSparks, getInfernals } from '../redux/actions/dataActions';
 
 class home extends Component {
   // Initialize Component State for storing the Sparks
   state = {
-    sparks: null
+    sparks: null,
+    infernals: null
   };
   componentDidMount() {
+    this.props.getInfernals();
     this.props.getSparks();
   }
   render() {
-    const { sparks, loading } = this.props.data; 
+    const { sparks, infernals, loading } = this.props.data; 
+    let recentInfernalsMarkup = !loading ? (
+      infernals.map(infernal => <Spark key={infernal.sparkId} spark={infernal} />)
+    ) : (
+        <SparkSkeleton length={6}/>
+    );
     let recentSparksMarkup = !loading ? (
       sparks.map(spark => <Spark key={spark.sparkId} spark={spark} />)
     ) : (
@@ -35,6 +42,11 @@ class home extends Component {
       <Grid container spacing={2}>        
         
         <Grid item sm={8} xs={12}>
+        <div className="sparkTitle">
+            <strong>INFERNALS</strong>
+            <hr className="bar-separator"/>
+          </div>
+          {recentInfernalsMarkup}
           <div className="sparkTitle">
             <strong>SPARKS</strong>
             <hr className="bar-separator"/>
@@ -59,6 +71,7 @@ class home extends Component {
 
 home.propTypes = {
   getSparks: PropTypes.func.isRequired,
+  getInfernals: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired
 };
 
@@ -67,4 +80,4 @@ const mapStateToProps = state => ({
 })
 
 
-export default connect(mapStateToProps, { getSparks })(home);
+export default connect(mapStateToProps, { getSparks, getInfernals })(home);

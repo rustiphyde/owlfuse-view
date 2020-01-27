@@ -21,8 +21,7 @@ import {
   ADD_SONG,
   ADD_STOKE,
   ADD_TOAST,
-  SET_INFERNALS,
-  SET_INFERNAL
+  SET_INFERNALS
 } from "../types";
 
 const initialState = {
@@ -33,7 +32,6 @@ const initialState = {
   boozulas: [],
   boozula: {},
   infernals: [],
-  infernal: {},
   loading: false
 };
 
@@ -61,11 +59,6 @@ export default function(state = initialState, action) {
         infernals: action.payload,
         loading: false
       };
-    case SET_INFERNAL:
-      return {
-        ...state,
-        infernal: action.payload
-      }
       case SET_OKELISTS:
         return {
           ...state,
