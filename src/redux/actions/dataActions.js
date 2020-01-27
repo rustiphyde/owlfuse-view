@@ -420,8 +420,12 @@ export const choozByList = okeId => dispatch => {
 export const getUserData = userClozang => dispatch => {
   dispatch({ type: LOADING_DATA });
   axios
-    .get(`/user/${userClozang}`)
+    .get(`/${userClozang}`)
     .then(res => {
+      dispatch({
+        type: SET_INFERNALS,
+        payload: res.data.infernals
+      });
       dispatch({
         type: SET_SPARKS,
         payload: res.data.sparks
@@ -432,6 +436,10 @@ export const getUserData = userClozang => dispatch => {
       });
     })
     .catch(() => {
+      dispatch({
+        type: SET_INFERNALS,
+        payload: null
+      });
       dispatch({
         type: SET_SPARKS,
         payload: null

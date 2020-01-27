@@ -75,7 +75,7 @@ class App extends Component {
                 path="/reset"
                 component={reset}
                 />
-                <Route exact path="/user/:clozang" component={user} />
+                <Route exact path="/:clozang" component={user} />
                 <Route exact path="/:clozang/spark/:sparkId" component={user} />
                 <Route exact path="/:clozang/boozula/:boozId" component={user}/>
               </Switch>

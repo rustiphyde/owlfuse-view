@@ -49,7 +49,7 @@ class Stokes extends Component {
                       <Typography
                         variant="body2"
                         component={Link}
-                        to={`/user/${userClozang}`}
+                        to={`/${userClozang}`}
                         color="primary"
                         className="orange"
                       >

@@ -119,7 +119,7 @@ class Boozula extends Component {
             variant="body2"
             component={Link}
             className="rust foam"
-            to={`/user/${userClozang}`}
+            to={`/${userClozang}`}
           >
             <strong>>{userAlias}</strong>
           </Typography>

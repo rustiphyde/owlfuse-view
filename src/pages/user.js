@@ -36,7 +36,7 @@ class user extends Component {
 
     this.props.getUserData(clozang);
     axios
-      .get(`/user/${clozang}`)
+      .get(`/${clozang}`)
       .then(res => {
         this.setState({
           profile: res.data.user

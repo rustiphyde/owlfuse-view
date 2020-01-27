@@ -87,7 +87,7 @@ const StaticProfile = (props) => {
         <div className="candle-details">
           <MuiLink
             component={Link}
-            to={`/user/${clozang}`}
+            to={`/${clozang}`}
             color="primary"
             variant="h5"
           >

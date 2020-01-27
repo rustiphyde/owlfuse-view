@@ -86,7 +86,11 @@ export default function(state = initialState, action) {
       let sparkIndex = state.sparks.findIndex(
         spark => spark.sparkId === action.payload.sparkId
       );
+      let infernalIndex = state.infernals.findIndex(
+        infernal => infernal.sparkId === action.payload.sparkId
+      )
       state.sparks[sparkIndex] = action.payload;
+      state.infernals[infernalIndex] = action.payload;
       if (state.spark.sparkId === action.payload.sparkId){
         let temp = state.spark.stokes;
         state.spark = action.payload;

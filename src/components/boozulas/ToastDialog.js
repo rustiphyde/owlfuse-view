@@ -78,7 +78,7 @@ class ToastDialog extends Component {
     const { userClozang, boozId } = this.props;
     const newPath = `/${userClozang}/boozula/${boozId}`;
 
-    if (this.state.oldPath === this.state.newPath) oldPath = `/user/${userClozang}`;
+    if (this.state.oldPath === this.state.newPath) oldPath = `/${userClozang}`;
 
     window.history.pushState(null, null, newPath);
 
@@ -124,7 +124,7 @@ class ToastDialog extends Component {
             component={Link}
               className="rust foam"
             variant="body2"
-            to={`/user/${userClozang}`}
+            to={`/${userClozang}`}
           >
             <strong>Posted by >{userAlias}</strong>
           </Typography>

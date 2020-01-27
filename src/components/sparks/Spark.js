@@ -85,7 +85,7 @@ class Spark extends Component {
             variant="h6"
             color="primary"
             component={Link}
-            to={`/user/${userClozang}`}
+            to={`/${userClozang}`}
           >
             <strong>>{userAlias}</strong>
           </Typography>

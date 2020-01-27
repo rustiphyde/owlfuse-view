@@ -147,7 +147,7 @@ class Candle extends Component {
             <div className="candle-details">
               <MuiLink
                 component={Link}
-                to={`/user/${clozang}`}
+                to={`/${clozang}`}
                 color="primary"
                 variant="h5"
               >

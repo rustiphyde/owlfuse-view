@@ -79,7 +79,8 @@ class SparkBox extends Component {
     const { userClozang, sparkId } = this.props;
     const newPath = `/${userClozang}/spark/${sparkId}`;
 
-    if (this.state.oldPath === this.state.newPath) oldPath = `/user/${userClozang}`;
+    if (this.state.oldPath === this.state.newPath) oldPath = `/${userClozang}`;
+    else oldPath = this.state.oldPath;
 
     window.history.pushState(null, null, newPath);
 
@@ -123,7 +124,7 @@ class SparkBox extends Component {
             component={Link}
             color="primary"
             variant="h5"
-            to={`/user/${userClozang}`}
+            to={`/${userClozang}`}
           >
           <strong>>{userAlias}</strong>
           </Typography>
