@@ -1,17 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 
 // Components
 import Spark from '../components/sparks/Spark';
 import Candle from '../components/Candle';
 import SparkSkeleton from '../util/SparkSkeleton';
+import Toggle from '../components/Toggle';
 
 // Icons
 import FlameIcon from '../components/icons/FlameIcon';
 
 // MUI Components
 import Grid from '@material-ui/core/Grid';
-
+import Typography from '@material-ui/core/Typography'
 // Redux
 import { connect } from 'react-redux';
 import { getSparks, getInfernals } from '../redux/actions/dataActions';
@@ -20,33 +21,43 @@ class home extends Component {
   // Initialize Component State for storing the Sparks
   state = {
     sparks: null,
-    infernals: null
+    toggleChecked: false
   };
+
+  toggleFunx = () => {
+
+  }
+
   componentDidMount() {
-    this.props.getInfernals();
     this.props.getSparks();
+    this.props.getInfernals();
+  }
+
+  handleToggle = event => {
+    if(event.target.checked){
+      this.setState({ toggleChecked: true });
+      console.log("toggle is checked");
+    }
+    else {
+      this.setState({ toggleChecked: false });
+      console.log("toggle is not checked");
+    }
   }
   render() {
+    
     const { sparks, infernals, loading } = this.props.data; 
-    let recentInfernalsMarkup = !loading ? (
-      infernals.map(infernal => <Spark key={infernal.sparkId} spark={infernal} />)
-    ) : (
-        <SparkSkeleton length={6}/>
-    );
+    
     let recentSparksMarkup = !loading ? (
-      sparks.map(spark => <Spark key={spark.sparkId} spark={spark} />)
-    ) : (
+      !this.state.toggleChecked ? (sparks.map(spark => <Spark key={spark.sparkId} spark={spark} />)
+      ) : (
+        infernals.map(infernal => <Spark key={infernal.sparkId} spark={infernal} />))) : (
         <SparkSkeleton length={6}/>
     );
     return (
       <Grid container spacing={2}>        
-        
+       
         <Grid item sm={8} xs={12}>
-        <div className="sparkTitle">
-            <strong>INFERNALS</strong>
-            <hr className="bar-separator"/>
-          </div>
-          {recentInfernalsMarkup}
+        <div className="centered"><span className="toggle-text toggle-is--active">Most Recent</span><Toggle toggleFunx={this.handleToggle} /><span className="toggle-text">Scorch Rank</span></div>
           <div className="sparkTitle">
             <strong>SPARKS</strong>
             <hr className="bar-separator"/>
