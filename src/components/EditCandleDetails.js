@@ -34,7 +34,6 @@ title: {
 
 class EditDetails extends Component {
   state = {
-    alias: "",
     bio: "",
     website: "",
     location: "",
@@ -42,7 +41,6 @@ class EditDetails extends Component {
   };
   mapUserDetailsToState = credentials => {
     this.setState({
-      alias: credentials.alias ? credentials.alias : "",
       bio: credentials.bio ? credentials.bio : "",
       website: credentials.website ? credentials.website : "",
       location: credentials.location ? credentials.location : ""
@@ -67,7 +65,6 @@ class EditDetails extends Component {
   };
   handleSubmit = () => {
     const userDetails = {
-      alias: this.state.alias,
       bio: this.state.bio,
       website: this.state.website,
       location: this.state.location
@@ -91,16 +88,6 @@ class EditDetails extends Component {
           <DialogTitle className="orng">Edit Your Details</DialogTitle>
           <DialogContent className="orange-border">
             <form>
-            <TextField
-                name="alias"
-                type="text"
-                label="Alias"
-                placeholder="Your Display Name"
-                className={classes.textField}
-                value={this.state.alias}
-                onChange={this.handleChange}
-                fullWidth
-              />
               <TextField
                 name="bio"
                 type="text"

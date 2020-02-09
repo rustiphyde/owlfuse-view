@@ -114,7 +114,7 @@ class ViewBoozulaDetails extends Component {
               variant="body2"
               to={`/${userClozang}`}
           >
-            <strong className="rust foam"><strong className="rusty">Posted By: </strong> >{userAlias}</strong>
+            <strong className="rust foam"><strong className="rusty">Posted By: </strong> {userClozang}</strong>
           </Typography>
           <hr className="bar-separator-booz" />
           <Typography variant="body2" className="foam">

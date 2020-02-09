@@ -91,7 +91,7 @@ const StaticProfile = (props) => {
             color="primary"
             variant="h5"
           >
-            <strong>>{alias}</strong>
+            <strong>{clozang}</strong>
           </MuiLink>
           <hr />
           {bio && <Typography variant="body2"><strong>{bio}</strong></Typography>}

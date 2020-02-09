@@ -87,7 +87,7 @@ class Spark extends Component {
             component={Link}
             to={`/${userClozang}`}
           >
-            <strong>>{userAlias}</strong>
+            <strong>{userClozang}</strong>
           </Typography>
           <Typography variant="body2" color="textSecondary">
             {dayjs(createdAt).fromNow()}

@@ -121,7 +121,7 @@ class Boozula extends Component {
             className="rust foam"
             to={`/${userClozang}`}
           >
-            <strong>>{userAlias}</strong>
+            <strong>{userClozang}</strong>
           </Typography>
           
           <hr className="bar-separator-booz"/>

@@ -53,7 +53,7 @@ class Toasts extends Component {
                         to={`/${userClozang}`}
                         color="primary"
                       >
-                        <strong className="foam rust">>{userAlias}</strong>
+                        <strong className="foam rust">{userClozang}</strong>
                       </Typography>
                       <Typography variant="body2" className="foam">
                         {dayjs(createdAt).format('h:mm a, MMMM DD, YYYY')}

@@ -126,7 +126,7 @@ class ToastDialog extends Component {
             variant="body2"
             to={`/${userClozang}`}
           >
-            <strong>Posted by >{userAlias}</strong>
+            <strong>Posted by {userClozang}</strong>
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body2" className="foam">
