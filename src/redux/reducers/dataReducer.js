@@ -21,7 +21,8 @@ import {
   ADD_SONG,
   ADD_STOKE,
   ADD_TOAST,
-  SET_INFERNALS
+  SET_INFERNALS,
+  SET_FUSERS
 } from "../types";
 
 const initialState = {
@@ -32,7 +33,8 @@ const initialState = {
   boozulas: [],
   boozula: {},
   infernals: [],
-  loading: false
+  loading: false,
+  fusers: []
 };
 
 export default function(state = initialState, action) {
@@ -99,6 +101,12 @@ export default function(state = initialState, action) {
       return {
         ...state
       };
+      case SET_FUSERS:
+        return {
+          ...state,
+          fusers: action.payload,
+          loading: false
+        };
       case POST_SPARK:
         return {
           ...state,
