@@ -66,7 +66,7 @@ class home extends Component {
 		let fusersMarkup = !loading ? (
 			fusers ? (fusers.map(fuser => <Fuser key={fusers.indexOf(fuser)} fuser={fuser} />)
       ) : (<div>You are not currently fused with anyone...get out there and mingle!!</div>)) : (
-			<div>Loading...</div>
+			<div className="orange"><strong>Loading...</strong></div>
 		);
 
 		return (
