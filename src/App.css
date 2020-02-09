@@ -216,6 +216,10 @@ input {
   color: var(--rust);
 }
 
+.foam {
+  color: var(--beerfoam);
+}
+
 .rust:hover {
   color: var(--rust);
 }
