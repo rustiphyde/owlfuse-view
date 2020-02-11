@@ -134,23 +134,6 @@ export const getFusers = () => dispatch => {
 		});
 };
 
-export const getFusers = () => dispatch => {
-	axios
-		.get("/fusers")
-		.then(res => {
-			dispatch({
-				type: SET_FUSERS,
-				payload: res.data
-			});
-		})
-		.catch(err => {
-			dispatch({
-				type: SET_FUSERS,
-				payload: []
-			});
-		});
-};
-
 // fetch all boozulas
 export const getBoozulas = () => dispatch => {
 	dispatch({ type: LOADING_DATA });
