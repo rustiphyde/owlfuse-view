@@ -205,7 +205,7 @@ input {
   background-color: var(--background-two);
   width: auto;
   max-width: 1600px;
-  text-align: right;
+  text-align: left;
   color:var(--rust);
   padding: 16px 16px 0 16px;
   margin: 8px auto 0 auto;
@@ -214,6 +214,10 @@ input {
 
 .orange:hover {
   color: var(--rust);
+}
+
+.foam {
+  color: var(--beerfoam);
 }
 
 .rust:hover {

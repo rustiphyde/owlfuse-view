@@ -1,5 +1,5 @@
-import React, { Component, Fragment, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, Fragment, useState } from "react";
+import PropTypes from "prop-types";
 
 // Components
 import Spark from '../components/sparks/Spark';
@@ -8,12 +8,13 @@ import Candle from '../components/Candle';
 import SparkSkeleton from '../util/SparkSkeleton';
 import Toggle from '../components/Toggle';
 
+
 // Icons
-import FlameIcon from '../components/icons/FlameIcon';
+import FlameIcon from "../components/icons/FlameIcon";
 
 // MUI Components
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography'
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 // Redux
 import { connect } from 'react-redux';
 import { getSparks, getInfernals, getFusers } from '../redux/actions/dataActions';
@@ -26,14 +27,14 @@ class home extends Component {
     fusers: null
   };
 
-  toggleFunx = () => {
 
-  }
+	toggleFunx = () => {};
 
-  componentDidMount() {
-    this.props.getSparks();
+	componentDidMount() {
+		this.props.getSparks();
     this.props.getInfernals();
     this.props.getFusers();
+
   }
 
   handleToggle = event => {
@@ -83,6 +84,7 @@ class home extends Component {
         </div>
          
           <Candle/>
+=======
           <br/>
 					<div className="sparkTitle">
 						<strong>FUSEBOX</strong>
@@ -90,6 +92,7 @@ class home extends Component {
 					</div>
 					<div className="candle" width="100%"></div>
 					{fusersMarkup}
+
         </Grid>
       </Grid>
     );
@@ -100,12 +103,14 @@ home.propTypes = {
   getFusers: PropTypes.func.isRequired,
   getSparks: PropTypes.func.isRequired,
   getInfernals: PropTypes.func.isRequired,
-  data: PropTypes.object.isRequired
+  getFusers: PropTypes.func.isRequired,
+	data: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
-  data: state.data
-})
+	data: state.data
+});
 
 
 export default connect(mapStateToProps, { getSparks, getInfernals, getFusers })(home);
+

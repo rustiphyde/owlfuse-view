@@ -6,7 +6,7 @@ export class Footer extends Component {
 
           <div className="footer">
           <hr className="bar-separator"/>
-          <p><strong>© 2019 Rusty Hoppins</strong></p>
+          <p><strong>© {new Date().getFullYear()} Rusty Hoppins</strong></p>
           <hr className="bar-separator"/>
         </div>
         

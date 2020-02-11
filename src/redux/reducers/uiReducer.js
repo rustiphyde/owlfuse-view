@@ -1,4 +1,4 @@
-import { SET_ERRORS, CLEAR_ERRORS, LOADING_UI, SET_SUCCESS, CLEAR_SUCCESS, STOP_LOADING_UI } from '../types';
+import { SET_MESSAGE, CLEAR_MESSAGE, SET_ERRORS, CLEAR_ERRORS, LOADING_UI, SET_SUCCESS, CLEAR_SUCCESS, STOP_LOADING_UI } from '../types';
 
 const initialState = {
     loading: false,

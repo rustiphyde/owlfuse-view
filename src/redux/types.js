@@ -37,3 +37,4 @@ export const ADD_TOAST = 'ADD_TOAST';
 export const CHOOZ_BY_LIST = 'CHOOZ_BY_LIST';
 export const SET_INFERNALS = 'SET_INFERNALS';
 export const SET_FUSERS = 'SET_FUSERS';
+
