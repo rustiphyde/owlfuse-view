@@ -74,7 +74,6 @@ class Boozula extends Component {
       boozula: {
         drinkName,
         mainAlcohol,
-        userAlias,
         userClozang,
         boozImage,
         createdAt,
@@ -114,14 +113,14 @@ class Boozula extends Component {
         <CardMedia image={boozImage} title="Drink" className={classes.image} />
         <CardContent className={classes.content}>
         <Typography variant="h5" className="boozTitle2"><strong>:{drinkName.toUpperCase()}:</strong></Typography>
-          <span><ViewBoozulaDetails boozId={boozId} userAlias={userAlias} userClozang={userClozang}/></span>
+          <span><ViewBoozulaDetails boozId={boozId} userClozang={userClozang}/></span>
           <Typography
             variant="body2"
             component={Link}
             className="rust foam"
             to={`/${userClozang}`}
           >
-            <strong>>{userAlias}</strong>
+            <strong className="rust foam"><strong className="rusty">Posted By: </strong> {userClozang}</strong>
           </Typography>
           
           <hr className="bar-separator-booz"/>
@@ -135,7 +134,7 @@ class Boozula extends Component {
 
           <CheersButton boozId={boozId}/>
           <span className="foam">{cheersCount}</span>
-          <ToastDialog boozId={boozId} userAlias={userAlias} userClozang={userClozang} openDialog={this.props.openDialog}/>
+          <ToastDialog boozId={boozId} userClozang={userClozang} openDialog={this.props.openDialog}/>
           <span className="foam">{toastCount}</span>
           <Typography variant="body1" className="foam">
             <strong className="rusty">Main Alcohol:</strong> {mainAlcohol}

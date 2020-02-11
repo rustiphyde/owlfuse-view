@@ -27,7 +27,8 @@ import {
   LOADING_UI,
   CLEAR_SUCCESS,
   SET_SUCCESS,
-  STOP_LOADING_UI
+  STOP_LOADING_UI,
+  SET_FUSERS
 } from "../types";
 import axios from "axios";
 
@@ -114,6 +115,23 @@ export const getOkelist = okeId => dispatch => {
       dispatch({ type: STOP_LOADING_UI });
     })
     .catch(err => console.log(err));
+};
+
+export const getFusers = () => dispatch => {
+	axios
+		.get("/fusers")
+		.then(res => {
+			dispatch({
+				type: SET_FUSERS,
+				payload: res.data
+			});
+		})
+		.catch(err => {
+			dispatch({
+				type: SET_FUSERS,
+				payload: []
+			});
+		});
 };
 
 // fetch all boozulas
@@ -420,7 +438,7 @@ export const choozByList = okeId => dispatch => {
 export const getUserData = userClozang => dispatch => {
   dispatch({ type: LOADING_DATA });
   axios
-    .get(`/${userClozang}`)
+    .get(`/user/${userClozang}`)
     .then(res => {
       dispatch({
         type: SET_INFERNALS,

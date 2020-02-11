@@ -85,7 +85,7 @@ const CandleSkeleton = (props) => {
             color="primary"
             variant="h5"
           >
-            <strong>>Owl-Fuser</strong>
+            <strong>>owl-fuser</strong>
           </Typography>
           <hr />
           <CandleIcon color="secondary" className="icon" />

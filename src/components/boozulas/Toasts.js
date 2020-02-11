@@ -32,7 +32,7 @@ class Toasts extends Component {
     return (
       <Grid container>
         {toasts.map((toast) => {
-          const { body, createdAt, userImage, userAlias, userClozang } = toast;
+          const { body, createdAt, userImage, userClozang } = toast;
           return (
             <Fragment key={createdAt}>
             <hr className="bar-separator"/>
@@ -53,7 +53,7 @@ class Toasts extends Component {
                         to={`/${userClozang}`}
                         color="primary"
                       >
-                        <strong className="foam rust">>{userAlias}</strong>
+                        <strong className="foam rust">{userClozang}</strong>
                       </Typography>
                       <Typography variant="body2" className="foam">
                         {dayjs(createdAt).format('h:mm a, MMMM DD, YYYY')}

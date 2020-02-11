@@ -31,7 +31,7 @@ class Stokes extends Component {
     return (
       <Grid container className="dark">
         {stokes.map((stoke) => {
-          const { body, createdAt, userImage, userAlias, userClozang } = stoke;
+          const { body, createdAt, userImage, userClozang } = stoke;
           return (
             <Fragment key={createdAt}>
               <hr className="bar-separator" />
@@ -53,7 +53,7 @@ class Stokes extends Component {
                         color="primary"
                         className="orange"
                       >
-                        <strong>>{userAlias}</strong>
+                        <strong>{userClozang}</strong>
                       </Typography>
                       <Typography variant="body2" color="textSecondary">
                         {dayjs(createdAt).format("h:mm a, MM/DD/YY")}

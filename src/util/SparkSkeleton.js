@@ -80,7 +80,7 @@ const SparkSkeleton = (props) => {
             variant="h6"
             color="primary"
           >
-            <strong>>Owl-Fuser</strong>
+            <strong>>owl-fuser</strong>
           </Typography>
           <Typography variant="body2" color="textSecondary">
             ? days ago

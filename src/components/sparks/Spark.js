@@ -60,7 +60,6 @@ class Spark extends Component {
     const {
       classes,
       spark: {
-        userAlias,
         userClozang,
         userImage,
         heatCount,
@@ -87,7 +86,7 @@ class Spark extends Component {
             component={Link}
             to={`/${userClozang}`}
           >
-            <strong>>{userAlias}</strong>
+            <strong>{userClozang}</strong>
           </Typography>
           <Typography variant="body2" color="textSecondary">
             {dayjs(createdAt).fromNow()}
@@ -97,7 +96,7 @@ class Spark extends Component {
           </Typography>
           <HeatButton sparkId={sparkId}/>
           <span>{heatCount}</span>
-          <SparkBox sparkId={sparkId} userAlias={userAlias} userClozang={userClozang} openDialog={this.props.openDialog}/>
+          <SparkBox sparkId={sparkId} userClozang={userClozang} openDialog={this.props.openDialog}/>
           <span>{stokeCount}</span>
           <span>{deleteButton}</span>
         </CardContent>

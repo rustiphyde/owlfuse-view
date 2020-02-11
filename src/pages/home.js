@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 // Components
 import Spark from '../components/sparks/Spark';
+import Fuser from '../components/Fuser';
 import Candle from '../components/Candle';
 import SparkSkeleton from '../util/SparkSkeleton';
 import Toggle from '../components/Toggle';
@@ -15,13 +16,14 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography'
 // Redux
 import { connect } from 'react-redux';
-import { getSparks, getInfernals } from '../redux/actions/dataActions';
+import { getSparks, getInfernals, getFusers } from '../redux/actions/dataActions';
 
 class home extends Component {
   // Initialize Component State for storing the Sparks
   state = {
     sparks: null,
-    toggleChecked: false
+    toggleChecked: false,
+    fusers: null
   };
 
   toggleFunx = () => {
@@ -31,6 +33,7 @@ class home extends Component {
   componentDidMount() {
     this.props.getSparks();
     this.props.getInfernals();
+    this.props.getFusers();
   }
 
   handleToggle = event => {
@@ -45,7 +48,7 @@ class home extends Component {
   }
   render() {
     
-    const { sparks, infernals, loading } = this.props.data; 
+    const { fusers, sparks, infernals, loading } = this.props.data; 
     
     let recentSparksMarkup = !loading ? (
       !this.state.toggleChecked ? (sparks.map(spark => <Spark key={spark.sparkId} spark={spark} />)
@@ -53,6 +56,12 @@ class home extends Component {
         infernals.map(infernal => <Spark key={infernal.sparkId} spark={infernal} />))) : (
         <SparkSkeleton length={6}/>
     );
+    let fusersMarkup = !loading ? (
+			fusers ? (fusers.map(fuser => <Fuser key={fusers.indexOf(fuser)} fuser={fuser} />)
+      ) : (<div>You are not currently fused with anyone...get out there and mingle!!</div>)) : (
+			<div>Loading...</div>
+		);
+
     return (
       <Grid container spacing={2}>        
        
@@ -74,6 +83,13 @@ class home extends Component {
         </div>
          
           <Candle/>
+          <br/>
+					<div className="sparkTitle">
+						<strong>FUSEBOX</strong>
+						<hr className="bar-separator" />
+					</div>
+					<div className="candle" width="100%"></div>
+					{fusersMarkup}
         </Grid>
       </Grid>
     );
@@ -81,6 +97,7 @@ class home extends Component {
 }
 
 home.propTypes = {
+  getFusers: PropTypes.func.isRequired,
   getSparks: PropTypes.func.isRequired,
   getInfernals: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired
@@ -91,4 +108,4 @@ const mapStateToProps = state => ({
 })
 
 
-export default connect(mapStateToProps, { getSparks, getInfernals })(home);
+export default connect(mapStateToProps, { getSparks, getInfernals, getFusers })(home);

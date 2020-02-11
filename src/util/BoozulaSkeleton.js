@@ -69,7 +69,7 @@ const BoozulaSkeleton = (props) => {
         <Typography
             variant="body2"
             className="foam">
-            <strong>>Owl-Fuser</strong>
+            <strong>>owl-fuser</strong>
         </Typography>
         <hr className="bar-separator-booz"/>
         <Typography variant="body2" className="foam">

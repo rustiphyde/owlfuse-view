@@ -36,7 +36,7 @@ class user extends Component {
 
     this.props.getUserData(clozang);
     axios
-      .get(`/${clozang}`)
+      .get(`/user/${clozang}`)
       .then(res => {
         this.setState({
           profile: res.data.user
@@ -50,7 +50,7 @@ class user extends Component {
 
     let sparksMarkup = loading ? (
       <SparkSkeleton length={2}/>
-    ) : sparks === null ? (
+    ) : sparks === null || sparks.length === 0 ? (
       <strong className="center">This user has not lit any sparks yet.</strong>
     ) : !sparkIdParam ? (
       sparks.map(spark => <Spark key={spark.sparkId} spark={spark} />)

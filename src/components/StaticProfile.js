@@ -70,7 +70,7 @@ const StaticProfile = (props) => {
   const {
     classes,
       profile: {
-        clozang, alias, createdAt, imageUrl, bio, website, location }
+        clozang, createdAt, imageUrl, bio, website, location }
   } = props;
 
    
@@ -91,7 +91,7 @@ const StaticProfile = (props) => {
             color="primary"
             variant="h5"
           >
-            <strong>>{alias}</strong>
+            <strong>{clozang}</strong>
           </MuiLink>
           <hr />
           {bio && <Typography variant="body2"><strong>{bio}</strong></Typography>}

@@ -97,7 +97,6 @@ class ToastDialog extends Component {
       classes,
       boozula: {
         drinkName,
-        userAlias,
         userClozang,
         boozImage,
         createdAt,
@@ -126,7 +125,7 @@ class ToastDialog extends Component {
             variant="body2"
             to={`/${userClozang}`}
           >
-            <strong>Posted by >{userAlias}</strong>
+            <strong>Posted by {userClozang}</strong>
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body2" className="foam">
@@ -179,7 +178,6 @@ class ToastDialog extends Component {
 ToastDialog.propTypes = {
   getBoozula: PropTypes.func.isRequired,
   boozId: PropTypes.string.isRequired,
-  userAlias: PropTypes.string.isRequired,
   userClozang: PropTypes.string.isRequired,
   boozula: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired
