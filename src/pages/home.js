@@ -103,7 +103,6 @@ home.propTypes = {
   getFusers: PropTypes.func.isRequired,
   getSparks: PropTypes.func.isRequired,
   getInfernals: PropTypes.func.isRequired,
-  getFusers: PropTypes.func.isRequired,
 	data: PropTypes.object.isRequired,
 };
 
