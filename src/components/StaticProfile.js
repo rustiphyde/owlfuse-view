@@ -70,7 +70,7 @@ const StaticProfile = (props) => {
   const {
     classes,
       profile: {
-        clozang, alias, createdAt, imageUrl, bio, website, location }
+        clozang, createdAt, imageUrl, bio, website, location }
   } = props;
 
    

@@ -97,7 +97,6 @@ class ToastDialog extends Component {
       classes,
       boozula: {
         drinkName,
-        userAlias,
         userClozang,
         boozImage,
         createdAt,
@@ -179,7 +178,6 @@ class ToastDialog extends Component {
 ToastDialog.propTypes = {
   getBoozula: PropTypes.func.isRequired,
   boozId: PropTypes.string.isRequired,
-  userAlias: PropTypes.string.isRequired,
   userClozang: PropTypes.string.isRequired,
   boozula: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired

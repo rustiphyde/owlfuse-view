@@ -103,7 +103,6 @@ class SparkBox extends Component {
         heatCount,
         stokeCount,
         userImage,
-        userAlias,
         userClozang,
         stokes
       },
@@ -126,7 +125,7 @@ class SparkBox extends Component {
             variant="h5"
             to={`/${userClozang}`}
           >
-          <strong>>{userAlias}</strong>
+          <strong>{userClozang}</strong>
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body2" color="textSecondary">
@@ -181,7 +180,6 @@ SparkBox.propTypes = {
   clearErrors: PropTypes.func.isRequired,
   getSpark: PropTypes.func.isRequired,
   sparkId: PropTypes.string.isRequired,
-  userAlias: PropTypes.string.isRequired,
   spark: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired
 };

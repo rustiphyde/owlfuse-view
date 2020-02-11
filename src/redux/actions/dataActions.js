@@ -1,34 +1,34 @@
 import {
-	SET_SPARKS,
-	SET_SPARK,
-	SET_INFERNALS,
-	POST_SPARK,
-	BUILD_BOOZULA,
-	BUILD_OKE,
-	ADD_HEAT,
-	REMOVE_HEAT,
-	LOADING_DATA,
-	SET_OKELISTS,
-	SET_OKELIST,
-	CHOOZ_BY_LIST,
-	SET_BOOZULA,
-	SET_BOOZULAS,
-	EXTINGUISH_SPARK,
-	ADD_CHEERS,
-	REMOVE_CHEERS,
-	EMPTY_BOOZULA,
-	CHANGE_BOOZ_IMAGE,
-	ERASE_OKE,
-	ADD_SONG,
-	ADD_STOKE,
-	ADD_TOAST,
-	SET_ERRORS,
-	CLEAR_ERRORS,
-	LOADING_UI,
-	CLEAR_SUCCESS,
-	SET_SUCCESS,
-	STOP_LOADING_UI,
-	SET_FUSERS
+  SET_SPARKS,
+  SET_SPARK,
+  SET_INFERNALS,
+  POST_SPARK,
+  BUILD_BOOZULA,
+  BUILD_OKE,
+  ADD_HEAT,
+  REMOVE_HEAT,
+  LOADING_DATA,
+  SET_OKELISTS,
+  SET_OKELIST,
+  CHOOZ_BY_LIST,
+  SET_BOOZULA,
+  SET_BOOZULAS,
+  EXTINGUISH_SPARK,
+  ADD_CHEERS,
+  REMOVE_CHEERS,
+  EMPTY_BOOZULA,
+  CHANGE_BOOZ_IMAGE,
+  ERASE_OKE,
+  ADD_SONG,
+  ADD_STOKE,
+  ADD_TOAST,
+  SET_ERRORS,
+  CLEAR_ERRORS,
+  LOADING_UI,
+  CLEAR_SUCCESS,
+  SET_SUCCESS,
+  STOP_LOADING_UI,
+  SET_FUSERS
 } from "../types";
 import axios from "axios";
 
@@ -115,6 +115,23 @@ export const getOkelist = okeId => dispatch => {
 			dispatch({ type: STOP_LOADING_UI });
 		})
 		.catch(err => console.log(err));
+};
+
+export const getFusers = () => dispatch => {
+	axios
+		.get("/fusers")
+		.then(res => {
+			dispatch({
+				type: SET_FUSERS,
+				payload: res.data
+			});
+		})
+		.catch(err => {
+			dispatch({
+				type: SET_FUSERS,
+				payload: []
+			});
+		});
 };
 
 export const getFusers = () => dispatch => {
@@ -436,35 +453,36 @@ export const choozByList = okeId => dispatch => {
 };
 
 export const getUserData = userClozang => dispatch => {
-	dispatch({ type: LOADING_DATA });
-	axios
-		.get(`/${userClozang}`)
-		.then(res => {
-			dispatch({
-				type: SET_INFERNALS,
-				payload: res.data.infernals
-			});
-			dispatch({
-				type: SET_SPARKS,
-				payload: res.data.sparks
-			});
-			dispatch({
-				type: SET_BOOZULAS,
-				payload: res.data.boozulas
-			});
-		})
-		.catch(() => {
-			dispatch({
-				type: SET_INFERNALS,
-				payload: null
-			});
-			dispatch({
-				type: SET_SPARKS,
-				payload: null
-			});
-			dispatch({
-				type: SET_BOOZULAS,
-				payload: null
-			});
-		});
+  dispatch({ type: LOADING_DATA });
+  axios
+    .get(`/user/${userClozang}`)
+    .then(res => {
+      dispatch({
+        type: SET_INFERNALS,
+        payload: res.data.infernals
+      });
+      dispatch({
+        type: SET_SPARKS,
+        payload: res.data.sparks
+      });
+      dispatch({
+        type: SET_BOOZULAS,
+        payload: res.data.boozulas
+      });
+    })
+    .catch(() => {
+      dispatch({
+        type: SET_INFERNALS,
+        payload: null
+      });
+      dispatch({
+        type: SET_SPARKS,
+        payload: null
+      });
+      dispatch({
+        type: SET_BOOZULAS,
+        payload: null
+      });
+    });
+
 };

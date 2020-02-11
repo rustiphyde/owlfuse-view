@@ -110,7 +110,6 @@ class Candle extends Component {
       classes,
       user: {
         credentials: {
-          alias,
           clozang,
           createdAt,
           imageUrl,

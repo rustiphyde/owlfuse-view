@@ -50,7 +50,7 @@ export default function(state = initialState, action) {
           heat: [
             ...state.heat,
             {
-              userAlias: state.credentials.alias,
+              userClozang: state.credentials.clozang,
               sparkId: action.payload.sparkId
             }
           ]
@@ -61,7 +61,7 @@ export default function(state = initialState, action) {
           cheers: [
             ...state.cheers,
             {
-              userAlias: state.credentials.alias,
+              userClozang: state.credentials.clozang,
               boozId: action.payload.boozId
             }
           ]

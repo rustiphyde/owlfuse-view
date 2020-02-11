@@ -31,7 +31,7 @@ class Stokes extends Component {
     return (
       <Grid container className="dark">
         {stokes.map((stoke) => {
-          const { body, createdAt, userImage, userAlias, userClozang } = stoke;
+          const { body, createdAt, userImage, userClozang } = stoke;
           return (
             <Fragment key={createdAt}>
               <hr className="bar-separator" />

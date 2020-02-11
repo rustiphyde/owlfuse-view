@@ -32,7 +32,7 @@ class Toasts extends Component {
     return (
       <Grid container>
         {toasts.map((toast) => {
-          const { body, createdAt, userImage, userAlias, userClozang } = toast;
+          const { body, createdAt, userImage, userClozang } = toast;
           return (
             <Fragment key={createdAt}>
             <hr className="bar-separator"/>

@@ -5,7 +5,6 @@ export const SET_USER = 'SET_USER';
 export const LOADING_USER = 'LOADING_USER';
 export const MARK_SIZZLES_READ = 'MARK_SIZZLES_READ';
 export const MARK_CLINKS_READ = 'MARK_CLINKS_READ';
-export const SET_FUSERS = 'SET_FUSERS';
 // UI Reducer Types
 export const SET_ERRORS = 'SET_ERRORS';
 export const LOADING_UI = 'LOADING_UI';
@@ -37,4 +36,5 @@ export const ADD_SONG = 'ADD_SONG';
 export const ADD_TOAST = 'ADD_TOAST';
 export const CHOOZ_BY_LIST = 'CHOOZ_BY_LIST';
 export const SET_INFERNALS = 'SET_INFERNALS';
+export const SET_FUSERS = 'SET_FUSERS';
 

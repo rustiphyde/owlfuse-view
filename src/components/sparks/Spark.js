@@ -60,7 +60,6 @@ class Spark extends Component {
     const {
       classes,
       spark: {
-        userAlias,
         userClozang,
         userImage,
         heatCount,
@@ -97,7 +96,7 @@ class Spark extends Component {
           </Typography>
           <HeatButton sparkId={sparkId}/>
           <span>{heatCount}</span>
-          <SparkBox sparkId={sparkId} userAlias={userAlias} userClozang={userClozang} openDialog={this.props.openDialog}/>
+          <SparkBox sparkId={sparkId} userClozang={userClozang} openDialog={this.props.openDialog}/>
           <span>{stokeCount}</span>
           <span>{deleteButton}</span>
         </CardContent>

@@ -82,7 +82,6 @@ class ViewBoozulaDetails extends Component {
       boozula: {
         drinkName,
         mainAlcohol,
-        userAlias,
         userClozang,
         boozImage,
         createdAt,
@@ -192,7 +191,6 @@ class ViewBoozulaDetails extends Component {
 ViewBoozulaDetails.propTypes = {
   getBoozula: PropTypes.func.isRequired,
   boozId: PropTypes.string.isRequired,
-  userAlias: PropTypes.string.isRequired,
   userClozang: PropTypes.string.isRequired,
   boozula: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired
