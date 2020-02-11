@@ -7,11 +7,8 @@ import {
   LOADING_USER,
   SET_SUCCESS,
   CLEAR_SUCCESS,
-  SET_MESSAGE,
-  CLEAR_MESSAGE,
   MARK_SIZZLES_READ,
   MARK_CLINKS_READ,
-  SET_FUSERS
 } from "../types";
 import axios from "axios";
 

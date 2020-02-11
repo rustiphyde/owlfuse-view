@@ -1,4 +1,4 @@
-import React, { Component, Fragment, useState } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 
 // Components
@@ -84,7 +84,6 @@ class home extends Component {
         </div>
          
           <Candle/>
-=======
           <br/>
 					<div className="sparkTitle">
 						<strong>FUSEBOX</strong>
