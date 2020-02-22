@@ -28,7 +28,8 @@ import {
   CLEAR_SUCCESS,
   SET_SUCCESS,
   STOP_LOADING_UI,
-  SET_FUSERS
+  SET_FUSERS,
+  SEND_REQUEST
 } from "../types";
 import axios from "axios";
 
@@ -469,3 +470,29 @@ export const getUserData = userClozang => dispatch => {
     });
 
 };
+
+export const sendFuseRequest = (fuser) => dispatch => {
+	dispatch({ type: LOADING_UI })
+	axios.get(`fuse-with/${fuser}`)
+	.then(res => {
+		console.log(res.data);
+		dispatch({ type: SEND_REQUEST,
+		payload: res.data });
+		dispatch({
+			type: SET_SUCCESS,
+			payload: res.data
+		});
+		dispatch(clearErrors());
+		dispatch({ type: STOP_LOADING_UI });
+	})
+	.then(() => {
+		dispatch(clearSuccess());
+	})
+	.catch(err => {
+		console.log(err.response.data);
+		dispatch({
+			type: SET_ERRORS,
+			payload: err.response.data
+		});
+	});
+}
