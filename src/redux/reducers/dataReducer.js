@@ -22,7 +22,8 @@ import {
   ADD_STOKE,
   ADD_TOAST,
   SET_INFERNALS,
-  SET_FUSERS
+  SET_FUSERS,
+  SEND_REQUEST
 } from "../types";
 
 const initialState = {
@@ -34,7 +35,9 @@ const initialState = {
   boozula: {},
   infernals: [],
   loading: false,
-  fusers: []
+  fusers: [],
+  sentrequests: [],
+  sentrequest: {}
 };
 
 export default function(state = initialState, action) {
@@ -54,6 +57,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         spark: action.payload
+      };
+    case SEND_REQUEST:
+      return {
+        ...state,
+        sentrequest: action.payload
       };
     case SET_INFERNALS:
       return {
