@@ -15,6 +15,7 @@ import Typography from "@material-ui/core/Typography";
 import ExtinguishSpark from './ExtinguishSpark';
 import SparkBox from './SparkBox';
 import HeatButton from './HeatButton';
+import FuseButton from '../FuseButton';
 
 // Icons
 import FireIcon from "../icons/FireIcon";
@@ -22,7 +23,7 @@ import InfernalIcon from "../icons/InfernalIcon";
 
 // Redux
 import { connect } from "react-redux";
-import { addHeat, removeHeat } from "../../redux/actions/dataActions";
+import { addHeat, removeHeat, getFusers } from "../../redux/actions/dataActions";
 
 const styles = {
   card: {
@@ -55,10 +56,19 @@ const styles = {
 };
 
 class Spark extends Component {
+state = {
+  fusers: null
+}
+
+  componentDidMount(){
+    this.props.getFusers();
+  }
+
   render() {
     dayjs.extend(relativeTime);
     const {
       classes,
+      fusers,
       spark: {
         userClozang,
         userImage,
@@ -73,6 +83,10 @@ class Spark extends Component {
       },
       user: { authenticated,  credentials: { clozang }   }
     } = this.props;
+    const fuseButton = fusers !== null && !fusers.includes(userClozang) && userClozang !== clozang ? (
+      <FuseButton fuser={userClozang} />
+    ) : null
+
     const deleteButton = authenticated && userClozang === clozang ? (
       <ExtinguishSpark sparkId={sparkId}/>
     ) : null
@@ -88,6 +102,7 @@ class Spark extends Component {
           >
             <strong>{userClozang}</strong>
           </Typography>
+          <span>{fuseButton}</span>
           <Typography variant="body2" color="textSecondary">
             {dayjs(createdAt).fromNow()}
           </Typography>
@@ -110,6 +125,7 @@ class Spark extends Component {
 Spark.propTypes = {
   addHeat: PropTypes.func.isRequired,
   removeHeat: PropTypes.func.isRequired,
+  getFusers: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   spark: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
@@ -117,12 +133,15 @@ Spark.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  user: state.user
+  user: state.user,
+  fusers: state.data.fusers
 });
 
 const mapActionsToProps = {
   addHeat,
-  removeHeat
+  removeHeat,
+  getFusers
+
 };
 
 export default connect(
