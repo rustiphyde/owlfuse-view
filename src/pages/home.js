@@ -11,6 +11,7 @@ import Toggle from '../components/Toggle';
 
 // Icons
 import FlameIcon from "../components/icons/FlameIcon";
+import OwlFuseLogo from '../components/icons/OwlFuseLogo';
 
 // MUI Components
 import Grid from "@material-ui/core/Grid";
@@ -58,8 +59,8 @@ class home extends Component {
         <SparkSkeleton length={6}/>
     );
     let fusersMarkup = !loading ? (
-			fusers ? (fusers.map(fuser => <Fuser key={fusers.indexOf(fuser)} fuser={fuser} />)
-      ) : (<div>You are not currently fused with anyone...get out there and mingle!!</div>)) : (
+			fusers && fusers.length > 1 && fusers !== [] && fusers !== null ? (fusers.filter(fuse => fusers.indexOf(fuse) !== 0).map(fuser => <Fuser key={fusers.indexOf(fuser)} fuser={fuser} />)
+      ) : (<div className="rusty">You are not currently fused with anyone...get out there and mingle!!</div>)) : (
 			<div>Loading...</div>
 		);
 
@@ -89,9 +90,10 @@ class home extends Component {
 						<strong>FUSEBOX</strong>
 						<hr className="bar-separator" />
 					</div>
-					<div className="candle" width="100%"></div>
-					{fusersMarkup}
-
+					<div className="candle" width="100%">
+          <OwlFuseLogo className="icon7"/>
+          {fusersMarkup}
+          </div>
         </Grid>
       </Grid>
     );
