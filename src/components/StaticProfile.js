@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
+import FuseButton from './FuseButton';
 import withStyles from "@material-ui/core/styles/withStyles";
 
 // MUI Stuff
@@ -85,6 +86,10 @@ const StaticProfile = (props) => {
           <img src={imageUrl} alt="candle" className="candle-image" />
                       
         </div>
+        <div className="candle" width="100%">
+        <FuseButton fuser={clozang} />
+          </div>
+        
         <hr />
 
         <div className="candle-details">
