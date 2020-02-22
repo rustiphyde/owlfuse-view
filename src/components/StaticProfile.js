@@ -67,6 +67,8 @@ const styles = theme => ({
 
 const StaticProfile = (props) => {
 
+  
+
   const {
     classes,
       profile: {
@@ -81,9 +83,10 @@ const StaticProfile = (props) => {
       <div className={classes.candle}>
         <div className="image-wrapper">
           <img src={imageUrl} alt="candle" className="candle-image" />
-              
+                      
         </div>
         <hr />
+
         <div className="candle-details">
           <MuiLink
             component={Link}
