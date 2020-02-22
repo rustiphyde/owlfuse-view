@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import axios from "axios";
 
 // Components
-import Spark from "../components/sparks/Spark";
+import UserSpark from "../components/sparks/UserSpark";
 import Boozula from "../components/boozulas/Boozula";
 import StaticProfile from "../components/StaticProfile";
 import SparkSkeleton from '../util/SparkSkeleton';
@@ -53,12 +53,12 @@ class user extends Component {
     ) : sparks === null || sparks.length === 0 ? (
       <strong className="center">This user has not lit any sparks yet.</strong>
     ) : !sparkIdParam ? (
-      sparks.map(spark => <Spark key={spark.sparkId} spark={spark} />)
+      sparks.map(spark => <UserSpark key={spark.sparkId} spark={spark} />)
         ) : (
             sparks.map(spark => {
               if (spark.sparkId !== sparkIdParam)
-                return <Spark key={spark.sparkId} spark={spark} />
-              else return <Spark key={spark.sparkId} spark={spark} openDialog/>
+                return <UserSpark key={spark.sparkId} spark={spark} />
+              else return <UserSpark key={spark.sparkId} spark={spark} openDialog/>
       })
     );
 
