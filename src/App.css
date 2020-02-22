@@ -176,6 +176,10 @@ input {
   top: 8%;
   left: 82%;
 }
+.icon11 {
+  font-size: 4rem !important;
+  align-self: center !important;
+}
 
 
 
@@ -424,4 +428,11 @@ body > div:nth-child(7) > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.Mu
 .centered {
   margin: 0 auto;
   text-align: center;
+}
+
+#root > div.container > div > div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-12.MuiGrid-grid-sm-4 > div.MuiPaper-root.MuiPaper-elevation1.StaticProfile-paper-263.MuiPaper-rounded > div > button > span.MuiIconButton-label {
+  align-self: center !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+  justify-content: center;
 }
