@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import OwlFuseButton from '../util/OwlFuseButton';
 import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
+import Typography from '@material-ui/core/Typography';
 
 const styles = {
 
@@ -13,8 +14,9 @@ class FuseRequest extends Component {
         const { classes, fuserequest: {
             sender, requested, sentAt, accepted, rejected
         } } = this.props;
+        
         return(
-            <div>{sender} sent you a fuse request</div>
+            <Fragment><Typography variant="body1" color="secondary">{sender} sent you a fuse request: {accepted.toString()}</Typography></Fragment>
         )
     }
 }
