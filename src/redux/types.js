@@ -37,6 +37,7 @@ export const ADD_TOAST = 'ADD_TOAST';
 export const CHOOZ_BY_LIST = 'CHOOZ_BY_LIST';
 export const SET_INFERNALS = 'SET_INFERNALS';
 export const SET_FUSERS = 'SET_FUSERS';
-export const SET_REQUESTS = 'SET_REQUESTS';
+export const SET_SENT_REQUESTS = 'SET_SENT_REQUESTS';
 export const SEND_REQUEST = 'SEND_REQUEST';
+export const FETCH_REQUESTED = 'FETCH_REQUESTED';
 
