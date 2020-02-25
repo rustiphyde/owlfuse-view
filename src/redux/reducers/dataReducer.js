@@ -23,7 +23,9 @@ import {
   ADD_TOAST,
   SET_INFERNALS,
   SET_FUSERS,
-  SEND_REQUEST
+  SEND_REQUEST,
+  SET_SENT_REQUESTS,
+  FETCH_REQUESTED
 } from "../types";
 
 const initialState = {
@@ -37,7 +39,9 @@ const initialState = {
   loading: false,
   fusers: [],
   sentrequests: [],
-  sentrequest: {}
+  sentrequest: {},
+  fuserequest: {},
+  fuserequests: []
 };
 
 export default function(state = initialState, action) {
@@ -90,6 +94,12 @@ export default function(state = initialState, action) {
         return {
           ...state,
           boozula: action.payload
+        };
+      case FETCH_REQUESTED:
+        return {
+          ...state,
+          fuserequests: action.payload,
+          loading: false
         };
       case ADD_HEAT:
     case REMOVE_HEAT:
