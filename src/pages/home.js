@@ -7,6 +7,7 @@ import Fuser from '../components/Fuser';
 import Candle from '../components/Candle';
 import SparkSkeleton from '../util/SparkSkeleton';
 import Toggle from '../components/Toggle';
+import FuseRequestBox from '../components/FuseRequestBox';
 
 
 // Icons
@@ -94,6 +95,7 @@ class home extends Component {
           <OwlFuseLogo className="icon7"/>
           {fusersMarkup}
           </div>
+          <FuseRequestBox/>
         </Grid>
       </Grid>
     );
