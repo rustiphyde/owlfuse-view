@@ -1,35 +1,36 @@
 import {
-  SET_SPARKS,
-  SET_SPARK,
-  SET_INFERNALS,
-  POST_SPARK,
-  BUILD_BOOZULA,
-  BUILD_OKE,
-  ADD_HEAT,
-  REMOVE_HEAT,
-  LOADING_DATA,
-  SET_OKELISTS,
-  SET_OKELIST,
-  CHOOZ_BY_LIST,
-  SET_BOOZULA,
-  SET_BOOZULAS,
-  EXTINGUISH_SPARK,
-  ADD_CHEERS,
-  REMOVE_CHEERS,
-  EMPTY_BOOZULA,
-  CHANGE_BOOZ_IMAGE,
-  ERASE_OKE,
-  ADD_SONG,
-  ADD_STOKE,
-  ADD_TOAST,
-  SET_ERRORS,
-  CLEAR_ERRORS,
-  LOADING_UI,
-  CLEAR_SUCCESS,
-  SET_SUCCESS,
-  STOP_LOADING_UI,
-  SET_FUSERS,
-  SEND_REQUEST
+	SET_SPARKS,
+	SET_SPARK,
+	SET_INFERNALS,
+	POST_SPARK,
+	BUILD_BOOZULA,
+	BUILD_OKE,
+	ADD_HEAT,
+	REMOVE_HEAT,
+	LOADING_DATA,
+	SET_OKELISTS,
+	SET_OKELIST,
+	CHOOZ_BY_LIST,
+	SET_BOOZULA,
+	SET_BOOZULAS,
+	EXTINGUISH_SPARK,
+	ADD_CHEERS,
+	REMOVE_CHEERS,
+	EMPTY_BOOZULA,
+	CHANGE_BOOZ_IMAGE,
+	ERASE_OKE,
+	ADD_SONG,
+	ADD_STOKE,
+	ADD_TOAST,
+	SET_ERRORS,
+	CLEAR_ERRORS,
+	LOADING_UI,
+	CLEAR_SUCCESS,
+	SET_SUCCESS,
+	STOP_LOADING_UI,
+	SET_FUSERS,
+	SEND_REQUEST,
+	FETCH_REQUESTED
 } from "../types";
 import axios from "axios";
 
@@ -437,62 +438,74 @@ export const choozByList = okeId => dispatch => {
 };
 
 export const getUserData = userClozang => dispatch => {
-  dispatch({ type: LOADING_DATA });
-  axios
-    .get(`/user/${userClozang}`)
-    .then(res => {
-      dispatch({
-        type: SET_INFERNALS,
-        payload: res.data.infernals
-      });
-      dispatch({
-        type: SET_SPARKS,
-        payload: res.data.sparks
-      });
-      dispatch({
-        type: SET_BOOZULAS,
-        payload: res.data.boozulas
-      });
-    })
-    .catch(() => {
-      dispatch({
-        type: SET_INFERNALS,
-        payload: null
-      });
-      dispatch({
-        type: SET_SPARKS,
-        payload: null
-      });
-      dispatch({
-        type: SET_BOOZULAS,
-        payload: null
-      });
-    });
-
+	dispatch({ type: LOADING_DATA });
+	axios
+		.get(`/user/${userClozang}`)
+		.then(res => {
+			dispatch({
+				type: SET_INFERNALS,
+				payload: res.data.infernals
+			});
+			dispatch({
+				type: SET_SPARKS,
+				payload: res.data.sparks
+			});
+			dispatch({
+				type: SET_BOOZULAS,
+				payload: res.data.boozulas
+			});
+		})
+		.catch(() => {
+			dispatch({
+				type: SET_INFERNALS,
+				payload: null
+			});
+			dispatch({
+				type: SET_SPARKS,
+				payload: null
+			});
+			dispatch({
+				type: SET_BOOZULAS,
+				payload: null
+			});
+		});
 };
 
-export const sendFuseRequest = (fuser) => dispatch => {
-	dispatch({ type: LOADING_UI })
-	axios.get(`fuse-with/${fuser}`)
-	.then(res => {
-		console.log(res.data);
-		dispatch({ type: SEND_REQUEST,
-		payload: res.data });
-		dispatch({
-			type: SET_SUCCESS,
-			payload: res.data
+export const sendFuseRequest = fuser => dispatch => {
+	dispatch({ type: LOADING_UI });
+	axios
+		.get(`fuse-with/${fuser}`)
+		.then(res => {
+			console.log(res.data);
+			dispatch({ type: SEND_REQUEST, payload: res.data });
+			dispatch({
+				type: SET_SUCCESS,
+				payload: res.data
+			});
+			dispatch(clearErrors());
+			dispatch({ type: STOP_LOADING_UI });
+		})
+		.then(() => {
+			dispatch(clearSuccess());
+		})
+		.catch(err => {
+			console.log(err.response.data);
+			dispatch({
+				type: SET_ERRORS,
+				payload: err.response.data
+			});
 		});
-		dispatch(clearErrors());
-		dispatch({ type: STOP_LOADING_UI });
-	})
-	.then(() => {
-		dispatch(clearSuccess());
-	})
-	.catch(err => {
-		console.log(err.response.data);
-		dispatch({
-			type: SET_ERRORS,
-			payload: err.response.data
+};
+
+export const fetchRequestedFuses = () => dispatch => {
+	dispatch({ type: LOADING_DATA });
+	axios
+		.get("/requested-fuses")
+		.then(res => {
+			dispatch({ type: FETCH_REQUESTED, payload: res.data });
+		})
+		.catch(err => {
+			dispatch({ type: FETCH_REQUESTED, payload: [] });
 		});
-	});
-}
+};
+
