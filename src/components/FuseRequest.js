@@ -4,9 +4,21 @@ import OwlFuseButton from '../util/OwlFuseButton';
 import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
+import Paper from "@material-ui/core/Paper";
+import { Link } from "react-router-dom";
 
 const styles = {
-
+    paper: {
+        backgroundColor: "#263238",
+        color: "#f4db9d",
+        height: "3rem",
+        borderRadius: "16px 0 16px 0",
+        padding: "16px",
+        margin: "6px",
+        '&:hover': {
+            color: "#f4db9d !important"
+        }
+    }
 }
 
 class FuseRequest extends Component {
@@ -16,7 +28,12 @@ class FuseRequest extends Component {
         } } = this.props;
         
         return(
-            <Fragment><Typography variant="body1" color="secondary">{sender} sent you a fuse request: {accepted.toString()}</Typography></Fragment>
+            <Paper className={classes.paper}><Typography
+            variant="h6"
+            component={Link}
+            className="foam orange"
+            to={`/${sender}`}
+          ><strong>{sender}</strong></Typography></Paper>
         )
     }
 }
