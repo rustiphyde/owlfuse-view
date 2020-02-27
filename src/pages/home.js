@@ -139,14 +139,14 @@ class home extends Component {
 						<strong>FUSEBOX</strong>
 						<hr className="bar-separator" />
 					</div>
-					<div className="centered">
-						<span className="toggle-text toggle-is--active">Fusers</span>
-						<Toggle toggleFunx={this.handleToggleFuse} />
-						<span className="toggle-text">Requests</span>
-					</div>
 					<div className="candle" width="100%">
 						<OwlFuseLogo className="icon7" />
 						{fusersMarkup}
+					</div>
+          <div className="centered">
+						<span className="toggle-text toggle-is--active">Fused-With</span>
+						<Toggle toggleFunx={this.handleToggleFuse} />
+						<span className="toggle-text">Requests</span>
 					</div>
 				</Grid>
 			</Grid>

@@ -45,6 +45,7 @@ class user extends Component {
       .catch(err => console.log(err));
   }
   render() {
+    const {  clozang: username } = this.props;
     const { sparks, boozulas, loading } = this.props.data;
     const { sparkIdParam, boozIdParam } = this.state;
 
@@ -92,7 +93,7 @@ class user extends Component {
           {this.state.profile === null ? (
             <CandleSkeleton/>
           ) : (
-            <StaticProfile profile={this.state.profile} />
+            <StaticProfile profile={this.state.profile} username={username}/>
           )}
         </Grid>
         <Grid item sm={8} xs={12}>
@@ -119,7 +120,8 @@ user.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  data: state.data
+  data: state.data,
+  clozang: state.user.credentials.clozang
 });
 
 export default connect(

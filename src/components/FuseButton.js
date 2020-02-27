@@ -46,6 +46,7 @@ class FuseButton extends Component {
 	}
 	handleOpen = () => {
 		this.setState({ open: true });
+		console.log(this.props.fuser + "&" + this.props.user.clozang)
 	};
 	handleClose = () => {
 		this.setState({ open: false });
@@ -71,8 +72,10 @@ class FuseButton extends Component {
 		const {
             classes,
             fusers,
-			user: { authenticated, clozang },
-			UI: { loading }
+			user: { authenticated },
+			clozang,
+			UI: { loading },
+			fuser
         } = this.props;
         const { errors, success } = this.state;
 		const dialogMarkup = loading ? (
@@ -99,7 +102,7 @@ class FuseButton extends Component {
 				</DialogActions>
 			</Fragment>
         );
-        const authButton = !loading && authenticated && this.props.fuser !== clozang && !this.props.fusers.includes(this.props.fuser) ? (
+        const authButton = !loading && authenticated && fuser !== clozang && !this.props.fusers.includes(this.props.fuser) ? (
             <Fragment>
                	<OwlFuseButton
 					tip="SEND FUSE REQUEST"
@@ -155,13 +158,15 @@ FuseButton.propTypes = {
 	clearSuccess: PropTypes.func.isRequired,
     clearErrors: PropTypes.func.isRequired,
     getFusers: PropTypes.func.isRequired,
-	UI: PropTypes.object.isRequired
+	UI: PropTypes.object.isRequired,
+	clozang: PropTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({
 	user: state.user,
     UI: state.UI,
-    fusers: state.data.fusers
+	fusers: state.data.fusers,
+	clozang: state.user.credentials.clozang
 });
 
 const mapActionsToProps = {
@@ -175,3 +180,6 @@ export default connect(
 	mapStateToProps,
 	mapActionsToProps
 )(withStyles(styles)(FuseButton));
+
+
+//TODO : Create function to remove FuseButton when on current user

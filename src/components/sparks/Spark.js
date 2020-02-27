@@ -84,7 +84,7 @@ state = {
       user: { authenticated,  credentials: { clozang }   }
     } = this.props;
     const fuseButton = fusers !== null && !fusers.includes(userClozang) && userClozang !== clozang ? (
-      <FuseButton fuser={userClozang} />
+      <FuseButton fuser={userClozang} clozang={clozang}/>
     ) : null
 
     const deleteButton = authenticated && userClozang === clozang ? (
