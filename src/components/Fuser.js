@@ -18,6 +18,7 @@ const styles = {
         borderRadius: "16px 0 16px 0",
         padding: "16px",
         margin: "6px",
+        overflow: 'hidden',
         '&:hover': {
             color: "#f4db9d !important"
         }
