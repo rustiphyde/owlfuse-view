@@ -24,8 +24,8 @@ import {
   SET_INFERNALS,
   SET_FUSERS,
   SEND_REQUEST,
-  SET_SENT_REQUESTS,
-  FETCH_REQUESTED
+  FETCH_REQUESTED,
+  ACCEPT_REQUEST
 } from "../types";
 
 const initialState = {
@@ -218,6 +218,14 @@ export default function(state = initialState, action) {
         return {
           ...state
         }
+        case ACCEPT_REQUEST:
+          let reqIndex = state.fuserequests.findIndex(
+            request => request.reqId === action.payload.reqId
+          );
+          state.fuserequests[reqIndex] = action.payload;
+          return {
+            ...state
+          }
       default:
         return state;
     }
