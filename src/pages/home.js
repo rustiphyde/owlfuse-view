@@ -94,9 +94,8 @@ class home extends Component {
 						You are not currently fused with anyone...get out there and mingle!!
 					</div>
 				)
-			) : fuserequests ? (
+			) : fuserequests && fuserequests.length > 0 && fuserequests !== null && fuserequests !== undefined && fuserequests !== "" ? (
 				<Fragment>
-					<Typography>The following users want to fuse with you</Typography>
 					{fuserequests.map(fuserequest => (
 						<FuseRequest key={fuserequest.reqId} fuserequest={fuserequest} />
 					))}{" "}
@@ -144,7 +143,7 @@ class home extends Component {
 						{fusersMarkup}
 					</div>
           <div className="centered">
-						<span className="toggle-text toggle-is--active">Fused-With</span>
+						<span className="toggle-text toggle-is--active">Fusers</span>
 						<Toggle toggleFunx={this.handleToggleFuse} />
 						<span className="toggle-text">Requests</span>
 					</div>
