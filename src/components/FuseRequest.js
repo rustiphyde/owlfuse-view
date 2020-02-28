@@ -1,20 +1,24 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import OwlFuseButton from '../util/OwlFuseButton';
 import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
 import Paper from "@material-ui/core/Paper";
 import { Link } from "react-router-dom";
+import AcceptButton from './AcceptButton';
 
 const styles = {
     paper: {
         backgroundColor: "#263238",
+        position: 'relative',
         color: "#f4db9d",
         height: "3rem",
         borderRadius: "16px 0 16px 0",
         padding: "16px",
         margin: "6px",
+        display: 'flex',
+        justifyContent: 'space-between',
+        overflow: 'hidden',
         '&:hover': {
             color: "#f4db9d !important"
         }
@@ -24,7 +28,7 @@ const styles = {
 class FuseRequest extends Component {
     render(){
         const { classes, fuserequest: {
-            sender, requested, sentAt, accepted, rejected
+            sender, requested, sentAt, accepted, rejected, reqId
         } } = this.props;
         
         return(
@@ -33,7 +37,9 @@ class FuseRequest extends Component {
             component={Link}
             className="foam orange"
             to={`/${sender}`}
-          ><strong>{sender}</strong></Typography></Paper>
+          ><strong>{sender}</strong></Typography>
+          <AcceptButton className={classes.aBtn} reqId={reqId}/>
+          </Paper>
         )
     }
 }
