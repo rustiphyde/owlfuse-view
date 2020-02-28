@@ -30,7 +30,8 @@ import {
 	STOP_LOADING_UI,
 	SET_FUSERS,
 	SEND_REQUEST,
-	FETCH_REQUESTED
+	FETCH_REQUESTED,
+	ACCEPT_REQUEST
 } from "../types";
 import axios from "axios";
 
@@ -509,3 +510,16 @@ export const fetchRequestedFuses = () => dispatch => {
 		});
 };
 
+export const acceptFuseRequest = reqId => dispatch => {
+	dispatch({ type: LOADING_UI });
+	axios
+		.get(`/accept/${reqId}`)
+		.then(res => {
+			dispatch({ type: ACCEPT_REQUEST, payload: res.data });
+			console.log(res.data);
+			dispatch({ type: STOP_LOADING_UI });
+		})
+		.catch(err => {
+			console.log(err);
+		});
+};
