@@ -40,4 +40,5 @@ export const SET_FUSERS = 'SET_FUSERS';
 export const SET_SENT_REQUESTS = 'SET_SENT_REQUESTS';
 export const SEND_REQUEST = 'SEND_REQUEST';
 export const FETCH_REQUESTED = 'FETCH_REQUESTED';
+export const ACCEPT_REQUEST = 'ACCEPT_REQUEST';
 
