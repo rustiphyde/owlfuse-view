@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Paper from "@material-ui/core/Paper";
 import { Link } from "react-router-dom";
 import AcceptButton from './AcceptButton';
+import RejectButton from './RejectButton';
 
 const styles = {
     paper: {
@@ -15,7 +16,7 @@ const styles = {
         height: "3rem",
         borderRadius: "16px 0 16px 0",
         padding: "16px",
-        margin: "6px",
+        margin: "8px",
         display: 'flex',
         justifyContent: 'space-between',
         overflow: 'hidden',
@@ -39,6 +40,7 @@ class FuseRequest extends Component {
             to={`/${sender}`}
           ><strong>{sender}</strong></Typography>
           <AcceptButton className={classes.aBtn} reqId={reqId}/>
+          <RejectButton className={classes.aBtn} reqId={reqId}/>
           </Paper>
         )
     }
