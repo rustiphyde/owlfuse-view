@@ -31,7 +31,8 @@ import {
 	SET_FUSERS,
 	SEND_REQUEST,
 	FETCH_REQUESTED,
-	ACCEPT_REQUEST
+	ACCEPT_REQUEST,
+	REJECT_REQUEST
 } from "../types";
 import axios from "axios";
 
@@ -516,6 +517,20 @@ export const acceptFuseRequest = reqId => dispatch => {
 		.get(`/accept/${reqId}`)
 		.then(res => {
 			dispatch({ type: ACCEPT_REQUEST, payload: res.data });
+			console.log(res.data);
+			dispatch({ type: STOP_LOADING_UI });
+		})
+		.catch(err => {
+			console.log(err);
+		});
+};
+
+export const rejectFuseRequest = reqId => dispatch => {
+	dispatch({ type: LOADING_UI });
+	axios
+		.get(`/reject/${reqId}`)
+		.then(res => {
+			dispatch({ type: REJECT_REQUEST, payload: res.data });
 			console.log(res.data);
 			dispatch({ type: STOP_LOADING_UI });
 		})
