@@ -25,7 +25,8 @@ import {
   SET_FUSERS,
   SEND_REQUEST,
   FETCH_REQUESTED,
-  ACCEPT_REQUEST
+  ACCEPT_REQUEST,
+  REJECT_REQUEST
 } from "../types";
 
 const initialState = {
@@ -223,6 +224,14 @@ export default function(state = initialState, action) {
             request => request.reqId === action.payload.reqId
           );
           state.fuserequests[reqIndex] = action.payload;
+          return {
+            ...state
+          }
+          case REJECT_REQUEST:
+          let rejIndex = state.fuserequests.findIndex(
+            request => request.reqId === action.payload.reqId
+          );
+          state.fuserequests[rejIndex] = action.payload;
           return {
             ...state
           }
