@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { rejectFuseRequest } from '../redux/actions/dataActions';
+import { rejectFuseRequest, fetchRequestedFuses } from '../redux/actions/dataActions';
 
 
 import OwlFuseButton from '../util/OwlFuseButton';
@@ -31,6 +31,7 @@ class RejectButton extends Component {
     rejectFuseRequest = () => {
         this.props.rejectFuseRequest(this.props.reqId);
         this.setState({ open: false });
+        setTimeout(() => this.props.fetchRequestedFuses(), 4000);
     }
     render(){
         const { classes } = this.props;
@@ -70,7 +71,8 @@ class RejectButton extends Component {
 RejectButton.propTypes = {
     reqId: PropTypes.string.isRequired,
     rejectFuseRequest: PropTypes.func.isRequired,
+    fetchRequestedFuses: PropTypes.func.isRequired,
     classes: PropTypes.object.isRequired
 }
 
-export default connect(null, { rejectFuseRequest })(withStyles(styles)(RejectButton));
+export default connect(null, { rejectFuseRequest, fetchRequestedFuses })(withStyles(styles)(RejectButton));
