@@ -26,7 +26,9 @@ import {
   SEND_REQUEST,
   FETCH_REQUESTED,
   ACCEPT_REQUEST,
-  REJECT_REQUEST
+  REJECT_REQUEST,
+  SET_SENT_REQUESTS,
+  CANCEL_REQUEST
 } from "../types";
 
 const initialState = {
@@ -96,6 +98,12 @@ export default function(state = initialState, action) {
           ...state,
           boozula: action.payload
         };
+      case SET_SENT_REQUESTS:
+        return {
+          ...state,
+          sentrequests: action.payload,
+          loading: false
+        }
       case FETCH_REQUESTED:
         return {
           ...state,
