@@ -243,6 +243,14 @@ export default function(state = initialState, action) {
           return {
             ...state
           }
+          case CANCEL_REQUEST:
+            let cancelIndex = state.sentrequests.findIndex(
+              request => request.reqId === action.payload
+            );
+            state.sentrequests.splice(cancelIndex, 1);
+            return {
+              ...state
+            }
       default:
         return state;
     }
