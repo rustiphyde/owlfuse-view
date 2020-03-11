@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 // Components
 import Spark from "../components/sparks/Spark";
-import Fuser from "../components/Fuser";
+import Fuser from "../components/fuses/Fuser";
 import Candle from "../components/Candle";
 import SparkSkeleton from "../util/SparkSkeleton";
 import Toggle from "../components/Toggle";

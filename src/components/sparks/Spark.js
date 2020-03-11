@@ -15,7 +15,7 @@ import Typography from "@material-ui/core/Typography";
 import ExtinguishSpark from './ExtinguishSpark';
 import SparkBox from './SparkBox';
 import HeatButton from './HeatButton';
-import FuseButton from '../FuseButton';
+import FuseButton from '../fuses/FuseButton';
 
 // Icons
 import FireIcon from "../icons/FireIcon";

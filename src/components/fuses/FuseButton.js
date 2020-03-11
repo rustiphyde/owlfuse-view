@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import OwlFuseButton from "../util/OwlFuseButton";
+import OwlFuseButton from "../../util/OwlFuseButton";
 import { withStyles } from "@material-ui/core/styles";
 import {
 	sendFuseRequest,
 	clearSuccess,
     clearErrors,
     getFusers
-} from "../redux/actions/dataActions";
+} from "../../redux/actions/dataActions";
 import { connect } from "react-redux";
 
 // MUI Stuff
@@ -17,7 +17,7 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogActions from "@material-ui/core/DialogActions";
 // Icons
-import FuseRequestIcon from "./icons/FuseRequestIcon";
+import FuseRequestIcon from "../icons/FuseRequestIcon";
 
 const styles = {
 	fuseWith: {}

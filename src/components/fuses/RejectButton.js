@@ -2,11 +2,11 @@ import React, { Component, Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { rejectFuseRequest, fetchRequestedFuses } from '../redux/actions/dataActions';
+import { rejectFuseRequest, fetchRequestedFuses } from '../../redux/actions/dataActions';
 
 
-import OwlFuseButton from '../util/OwlFuseButton';
-import RejectRequestIcon from './icons/RejectRequestIcon';
+import OwlFuseButton from '../../util/OwlFuseButton';
+import RejectRequestIcon from '../icons/RejectRequestIcon';
 // MUI Stuff
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';

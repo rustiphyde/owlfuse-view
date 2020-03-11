@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
 import Paper from "@material-ui/core/Paper";
 import { Link } from "react-router-dom";
-import AcceptButton from './AcceptButton';
-import RejectButton from './RejectButton';
+import AcceptButton from './fuses/AcceptButton';
+import RejectButton from './fuses/RejectButton';
 
 const styles = {
     paper: {
