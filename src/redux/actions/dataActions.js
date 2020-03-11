@@ -32,7 +32,9 @@ import {
 	SEND_REQUEST,
 	FETCH_REQUESTED,
 	ACCEPT_REQUEST,
-	REJECT_REQUEST
+	REJECT_REQUEST,
+	SET_SENT_REQUESTS,
+	CANCEL_REQUEST
 } from "../types";
 import axios from "axios";
 
@@ -536,5 +538,17 @@ export const rejectFuseRequest = reqId => dispatch => {
 		})
 		.catch(err => {
 			console.log(err);
+		});
+};
+
+export const getAllSentFuses = () => dispatch => {
+	dispatch({ type: LOADING_DATA });
+	axios
+		.get("/sent-fuses")
+		.then(res => {
+			dispatch({ type: SET_SENT_REQUESTS, payload: res.data });
+		})
+		.catch(err => {
+			dispatch({ type: SET_SENT_REQUESTS, payload: [] });
 		});
 };
