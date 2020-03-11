@@ -552,3 +552,14 @@ export const getAllSentFuses = () => dispatch => {
 			dispatch({ type: SET_SENT_REQUESTS, payload: [] });
 		});
 };
+
+export const cancelRequest = reqId => dispatch => {
+	axios
+		.delete(`/cancel/${reqId}`)
+		.then(() => {
+			dispatch({ type: CANCEL_REQUEST, payload: reqId });
+		})
+		.catch(err => {
+			console.log(err);
+		});
+};
