@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import { connect } from 'react-redux';
-import FuseButton from "./FuseButton";
+import FuseButton from "./fuses/FuseButton";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 // MUI Stuff
