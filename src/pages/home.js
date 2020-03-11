@@ -7,7 +7,8 @@ import Fuser from "../components/fuses/Fuser";
 import Candle from "../components/Candle";
 import SparkSkeleton from "../util/SparkSkeleton";
 import Toggle from "../components/Toggle";
-import FuseRequest from "../components/FuseRequest";
+import FuseRequest from "../components/fuses/FuseRequest";
+import SentRequest from "../components/fuses/SentRequest";
 
 // Icons
 import FlameIcon from "../components/icons/FlameIcon";
@@ -22,7 +23,8 @@ import {
 	getSparks,
 	getInfernals,
 	getFusers,
-	fetchRequestedFuses
+	fetchRequestedFuses,
+	getAllSentFuses
 } from "../redux/actions/dataActions";
 
 class home extends Component {
@@ -32,7 +34,8 @@ class home extends Component {
 		toggleChecked: false,
 		toggleFuse: false,
 		fusers: null,
-		fuserequests: null
+		fuserequests: null,
+		sentrequests: null
 	};
 
 	toggleFunx = () => {};
@@ -42,6 +45,8 @@ class home extends Component {
 		this.props.getInfernals();
 		this.props.getFusers();
 		this.props.fetchRequestedFuses();
+		this.props.getAllSentFuses();
+
 	}
 
 	handleToggle = event => {
@@ -69,7 +74,8 @@ class home extends Component {
 			sparks,
 			infernals,
 			loading,
-			fuserequests
+			fuserequests,
+			sentrequests
 		} = this.props.data;
 
 		let recentSparksMarkup = !loading ? (
@@ -108,7 +114,17 @@ class home extends Component {
 		) : (
 			<div>Loading...</div>
 		);
-
+		let sentMarkup = !loading ? (
+			sentrequests && sentrequests.length > 0 && sentrequests !== [] && sentrequests !== null && sentrequests !== undefined && sentrequests !== "" ? (
+				<Fragment>
+					{sentrequests.map(sentrequest => (<SentRequest key={sentrequest.reqId} sentrequest={sentrequest} /> ))}{" "}
+				</Fragment>
+			) : (
+				<div className="rusty">
+					You do not currently have any fuse requests sent out
+				</div>
+			)
+		) : (<div>Loading...</div>);
 		return (
 			<Grid container spacing={2}>
 				<Grid item sm={8} xs={12}>
@@ -147,6 +163,13 @@ class home extends Component {
 						<Toggle toggleFunx={this.handleToggleFuse} />
 						<span className="toggle-text">Requests</span>
 					</div>
+					<div className="sparkTitle">
+						<strong>SENT BY YOU</strong>
+						<hr className="bar-separator" />
+					</div>
+					<div className="candle">
+						{sentMarkup}
+					</div>
 				</Grid>
 			</Grid>
 		);
@@ -158,6 +181,7 @@ home.propTypes = {
 	getSparks: PropTypes.func.isRequired,
 	getInfernals: PropTypes.func.isRequired,
 	fetchRequestedFuses: PropTypes.func.isRequired,
+	getAllSentFuses: PropTypes.func.isRequired,
 	data: PropTypes.object.isRequired
 };
 
@@ -169,5 +193,6 @@ export default connect(mapStateToProps, {
 	getSparks,
 	getInfernals,
 	getFusers,
-	fetchRequestedFuses
+	fetchRequestedFuses,
+	getAllSentFuses
 })(home);
