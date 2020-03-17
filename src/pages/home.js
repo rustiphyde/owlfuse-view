@@ -46,7 +46,6 @@ class home extends Component {
 		this.props.getFusers();
 		this.props.fetchRequestedFuses();
 		this.props.getAllSentFuses();
-
 	}
 
 	handleToggle = event => {
@@ -90,17 +89,41 @@ class home extends Component {
 			<SparkSkeleton length={6} />
 		);
 		let fusersMarkup = !loading ? (
+			fusers && fusers.length > 1 && fusers !== [] && fusers !== null ? (
+				fusers
+					.filter(fuse => fusers.indexOf(fuse) !== 0)
+					.map(fuser => <Fuser key={fusers.indexOf(fuser)} fuser={fuser} />)
+			) : (
+				<div className="rusty">
+					You are not currently fused with anyone...get out there and mingle!!
+				</div>
+			)
+		) : (
+			<div>Loading...</div>
+		);
+		let requestsMarkup = !loading ? (
 			!this.state.toggleFuse ? (
-				fusers && fusers.length > 1 && fusers !== [] && fusers !== null ? (
-					fusers
-						.filter(fuse => fusers.indexOf(fuse) !== 0)
-						.map(fuser => <Fuser key={fusers.indexOf(fuser)} fuser={fuser} />)
+				sentrequests &&
+				sentrequests.length > 0 &&
+				sentrequests !== [] &&
+				sentrequests !== null &&
+				sentrequests !== undefined &&
+				sentrequests !== "" ? (
+					<Fragment>
+						{sentrequests.map(sentrequest => (
+							<SentRequest key={sentrequest.reqId} sentrequest={sentrequest} />
+						))}{" "}
+					</Fragment>
 				) : (
 					<div className="rusty">
-						You are not currently fused with anyone...get out there and mingle!!
+						You do not currently have any fuse requests sent out
 					</div>
 				)
-			) : fuserequests && fuserequests.length > 0 && fuserequests !== null && fuserequests !== undefined && fuserequests !== "" ? (
+			) : fuserequests &&
+			  fuserequests.length > 0 &&
+			  fuserequests !== null &&
+			  fuserequests !== undefined &&
+			  fuserequests !== "" ? (
 				<Fragment>
 					{fuserequests.map(fuserequest => (
 						<FuseRequest key={fuserequest.reqId} fuserequest={fuserequest} />
@@ -114,17 +137,6 @@ class home extends Component {
 		) : (
 			<div>Loading...</div>
 		);
-		let sentMarkup = !loading ? (
-			sentrequests && sentrequests.length > 0 && sentrequests !== [] && sentrequests !== null && sentrequests !== undefined && sentrequests !== "" ? (
-				<Fragment>
-					{sentrequests.map(sentrequest => (<SentRequest key={sentrequest.reqId} sentrequest={sentrequest} /> ))}{" "}
-				</Fragment>
-			) : (
-				<div className="rusty">
-					You do not currently have any fuse requests sent out
-				</div>
-			)
-		) : (<div>Loading...</div>);
 		return (
 			<Grid container spacing={2}>
 				<Grid item sm={8} xs={12}>
@@ -158,18 +170,17 @@ class home extends Component {
 						<OwlFuseLogo className="icon7" />
 						{fusersMarkup}
 					</div>
-          <div className="centered">
-						<span className="toggle-text toggle-is--active">Fusers</span>
-						<Toggle toggleFunx={this.handleToggleFuse} />
-						<span className="toggle-text">Requests</span>
-					</div>
+					<hr className="bar-separator" />
 					<div className="sparkTitle">
-						<strong>SENT BY YOU</strong>
+						<strong>FUSE REQUESTS</strong>
 						<hr className="bar-separator" />
 					</div>
-					<div className="candle">
-						{sentMarkup}
+					<div className="centered">
+						<span className="toggle-text toggle-is--active">Sent By You</span>
+						<Toggle toggleFunx={this.handleToggleFuse} />
+						<span className="toggle-text">Sent To You</span>
 					</div>
+					<div className="candle">{requestsMarkup}</div>
 				</Grid>
 			</Grid>
 		);
