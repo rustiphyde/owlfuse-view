@@ -28,7 +28,10 @@ import {
   ACCEPT_REQUEST,
   REJECT_REQUEST,
   SET_SENT_REQUESTS,
-  CANCEL_REQUEST
+  CANCEL_REQUEST,
+  SILENCE_FUSER,
+  UNSILENCE_FUSER,
+  GET_SILENCED_LIST
 } from "../types";
 
 const initialState = {
@@ -44,7 +47,8 @@ const initialState = {
   sentrequests: [],
   sentrequest: {},
   fuserequest: {},
-  fuserequests: []
+  fuserequests: [],
+  silenced: []
 };
 
 export default function(state = initialState, action) {
@@ -251,6 +255,12 @@ export default function(state = initialState, action) {
             return {
               ...state
             }
+            case GET_SILENCED_LIST:
+              return {
+                ...state,
+                silenced: action.payload,
+                loading: false
+              }
       default:
         return state;
     }
