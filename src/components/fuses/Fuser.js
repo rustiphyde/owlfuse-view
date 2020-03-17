@@ -7,6 +7,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
+import SilentToggle from "../SilentToggle";
 
 
 const styles = {
@@ -36,7 +37,12 @@ class Fuser extends Component {
             component={Link}
             className="foam orange"
             to={`/${fuser}`}
-          ><strong>{fuser}</strong></Typography></Paper>
+          ><strong>{fuser}</strong></Typography>
+          <div className="centered silentToggle">
+						<SilentToggle toggleFunx={this.handleToggleSilence} className="silentToggle"/>
+					</div>
+          <hr className="bar-separator" />
+          </Paper>
         )
     }
 }
