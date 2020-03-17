@@ -587,3 +587,12 @@ export const unsilenceFuser = fuser => dispatch => {
 		})
 		.catch(err => console.log(err));
 };
+
+export const silenceFuser = fuser => dispatch => {
+	axios
+		.get(`/silence/${fuser}`)
+		.then(res => {
+			dispatch({ type: SILENCE_FUSER, payload: res.data });
+		})
+		.catch(err => console.log(err));
+};
