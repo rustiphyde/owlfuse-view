@@ -575,6 +575,15 @@ export const fetchSilencedList = () => dispatch => {
 			dispatch({ type: GET_SILENCED_LIST, payload: res.data });
 		})
 		.catch(err => {
-			dispatch({ GET_SILENCED_LIST, payload: [] });
+			dispatch({ type: GET_SILENCED_LIST, payload: [] });
 		});
+};
+
+export const unsilenceFuser = fuser => dispatch => {
+	axios
+		.get(`/unsilence/${fuser}`)
+		.then(res => {
+			dispatch({ type: UNSILENCE_FUSER, payload: res.data });
+		})
+		.catch(err => console.log(err));
 };
