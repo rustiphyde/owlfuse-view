@@ -181,5 +181,3 @@ export default connect(
 	mapActionsToProps
 )(withStyles(styles)(FuseButton));
 
-
-//TODO : Create function to remove FuseButton when on current user
