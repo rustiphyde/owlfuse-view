@@ -441,3 +441,9 @@ body > div:nth-child(7) > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.Mu
   margin: 0 auto !important;
   justify-content: center;
 }
+
+.silentToggle {
+  float: right !important;
+  justify-content: flex-end;
+  margin-bottom: 16px !important;
+}
