@@ -34,7 +34,10 @@ import {
 	ACCEPT_REQUEST,
 	REJECT_REQUEST,
 	SET_SENT_REQUESTS,
-	CANCEL_REQUEST
+	CANCEL_REQUEST,
+	GET_SILENCED_LIST,
+	SILENCE_FUSER,
+	UNSILENCE_FUSER
 } from "../types";
 import axios from "axios";
 
@@ -561,5 +564,17 @@ export const cancelRequest = reqId => dispatch => {
 		})
 		.catch(err => {
 			console.log(err);
+		});
+};
+
+export const fetchSilencedList = () => dispatch => {
+	axios
+		.get("/silenced")
+		.then(res => {
+			console.log(res.data);
+			dispatch({ type: GET_SILENCED_LIST, payload: res.data });
+		})
+		.catch(err => {
+			dispatch({ GET_SILENCED_LIST, payload: [] });
 		});
 };
