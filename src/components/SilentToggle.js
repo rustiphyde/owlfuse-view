@@ -23,7 +23,7 @@ const styles = theme => ({
     },
     '&$focusVisible $thumb': {
       color: '#52d869',
-      border: '6px solid #f4db9d',
+      border: '6px solid #f4db9d'
     },
   },
   thumb: {
