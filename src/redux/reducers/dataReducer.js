@@ -266,6 +266,11 @@ export default function(state = initialState, action) {
 				...state,
 				silenced: [action.payload, ...state.silenced]
       };
+    case UNSILENCE_FUSER:
+      state.silenced.splice(action.payload, 1);
+      return {
+        ...state,
+      }
 		default:
 			return state;
 	}
