@@ -12,7 +12,7 @@ import SilentChecked from "../SilentChecked";
 import { connect } from "react-redux";
 import Tooltip from "@material-ui/core/Tooltip";
 
-import { fetchSilencedList, unsilenceFuser } from "../../redux/actions/dataActions";
+import { fetchSilencedList, unsilenceFuser, silenceFuser } from "../../redux/actions/dataActions";
 
 const styles = {
 	paper: {
@@ -41,13 +41,15 @@ class Fuser extends Component {
 
 	handleToggleSilence = (event) => {
 		if (event.target.checked) {
-			this.setState({ toggleChecked: true });
+            this.setState({ toggleChecked: true });
+            this.props.silenceFuser(this.props.fuser);
+            setTimeout(() => this.props.fetchSilencedList(), 500);
 		} else {
 			this.setState({
 				toggleChecked: false
             });
             this.props.unsilenceFuser(this.props.fuser);
-            setTimeout(() => this.props.fetchSilencedList(), 2000);
+            setTimeout(() => this.props.fetchSilencedList(), 500);
         
         }
         console.log(this.state.toggleChecked)
@@ -109,7 +111,8 @@ Fuser.propTypes = {
 	silenced: PropTypes.array.isRequired,
 	fetchSilencedList: PropTypes.func.isRequired,
 	loading: PropTypes.bool.isRequired,
-    unsilenceFuser: PropTypes.func.isRequired
+    unsilenceFuser: PropTypes.func.isRequired,
+    silenceFuser: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -119,7 +122,8 @@ const mapStateToProps = state => ({
 
 const mapActionsToProps = {
     fetchSilencedList,
-    unsilenceFuser
+    unsilenceFuser,
+    silenceFuser
 };
 
 export default connect(
