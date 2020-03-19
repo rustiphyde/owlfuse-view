@@ -159,7 +159,7 @@ FuseButton.propTypes = {
     clearErrors: PropTypes.func.isRequired,
     getFusers: PropTypes.func.isRequired,
 	UI: PropTypes.object.isRequired,
-	clozang: PropTypes.string.isRequired
+	clozang: PropTypes.string
 };
 
 const mapStateToProps = state => ({

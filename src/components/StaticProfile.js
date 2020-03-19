@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import FuseButton from "./fuses/FuseButton";
 import withStyles from "@material-ui/core/styles/withStyles";
 
@@ -81,7 +81,9 @@ const StaticProfile = props => {
 					<img src={imageUrl} alt="candle" className="candle-image" />
 				</div>
 				<div className="candle" width="100%">
-					{clozang !== username ? <FuseButton fuser={clozang} clozang={username}/> : null}
+					{clozang !== username ? (
+						<FuseButton fuser={clozang} clozang={username} />
+					) : null}
 				</div>
 
 				<hr />
@@ -137,12 +139,12 @@ const StaticProfile = props => {
 StaticProfile.propTypes = {
 	profile: PropTypes.object.isRequired,
 	classes: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired,
-  username: PropTypes.string.isRequired
+	user: PropTypes.object.isRequired,
+	username: PropTypes.string
 };
 
 const mapStateToProps = state => ({
-  user: state.user
-})
+	user: state.user
+});
 
 export default connect(mapStateToProps)(withStyles(styles)(StaticProfile));
