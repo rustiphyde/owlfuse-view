@@ -139,19 +139,7 @@ class home extends Component {
 		);
 		return (
 			<Grid container spacing={2}>
-				<Grid item sm={8} xs={12}>
-					<div className="centered">
-						<span className="toggle-text toggle-is--active">Most Recent</span>
-						<Toggle toggleFunx={this.handleToggle} />
-						<span className="toggle-text">Scorch Rank</span>
-					</div>
-					<div className="sparkTitle">
-						<strong>SPARKS</strong>
-						<hr className="bar-separator" />
-					</div>
-					{recentSparksMarkup}
-				</Grid>
-				<Grid item sm={4} xs={12}>
+				<Grid item sm={6} xs={12}>
 					<div className="sparkTitle">
 						<strong>CANDLE</strong>
 						<hr className="bar-separator" />
@@ -181,6 +169,18 @@ class home extends Component {
 						<span className="toggle-text">Sent To You</span>
 					</div>
 					<div className="candle">{requestsMarkup}</div>
+				</Grid>
+				<Grid item sm={6} xs={12}>
+					<div className="centered">
+						<span className="toggle-text toggle-is--active">Most Recent</span>
+						<Toggle toggleFunx={this.handleToggle} />
+						<span className="toggle-text">Scorch Rank</span>
+					</div>
+					<div className="sparkTitle">
+						<strong>SPARKS</strong>
+						<hr className="bar-separator" />
+					</div>
+					{recentSparksMarkup}
 				</Grid>
 			</Grid>
 		);
