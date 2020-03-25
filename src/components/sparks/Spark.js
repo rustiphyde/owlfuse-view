@@ -36,7 +36,7 @@ const styles = {
   },
   content: {
     padding: 25,
-    width: 600,
+    width: 800,
     borderRadius: "0 0 16px 16px",
     borderTop: "2px solid #ff9800",
     borderRight: "2px solid #ff9800",
