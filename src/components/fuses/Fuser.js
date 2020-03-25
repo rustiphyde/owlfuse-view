@@ -61,7 +61,7 @@ class Fuser extends Component {
 		let toggleMarkup = !loading ? (
 			silenced &&
 			silenced !== null &&
-			silenced.length > 0 &&
+			silenced.length > 1 &&
 			silenced !== [] &&
 			silenced !== "" &&
 			silenced.includes(fuser) ? (
