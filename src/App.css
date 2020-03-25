@@ -186,7 +186,10 @@ input {
   top: -56%;
 }
 
-
+.icon13 {
+  font-size: 2.5rem !important;
+  position: absolute;
+}
 
 .icon4:hover{
   font-size: 2.5rem !important;

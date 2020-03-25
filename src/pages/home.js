@@ -12,7 +12,6 @@ import SentRequest from "../components/fuses/SentRequest";
 
 // Icons
 import FlameIcon from "../components/icons/FlameIcon";
-import OwlFuseLogo from "../components/icons/OwlFuseLogo";
 
 // MUI Components
 import Grid from "@material-ui/core/Grid";
@@ -140,10 +139,6 @@ class home extends Component {
 		return (
 			<Grid container spacing={2}>
 				<Grid item sm={6} xs={12}>
-					<div className="sparkTitle">
-						<strong>CANDLE</strong>
-						<hr className="bar-separator" />
-					</div>
 					<div className="candle" width="100%">
 						<FlameIcon className="icon7" />
 					</div>
@@ -155,7 +150,6 @@ class home extends Component {
 						<hr className="bar-separator" />
 					</div>
 					<div className="candle" width="100%">
-						<OwlFuseLogo className="icon7" />
 						{fusersMarkup}
 					</div>
 					<hr className="bar-separator" />

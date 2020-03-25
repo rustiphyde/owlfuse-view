@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 // MUI Stuff
 import { withStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import SilentToggle from "../SilentToggle";
@@ -12,16 +11,32 @@ import SilentChecked from "../SilentChecked";
 import { connect } from "react-redux";
 import Tooltip from "@material-ui/core/Tooltip";
 
+import FusePanel from '../FusePanel';
+
 import { fetchSilencedList, unsilenceFuser, silenceFuser } from "../../redux/actions/dataActions";
 
 const styles = {
 	paper: {
+		position: 'relative',
 		backgroundColor: "#263238",
 		color: "#f4db9d",
 		height: "3rem",
-		borderRadius: "16px 0 16px 0",
+		borderRadius: "16px 0 0 0",
 		padding: "16px",
-		margin: "6px",
+		margin: "6px 6px 0 6px ",
+		overflow: "hidden",
+		"&:hover": {
+			color: "#f4db9d !important"
+		}
+	},
+	paper2: {
+		position: 'relative',
+		backgroundColor: "#263238",
+		color: "#f4db9d",
+		height: "3rem",
+		borderRadius: "0 0 16px 0",
+		padding: "16px",
+		margin: "0 6px 6px 6px",
 		overflow: "hidden",
 		"&:hover": {
 			color: "#f4db9d !important"
@@ -89,6 +104,7 @@ class Fuser extends Component {
 			<div>Loading...</div>
 		);
 		return (
+			<Fragment>
 			<Paper className={classes.paper}>
 				<Typography
 					variant="h6"
@@ -98,9 +114,12 @@ class Fuser extends Component {
 				>
 					<strong>{fuser}</strong>
 				</Typography>
-				{toggleMarkup}
-				<hr className="bar-separator" />
 			</Paper>
+			<Paper className={classes.paper2}>
+				<FusePanel/>
+				{toggleMarkup}
+			</Paper>
+			</Fragment>
 		);
 	}
 }
