@@ -31,7 +31,8 @@ import {
 	CANCEL_REQUEST,
 	SILENCE_FUSER,
 	UNSILENCE_FUSER,
-	GET_SILENCED_LIST
+	GET_SILENCED_LIST,
+	SET_HOWLS
 } from "../types";
 
 const initialState = {
@@ -48,7 +49,8 @@ const initialState = {
 	sentrequest: {},
 	fuserequest: {},
 	fuserequests: [],
-	silenced: []
+	silenced: [],
+	howls: []
 };
 
 export default function(state = initialState, action) {
@@ -270,8 +272,15 @@ export default function(state = initialState, action) {
       state.silenced.splice(action.payload, 1);
       return {
         ...state,
-      }
+	  }
+	  case SET_HOWLS:
+		return {
+			...state,
+			howls: action.payload,
+			loading: false
+		}
 		default:
 			return state;
 	}
+	
 }
