@@ -37,7 +37,8 @@ import {
 	CANCEL_REQUEST,
 	GET_SILENCED_LIST,
 	SILENCE_FUSER,
-	UNSILENCE_FUSER
+	UNSILENCE_FUSER,
+	SET_HOWLS
 } from "../types";
 import axios from "axios";
 
@@ -595,4 +596,21 @@ export const silenceFuser = fuser => dispatch => {
 			dispatch({ type: SILENCE_FUSER, payload: res.data });
 		})
 		.catch(err => console.log(err));
+};
+export const fetchUserHowls = () => dispatch => {
+	dispatch({ type: LOADING_DATA });
+	axios
+		.get("/howls")
+		.then(res => {
+			dispatch({
+				type: SET_HOWLS,
+				payload: res.data
+			});
+		})
+		.catch(err => {
+			dispatch({
+				type: SET_HOWLS,
+				payload: []
+			});
+		});
 };
