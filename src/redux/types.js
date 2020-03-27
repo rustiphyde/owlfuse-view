@@ -46,4 +46,5 @@ export const CANCEL_REQUEST = 'CANCEL_REQUEST';
 export const SILENCE_FUSER = 'SILENCE_FUSER';
 export const UNSILENCE_FUSER = 'UNSILENCE_FUSER';
 export const GET_SILENCED_LIST = 'GET_SILENCED_LIST';
+export const SET_HOWLS = 'SET_HOWLS';
 
