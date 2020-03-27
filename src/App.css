@@ -187,8 +187,13 @@ input {
 }
 
 .icon13 {
-  font-size: 2.5rem !important;
+  font-size: 3rem !important;
   position: absolute;
+}
+.icon14 {
+  font-size: 3rem !important;
+  position: absolute;
+  margin-left: 24px !important;
 }
 
 .icon4:hover{
@@ -446,6 +451,9 @@ body > div:nth-child(7) > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.Mu
 }
 
 .silentToggle {
+  position: absolute;
+  left: 78%;
+  top:26%;
   float: right !important;
   justify-content: flex-end;
   margin-bottom: 16px !important;
