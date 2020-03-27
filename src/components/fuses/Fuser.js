@@ -12,6 +12,7 @@ import { connect } from "react-redux";
 import Tooltip from "@material-ui/core/Tooltip";
 
 import FusePanel from '../FusePanel';
+import HowlButton from '../howls/HowlButton';
 
 import { fetchSilencedList, unsilenceFuser, silenceFuser } from "../../redux/actions/dataActions";
 
@@ -23,7 +24,7 @@ const styles = {
 		height: "3rem",
 		borderRadius: "16px 0 0 0",
 		padding: "16px",
-		margin: "6px 6px 0 6px ",
+		margin: "6px 6px 1px 6px ",
 		overflow: "hidden",
 		"&:hover": {
 			color: "#f4db9d !important"
@@ -113,13 +114,17 @@ class Fuser extends Component {
 					to={`/${fuser}`}
 				>
 					<strong>{fuser}</strong>
+
 				</Typography>
+
 			</Paper>
 			<Paper className={classes.paper2}>
 				<FusePanel/>
+				<HowlButton/>
 				{toggleMarkup}
 			</Paper>
-			</Fragment>
+			<hr className="bar-separator" />
+		</Fragment>
 		);
 	}
 }
