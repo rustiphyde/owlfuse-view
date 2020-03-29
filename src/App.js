@@ -60,7 +60,7 @@ class App extends Component {
                 <Route exact path="/" component={home} />
                 <Route exact path="/okelists" component={okelists} />
                 <Route exact path="/boozulas" component={boozulas} />
-              <AuthRoute
+                <AuthRoute
                   exact
                   path="/login"
                   component={login}
