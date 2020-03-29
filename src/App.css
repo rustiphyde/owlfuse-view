@@ -194,6 +194,13 @@ input {
   font-size: 3rem !important;
   position: absolute;
   margin-left: 24px !important;
+  margin-right: -16px !important;
+}
+
+.icon15 {
+  font-size: 3rem !important;
+  margin-top: -20px;
+  margin-bottom: -16px;
 }
 
 .icon4:hover{
@@ -227,6 +234,9 @@ input {
   padding: 16px 16px 0 16px;
   margin: 8px auto 0 auto;
   border-radius: 16px 0 16px 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .orange:hover {
@@ -457,4 +467,85 @@ body > div:nth-child(7) > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.Mu
   float: right !important;
   justify-content: flex-end;
   margin-bottom: 16px !important;
+}
+
+.footer-text {
+  font-size: 12px;
+  margin-top: 32px;
+
+}
+
+
+/* Clock stuff */
+.most-inner {
+  text-align: center;
+  height:44px;
+  width: 140px;
+  border: 1px solid var(--rust);
+  border-radius: 16px 0 16px 0;
+ margin: -48px auto 8px 80%;
+  box-shadow: 
+    0px 0px 4px 2px var(--rust), 
+    inset 0px 0px 2px 2px var(--background-two);
+  background-color: var(--background-one);
+  text-shadow: 0px 0px 2px var(--rust);
+}
+
+.time {
+  color: var(--rust);
+  font-size: 22px;
+  position: relative;
+  display: block;
+  margin-top: 8px;
+  margin-left: -30px
+}
+
+.amPm {
+  position: relative;
+  display: block;
+  width: 20px;
+  margin-left: 100px;
+  margin-top: -15px;
+  color: var(--rust);
+  font-size: 12px;
+}
+
+@keyframes blinking {
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes shadowFade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+
+.blink {
+  animation: blinking .5s infinite
+}
+
+@media(max-width: 599px){
+  .most-inner {
+    margin-left: 70% !important;
+  }
+}
+
+@media(min-width: 1500px){
+  .most-inner {
+    margin-left: 90% !important;
+  }
 }
