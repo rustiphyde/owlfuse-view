@@ -96,7 +96,7 @@ class SizzlesAndClinks extends Component {
             <MenuItem
               key={sizz.createdAt}
               onClick={this.handleClose}
-              style={{ backgroundColor: "#f4db9d" }}
+              style={{ backgroundColor: "#fefaf4" }}
             >
               {icon}
               <Typography
@@ -114,7 +114,7 @@ class SizzlesAndClinks extends Component {
           );
         })
       ) : (
-        <MenuItem style={{ backgroundColor: "#f4db9d", fontFamily: 'Baloo, cursive' }} onClick={this.handleClose}>You have no sizzles yet</MenuItem>
+        <MenuItem style={{ backgroundColor: "#fefaf4", fontFamily: 'Baloo, cursive' }} onClick={this.handleClose}>You have no sizzles yet</MenuItem>
       );
 
     let clinksMarkup =
@@ -135,7 +135,7 @@ class SizzlesAndClinks extends Component {
             <MenuItem
               key={clink.createdAt}
               onClick={this.handleClose}
-              style={{ backgroundColor: "#f4db9d" }}
+              style={{ backgroundColor: "#fefaf4" }}
             >
               {icon}
               <Typography
@@ -153,7 +153,7 @@ class SizzlesAndClinks extends Component {
           );
         })
       ) : (
-        <MenuItem  style={{ backgroundColor: "#f4db9d", fontFamily: 'Baloo, cursive' }} onClick={this.handleClose}>You have no clinks yet</MenuItem>
+        <MenuItem  style={{ backgroundColor: "#fefaf4", fontFamily: 'Baloo, cursive' }} onClick={this.handleClose}>You have no clinks yet</MenuItem>
       );
     return (
       <Fragment>
