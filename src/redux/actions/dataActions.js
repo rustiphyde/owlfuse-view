@@ -572,7 +572,6 @@ export const fetchSilencedList = () => dispatch => {
 	axios
 		.get("/silenced")
 		.then(res => {
-			console.log(res.data);
 			dispatch({ type: GET_SILENCED_LIST, payload: res.data });
 		})
 		.catch(err => {
