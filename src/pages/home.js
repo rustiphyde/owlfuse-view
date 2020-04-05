@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import { withStyles } from '@material-ui/core/styles';
 
 // Components
 import Spark from "../components/sparks/Spark";
@@ -25,6 +26,15 @@ import {
 	fetchRequestedFuses,
 	getAllSentFuses
 } from "../redux/actions/dataActions";
+
+const styles = {
+	toggleIsActive: {
+	  color: '#ff9800 !important'
+	},
+	toggleIsInactive: {
+	  color: '#263238 !important'
+	}
+  }
 
 class home extends Component {
 	// Initialize Component State for storing the Sparks
@@ -67,6 +77,7 @@ class home extends Component {
 		}
 	};
 	render() {
+		const { classes } = this.props;
 		const {
 			fusers,
 			sparks,
@@ -158,17 +169,17 @@ class home extends Component {
 						<hr className="bar-separator" />
 					</div>
 					<div className="centered">
-						<span className="toggle-text toggle-is--active">Sent By You</span>
+						<span className={`toggle-text ${!this.state.toggleFuse ? classes.toggleIsActive : classes.toggleIsInactive }`}>Sent By You</span>
 						<Toggle toggleFunx={this.handleToggleFuse} />
-						<span className="toggle-text">Sent To You</span>
+						<span className={`toggle-text ${this.state.toggleFuse ? classes.toggleIsActive : classes.toggleIsInactive }`}>Sent To You</span>
 					</div>
 					<div className="candle">{requestsMarkup}</div>
 				</Grid>
 				<Grid item sm={6} xs={12}>
 					<div className="centered">
-						<span className="toggle-text toggle-is--active">Most Recent</span>
+						<span className={`toggle-text ${!this.state.toggleChecked ? classes.toggleIsActive : classes.toggleIsInactive }`}>Most Recent</span>
 						<Toggle toggleFunx={this.handleToggle} />
-						<span className="toggle-text">Scorch Rank</span>
+						<span className={`toggle-text ${this.state.toggleChecked ? classes.toggleIsActive : classes.toggleIsInactive }`}>Scorch Rank</span>
 					</div>
 					<div className="sparkTitle">
 						<strong>SPARKS</strong>
@@ -187,7 +198,8 @@ home.propTypes = {
 	getInfernals: PropTypes.func.isRequired,
 	fetchRequestedFuses: PropTypes.func.isRequired,
 	getAllSentFuses: PropTypes.func.isRequired,
-	data: PropTypes.object.isRequired
+	data: PropTypes.object.isRequired,
+	classes: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -200,4 +212,4 @@ export default connect(mapStateToProps, {
 	getFusers,
 	fetchRequestedFuses,
 	getAllSentFuses
-})(home);
+})(withStyles(styles)(home));
