@@ -554,3 +554,12 @@ body > div > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.MuiPopover-pape
   width: 480px !important;
   margin-bottom: 160px !important;
 }
+
+#root > div.container > div > div > button > span.MuiIconButton-label > svg {
+  color: var(--background-two) !important; 
+  font-size: 3rem !important;
+}
+
+#root > div.container > div > div > button > span.MuiIconButton-label > svg:hover {
+  color: var(--rust) !important;
+}

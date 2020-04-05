@@ -71,11 +71,9 @@ export class Navbar extends Component {
             !this.state.toggleChecked ? (
               <Fragment>
               <PostSpark />
-              <Link to="/boozulas">
-                <OwlFuseButton tip="BOOZULAS">
-                  <BoozulaIcon />
+              <OwlFuseButton tip="HOWLS">
+                  <HowlIcon />
                 </OwlFuseButton>
-              </Link>
               <Link to="/">
                 <OwlFuseButton tip="GO HOME">
                   <HomeIcon />
@@ -91,9 +89,11 @@ export class Navbar extends Component {
             ) : (
               <Fragment>
               <PostSpark />              
-                <OwlFuseButton tip="HOWL MENU">
-                  <HowlIcon />
+              <Link to="/boozulas">
+                <OwlFuseButton tip="BOOZULAS">
+                  <BoozulaIcon />
                 </OwlFuseButton>
+              </Link>
               <Link to="/">
                 <OwlFuseButton tip="GO HOME">
                   <HomeIcon />

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from "@material-ui/core/styles";
 
 // Components
 import Spark from "../components/sparks/Spark";
@@ -10,6 +10,7 @@ import SparkSkeleton from "../util/SparkSkeleton";
 import Toggle from "../components/Toggle";
 import FuseRequest from "../components/fuses/FuseRequest";
 import SentRequest from "../components/fuses/SentRequest";
+import PostSpark from "../components/sparks/PostSpark";
 
 // Icons
 import FlameIcon from "../components/icons/FlameIcon";
@@ -29,12 +30,12 @@ import {
 
 const styles = {
 	toggleIsActive: {
-	  color: '#ff9800 !important'
+		color: "#ff9800 !important"
 	},
 	toggleIsInactive: {
-	  color: '#263238 !important'
+		color: "#263238 !important"
 	}
-  }
+};
 
 class home extends Component {
 	// Initialize Component State for storing the Sparks
@@ -88,21 +89,39 @@ class home extends Component {
 		} = this.props.data;
 		const {
 			user: {
-				credentials: {
-					clozang
-				}
+				credentials: { clozang }
 			}
 		} = this.props;
 
 		let recentSparksMarkup = !loading ? (
 			!this.state.toggleChecked ? (
-				sparks.filter(filt => filt.userClozang === clozang).map(spark => <Spark key={spark.sparkId} spark={spark} />)
+				sparks.filter(filt => filt.userClozang === clozang).length > 0 ? (
+					sparks
+						.filter(filt => filt.userClozang === clozang)
+						.map(spark => <Spark key={spark.sparkId} spark={spark} />)
+				) : (
+					<Fragment>
+						<strong>
+							You have not posted any sparks yet. SPARK AN INTEREST!
+						</strong>
+						<br />
+						<PostSpark className="icon orange" />
+					</Fragment>
+				)
 			) : (
-				infernals.filter(filt => filt.userClozang === clozang).map(infernal => (
-					<Spark key={infernal.sparkId} spark={infernal} />
-				))
-			)
-		) : (
+				infernals.filter(filt => filt.userClozang === clozang).length > 0 ? (
+					infernals
+						.filter(filt => filt.userClozang === clozang)
+						.map(spark => <Spark key={spark.sparkId} spark={spark} />)
+				) : (
+					<Fragment>
+						<strong >
+							You have not posted any sparks yet. SPARK AN INTEREST!
+						</strong>
+						<PostSpark/>
+					</Fragment>
+				)
+		)) : (
 			<SparkSkeleton length={6} />
 		);
 		let fusersMarkup = !loading ? (
@@ -176,17 +195,49 @@ class home extends Component {
 						<hr className="bar-separator" />
 					</div>
 					<div className="centered">
-						<span className={`toggle-text ${!this.state.toggleFuse ? classes.toggleIsActive : classes.toggleIsInactive }`}>Sent By You</span>
+						<span
+							className={`toggle-text ${
+								!this.state.toggleFuse
+									? classes.toggleIsActive
+									: classes.toggleIsInactive
+							}`}
+						>
+							Sent By You
+						</span>
 						<Toggle toggleFunx={this.handleToggleFuse} />
-						<span className={`toggle-text ${this.state.toggleFuse ? classes.toggleIsActive : classes.toggleIsInactive }`}>Sent To You</span>
+						<span
+							className={`toggle-text ${
+								this.state.toggleFuse
+									? classes.toggleIsActive
+									: classes.toggleIsInactive
+							}`}
+						>
+							Sent To You
+						</span>
 					</div>
 					<div className="candle">{requestsMarkup}</div>
 				</Grid>
 				<Grid item sm={6} xs={12}>
 					<div className="centered">
-						<span className={`toggle-text ${!this.state.toggleChecked ? classes.toggleIsActive : classes.toggleIsInactive }`}>Most Recent</span>
+						<span
+							className={`toggle-text ${
+								!this.state.toggleChecked
+									? classes.toggleIsActive
+									: classes.toggleIsInactive
+							}`}
+						>
+							Most Recent
+						</span>
 						<Toggle toggleFunx={this.handleToggle} />
-						<span className={`toggle-text ${this.state.toggleChecked ? classes.toggleIsActive : classes.toggleIsInactive }`}>Scorch Rank</span>
+						<span
+							className={`toggle-text ${
+								this.state.toggleChecked
+									? classes.toggleIsActive
+									: classes.toggleIsInactive
+							}`}
+						>
+							Scorch Rank
+						</span>
 					</div>
 					<div className="sparkTitle">
 						<strong>YOUR SPARKS</strong>
