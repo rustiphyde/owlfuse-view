@@ -1,5 +1,4 @@
-import React, { Component, Fragment } from 'react'
-import HowlDash from './howls/HowlDash';
+import React, { Component, Fragment } from 'react';
 import OwlClock from './OwlClock';
 
 export class Footer extends Component {
@@ -7,9 +6,7 @@ export class Footer extends Component {
       return (
         <Fragment>
            <div className="footer">
-            
-           <HowlDash/>
-           
+         
           <hr className="bar-separator"/>
           <p className="footer-text">© {new Date().getFullYear()} Rusty Hoppins, All Rights Reserved.</p>
           <span><OwlClock/></span>
