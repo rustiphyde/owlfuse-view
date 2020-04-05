@@ -23,7 +23,7 @@ body {
 }
 
 .container {
-  margin: 192px auto 0 auto;
+  margin: 16rem auto 0 auto;
   max-width: 1200px;
 }
 
@@ -548,4 +548,9 @@ body > div:nth-child(7) > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.Mu
   .most-inner {
     margin-left: 90% !important;
   }
+}
+
+body > div > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.MuiPopover-paper.MuiPaper-rounded  {
+  width: 480px !important;
+  margin-bottom: 160px !important;
 }
