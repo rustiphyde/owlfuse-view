@@ -101,11 +101,12 @@ class home extends Component {
 						.map(spark => <Spark key={spark.sparkId} spark={spark} />)
 				) : (
 					<Fragment>
-						<strong>
-							You have not posted any sparks yet. SPARK AN INTEREST!
+						<div className="candle centered" width="100%">
+						<strong className="post-text">
+							SPARK AN INTEREST
 						</strong>
-						<br />
-						<PostSpark className="icon orange" />
+						<PostSpark className="icon"/>
+						</div>
 					</Fragment>
 				)
 			) : (
@@ -115,10 +116,12 @@ class home extends Component {
 						.map(spark => <Spark key={spark.sparkId} spark={spark} />)
 				) : (
 					<Fragment>
-						<strong >
-							You have not posted any sparks yet. SPARK AN INTEREST!
+						<div className="candle centered" width="100%">
+						<strong className="post-text">
+							POST A SPARK
 						</strong>
-						<PostSpark/>
+						<PostSpark className="icon"/>
+						</div>
 					</Fragment>
 				)
 		)) : (
