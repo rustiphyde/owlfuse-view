@@ -86,12 +86,19 @@ class home extends Component {
 			fuserequests,
 			sentrequests
 		} = this.props.data;
+		const {
+			user: {
+				credentials: {
+					clozang
+				}
+			}
+		} = this.props;
 
 		let recentSparksMarkup = !loading ? (
 			!this.state.toggleChecked ? (
-				sparks.map(spark => <Spark key={spark.sparkId} spark={spark} />)
+				sparks.filter(filt => filt.userClozang === clozang).map(spark => <Spark key={spark.sparkId} spark={spark} />)
 			) : (
-				infernals.map(infernal => (
+				infernals.filter(filt => filt.userClozang === clozang).map(infernal => (
 					<Spark key={infernal.sparkId} spark={infernal} />
 				))
 			)
@@ -182,7 +189,7 @@ class home extends Component {
 						<span className={`toggle-text ${this.state.toggleChecked ? classes.toggleIsActive : classes.toggleIsInactive }`}>Scorch Rank</span>
 					</div>
 					<div className="sparkTitle">
-						<strong>SPARKS</strong>
+						<strong>YOUR SPARKS</strong>
 						<hr className="bar-separator" />
 					</div>
 					{recentSparksMarkup}
@@ -199,11 +206,13 @@ home.propTypes = {
 	fetchRequestedFuses: PropTypes.func.isRequired,
 	getAllSentFuses: PropTypes.func.isRequired,
 	data: PropTypes.object.isRequired,
-	classes: PropTypes.object.isRequired
+	classes: PropTypes.object.isRequired,
+	user: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-	data: state.data
+	data: state.data,
+	user: state.user
 });
 
 export default connect(mapStateToProps, {
