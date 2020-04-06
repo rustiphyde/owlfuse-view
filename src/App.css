@@ -575,3 +575,7 @@ body > div > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.MuiPopover-pape
 #root > header > div.MuiToolbar-root.MuiToolbar-regular.nav-container.MuiToolbar-gutters > button:nth-child(1) > span.MuiIconButton-label > svg {
   font-size: 200% !important;
 }
+
+#root > div.container > div > div > div > span > h3 {
+  margin-left: 16px;
+}
