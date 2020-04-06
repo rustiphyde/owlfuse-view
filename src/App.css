@@ -571,3 +571,7 @@ body > div > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.MuiPopover-pape
 #root > div.container > div > div:nth-child(2) > div.candle.centered > button:hover {
   background-color: transparent !important;
 }
+
+#root > header > div.MuiToolbar-root.MuiToolbar-regular.nav-container.MuiToolbar-gutters > button:nth-child(1) > span.MuiIconButton-label > svg {
+  font-size: 200% !important;
+}

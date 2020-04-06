@@ -76,7 +76,7 @@ class PostSpark extends Component {
     return (
       <Fragment>
         <OwlFuseButton onClick={this.handleOpen} tip="SPARK AN INTEREST">
-          <AddSparkIcon />
+          <AddSparkIcon className="icon5 rust oaky"/>
         </OwlFuseButton>
         <Dialog
           open={this.state.open}
