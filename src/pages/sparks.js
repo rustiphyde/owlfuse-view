@@ -28,7 +28,8 @@ const styles = {
 class sparks extends Component {
 
     state = {
-        toggleChecked: false
+        toggleChecked: false,
+        sparks: null
     }
 
     componentDidMount(){
