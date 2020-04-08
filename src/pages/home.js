@@ -94,76 +94,82 @@ class home extends Component {
 			sentrequests
 		} = this.props.data;
 		const {
-			user: {
+			user: { authenticated,
 				credentials: { clozang }
 			}
 		} = this.props;
 
-		let boozulasMarkup = !loading ? (
-			boozulas.filter(filt => filt.userClozang === clozang).length > 0 ? (
-				boozulas.filter(filt => filt.userClozang === clozang).map(boozula => <Boozula key={boozula.boozId} boozula={boozula}/> )
+		let boozulasMarkup = authenticated ? (
+			!loading ? (
+				boozulas.filter(filt => filt.userClozang === clozang).length > 0 ? (
+					boozulas.filter(filt => filt.userClozang === clozang).map(boozula => <Boozula key={boozula.boozId} boozula={boozula}/> )
+				) : (
+					<Fragment>
+					<div className="candle centered" width="100%">
+					<strong className="post-text">
+						POST A BOOZULA
+					</strong>
+					<PostBoozula className="icon"/>
+					</div>
+				</Fragment>)
 			) : (
-				<Fragment>
-				<div className="candle centered" width="100%">
-				<strong className="post-text">
-					POST A BOOZULA
-				</strong>
-				<PostBoozula className="icon"/>
-				</div>
-			</Fragment>)
-		) : (
-			<BoozulaSkeleton/>
-		)
+				<BoozulaSkeleton/>
+			)
+		) : ( <strong className="candle centered">Please Login</strong>)
 
-		let recentSparksMarkup = !loading ? (
-			!this.state.toggleChecked ? (
-				sparks.filter(filt => filt.userClozang === clozang).length > 0 ? (
-					sparks
-						.filter(filt => filt.userClozang === clozang)
-						.map(spark => <Spark key={spark.sparkId} spark={spark} />)
+		let recentSparksMarkup = authenticated ? (
+			!loading ? (
+				!this.state.toggleChecked ? (
+					sparks.filter(filt => filt.userClozang === clozang).length > 0 ? (
+						sparks
+							.filter(filt => filt.userClozang === clozang)
+							.map(spark => <Spark key={spark.sparkId} spark={spark} />)
+					) : (
+						<Fragment>
+							<div className="candle centered" width="100%">
+							<strong className="post-text">
+								SPARK AN INTEREST
+							</strong>
+							<PostSpark className="icon"/>
+							</div>
+						</Fragment>
+					)
 				) : (
-					<Fragment>
-						<div className="candle centered" width="100%">
-						<strong className="post-text">
-							SPARK AN INTEREST
-						</strong>
-						<PostSpark className="icon"/>
-						</div>
-					</Fragment>
-				)
-			) : (
-				infernals.filter(filt => filt.userClozang === clozang).length > 0 ? (
-					infernals
-						.filter(filt => filt.userClozang === clozang)
-						.map(spark => <Spark key={spark.sparkId} spark={spark} />)
-				) : (
-					<Fragment>
-						<div className="candle centered" width="100%">
-						<strong className="post-text">
-							POST A SPARK
-						</strong>
-						<PostSpark className="icon"/>
-						</div>
-					</Fragment>
-				)
-		)) : (
-			<SparkSkeleton length={6} />
-		);
+					infernals.filter(filt => filt.userClozang === clozang).length > 0 ? (
+						infernals
+							.filter(filt => filt.userClozang === clozang)
+							.map(spark => <Spark key={spark.sparkId} spark={spark} />)
+					) : (
+						<Fragment>
+							<div className="candle centered" width="100%">
+							<strong className="post-text">
+								POST A SPARK
+							</strong>
+							<PostSpark className="icon"/>
+							</div>
+						</Fragment>
+					)
+			)) : (
+				<SparkSkeleton length={6} />
+			)
+		) : (<strong className="candle centered">Please Login</strong>);
 
 		
 
-		let fusersMarkup = !loading ? (
-			fusers && fusers.length > 1 && fusers !== [] && fusers !== null ? (
-				fusers
-					.filter(fuse => fusers.indexOf(fuse) !== 0)
-					.map(fuser => <Fuser key={fusers.indexOf(fuser)} fuser={fuser} />)
+		let fusersMarkup = authenticated ? (
+			!loading ? (
+				fusers && fusers.length > 1 && fusers !== [] && fusers !== null ? (
+					fusers
+						.filter(fuse => fusers.indexOf(fuse) !== 0)
+						.map(fuser => <Fuser key={fusers.indexOf(fuser)} fuser={fuser} />)
+				) : (
+					<div className="rusty">
+						You are not currently fused with anyone...get out there and mingle!!
+					</div>
+				)
 			) : (
-				<div className="rusty">
-					You are not currently fused with anyone...get out there and mingle!!
-				</div>
-			)
-		) : (
-			<div>Loading...</div>
+				<div>Loading...</div>
+			)) : (<strong className="centered">You are not currently logged in</strong>
 		);
 		let requestsMarkup = !loading ? (
 			!this.state.toggleFuse ? (
