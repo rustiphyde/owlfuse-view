@@ -3,66 +3,269 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import { fetchUserHowls } from "../redux/actions/dataActions";
-
+import OwlFuseButton from "../util/OwlFuseButton";
 // MUI Stuff
+import Tooltip from "@material-ui/core/Tooltip";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-
+import List from "@material-ui/core/List";
+import Avatar from "@material-ui/core/Avatar";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import ListItemText from "@material-ui/core/ListItemText";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import TextField from "@material-ui/core/TextField";
 //Icons
 import HowlIcon from "../components/icons/HowlIcon";
+import MenuIcon from "../components/icons/MenuIcon";
+import RejectRequestIcon from "../components/icons/RejectRequestIcon";
 
 const styles = {
-	titleBar: {
-		display: "flex",
-		backgroundColor: "#263238",
+	title: {
+		display: "inline-block",
 		color: "#ff9800",
-		paddingLeft: "3rem",
-		width: "100%",
+		paddingLeft: "16px",
 	},
-	back: {
-		marginTop: "-3.5rem",
-        backgroundColor: "#263238",
-        width: '100%'
+	titleBar: {
+		backgroundColor: "#263238",
+		borderRadius: "16px 0 0 0",
+		borderBottom: "3px solid #ff9800",
+	},
+	fusers: {
+		color: "#f4db9d",
+	},
+	listBack: {
+		backgroundColor: "#263238",
+		borderLeft: "3px solid #ff9800",
+	},
+	listItem: {
+		borderBottom: "1px solid #ff9800",
+	},
+	progress: {
+		position: "absolute",
+	},
+	field: {
+		backgroundColor: "white",
+		borderRadius: "0 0 16px 0",
+		padding: "8px 32px",
+		marginBottom: "8px",
+		marginTop: "8px",
+		marginLeft: "8px",
+	},
+	rightBorder: {
+		borderRight: "3px solid #ff9800",
+		borderLeft: "3px solid #ff9800",
+		marginBottom: "-5px",
+	},
+	listBottom: {
+		borderBottom: "3px solid #ff9800",
+		backgroundColor: "#263238",
+		borderLeft: "3px solid #ff9800",
+	},
+	rightBottom: {
+		border: "3px solid #ff9800",
+		backgroundColor: "#263238",
+		borderRadius: "0 0 16px 0",
+		display: "flex",
+	},
+	howlButton: {
+		marginLeft: "16px",
+		fontSize: "2.5rem",
+		marginTop: ".5rem",
+		color: "#f4db9d",
+		"&:hover": {
+			color: "#ff9800",
+		},
+	},
+	cancelButton: {
+		display: "inline-block",
+		marginLeft: "16px",
+		fontSize: "2.5rem",
+		marginTop: ".5rem",
+		color: "#f4db9d",
+		"&:hover": {
+			color: "#ff9800",
+		},
+	},
+	hidden: {
+		display: "none !important",
+	},
+	buttons: {
+		display: "flex",
+		marginTop: "-1rem",
 	},
 };
 
 class howls extends Component {
 	state = {
 		howls: null,
+		menu: true,
+		howlBody: "",
 	};
 
 	componentDidMount() {
 		this.props.fetchUserHowls();
 	}
 
+	toggleMenu = () => {
+		if (this.state.menu === true) {
+			this.setState({ menu: false });
+		} else {
+			this.setState({ menu: true });
+		}
+	};
+	handleSubmit = (event) => {
+		event.preventDefault();
+		const howlInfo = {
+			howlBody: this.state.howlBody,
+        };
+        console.log(howlInfo);
+        document.getElementById('howlBody').value = "";
+        this.setState({ howlBody: ""});
+    };
+    postHowlFxn = () => {
+        const posting = document.getElementById('howlSubmit');
+        posting.click();
+    }
+
+    handleChange = event => {
+        this.setState({
+          [event.target.name]: event.target.value
+        });
+      };
+
 	render() {
 		const { classes } = this.props;
-		const { howls } = this.props.data;
+		const { howls, loading } = this.props.data;
+		const {
+			credentials: { clozang, imageUrl },
+		} = this.props.user;
+
+		let drawerMockup = !loading ? (
+			howls && howls.length > 0 ? (
+				<Fragment>
+					<div />
+					<List>
+						{howls.map((howl) => {
+							let howler = howl.howlers.filter((howlr) => howlr !== clozang);
+							let avatar = howl.avatars
+								.filter((avat) => avat !== imageUrl)
+								.toString();
+							return (
+								<ListItem button key={howler} className={classes.listItem}>
+									<ListItemAvatar>
+										<Avatar src={avatar} />
+									</ListItemAvatar>
+									<ListItemText primary={howler} className={classes.fusers} />
+								</ListItem>
+							);
+						})}
+						<hr className="bar-separator" />
+					</List>
+				</Fragment>
+			) : (
+				<Fragment>
+					<div />
+					<List>
+						<ListItem className={classes.listItem}>
+							<ListItemAvatar>
+								<Avatar>0</Avatar>
+							</ListItemAvatar>
+							<ListItemText className={classes.fusers}>
+								<strong>
+									You do not currently have any active howls to open
+								</strong>
+							</ListItemText>
+						</ListItem>
+						<hr className="bar-separator" />
+					</List>
+				</Fragment>
+			)
+		) : (
+			<CircularProgress
+				color="secondary"
+				size={30}
+				className={classes.progress}
+			/>
+		);
 
 		return (
 			<Grid container spacing={1}>
-				<Grid item sm={12} className={classes.back}>
+				<Grid item sm={12} xs={12} className={classes.titleBar}>
 					<Fragment>
 						<hr className="bar-separator" />
-						<div className="centered">
-							<span className={classes.titleBar}>
-								<HowlIcon className="icon5" />
-								<Typography variant="h3" lassName={classes.title}>
-									<strong c>HOWLBOX</strong>
-								</Typography>
-							</span>
-						</div>
-					</Fragment>
+						<OwlFuseButton
+                            className="howlIcon"
+                            onClick={this.toggleMenu}
+							tip={!this.state.menu ? "OPEN MENU" : "COLLAPSE MENU"}
+						>
+							<MenuIcon
+								className="icon2 foam orange"
+							/>
+						</OwlFuseButton>
+						<Typography variant="h4" className={classes.title}>
+							<strong>HOWLS</strong>
+						</Typography>
+						<hr className="bar-separator" />
+					</Fragment>{" "}
 				</Grid>
-				<Grid item sm={4}>
-					<Fragment>
-						<div>Hello</div>
-					</Fragment>
+				<Grid
+					item
+					md={3}
+					sm={12}
+					xs={12}
+					className={!this.state.menu ? classes.hidden : classes.listBack}
+				>
+					{drawerMockup}
 				</Grid>
-				<Grid item sm={8}>
-					<Fragment>
-                        <div>Howls Go Here</div>
-                    </Fragment>
+				<Grid
+					item
+					md={!this.state.menu ? 12 : 9}
+					sm={12}
+					xs={12}
+					className={classes.rightBorder}
+				></Grid>
+				<Grid
+					item
+					md={3}
+					sm={false}
+					xs={false}
+					className={!this.state.menu ? classes.hidden : classes.listBottom}
+				/>
+				<Grid
+					item
+					md={!this.state.menu ? 12 : 9}
+					className={classes.rightBottom}
+				>
+					<Grid container>
+						<Grid item sm={9} xs={9} className={classes.textBack}>
+							<form>
+                                <TextField fullWidth 
+                                value={this.state.howlBody}
+                                onChange={this.handleChange}
+                                id="howlBody"
+                                name="howlBody"
+                                type="text"
+                                placeholder="POST A HOWL"
+                                multiline
+                                className={classes.field} />
+								<input
+									type="submit"
+									hidden="hidden"
+									id="howlSubmit"
+									onClick={this.handleSubmit}
+								/>
+							</form>
+						</Grid>
+						<Grid item sm={2} xs={2} className={classes.buttons}>
+							<OwlFuseButton tip="POST HOWL" onClick={this.postHowlFxn}>
+								<HowlIcon className={classes.howlButton} />
+							</OwlFuseButton>
+							<OwlFuseButton tip="CLEAR TEXT FIELD">
+								<RejectRequestIcon className={classes.cancelButton} />
+							</OwlFuseButton>
+						</Grid>
+					</Grid>
 				</Grid>
 			</Grid>
 		);
