@@ -10,6 +10,7 @@ export class Footer extends Component {
 
   handleLogout = () => {
     this.props.logoutUser();
+    window.location.href = "/login";
   };
 
 
@@ -25,12 +26,13 @@ export class Footer extends Component {
            { authenticated ? (
              <OwlFuseButton
              tip="LOGOUT"
-             onClick={this.handleLogout}>
+             onClick={this.handleLogout} className="logout">
            <LogoutIcon className="icon foam orange"/>
            </OwlFuseButton>
            ) : null}
           <hr className="bar-separator"/>
           <p className="footer-text">© {new Date().getFullYear()} Rusty Hoppins, All Rights Reserved.</p>
+          
           <span><OwlClock/></span>
           <hr className="bar-separator"/>  
         </div>

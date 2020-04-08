@@ -237,6 +237,7 @@ input {
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
 }
 
 .orange:hover {
@@ -434,11 +435,7 @@ body > div:nth-child(7) > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.Mu
     width: 100%;
     text-align: center;
 }
-.pricing-columns .wrapper-full {
-    position: relative;
-    width: 1190px;
-    margin: 0 auto;
-}
+
 
 .blue-toggle {
     background-color: #263238 !important;
@@ -585,3 +582,4 @@ body > div > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.MuiPopover-pape
   margin-top: 1rem;
   float: left;
 }
+
