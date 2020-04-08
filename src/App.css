@@ -23,7 +23,7 @@ body {
 }
 
 .container {
-  margin: 16rem auto 0 auto;
+  margin: 14rem auto 0 auto;
   max-width: 1200px;
 }
 
@@ -578,4 +578,10 @@ body > div > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.MuiPopover-pape
 
 #root > div.container > div > div > div > span > h3 {
   margin-left: 16px;
+}
+
+.howlIcon {
+  margin-left: 2rem;
+  margin-top: 1rem;
+  float: left;
 }
