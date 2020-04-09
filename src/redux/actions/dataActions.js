@@ -39,388 +39,407 @@ import {
 	SILENCE_FUSER,
 	UNSILENCE_FUSER,
 	SET_HOWLS,
-	SET_HOWL
+	SET_HOWL,
+	SET_HOWLINGS,
 } from "../types";
 import axios from "axios";
 
 // fetch all sparks
-export const getSparks = () => dispatch => {
+export const getSparks = () => (dispatch) => {
 	dispatch({ type: LOADING_DATA });
 	axios
 		.get("/sparks")
-		.then(res => {
+		.then((res) => {
 			dispatch({
 				type: SET_SPARKS,
-				payload: res.data
+				payload: res.data,
 			});
 		})
-		.catch(err => {
+		.catch((err) => {
 			dispatch({
 				type: SET_SPARKS,
-				payload: []
+				payload: [],
 			});
 		});
 };
 
-export const getSpark = sparkId => dispatch => {
+export const getSpark = (sparkId) => (dispatch) => {
 	dispatch({ type: LOADING_UI });
 	axios
 		.get(`/spark/${sparkId}`)
-		.then(res => {
+		.then((res) => {
 			dispatch({
 				type: SET_SPARK,
-				payload: res.data
+				payload: res.data,
 			});
 			dispatch({ type: STOP_LOADING_UI });
 		})
-		.catch(err => console.log(err));
+		.catch((err) => console.log(err));
 };
 
 // fetch all infernals
-export const getInfernals = () => dispatch => {
+export const getInfernals = () => (dispatch) => {
 	dispatch({ type: LOADING_DATA });
 	axios
 		.get("/hot/sparks")
-		.then(res => {
+		.then((res) => {
 			dispatch({
 				type: SET_INFERNALS,
-				payload: res.data
+				payload: res.data,
 			});
 		})
-		.catch(err => {
+		.catch((err) => {
 			dispatch({
 				type: SET_INFERNALS,
-				payload: []
+				payload: [],
 			});
 		});
 };
 
 // fetch all okelists
-export const getOkelists = () => dispatch => {
+export const getOkelists = () => (dispatch) => {
 	dispatch({ type: LOADING_DATA });
 	axios
 		.get("/okelists")
-		.then(res => {
+		.then((res) => {
 			dispatch({
 				type: SET_OKELISTS,
-				payload: res.data
+				payload: res.data,
 			});
 		})
-		.catch(err => {
+		.catch((err) => {
 			dispatch({
 				type: SET_OKELISTS,
-				payload: []
+				payload: [],
 			});
 		});
 };
 
-export const getOkelist = okeId => dispatch => {
+export const getOkelist = (okeId) => (dispatch) => {
 	dispatch({ type: LOADING_UI });
 	axios
 		.get(`/okelist/${okeId}`)
-		.then(res => {
+		.then((res) => {
 			dispatch({
 				type: SET_OKELIST,
-				payload: res.data
+				payload: res.data,
 			});
 			dispatch({ type: STOP_LOADING_UI });
 		})
-		.catch(err => console.log(err));
+		.catch((err) => console.log(err));
 };
 
-export const getFusers = () => dispatch => {
+export const getFusers = () => (dispatch) => {
 	axios
 		.get("/fusers")
-		.then(res => {
+		.then((res) => {
 			dispatch({
 				type: SET_FUSERS,
-				payload: res.data
+				payload: res.data,
 			});
 		})
-		.catch(err => {
+		.catch((err) => {
 			dispatch({
 				type: SET_FUSERS,
-				payload: []
+				payload: [],
 			});
 		});
 };
 
 // fetch all boozulas
-export const getBoozulas = () => dispatch => {
+export const getBoozulas = () => (dispatch) => {
 	dispatch({ type: LOADING_DATA });
 	axios
 		.get("/boozulas")
-		.then(res => {
+		.then((res) => {
 			dispatch({
 				type: SET_BOOZULAS,
-				payload: res.data
+				payload: res.data,
 			});
 		})
-		.catch(err => {
+		.catch((err) => {
 			dispatch({
 				type: SET_BOOZULAS,
-				payload: []
+				payload: [],
 			});
 		});
 };
 
-export const getBoozula = boozId => dispatch => {
+export const getBoozula = (boozId) => (dispatch) => {
 	dispatch({ type: LOADING_UI });
 	axios
 		.get(`/boozula/${boozId}`)
-		.then(res => {
+		.then((res) => {
 			dispatch({
 				type: SET_BOOZULA,
-				payload: res.data
+				payload: res.data,
 			});
 			dispatch({ type: STOP_LOADING_UI });
 		})
-		.catch(err => console.log(err));
+		.catch((err) => console.log(err));
 };
 
-export const fetchSingleHowl = (docKey) => dispatch => {
+export const fetchSingleHowl = (docKey) => (dispatch) => {
 	dispatch({ type: LOADING_UI });
 	axios
 		.get(`/howl/${docKey}`)
-		.then(res => {
+		.then((res) => {
 			dispatch({
 				type: SET_HOWL,
-				payload: res.data
+				payload: res.data,
 			});
 			dispatch({ type: STOP_LOADING_UI });
 		})
-		.catch(err => console.log(err));
-}
+		.catch((err) => console.log(err));
+};
+
+export const fetchHowlings = (docKey) => (dispatch) => {
+	dispatch({ type: LOADING_DATA });
+	axios
+		.get(`/howlings/${docKey}`)
+		.then((res) => {
+			dispatch({
+				type: SET_HOWLINGS,
+				payload: res.data,
+			});
+		})
+		.catch((err) => {
+			dispatch({
+				type: SET_HOWLINGS,
+				payload: [],
+			});
+		});
+};
 
 // Post a spark
-export const postSpark = newSpark => dispatch => {
+export const postSpark = (newSpark) => (dispatch) => {
 	dispatch({ type: LOADING_UI });
 	axios
 		.post("/spark", newSpark)
-		.then(res => {
+		.then((res) => {
 			dispatch({ type: POST_SPARK, payload: res.data });
 			dispatch(clearErrors());
 			dispatch({ type: STOP_LOADING_UI });
 		})
-		.catch(err => {
+		.catch((err) => {
 			dispatch({
 				type: SET_ERRORS,
-				payload: err.response.data
+				payload: err.response.data,
 			});
 		});
 };
 
 // Submit a stoke
-export const addStoke = (sparkId, stokeData) => dispatch => {
+export const addStoke = (sparkId, stokeData) => (dispatch) => {
 	axios
 		.post(`/spark/${sparkId}/stoke`, stokeData)
-		.then(res => {
+		.then((res) => {
 			dispatch({
 				type: ADD_STOKE,
-				payload: res.data
+				payload: res.data,
 			});
 			dispatch(clearErrors());
 		})
-		.catch(err => {
+		.catch((err) => {
 			dispatch({
 				type: SET_ERRORS,
-				payload: err.response.data
+				payload: err.response.data,
 			});
 		});
 };
 
-export const addToast = (boozId, toastData) => dispatch => {
+export const addToast = (boozId, toastData) => (dispatch) => {
 	axios
 		.post(`/boozula/${boozId}/toast`, toastData)
-		.then(res => {
+		.then((res) => {
 			dispatch({
 				type: ADD_TOAST,
-				payload: res.data
+				payload: res.data,
 			});
 			dispatch(clearErrors());
 		})
-		.catch(err => {
+		.catch((err) => {
 			dispatch({
 				type: SET_ERRORS,
-				payload: err.response.data
+				payload: err.response.data,
 			});
 		});
 };
 
-export const addSong = (okeId, songData) => dispatch => {
+export const addSong = (okeId, songData) => (dispatch) => {
 	axios
 		.post(`/okelist/${okeId}/song`, songData)
-		.then(res => {
+		.then((res) => {
 			dispatch({
 				type: ADD_SONG,
-				payload: res.data
+				payload: res.data,
 			});
 			console.log(res.data);
 			dispatch(clearErrors());
 		})
-		.catch(err => {
+		.catch((err) => {
 			dispatch({
 				type: SET_ERRORS,
-				payload: err.response.data
+				payload: err.response.data,
 			});
 		});
 };
 
 // Post a Boozula
-export const buildNewBoozula = newBoozula => dispatch => {
+export const buildNewBoozula = (newBoozula) => (dispatch) => {
 	dispatch({ type: LOADING_UI });
 	axios
 		.post("/boozula", newBoozula)
-		.then(res => {
+		.then((res) => {
 			dispatch({ type: BUILD_BOOZULA, payload: res.data });
 			dispatch({ type: CLEAR_ERRORS });
 			dispatch({ type: STOP_LOADING_UI });
 		})
-		.catch(err => {
+		.catch((err) => {
 			dispatch({
 				type: SET_ERRORS,
-				payload: err.response.data
+				payload: err.response.data,
 			});
 		});
 };
 
 // Post a new Okelist
-export const buildNewOkeList = newOkeList => dispatch => {
+export const buildNewOkeList = (newOkeList) => (dispatch) => {
 	dispatch({ type: LOADING_UI });
 	axios
 		.post("/okelist", newOkeList)
-		.then(res => {
+		.then((res) => {
 			dispatch({ type: BUILD_OKE, payload: res.data });
 			dispatch({ type: CLEAR_ERRORS });
 			dispatch({ type: STOP_LOADING_UI });
 		})
-		.catch(err => {
+		.catch((err) => {
 			dispatch({
 				type: SET_ERRORS,
-				payload: err.response.data
+				payload: err.response.data,
 			});
 		});
 };
 
 // Add heat to spark
-export const addHeat = sparkId => dispatch => {
+export const addHeat = (sparkId) => (dispatch) => {
 	axios
 		.get(`/spark/${sparkId}/burn`)
-		.then(res => {
+		.then((res) => {
 			dispatch({
 				type: ADD_HEAT,
-				payload: res.data
+				payload: res.data,
 			});
 		})
-		.catch(err => console.log(err));
+		.catch((err) => console.log(err));
 };
 
-export const addCheers = boozId => dispatch => {
+export const addCheers = (boozId) => (dispatch) => {
 	axios
 		.get(`boozula/${boozId}/cheers`)
-		.then(res => {
+		.then((res) => {
 			dispatch({
 				type: ADD_CHEERS,
-				payload: res.data
+				payload: res.data,
 			});
 		})
-		.catch(err => console.log(err));
+		.catch((err) => console.log(err));
 };
 
 // Remove heat from spark
-export const removeHeat = sparkId => dispatch => {
+export const removeHeat = (sparkId) => (dispatch) => {
 	axios
 		.get(`/spark/${sparkId}/snuff`)
-		.then(res => {
+		.then((res) => {
 			dispatch({
 				type: REMOVE_HEAT,
-				payload: res.data
+				payload: res.data,
 			});
 		})
-		.catch(err => console.log(err));
+		.catch((err) => console.log(err));
 };
 
-export const removeCheers = boozId => dispatch => {
+export const removeCheers = (boozId) => (dispatch) => {
 	axios
 		.get(`boozula/${boozId}/uncheers`)
-		.then(res => {
+		.then((res) => {
 			dispatch({
 				type: REMOVE_CHEERS,
-				payload: res.data
+				payload: res.data,
 			});
 		})
-		.catch(err => console.log(err));
+		.catch((err) => console.log(err));
 };
 
-export const extinguishSpark = sparkId => dispatch => {
+export const extinguishSpark = (sparkId) => (dispatch) => {
 	axios
 		.delete(`/spark/${sparkId}`)
 		.then(() => {
 			dispatch({ type: EXTINGUISH_SPARK, payload: sparkId });
 		})
-		.catch(err => console.log(err));
+		.catch((err) => console.log(err));
 };
 
-export const emptyBoozula = boozId => dispatch => {
+export const emptyBoozula = (boozId) => (dispatch) => {
 	axios
 		.delete(`/boozula/${boozId}`)
 		.then(() => {
 			dispatch({ type: EMPTY_BOOZULA, payload: boozId });
 		})
-		.catch(err => console.log(err));
+		.catch((err) => console.log(err));
 };
 
-export const eraseOkelist = okeId => dispatch => {
+export const eraseOkelist = (okeId) => (dispatch) => {
 	axios
 		.delete(`okelist/${okeId}`)
 		.then(() => {
 			dispatch({ type: ERASE_OKE, payload: okeId });
 		})
-		.catch(err => console.log(err));
+		.catch((err) => console.log(err));
 };
 
 // action creator for clearing errors
-export const clearErrors = () => dispatch => {
+export const clearErrors = () => (dispatch) => {
 	dispatch({ type: CLEAR_ERRORS });
 };
 
 // action creator for clearing successes
-export const clearSuccess = () => dispatch => {
+export const clearSuccess = () => (dispatch) => {
 	dispatch({ type: CLEAR_SUCCESS });
 };
 
-export const getBoozData = boozId => dispatch => {
+export const getBoozData = (boozId) => (dispatch) => {
 	dispatch({ type: LOADING_UI });
 	axios
 		.get("/boozulas")
-		.then(res => {
+		.then((res) => {
 			console.log(res.data);
 			dispatch({
 				type: SET_BOOZULAS,
-				payload: res.data
+				payload: res.data,
 			});
 
 			dispatch({ type: STOP_LOADING_UI });
 		})
-		.catch(err => console.log(err));
+		.catch((err) => console.log(err));
 };
 
-export const uploadBoozImage = (boozId, formData) => dispatch => {
+export const uploadBoozImage = (boozId, formData) => (dispatch) => {
 	dispatch({ type: LOADING_UI });
 	axios
 		.post(`/boozula/${boozId}/image`, formData)
-		.then(res => {
+		.then((res) => {
 			dispatch({
 				type: CHANGE_BOOZ_IMAGE,
-				payload: res.data
+				payload: res.data,
 			});
 			dispatch(getBoozData());
 			dispatch({ type: STOP_LOADING_UI });
 		})
-		.catch(err => console.log(err));
+		.catch((err) => console.log(err));
 };
 
-export const editBoozDetails = (boozId, boozDetails) => dispatch => {
+export const editBoozDetails = (boozId, boozDetails) => (dispatch) => {
 	dispatch({ type: LOADING_UI });
 	axios
 		.post(`/boozula/${boozId}/add`, boozDetails)
@@ -428,21 +447,21 @@ export const editBoozDetails = (boozId, boozDetails) => dispatch => {
 			dispatch(getBoozData());
 			dispatch({ type: STOP_LOADING_UI });
 		})
-		.catch(err => console.log(err));
+		.catch((err) => console.log(err));
 };
 
-export const choozByList = okeId => dispatch => {
+export const choozByList = (okeId) => (dispatch) => {
 	dispatch({ type: LOADING_UI });
 	axios
 		.get(`/song/${okeId}/list/chooz`)
-		.then(res => {
+		.then((res) => {
 			dispatch({
 				type: CHOOZ_BY_LIST,
-				payload: res.data
+				payload: res.data,
 			});
 			dispatch({
 				type: SET_SUCCESS,
-				payload: res.data
+				payload: res.data,
 			});
 			dispatch(clearErrors());
 			console.log(res.data);
@@ -451,59 +470,59 @@ export const choozByList = okeId => dispatch => {
 		.then(() => {
 			dispatch(clearSuccess());
 		})
-		.catch(err => {
+		.catch((err) => {
 			console.log(err.response.data);
 			dispatch({
 				type: SET_ERRORS,
-				payload: err.response.data
+				payload: err.response.data,
 			});
 		});
 };
 
-export const getUserData = userClozang => dispatch => {
+export const getUserData = (userClozang) => (dispatch) => {
 	dispatch({ type: LOADING_DATA });
 	axios
 		.get(`/user/${userClozang}`)
-		.then(res => {
+		.then((res) => {
 			dispatch({
 				type: SET_INFERNALS,
-				payload: res.data.infernals
+				payload: res.data.infernals,
 			});
 			dispatch({
 				type: SET_SPARKS,
-				payload: res.data.sparks
+				payload: res.data.sparks,
 			});
 			dispatch({
 				type: SET_BOOZULAS,
-				payload: res.data.boozulas
+				payload: res.data.boozulas,
 			});
 		})
 		.catch(() => {
 			dispatch({
 				type: SET_INFERNALS,
-				payload: null
+				payload: null,
 			});
 			dispatch({
 				type: SET_SPARKS,
-				payload: null
+				payload: null,
 			});
 			dispatch({
 				type: SET_BOOZULAS,
-				payload: null
+				payload: null,
 			});
 		});
 };
 
-export const sendFuseRequest = fuser => dispatch => {
+export const sendFuseRequest = (fuser) => (dispatch) => {
 	dispatch({ type: LOADING_UI });
 	axios
 		.get(`fuse-with/${fuser}`)
-		.then(res => {
+		.then((res) => {
 			console.log(res.data);
 			dispatch({ type: SEND_REQUEST, payload: res.data });
 			dispatch({
 				type: SET_SUCCESS,
-				payload: res.data
+				payload: res.data,
 			});
 			dispatch(clearErrors());
 			dispatch({ type: STOP_LOADING_UI });
@@ -511,120 +530,120 @@ export const sendFuseRequest = fuser => dispatch => {
 		.then(() => {
 			dispatch(clearSuccess());
 		})
-		.catch(err => {
+		.catch((err) => {
 			console.log(err.response.data);
 			dispatch({
 				type: SET_ERRORS,
-				payload: err.response.data
+				payload: err.response.data,
 			});
 		});
 };
 
-export const fetchRequestedFuses = () => dispatch => {
+export const fetchRequestedFuses = () => (dispatch) => {
 	dispatch({ type: LOADING_DATA });
 	axios
 		.get("/requested-fuses")
-		.then(res => {
+		.then((res) => {
 			dispatch({ type: FETCH_REQUESTED, payload: res.data });
 		})
-		.catch(err => {
+		.catch((err) => {
 			dispatch({ type: FETCH_REQUESTED, payload: [] });
 		});
 };
 
-export const acceptFuseRequest = reqId => dispatch => {
+export const acceptFuseRequest = (reqId) => (dispatch) => {
 	dispatch({ type: LOADING_UI });
 	axios
 		.get(`/accept/${reqId}`)
-		.then(res => {
+		.then((res) => {
 			dispatch({ type: ACCEPT_REQUEST, payload: res.data });
 			console.log(res.data);
 			dispatch({ type: STOP_LOADING_UI });
 		})
-		.catch(err => {
+		.catch((err) => {
 			console.log(err);
 		});
 };
 
-export const rejectFuseRequest = reqId => dispatch => {
+export const rejectFuseRequest = (reqId) => (dispatch) => {
 	dispatch({ type: LOADING_UI });
 	axios
 		.get(`/reject/${reqId}`)
-		.then(res => {
+		.then((res) => {
 			dispatch({ type: REJECT_REQUEST, payload: res.data });
 			console.log(res.data);
 			dispatch({ type: STOP_LOADING_UI });
 		})
-		.catch(err => {
+		.catch((err) => {
 			console.log(err);
 		});
 };
 
-export const getAllSentFuses = () => dispatch => {
+export const getAllSentFuses = () => (dispatch) => {
 	dispatch({ type: LOADING_DATA });
 	axios
 		.get("/sent-fuses")
-		.then(res => {
+		.then((res) => {
 			dispatch({ type: SET_SENT_REQUESTS, payload: res.data });
 		})
-		.catch(err => {
+		.catch((err) => {
 			dispatch({ type: SET_SENT_REQUESTS, payload: [] });
 		});
 };
 
-export const cancelRequest = reqId => dispatch => {
+export const cancelRequest = (reqId) => (dispatch) => {
 	axios
 		.delete(`/cancel/${reqId}`)
 		.then(() => {
 			dispatch({ type: CANCEL_REQUEST, payload: reqId });
 		})
-		.catch(err => {
+		.catch((err) => {
 			console.log(err);
 		});
 };
 
-export const fetchSilencedList = () => dispatch => {
+export const fetchSilencedList = () => (dispatch) => {
 	axios
 		.get("/silenced")
-		.then(res => {
+		.then((res) => {
 			dispatch({ type: GET_SILENCED_LIST, payload: res.data });
 		})
-		.catch(err => {
+		.catch((err) => {
 			dispatch({ type: GET_SILENCED_LIST, payload: [] });
 		});
 };
 
-export const unsilenceFuser = fuser => dispatch => {
+export const unsilenceFuser = (fuser) => (dispatch) => {
 	axios
 		.get(`/unsilence/${fuser}`)
-		.then(res => {
+		.then((res) => {
 			dispatch({ type: UNSILENCE_FUSER, payload: res.data });
 		})
-		.catch(err => console.log(err));
+		.catch((err) => console.log(err));
 };
 
-export const silenceFuser = fuser => dispatch => {
+export const silenceFuser = (fuser) => (dispatch) => {
 	axios
 		.get(`/silence/${fuser}`)
-		.then(res => {
+		.then((res) => {
 			dispatch({ type: SILENCE_FUSER, payload: res.data });
 		})
-		.catch(err => console.log(err));
+		.catch((err) => console.log(err));
 };
-export const fetchUserHowls = () => dispatch => {
+export const fetchUserHowls = () => (dispatch) => {
 	dispatch({ type: LOADING_DATA });
 	axios
 		.get("/howls")
-		.then(res => {
+		.then((res) => {
 			dispatch({
 				type: SET_HOWLS,
-				payload: res.data
+				payload: res.data,
 			});
 		})
-		.catch(err => {
+		.catch((err) => {
 			dispatch({
 				type: SET_HOWLS,
-				payload: []
+				payload: [],
 			});
 		});
 };
