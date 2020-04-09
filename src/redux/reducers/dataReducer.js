@@ -33,7 +33,8 @@ import {
 	UNSILENCE_FUSER,
 	GET_SILENCED_LIST,
 	SET_HOWLS,
-	SET_HOWL
+	SET_HOWL,
+	SET_HOWLINGS
 } from "../types";
 
 const initialState = {
@@ -286,6 +287,12 @@ export default function(state = initialState, action) {
 		return {
 			...state,
 			howls: action.payload,
+			loading: false
+		}
+	case SET_HOWLINGS:
+		return {
+			...state,
+			howlings: action.payload,
 			loading: false
 		}
 		default:
