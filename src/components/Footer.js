@@ -45,7 +45,7 @@ export class Footer extends Component {
 }
 
 Footer.propTypes = {
-  logOutUser: PropTypes.func.isRequired
+  logoutUser: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
