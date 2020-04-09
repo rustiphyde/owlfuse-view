@@ -52,7 +52,9 @@ const initialState = {
 	fuserequests: [],
 	silenced: [],
 	howls: [],
-	howl: {}
+	howl: {},
+	howlings: [],
+	howling: {}
 };
 
 export default function(state = initialState, action) {
