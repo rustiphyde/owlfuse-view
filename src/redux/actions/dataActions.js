@@ -38,7 +38,8 @@ import {
 	GET_SILENCED_LIST,
 	SILENCE_FUSER,
 	UNSILENCE_FUSER,
-	SET_HOWLS
+	SET_HOWLS,
+	SET_HOWL
 } from "../types";
 import axios from "axios";
 
@@ -176,6 +177,20 @@ export const getBoozula = boozId => dispatch => {
 		})
 		.catch(err => console.log(err));
 };
+
+export const fetchSingleHowl = (docKey) => dispatch => {
+	dispatch({ type: LOADING_UI });
+	axios
+		.get(`/howl/${docKey}`)
+		.then(res => {
+			dispatch({
+				type: SET_HOWL,
+				payload: res.data
+			});
+			dispatch({ type: STOP_LOADING_UI });
+		})
+		.catch(err => console.log(err));
+}
 
 // Post a spark
 export const postSpark = newSpark => dispatch => {
