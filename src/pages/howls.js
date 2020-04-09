@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { fetchUserHowls } from "../redux/actions/dataActions";
 import OwlFuseButton from "../util/OwlFuseButton";
 import Howler from '../components/howls/Howler';
+import Howl from '../components/howls/Howl';
 // MUI Stuff
 import Tooltip from "@material-ui/core/Tooltip";
 import Grid from "@material-ui/core/Grid";
@@ -227,7 +228,9 @@ class howls extends Component {
 					sm={12}
 					xs={12}
 					className={classes.rightBorder}
-				></Grid>
+				>
+                    <Howl/>
+                </Grid>
 				<Grid
 					item
 					md={3}

@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import {  connect } from 'react-redux';
 import OwlFuseButton from '../../util/OwlFuseButton';
 import Typography from '@material-ui/core/Typography';
-import { fetchSingleHowl } from '../../redux/actions/dataActions';
+import { fetchSingleHowl, fetchHowlings } from '../../redux/actions/dataActions';
 import HowlIcon from '../icons/HowlIcon';
 
 const styles = {
@@ -12,16 +12,13 @@ const styles = {
 }
 
 class Howler extends Component{
-    state = {
-        docKey: ''
-    }
 
     componentDidMount(){
         this.props.fetchSingleHowl(this.props.docKey);
     }
 
     openHowl = () => {
-        console.log(this.props.docKey);
+        this.props.fetchHowlings(this.props.docKey);
     }
 
     render(){
@@ -48,7 +45,8 @@ Howler.propTypes = {
     howler: PropTypes.string.isRequired,
     user: PropTypes.object.isRequired,
     data: PropTypes.object.isRequired,
-    fetchSingleHowl: PropTypes.func.isRequired
+    fetchSingleHowl: PropTypes.func.isRequired,
+    fetcHHowlings: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -56,4 +54,4 @@ const mapStateToProps = state => ({
     user: state.user
 })
 
-export default connect(mapStateToProps, { fetchSingleHowl })(withStyles(styles)(Howler));
+export default connect(mapStateToProps, { fetchSingleHowl, fetchHowlings })(withStyles(styles)(Howler));
