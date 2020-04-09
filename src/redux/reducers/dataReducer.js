@@ -32,7 +32,8 @@ import {
 	SILENCE_FUSER,
 	UNSILENCE_FUSER,
 	GET_SILENCED_LIST,
-	SET_HOWLS
+	SET_HOWLS,
+	SET_HOWL
 } from "../types";
 
 const initialState = {
@@ -50,7 +51,8 @@ const initialState = {
 	fuserequest: {},
 	fuserequests: [],
 	silenced: [],
-	howls: []
+	howls: [],
+	howl: {}
 };
 
 export default function(state = initialState, action) {
@@ -71,6 +73,11 @@ export default function(state = initialState, action) {
 				...state,
 				spark: action.payload
 			};
+		case SET_HOWL:
+			return {
+				...state,
+				howl: action.payload
+			}
 		case SEND_REQUEST:
 			return {
 				...state,
