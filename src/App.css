@@ -583,3 +583,8 @@ body > div > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.MuiPopover-pape
   float: left;
 }
 
+@media(max-width: 959px){
+  #root > div.container > div > div.MuiGrid-root.howls-listBottom-133.MuiGrid-item.MuiGrid-grid-md-3 {
+    display: none !important;
+  }
+}
