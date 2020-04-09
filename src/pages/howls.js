@@ -4,6 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import { fetchUserHowls } from "../redux/actions/dataActions";
 import OwlFuseButton from "../util/OwlFuseButton";
+import Howler from '../components/howls/Howler';
 // MUI Stuff
 import Tooltip from "@material-ui/core/Tooltip";
 import Grid from "@material-ui/core/Grid";
@@ -19,7 +20,7 @@ import TextField from "@material-ui/core/TextField";
 import HowlIcon from "../components/icons/HowlIcon";
 import MenuIcon from "../components/icons/MenuIcon";
 import RejectRequestIcon from "../components/icons/RejectRequestIcon";
-
+import HowlPostIcon from "../components/icons/HowlPostIcon";
 const styles = {
 	title: {
 		display: "inline-block",
@@ -69,7 +70,7 @@ const styles = {
 		display: "flex",
 	},
 	howlButton: {
-		marginLeft: "16px",
+		marginLeft: "1rem",
 		fontSize: "2.5rem",
 		marginTop: ".5rem",
 		color: "#f4db9d",
@@ -79,7 +80,7 @@ const styles = {
 	},
 	cancelButton: {
 		display: "inline-block",
-		marginLeft: "16px",
+		marginLeft: ".5rem",
 		fontSize: "2.5rem",
 		marginTop: ".5rem",
 		color: "#f4db9d",
@@ -100,7 +101,8 @@ class howls extends Component {
 	state = {
 		howls: null,
 		menu: true,
-		howlBody: "",
+        howlBody: "",
+        howlings: null
 	};
 
 	componentDidMount() {
@@ -136,19 +138,18 @@ class howls extends Component {
 
 	render() {
 		const { classes } = this.props;
-		const { howls, loading } = this.props.data;
+		const { howls, loading, howlings } = this.props.data;
 		const {
-			credentials: { clozang, imageUrl },
+			credentials: { clozang, imageUrl }
 		} = this.props.user;
 
 		let drawerMockup = !loading ? (
 			howls && howls.length > 0 ? (
 				<Fragment>
-					<div />
 					<List>
 						{howls.map((howl) => {
-							let howler = howl.howlers.filter((howlr) => howlr !== clozang);
-							let avatar = howl.avatars
+							let howler = howl.howlers.filter((howlr) => howlr !== clozang).toString();
+                            let avatar = howl.avatars
 								.filter((avat) => avat !== imageUrl)
 								.toString();
 							return (
@@ -156,7 +157,9 @@ class howls extends Component {
 									<ListItemAvatar>
 										<Avatar src={avatar} />
 									</ListItemAvatar>
-									<ListItemText primary={howler} className={classes.fusers} />
+									<ListItem>
+                                        <Howler docKey={howl.docKey} howler={howler}/>
+                                    </ListItem>
 								</ListItem>
 							);
 						})}
@@ -234,11 +237,13 @@ class howls extends Component {
 				/>
 				<Grid
 					item
-					md={!this.state.menu ? 12 : 9}
+                    md={!this.state.menu ? 12 : 9}
+                    sm={12}
+                    xs={12}
 					className={classes.rightBottom}
 				>
 					<Grid container>
-						<Grid item sm={9} xs={9} className={classes.textBack}>
+						<Grid item md={10} sm={10} xs={10} className={classes.textBack}>
 							<form>
                                 <TextField fullWidth 
                                 value={this.state.howlBody}
@@ -257,12 +262,9 @@ class howls extends Component {
 								/>
 							</form>
 						</Grid>
-						<Grid item sm={2} xs={2} className={classes.buttons}>
+						<Grid item sm={1} xs={1} className={classes.buttons}>
 							<OwlFuseButton tip="POST HOWL" onClick={this.postHowlFxn}>
-								<HowlIcon className={classes.howlButton} />
-							</OwlFuseButton>
-							<OwlFuseButton tip="CLEAR TEXT FIELD">
-								<RejectRequestIcon className={classes.cancelButton} />
+								<HowlPostIcon className={classes.howlButton} />
 							</OwlFuseButton>
 						</Grid>
 					</Grid>
@@ -276,7 +278,8 @@ howls.propTypes = {
 	classes: PropTypes.object.isRequired,
 	data: PropTypes.object.isRequired,
 	user: PropTypes.object.isRequired,
-	fetchUserHowls: PropTypes.func.isRequired,
+    fetchUserHowls: PropTypes.func.isRequired,
+    howlings: PropTypes.array
 };
 
 const mapStateToProps = (state) => ({
@@ -285,7 +288,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapActionsToProps = {
-	fetchUserHowls,
+    fetchUserHowls
 };
 
 export default connect(
