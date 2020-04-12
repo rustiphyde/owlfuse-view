@@ -34,7 +34,8 @@ import {
 	GET_SILENCED_LIST,
 	SET_HOWLS,
 	SET_HOWL,
-	SET_HOWLINGS
+	SET_HOWLINGS,
+	POST_HOWL
 } from "../types";
 
 const initialState = {
@@ -55,7 +56,8 @@ const initialState = {
 	howls: [],
 	howl: {},
 	howlings: [],
-	howling: {}
+	howling: {},
+	docKey: ''
 };
 
 export default function(state = initialState, action) {
@@ -79,7 +81,8 @@ export default function(state = initialState, action) {
 		case SET_HOWL:
 			return {
 				...state,
-				howl: action.payload
+				howl: action.payload,
+				docKey: action.payload.docKey
 			}
 		case SEND_REQUEST:
 			return {
@@ -154,6 +157,11 @@ export default function(state = initialState, action) {
 			return {
 				...state,
 				sparks: [action.payload, ...state.sparks]
+			};
+		case POST_HOWL:
+			return {
+				...state,
+				howlings: [action.payload, ...state.howlings]
 			};
 		case ADD_STOKE:
 			return {
