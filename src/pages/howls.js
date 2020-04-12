@@ -32,13 +32,24 @@ const styles = {
 		backgroundColor: "#263238",
 		borderRadius: "16px 0 0 0",
 		borderBottom: "3px solid #ff9800",
-	},
+    },
+    ava: {
+      backgroundColor: "#ff9800",
+      color: "#263238"  
+    },
 	fusers: {
 		color: "#f4db9d",
-	},
+    },
+    scroll: {
+        overflowY: 'scroll',
+        height: '18rem',
+        width: '100%',
+        overflowX: 'hidden'
+
+    },
 	listBack: {
 		backgroundColor: "#263238",
-		borderLeft: "3px solid #ff9800",
+        borderLeft: "3px solid #ff9800",
 	},
 	listItem: {
 		borderBottom: "1px solid #ff9800",
@@ -103,7 +114,7 @@ class howls extends Component {
 		howls: null,
 		menu: true,
         howlBody: "",
-        howlings: null
+		howlings: null,
 	};
 
 	componentDidMount() {
@@ -147,16 +158,15 @@ class howls extends Component {
 		let drawerMockup = !loading ? (
 			howls && howls.length > 0 ? (
 				<Fragment>
-					<List>
+					<List className={classes.scroll}>
 						{howls.map((howl) => {
 							let howler = howl.howlers.filter((howlr) => howlr !== clozang).toString();
-                            let avatar = howl.avatars
-								.filter((avat) => avat !== imageUrl)
-								.toString();
 							return (
 								<ListItem button key={howler} className={classes.listItem}>
 									<ListItemAvatar>
-										<Avatar src={avatar} />
+										<Avatar className={classes.ava}>
+                                            {howler.slice(1,3)}
+                                        </Avatar>
 									</ListItemAvatar>
 									<ListItem>
                                         <Howler docKey={howl.docKey} howler={howler}/>
@@ -234,8 +244,6 @@ class howls extends Component {
 				<Grid
 					item
 					md={3}
-					sm={false}
-					xs={false}
 					className={!this.state.menu ? classes.hidden : classes.listBottom}
 				/>
 				<Grid
