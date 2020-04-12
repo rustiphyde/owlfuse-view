@@ -26,7 +26,7 @@ class Howler extends Component{
         return(
             <Fragment>
                 <Typography className={classes.text}>
-        <strong className="foam">{howler}</strong>
+        <strong className="foam orange" onClick={this.openHowl}>{howler}</strong>
                 </Typography>
                 <OwlFuseButton
                 tip="OPEN HOWL"
@@ -46,7 +46,7 @@ Howler.propTypes = {
     user: PropTypes.object.isRequired,
     data: PropTypes.object.isRequired,
     fetchSingleHowl: PropTypes.func.isRequired,
-    fetcHHowlings: PropTypes.func.isRequired
+    fetcHHowlings: PropTypes.func
 }
 
 const mapStateToProps = state => ({
