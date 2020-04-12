@@ -49,3 +49,4 @@ export const GET_SILENCED_LIST = 'GET_SILENCED_LIST';
 export const SET_HOWLS = 'SET_HOWLS';
 export const SET_HOWL = 'SET_HOWL';
 export const SET_HOWLINGS = 'SET_HOWLINGS';
+export const POST_HOWL = 'POST_HOWL';
