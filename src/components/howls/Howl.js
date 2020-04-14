@@ -10,7 +10,7 @@ const styles = {
 		backgroundColor: "#263238",
 		padding: "16px",
 		color: "#ff9800",
-		width: "50%",
+		width: "75%",
 		float: "right",
 		margin: "8px",
 		wordWrap: "break-word",
@@ -19,17 +19,19 @@ const styles = {
     },
     userSentPic: {
         float: 'right',
-        margin: '0 16px'
+        margin: '0 16px',
+        border: '1.5px solid #ff9800'
     },
     fuserSentPic: {
         float: 'left',
-        margin: '0 16px'
+        margin: '0 16px',
+        border: '1.5px solid #263238'
     },
     	fuserSent: {
 		backgroundColor: "#ff9800",
 		padding: "16px",
 		color: "#263238",
-		width: "50%",
+		width: "75%",
 		float: "left",
 		margin: "8px",
 		fontWeight: 700,
@@ -46,29 +48,28 @@ const styles = {
 
 class Howl extends Component {
 	state = {
-		howlings: [],
-		docKey: null,
-	};
+        howls: []
+    };
 
 	componentDidUpdate = () => {
 		const container = document.getElementById("howl-container");
 		if (container) {
 			container.scrollTo(0, container.scrollHeight);
 		}
-	};
-
+    };
+    
 	render() {
-		const { classes, howlings } = this.props;
+		const { classes, howls } = this.props;
 		const { loading } = this.props.data;
 		const {
-			credentials: { clozang },
+			credentials: { clozang, imageUrl },
 		} = this.props.user;
 		let howlingsMarkup = !loading ? (
-			howlings && howlings.length > 0 ? (
-				howlings.map((howl) => {
-					let index = howlings.indexOf(howl);
+			howls && howls.length > 0 ? (
+				howls.map((howl) => {
+					let index = howls.indexOf(howl);
 					return (
-						<Fragment key={index}>
+						<Fragment key={index + "54"}>
 							
 							<div
 								key={index}
@@ -76,15 +77,7 @@ class Howl extends Component {
 									howl.sentBy === clozang ? classes.userSent : classes.fuserSent
 								}
 							>
-                                <Avatar
-								src={howl.avatar.toString()}
-								key={index}
-								className={
-									howl.sentBy === clozang
-										? classes.userSentPic
-										: classes.fuserSentPic
-								}
-							></Avatar>
+                               
 								{howl.howlBody}
 							</div>
 						</Fragment>
@@ -92,7 +85,7 @@ class Howl extends Component {
 				})
 			) : (
 				<strong className="candle centered">
-					You do not currently have any active howls to view
+					You do not have any howls to view at this time
 				</strong>
 			)
 		) : (
@@ -111,7 +104,7 @@ class Howl extends Component {
 
 Howl.propTypes = {
 	classes: PropTypes.object.isRequired,
-	howlings: PropTypes.array.isRequired,
+	howls: PropTypes.array.isRequired,
 	data: PropTypes.object.isRequired,
 	user: PropTypes.object.isRequired,
 };
@@ -119,7 +112,7 @@ Howl.propTypes = {
 const mapStateToProps = (state) => ({
 	data: state.data,
 	user: state.user,
-	howlings: state.data.howlings,
+	howls: state.data.howls,
 });
 
 export default connect(mapStateToProps, null)(withStyles(styles)(Howl));
