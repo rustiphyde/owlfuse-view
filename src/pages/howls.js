@@ -2,10 +2,12 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
-import { fetchUserHowls } from "../redux/actions/dataActions";
+import { fetchUserHowls, postHowl, fetchFuserHowls, fetchSingleHowl } from "../redux/actions/dataActions";
 import OwlFuseButton from "../util/OwlFuseButton";
 import Howler from '../components/howls/Howler';
 import Howl from '../components/howls/Howl';
+import HowlList from '../components/howls/HowlList';
+import PostHowl from '../components/howls/PostHowl';
 // MUI Stuff
 import Tooltip from "@material-ui/core/Tooltip";
 import Grid from "@material-ui/core/Grid";
@@ -83,12 +85,7 @@ const styles = {
 	},
 	howlButton: {
 		marginLeft: "1rem",
-		fontSize: "2.5rem",
-		marginTop: ".5rem",
-		color: "#f4db9d",
-		"&:hover": {
-			color: "#ff9800",
-		},
+		marginTop: ".5rem"
 	},
 	cancelButton: {
 		display: "inline-block",
@@ -114,12 +111,8 @@ class howls extends Component {
 		howls: null,
 		menu: true,
         howlBody: "",
-		howlings: null,
+		docKey: null
 	};
-
-	componentDidMount() {
-		this.props.fetchUserHowls();
-	}
 
 	toggleMenu = () => {
 		if (this.state.menu === true) {
@@ -130,16 +123,17 @@ class howls extends Component {
 	};
 	handleSubmit = (event) => {
 		event.preventDefault();
-		const howlInfo = {
-			howlBody: this.state.howlBody,
-        };
-        console.log(howlInfo);
-        document.getElementById('howlBody').value = "";
-        this.setState({ howlBody: ""});
+		let friend = this.props.data.howl.howlers.filter(howler => howler !== this.props.user.credentials.clozang)[0].toString();
+		this.props.postHowl(friend, { howlBody: this.state.howlBody,
+		avatar: this.props.user.credentials.imageUrl
+		});
+		document.getElementById('howlBody').value = "";
+		this.setState({ howlBody: ""});
+		console.log(this.props.data.howl.docKey);
     };
     postHowlFxn = () => {
         const posting = document.getElementById('howlSubmit');
-        posting.click();
+		posting.click();
     }
 
     handleChange = event => {
@@ -150,7 +144,7 @@ class howls extends Component {
 
 	render() {
 		const { classes } = this.props;
-		const { howls, loading, howlings } = this.props.data;
+		const { howls, loading } = this.props.data;
 		const {
 			credentials: { clozang, imageUrl }
 		} = this.props.user;
@@ -230,7 +224,7 @@ class howls extends Component {
 					xs={12}
 					className={!this.state.menu ? classes.hidden : classes.listBack}
 				>
-					{drawerMockup}
+					<HowlList/>
 				</Grid>
 				<Grid
 					item
@@ -255,7 +249,7 @@ class howls extends Component {
 				>
 					<Grid container>
 						<Grid item md={10} sm={10} xs={10} className={classes.textBack}>
-							<form>
+							<form onSubmit={this.handleSubmit}>
                                 <TextField fullWidth 
                                 value={this.state.howlBody}
                                 onChange={this.handleChange}
@@ -269,14 +263,11 @@ class howls extends Component {
 									type="submit"
 									hidden="hidden"
 									id="howlSubmit"
-									onClick={this.handleSubmit}
 								/>
 							</form>
 						</Grid>
 						<Grid item sm={1} xs={1} className={classes.buttons}>
-							<OwlFuseButton tip="POST HOWL" onClick={this.postHowlFxn}>
-								<HowlPostIcon className={classes.howlButton} />
-							</OwlFuseButton>
+								<PostHowl className={classes.howlButton} howlBody={this.state.howlBody}/>
 						</Grid>
 					</Grid>
 				</Grid>
@@ -289,8 +280,10 @@ howls.propTypes = {
 	classes: PropTypes.object.isRequired,
 	data: PropTypes.object.isRequired,
 	user: PropTypes.object.isRequired,
-    fetchUserHowls: PropTypes.func.isRequired,
-    howlings: PropTypes.array
+	fetchUserHowls: PropTypes.func.isRequired,
+	postHowl: PropTypes.func.isRequired,
+	fetchFuserHowls: PropTypes.func.isRequired,
+	fetchSingleHowl: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -299,7 +292,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapActionsToProps = {
-    fetchUserHowls
+	fetchUserHowls,
+	postHowl,
+	fetchFuserHowls,
+	fetchSingleHowl
 };
 
 export default connect(
