@@ -40,7 +40,9 @@ import {
 	UNSILENCE_FUSER,
 	SET_HOWLS,
 	SET_HOWL,
-	SET_HOWLINGS,
+	POST_HOWL,
+	SET_FUSER_HOWLS,
+	SET_FUSER
 } from "../types";
 import axios from "axios";
 
@@ -193,21 +195,15 @@ export const fetchSingleHowl = (docKey) => (dispatch) => {
 		.catch((err) => console.log(err));
 };
 
-export const fetchHowlings = (docKey) => (dispatch) => {
+export const fetchFuserHowls = (fuser) => (dispatch) => {
 	dispatch({ type: LOADING_DATA });
 	axios
-		.get(`/howlings/${docKey}`)
+		.get(`/howls/${fuser}`)
 		.then((res) => {
-			dispatch({
-				type: SET_HOWLINGS,
-				payload: res.data,
-			});
+			dispatch({ type: SET_FUSER_HOWLS, payload: res.data });
 		})
 		.catch((err) => {
-			dispatch({
-				type: SET_HOWLINGS,
-				payload: [],
-			});
+			dispatch({ type: SET_FUSER_HOWLS, payload: [] });
 		});
 };
 
@@ -226,6 +222,19 @@ export const postSpark = (newSpark) => (dispatch) => {
 				type: SET_ERRORS,
 				payload: err.response.data,
 			});
+		});
+};
+
+export const postHowl = (friend, newHowl) => (dispatch) => {
+	dispatch({ type: LOADING_UI });
+	axios
+		.post(`/howl/${friend}`, newHowl)
+		.then((res) => {
+			dispatch({ type: POST_HOWL, payload: res.data });
+			dispatch({ type: STOP_LOADING_UI });
+		})
+		.catch((err) => {
+			console.log(err);
 		});
 };
 
@@ -647,3 +656,18 @@ export const fetchUserHowls = () => (dispatch) => {
 			});
 		});
 };
+
+export const getFuser = (fuser) => (dispatch) => {
+	dispatch({ type: LOADING_UI })
+	axios.get(`/fused/${fuser}`)
+	.then(res => {
+		dispatch({
+			type: SET_FUSER,
+			payload: res.data
+		})
+		dispatch({ type: STOP_LOADING_UI })
+	})
+	.catch(err => {
+		console.log(err);
+	})
+}
