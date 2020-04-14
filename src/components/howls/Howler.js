@@ -8,7 +8,26 @@ import { fetchFuserHowls, getFuser } from '../../redux/actions/dataActions';
 import HowlIcon from '../icons/HowlIcon';
 
 const styles = {
-
+    selected: {
+        fontSize: '2.5rem',
+        color: '#ff9800'
+    },
+    unselected: {
+        color: '#f4db9d',
+        fontSize: '2.5rem',
+        '&:hover': {
+            color: '#ff9800'
+        }
+    },
+    selectedText: {
+        color: '#ff9800'
+    },
+    unselectedText: {
+        color: '#f4db9d !important',
+        '&:hover': {
+            color: '#ff9800 !important'
+        }
+    }
 }
 
 class Howler extends Component{
@@ -26,16 +45,17 @@ class Howler extends Component{
 
     render(){
         const { classes, howler } = this.props;
+        const { fuser } = this.props.data.fuser;
         return(
             <Fragment>
                 <Typography className={classes.text}>
-        <strong className="foam orange" onClick={this.openHowl}>{howler}</strong>
+        <strong className={ fuser === howler ? classes.selectedText : classes.unselectedText } onClick={this.openHowl}>{howler}</strong>
                 </Typography>
                 <OwlFuseButton
                 tip="OPEN HOWL"
                 onClick={this.openHowl}
                 >
-                    <HowlIcon className="icon2 foam orange"/>
+                    <HowlIcon className={ fuser === howler ? classes.selected : classes.unselected}/>
                 </OwlFuseButton>
             </Fragment>
         )

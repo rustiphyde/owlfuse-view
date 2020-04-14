@@ -15,15 +15,16 @@ const styles = {
         backgroundColor: "#ff9800",
         color: "#263238"  
       },
+    tar: {
+        backgroundColor: '#f4db9d',
+        color: "#263238"
+    },
       scroll: {
         overflowY: 'scroll',
         height: '18rem',
         width: '100%',
         overflowX: 'hidden'
 
-    },
-    progress: {
-		position: "absolute",
     },
 	fusers: {
 		color: "#f4db9d",
@@ -42,7 +43,7 @@ class HowlList extends Component{
     render(){
 
         const { classes } = this.props;
-        const { loading, fusers } = this.props.data;
+        const { loading, fusers, fuser } = this.props.data;
 
         let howlersMarkup = !loading ? (
         fusers && fusers.length > 1 ? (
@@ -50,7 +51,7 @@ class HowlList extends Component{
                     <Fragment key={fusers.indexOf(howlr) + 1}>
                     <ListItem button key={howlr} className={classes.listItem}>
                 <ListItemAvatar key={fusers.indexOf(howlr)}>
-					<Avatar className={classes.ava} key={howlr + howlr}>
+					<Avatar className={ this.props.data.fuser.fuser === howlr ? classes.tar : classes.ava} key={howlr + howlr}>
                     {howlr.slice(1,3)}
                     </Avatar>
 				</ListItemAvatar>
@@ -78,7 +79,7 @@ class HowlList extends Component{
             <CircularProgress
             color="secondary"
             size={80}
-            className={classes.progress}
+            className="candle centered"
         />
         );
         return(
