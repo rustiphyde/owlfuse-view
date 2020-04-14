@@ -508,7 +508,7 @@ body > div:nth-child(7) > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.Mu
   position: relative;
   display: block;
   width: 20px;
-  margin: 0 auto 0 auto;
+  margin: 0 auto 8px auto;
   color: var(--rust);
   font-size: 12px;
   text-align: center;
