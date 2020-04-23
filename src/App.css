@@ -585,3 +585,7 @@ body > div > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.MuiPopover-pape
     display: none !important;
   }
 }
+
+#root > div.container > div > div > div:nth-child(5) > div > button > span.MuiIconButton-label > svg {
+  padding-bottom: 16px;
+}

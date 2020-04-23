@@ -9,7 +9,7 @@ const styles = {
 	userSent: {
 		backgroundColor: "#263238",
 		padding: "16px",
-		color: "#ff9800",
+		color: "#f4db9d",
 		width: "75%",
 		float: "right",
 		margin: "8px",
@@ -25,7 +25,7 @@ const styles = {
     fuserSentPic: {
         float: 'left',
         margin: '0 16px',
-        border: '1.5px solid #263238'
+        border: '1.5px solid #f4db9d'
     },
     	fuserSent: {
 		backgroundColor: "#ff9800",
