@@ -127,9 +127,9 @@ class howls extends Component {
 		this.props.postHowl(friend, { howlBody: this.state.howlBody,
 		avatar: this.props.user.credentials.imageUrl
 		});
-		document.getElementById('howlBody').value = "";
 		this.setState({ howlBody: ""});
-		console.log(this.props.data.howl.docKey);
+		document.getElementById('howlBody').value = this.state.howlBody;
+		
     };
     postHowlFxn = () => {
         const posting = document.getElementById('howlSubmit');
@@ -141,6 +141,10 @@ class howls extends Component {
           [event.target.name]: event.target.value
         });
       };
+
+	  handleClear = () => {
+		  this.setState({ howlBody: ''});
+	  }
 
 	render() {
 		const { classes } = this.props;
@@ -249,7 +253,6 @@ class howls extends Component {
 				>
 					<Grid container>
 						<Grid item md={10} sm={10} xs={10} className={classes.textBack}>
-							<form onSubmit={this.handleSubmit}>
                                 <TextField fullWidth 
                                 value={this.state.howlBody}
                                 onChange={this.handleChange}
@@ -259,15 +262,9 @@ class howls extends Component {
                                 placeholder="POST A HOWL"
                                 multiline
                                 className={classes.field} />
-								<input
-									type="submit"
-									hidden="hidden"
-									id="howlSubmit"
-								/>
-							</form>
 						</Grid>
 						<Grid item sm={1} xs={1} className={classes.buttons}>
-								<PostHowl className={classes.howlButton} howlBody={this.state.howlBody}/>
+								<PostHowl className={classes.howlButton} howlBody={this.state.howlBody} clearFunction={this.handleClear}/>
 						</Grid>
 					</Grid>
 				</Grid>

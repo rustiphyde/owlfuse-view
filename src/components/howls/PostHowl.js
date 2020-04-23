@@ -15,7 +15,7 @@ const styles = {
 
 class PostHowl extends Component{
 state = {
-    howls: null
+    howls: null,
 }   
     componentDidMount(){
         this.props.fetchFuserHowls(this.props.data.fuser.fuser);
@@ -23,6 +23,7 @@ state = {
 
     postHowl = () => {
         this.props.postHowl(this.props.data.fuser.fuser,({ howlBody: this.props.howlBody }));
+        this.props.clearFunction();
         setTimeout(() => this.props.fetchFuserHowls(this.props.data.fuser.fuser), 500);
     }
 
@@ -57,7 +58,9 @@ PostHowl.propTypes = {
     fuser: PropTypes.string,
     data: PropTypes.object.isRequired,
     fetchFuserHowls: PropTypes.func.isRequired,
-    howls: PropTypes.array
+    howls: PropTypes.array,
+    clearFunction: PropTypes.func
+
 }
 
 const mapStateToProps = state => ({
