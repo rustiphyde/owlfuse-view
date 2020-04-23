@@ -51,3 +51,4 @@ export const SET_HOWL = 'SET_HOWL';
 export const POST_HOWL = 'POST_HOWL';
 export const SET_FUSER_HOWLS = 'SET_FUSER_HOWLS';
 export const SET_FUSER = 'SET_FUSER';
+export const EDIT_HOWL = 'EDIT_HOWL';
