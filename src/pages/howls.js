@@ -121,16 +121,6 @@ class howls extends Component {
 			this.setState({ menu: true });
 		}
 	};
-	handleSubmit = (event) => {
-		event.preventDefault();
-		let friend = this.props.data.howl.howlers.filter(howler => howler !== this.props.user.credentials.clozang)[0].toString();
-		this.props.postHowl(friend, { howlBody: this.state.howlBody,
-		avatar: this.props.user.credentials.imageUrl
-		});
-		this.setState({ howlBody: ""});
-		document.getElementById('howlBody').value = this.state.howlBody;
-		
-    };
     postHowlFxn = () => {
         const posting = document.getElementById('howlSubmit');
 		posting.click();

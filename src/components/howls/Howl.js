@@ -77,6 +77,11 @@ class Howl extends Component {
 									howl.sentBy === clozang ? classes.userSent : classes.fuserSent
 								}
 							>
+								<Avatar key={index + "83"} src={howl.avatar} className={
+									howl.sentBy === clozang ? classes.userSentPic : classes.fuserSentPic
+								}>
+
+</Avatar>
                                
 								{howl.howlBody}
 							</div>

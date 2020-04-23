@@ -22,7 +22,8 @@ state = {
     }
 
     postHowl = () => {
-        this.props.postHowl(this.props.data.fuser.fuser,({ howlBody: this.props.howlBody }));
+        this.props.postHowl(this.props.data.fuser.fuser,({ howlBody: this.props.howlBody,
+        avatar: this.props.user.credentials.imageUrl }));
         this.props.clearFunction();
         setTimeout(() => this.props.fetchFuserHowls(this.props.data.fuser.fuser), 500);
     }
@@ -57,6 +58,7 @@ PostHowl.propTypes = {
     postHowl: PropTypes.func.isRequired,
     fuser: PropTypes.string,
     data: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired,
     fetchFuserHowls: PropTypes.func.isRequired,
     howls: PropTypes.array,
     clearFunction: PropTypes.func
@@ -64,7 +66,8 @@ PostHowl.propTypes = {
 }
 
 const mapStateToProps = state => ({
-    data: state.data
+    data: state.data,
+    user: state.user
 });
 
 export default connect(mapStateToProps, { postHowl, fetchFuserHowls })(withStyles(styles)(PostHowl));
