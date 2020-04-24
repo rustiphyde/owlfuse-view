@@ -4,6 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import OwlFuseButton from "../../util/OwlFuseButton";
 import { connect } from "react-redux";
 import Avatar from "@material-ui/core/Avatar";
+import EditHowl from './EditHowl';
 
 const styles = {
 	userSent: {
@@ -59,6 +60,8 @@ class Howl extends Component {
     };
     
 	render() {
+
+
 		const { classes, howls } = this.props;
 		const { loading } = this.props.data;
 		const {
@@ -82,7 +85,9 @@ class Howl extends Component {
 								}>
 
 </Avatar>
-                               
+                               {
+								   howl.sentBy === clozang ? (<EditHowl howlId={howl.howlId} howlBody={howl.howlBody}/>) : null
+							   }
 								{howl.howlBody}
 							</div>
 						</Fragment>

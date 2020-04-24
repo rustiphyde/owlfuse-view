@@ -433,6 +433,21 @@ export const getBoozData = (boozId) => (dispatch) => {
 		.catch((err) => console.log(err));
 };
 
+export const getHowlData = (howlId) => (dispatch) => {
+	dispatch({ type: LOADING_UI });
+	axios
+		.get("/howls")
+		.then((res) => {
+			dispatch({
+				type: SET_HOWLS,
+				payload: res.data
+			});
+			dispatch({ type: STOP_LOADING_UI });
+		})
+		.catch((err) => console.log(err));
+
+}
+
 export const uploadBoozImage = (boozId, formData) => (dispatch) => {
 	dispatch({ type: LOADING_UI });
 	axios
@@ -458,6 +473,17 @@ export const editBoozDetails = (boozId, boozDetails) => (dispatch) => {
 		})
 		.catch((err) => console.log(err));
 };
+
+export const editHowl = (howlId, howlDetails) => (dispatch) => {
+	dispatch({ type: LOADING_UI });
+	axios
+		.post(`/howling/edit/${howlId}`, howlDetails)
+		.then(() => {
+			dispatch(getHowlData());
+			dispatch({ type: STOP_LOADING_UI });
+		})
+		.catch((err) => console.log(err));
+}
 
 export const choozByList = (okeId) => (dispatch) => {
 	dispatch({ type: LOADING_UI });
