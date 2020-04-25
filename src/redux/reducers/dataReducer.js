@@ -36,7 +36,8 @@ import {
 	SET_HOWL,
 	POST_HOWL,
 	SET_FUSER_HOWLS,
-	SET_FUSER
+	SET_FUSER,
+	ERASE_HOWL
 } from "../types";
 
 const initialState = {
@@ -56,84 +57,84 @@ const initialState = {
 	silenced: [],
 	howls: [],
 	howl: {},
-	fuser: {}
+	fuser: {},
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
 	switch (action.type) {
 		case LOADING_DATA:
 			return {
 				...state,
-				loading: true
+				loading: true,
 			};
 		case SET_SPARKS:
 			return {
 				...state,
 				sparks: action.payload,
-				loading: false
+				loading: false,
 			};
 		case SET_SPARK:
 			return {
 				...state,
-				spark: action.payload
+				spark: action.payload,
 			};
 		case SET_HOWL:
 			return {
 				...state,
-				howl: action.payload
-			}
+				howl: action.payload,
+			};
 		case SEND_REQUEST:
 			return {
 				...state,
-				sentrequest: action.payload
+				sentrequest: action.payload,
 			};
 		case SET_INFERNALS:
 			return {
 				...state,
 				infernals: action.payload,
-				loading: false
+				loading: false,
 			};
 		case SET_OKELISTS:
 			return {
 				...state,
 				okelists: action.payload,
-				loading: false
+				loading: false,
 			};
 		case SET_OKELIST:
 			return {
 				...state,
-				okelist: action.payload
+				okelist: action.payload,
 			};
 		case SET_BOOZULAS:
 			return {
 				...state,
 				boozulas: action.payload,
-				loading: false
+				loading: false,
 			};
 		case SET_BOOZULA:
 			return {
 				...state,
-				boozula: action.payload
+				boozula: action.payload,
 			};
 		case SET_SENT_REQUESTS:
 			return {
 				...state,
 				sentrequests: action.payload,
-				loading: false
+				loading: false,
 			};
 		case FETCH_REQUESTED:
 			return {
 				...state,
 				fuserequests: action.payload,
-				loading: false
+				loading: false,
 			};
 		case ADD_HEAT:
 		case REMOVE_HEAT:
 			let sparkIndex = state.sparks.findIndex(
-				spark => spark.sparkId === action.payload.sparkId
+				(spark) => spark.sparkId === action.payload.sparkId
 			);
 			let infernalIndex = state.infernals.findIndex(
-				infernal => infernal.sparkId === action.payload.sparkId
+				(infernal) => infernal.sparkId === action.payload.sparkId
 			);
 			state.sparks[sparkIndex] = action.payload;
 			state.infernals[infernalIndex] = action.payload;
@@ -143,62 +144,62 @@ export default function(state = initialState, action) {
 				state.spark.stokes = temp;
 			}
 			return {
-				...state
+				...state,
 			};
 		case SET_FUSERS:
 			return {
 				...state,
 				fusers: action.payload,
-				loading: false
+				loading: false,
 			};
 		case POST_SPARK:
 			return {
 				...state,
-				sparks: [action.payload, ...state.sparks]
+				sparks: [action.payload, ...state.sparks],
 			};
 		case POST_HOWL:
 			return {
 				...state,
-				howls: [action.payload, ...state.howls]
+				howls: [action.payload, ...state.howls],
 			};
 		case ADD_STOKE:
 			return {
 				...state,
 				spark: {
 					...state.spark,
-					stokes: [action.payload, ...state.spark.stokes]
-				}
+					stokes: [action.payload, ...state.spark.stokes],
+				},
 			};
 		case BUILD_BOOZULA:
 			return {
 				...state,
-				boozulas: [action.payload, ...state.boozulas]
+				boozulas: [action.payload, ...state.boozulas],
 			};
 		case ADD_TOAST:
 			return {
 				...state,
 				boozula: {
 					...state.boozula,
-					toasts: [action.payload, ...state.boozula.toasts]
-				}
+					toasts: [action.payload, ...state.boozula.toasts],
+				},
 			};
 		case BUILD_OKE:
 			return {
 				...state,
-				okelists: [action.payload, ...state.okelists]
+				okelists: [action.payload, ...state.okelists],
 			};
 		case ADD_SONG:
 			return {
 				...state,
 				okelist: {
 					...state.okelist,
-					songs: [action.payload, ...state.okelist.songs]
-				}
+					songs: [action.payload, ...state.okelist.songs],
+				},
 			};
 		case ADD_CHEERS:
 		case REMOVE_CHEERS:
 			let boozIndex = state.boozulas.findIndex(
-				boozula => boozula.boozId === action.payload.boozId
+				(boozula) => boozula.boozId === action.payload.boozId
 			);
 			state.boozulas[boozIndex] = action.payload;
 			if (state.boozula.boozId === action.payload.boozId) {
@@ -207,107 +208,114 @@ export default function(state = initialState, action) {
 				state.boozula.toasts = temp;
 			}
 			return {
-				...state
+				...state,
 			};
 		case EXTINGUISH_SPARK:
 			let exIndex = state.sparks.findIndex(
-				spark => spark.sparkId === action.payload
+				(spark) => spark.sparkId === action.payload
 			);
 			state.sparks.splice(exIndex, 1);
 			return {
-				...state
+				...state,
 			};
 		case EMPTY_BOOZULA:
 			let emptyIndex = state.boozulas.findIndex(
-				boozula => boozula.boozId === action.payload
+				(boozula) => boozula.boozId === action.payload
 			);
 			state.boozulas.splice(emptyIndex, 1);
 			return {
-				...state
+				...state,
 			};
 		case CHANGE_BOOZ_IMAGE:
 			let imgIndex = state.boozulas.findIndex(
-				boozula => boozula.boozId === action.payload.boozId
+				(boozula) => boozula.boozId === action.payload.boozId
 			);
 			state.boozulas[imgIndex] = action.payload;
 			return {
-				...state
+				...state,
 			};
 		case ERASE_OKE:
 			let eraseIndex = state.okelists.findIndex(
-				okelist => okelist.okeId === action.payload
+				(okelist) => okelist.okeId === action.payload
 			);
 			state.okelists.splice(eraseIndex, 1);
 			return {
-				...state
+				...state,
+			};
+		case ERASE_HOWL:
+			let howlIndex = state.howls.findIndex(
+				(howl) => howl.howlId === action.payload
+			);
+			state.howls.splice(howlIndex, 1);
+			return {
+				...state,
 			};
 		case CHOOZ_BY_LIST:
 			let songIndex = state.okelists.findIndex(
-				okelist => okelist.okeId === action.payload.okeId
+				(okelist) => okelist.okeId === action.payload.okeId
 			);
 			state.okelists[songIndex] = action.payload;
 			return {
-				...state
+				...state,
 			};
 		case ACCEPT_REQUEST:
 			let reqIndex = state.fuserequests.findIndex(
-				request => request.reqId === action.payload.reqId
+				(request) => request.reqId === action.payload.reqId
 			);
 			state.fuserequests[reqIndex] = action.payload;
 			return {
-				...state
+				...state,
 			};
 		case REJECT_REQUEST:
 			let rejIndex = state.fuserequests.findIndex(
-				request => request.reqId === action.payload.reqId
+				(request) => request.reqId === action.payload.reqId
 			);
 			state.fuserequests[rejIndex] = action.payload;
 			return {
-				...state
+				...state,
 			};
 		case CANCEL_REQUEST:
 			let cancelIndex = state.sentrequests.findIndex(
-				request => request.reqId === action.payload
+				(request) => request.reqId === action.payload
 			);
 			state.sentrequests.splice(cancelIndex, 1);
 			return {
-				...state
+				...state,
 			};
 		case GET_SILENCED_LIST:
 			return {
 				...state,
 				silenced: action.payload,
-				loading: false
+				loading: false,
 			};
 		case SILENCE_FUSER:
 			return {
 				...state,
-				silenced: [action.payload, ...state.silenced]
-      };
-    case UNSILENCE_FUSER:
-      state.silenced.splice(action.payload, 1);
-      return {
-        ...state,
-	  }
-	  case SET_HOWLS:
-		return {
-			...state,
-			howls: action.payload,
-			loading: false
-		}
-	case SET_FUSER_HOWLS:
-		return {
-			...state,
-			howls: action.payload,
-			loading: false
-		}
-	case SET_FUSER:
-		return {
-			...state,
-			fuser: action.payload
-		}
+				silenced: [action.payload, ...state.silenced],
+			};
+		case UNSILENCE_FUSER:
+			state.silenced.splice(action.payload, 1);
+			return {
+				...state,
+			};
+		case SET_HOWLS:
+			return {
+				...state,
+				howls: action.payload,
+				loading: false,
+			};
+		case SET_FUSER_HOWLS:
+			return {
+				...state,
+				howls: action.payload,
+				loading: false,
+			};
+		case SET_FUSER:
+			return {
+				...state,
+				fuser: action.payload,
+			};
 		default:
 			return state;
 	}
-	
 }
