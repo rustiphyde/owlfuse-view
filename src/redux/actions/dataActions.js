@@ -42,7 +42,8 @@ import {
 	SET_HOWL,
 	POST_HOWL,
 	SET_FUSER_HOWLS,
-	SET_FUSER
+	SET_FUSER,
+	ERASE_HOWL,
 } from "../types";
 import axios from "axios";
 
@@ -407,6 +408,15 @@ export const eraseOkelist = (okeId) => (dispatch) => {
 		.catch((err) => console.log(err));
 };
 
+export const eraseHowl = (howlId) => (dispatch) => {
+	axios
+		.delete(`howl/${howlId}`)
+		.then(() => {
+			dispatch({ type: ERASE_HOWL, payload: howlId });
+		})
+		.catch((err) => console.log(err));
+};
+
 // action creator for clearing errors
 export const clearErrors = () => (dispatch) => {
 	dispatch({ type: CLEAR_ERRORS });
@@ -432,7 +442,6 @@ export const getBoozData = (boozId) => (dispatch) => {
 		})
 		.catch((err) => console.log(err));
 };
-
 
 export const uploadBoozImage = (boozId, formData) => (dispatch) => {
 	dispatch({ type: LOADING_UI });
@@ -469,7 +478,7 @@ export const editHowl = (howlId, howlDetails, fuser) => (dispatch) => {
 			dispatch({ type: STOP_LOADING_UI });
 		})
 		.catch((err) => console.log(err));
-}
+};
 
 export const choozByList = (okeId) => (dispatch) => {
 	dispatch({ type: LOADING_UI });
@@ -670,16 +679,17 @@ export const fetchUserHowls = () => (dispatch) => {
 };
 
 export const getFuser = (fuser) => (dispatch) => {
-	dispatch({ type: LOADING_UI })
-	axios.get(`/fused/${fuser}`)
-	.then(res => {
-		dispatch({
-			type: SET_FUSER,
-			payload: res.data
+	dispatch({ type: LOADING_UI });
+	axios
+		.get(`/fused/${fuser}`)
+		.then((res) => {
+			dispatch({
+				type: SET_FUSER,
+				payload: res.data,
+			});
+			dispatch({ type: STOP_LOADING_UI });
 		})
-		dispatch({ type: STOP_LOADING_UI })
-	})
-	.catch(err => {
-		console.log(err);
-	})
-}
+		.catch((err) => {
+			console.log(err);
+		});
+};
