@@ -13,24 +13,23 @@ const styles = {
 		color: "#f4db9d",
 		width: "75%",
 		float: "right",
-		margin: "8px",
+		lineHeight: '20px',
+		letterSpacing: '1px',
+		margin: "0 8px",
 		wordWrap: "break-word",
 		fontWeight: 700,
 		borderRadius: "16px 0 16px 0",
     },
-    userSentPic: {
-        float: 'right',
-        margin: '0 16px',
-        border: '1.5px solid #ff9800'
-    },
     fuserSentPic: {
         float: 'left',
-        margin: '0 16px',
+        margin: '6px 16px',
         border: '1.5px solid #f4db9d'
     },
     	fuserSent: {
 		backgroundColor: "#ff9800",
 		padding: "16px",
+		letterSpacing: '1px',
+		lineHeight: '20px',
 		color: "#263238",
 		width: "75%",
 		float: "left",
@@ -80,13 +79,13 @@ class Howl extends Component {
 									howl.sentBy === clozang ? classes.userSent : classes.fuserSent
 								}
 							>
-								<Avatar key={index + "83"} src={howl.avatar} className={
-									howl.sentBy === clozang ? classes.userSentPic : classes.fuserSentPic
+								
+                               {
+								   howl.sentBy === clozang ? (<EditHowl howl={howl} className={classes.userSentPic} />) : <Avatar key={index + "83"} src={howl.avatar} className={
+									classes.fuserSentPic
 								}>
 
 </Avatar>
-                               {
-								   howl.sentBy === clozang ? (<EditHowl howlId={howl.howlId} howlBody={howl.howlBody}/>) : null
 							   }
 								{howl.howlBody}
 							</div>

@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import OwlFuseButton from '../../util/OwlFuseButton';
 import { withStyles } from '@material-ui/core/styles';
-import { Dialog, DialogContent, DialogActions, DialogTitle, TextField, Button } from '@material-ui/core';
+import { Dialog, DialogContent, DialogActions, DialogTitle, TextField, Button, Avatar, Tooltip } from '@material-ui/core';
 // Redux Stuff
 import { connect } from "react-redux";
 import { editHowl } from "../../redux/actions/dataActions";
@@ -22,56 +22,73 @@ const styles = (theme) => ({
     title: {
       color: "#ff9800",
       textAlign: "center"
+    },
+    userSentPic: {
+        float: 'right',
+        margin: '6px 16px',
+        border: '1.5px solid #ff9800'
     }
   });
 
 class EditHowl extends Component{
     state = {
-        howlId: "",
         howlBody: "",
         open: false
     }
 
-    mapHowlDetailsToState = () => {
-        this.mapHowlDetailsToState({
-            howlBody: this.props.howlBody ? this.props.howlBody : ""
-        });
+    handleLongPress = () => {
+        this.longPressTimer = setTimeout(() => this.handleOpen(), 1500);
+    }
+
+    handleLongRelease = () => {
+        clearTimeout(this.longPressTimer);
     }
     handleOpen = () => {
         this.setState({ open: true });
-        this.mapHowlDetailsToState(this.props);
+        this.setState({
+            howlBody: this.props.howl.howlBody
+        });
       };
       handleClose = () => {
         this.setState({ open: false });
       };
       componentDidMount() {
-        this.mapHowlDetailsToState(this.props);
+        this.setState({
+            howlBody: this.props.howl.howlBody 
+        });
+        console.log(this.props.howl);
       }
     
       handleChange = event => {
         this.setState({
-          [event.target.name]: event.target.value
+          howlBody: event.target.value
         });
       };
       handleSubmit = () => {
         const howlDetails = {
           howlBody: this.state.howlBody
         };
-        this.props.editHowl(this.props.howlId, howlDetails);
+        this.props.editHowl(this.props.howl.howlId, howlDetails, this.props.howl.sentTo);
         this.handleClose();
       };
 
     render(){
 
-        const { classes } = this.props;
+        const { classes, howl } = this.props;
     return (
       <Fragment>
-        <OwlFuseButton
-          tip="EDIT YOUR HOWL"
-          onClick={this.handleOpen}
+        <Tooltip title="HOLD TO EDIT HOWL">
+        <Avatar src={this.props.howl.avatar}
+        onTouchStart={this.handleLongPress}
+        onTouchEnd={this.handleLongRelease}
+        onMouseDown={this.handleLongPress}
+        onMouseUp={this.handleLongRelease}
+        onMouseLeave={this.handleLongRelease}
+        className={classes.userSentPic}
         >
-          <HowlEditIcon className="icon8 foam orange" />
-        </OwlFuseButton>
+
+        </Avatar>
+        </Tooltip>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
@@ -80,14 +97,13 @@ class EditHowl extends Component{
           className={classes.dialog}
         >
           <DialogTitle variant="h5" className={classes.title}>
-            EDIT YOUR HOWL
+            <HowlEditIcon className="icon2"/><strong>EDIT YOUR HOWL</strong>
           </DialogTitle>
           <DialogContent className="rust-border">
             <form className={classes.form}>
               <TextField
                 name="howlBody"
                 type="text"
-                label="HOWL"
                 multiline
                 rows="3"
                 placeholder="EDIT YOUR HOWL"
@@ -100,10 +116,10 @@ class EditHowl extends Component{
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary" variant="contained">
-              CANCEL
+              <strong className="orange">CANCEL</strong>
             </Button>
             <Button onClick={this.handleSubmit} color="primary" variant="contained">
-              SAVE
+              <strong className="orange">SAVE</strong>
             </Button>
           </DialogActions>
         </Dialog>
@@ -114,17 +130,15 @@ class EditHowl extends Component{
 
 EditHowl.propTypes = {
     classes: PropTypes.object.isRequired,
-    howlBody: PropTypes.string,
-    howlId: PropTypes.string,
-    editHowl: PropTypes.func.isRequired
+    editHowl: PropTypes.func.isRequired,
+    howl: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
-    howl: state.data.howl,
     UI: state.UI
 });
 
-export default connect(mapStateToProps, editHowl )(withStyles(styles)(EditHowl));
+export default connect(mapStateToProps,{ editHowl })(withStyles(styles)(EditHowl));
 
 
 

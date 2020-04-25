@@ -72,11 +72,6 @@ const styles = {
 		borderLeft: "3px solid #ff9800",
 		marginBottom: "-5px",
 	},
-	listBottom: {
-		borderBottom: "3px solid #ff9800",
-		backgroundColor: "#263238",
-		borderLeft: "3px solid #ff9800",
-	},
 	rightBottom: {
 		border: "3px solid #ff9800",
 		backgroundColor: "#263238",
@@ -99,6 +94,7 @@ const styles = {
 	},
 	hidden: {
 		display: "none !important",
+		
 	},
 	buttons: {
 		display: "flex",
@@ -232,7 +228,7 @@ class howls extends Component {
 				<Grid
 					item
 					md={3}
-					className={!this.state.menu ? classes.hidden : classes.listBottom}
+					className={!this.state.menu ? classes.hidden : "list-bottom"}
 				/>
 				<Grid
 					item

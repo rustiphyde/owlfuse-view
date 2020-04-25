@@ -586,6 +586,21 @@ body > div > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.MuiPopover-pape
   }
 }
 
+.list-bottom{
+  border-bottom: 3px solid #ff9800;
+  background-color: #263238;
+  border-left: 3px solid #ff9800;
+}
+
+@media(max-width: 959px) {
+  .list-bottom{
+    display: none !important;
+    visibility: hidden;
+    background-color: #fefaf4 !important;
+    border: none;
+    }
+}
+
 #root > div.container > div > div > div:nth-child(5) > div > button > span.MuiIconButton-label > svg {
   padding-bottom: 16px;
   margin-top: 8px;

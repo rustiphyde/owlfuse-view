@@ -433,20 +433,6 @@ export const getBoozData = (boozId) => (dispatch) => {
 		.catch((err) => console.log(err));
 };
 
-export const getHowlData = (howlId) => (dispatch) => {
-	dispatch({ type: LOADING_UI });
-	axios
-		.get("/howls")
-		.then((res) => {
-			dispatch({
-				type: SET_HOWLS,
-				payload: res.data
-			});
-			dispatch({ type: STOP_LOADING_UI });
-		})
-		.catch((err) => console.log(err));
-
-}
 
 export const uploadBoozImage = (boozId, formData) => (dispatch) => {
 	dispatch({ type: LOADING_UI });
@@ -474,12 +460,12 @@ export const editBoozDetails = (boozId, boozDetails) => (dispatch) => {
 		.catch((err) => console.log(err));
 };
 
-export const editHowl = (howlId, howlDetails) => (dispatch) => {
+export const editHowl = (howlId, howlDetails, fuser) => (dispatch) => {
 	dispatch({ type: LOADING_UI });
 	axios
-		.post(`/howling/edit/${howlId}`, howlDetails)
+		.post(`/howl/edit/${howlId}`, howlDetails)
 		.then(() => {
-			dispatch(getHowlData());
+			dispatch(fetchFuserHowls(fuser));
 			dispatch({ type: STOP_LOADING_UI });
 		})
 		.catch((err) => console.log(err));
