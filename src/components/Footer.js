@@ -22,7 +22,7 @@ export class Footer extends Component {
 
       return (
         <Fragment>
-          <hr className="bar-separator"/>
+          <hr className="bar-separator-footer"/>
            <div className="footer">
            <span><OwlClock/></span>
           

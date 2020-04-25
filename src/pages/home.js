@@ -223,7 +223,6 @@ class home extends Component {
 					<div className="candle" width="100%">
 						{fusersMarkup}
 					</div>
-					<hr className="bar-separator" />
 					<div className="sparkTitle">
 						<strong>FUSE REQUESTS</strong>
 						<hr className="bar-separator" />
