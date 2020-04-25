@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { Dialog, DialogContent, DialogActions, DialogTitle, TextField, Button, Avatar, Tooltip } from '@material-ui/core';
 // Redux Stuff
 import { connect } from "react-redux";
-import { editHowl } from "../../redux/actions/dataActions";
+import { editHowl, eraseHowl } from "../../redux/actions/dataActions";
 
 import HowlEditIcon from '../icons/HowlEditIcon';
 
@@ -33,7 +33,8 @@ const styles = (theme) => ({
 class EditHowl extends Component{
     state = {
         howlBody: "",
-        open: false
+        open: false,
+        openDisc: false
     }
 
     handleLongPress = () => {
@@ -52,11 +53,17 @@ class EditHowl extends Component{
       handleClose = () => {
         this.setState({ open: false });
       };
+      handleCloseDisc = () => {
+        this.setState({ openDisc: false });
+      };
       componentDidMount() {
         this.setState({
             howlBody: this.props.howl.howlBody 
         });
         console.log(this.props.howl);
+      }
+      handleOpenDisc = () => {
+        this.setState({ openDisc: true });
       }
     
       handleChange = event => {
@@ -71,6 +78,11 @@ class EditHowl extends Component{
         this.props.editHowl(this.props.howl.howlId, howlDetails, this.props.howl.sentTo);
         this.handleClose();
       };
+      handleErase = () => {
+          this.props.eraseHowl(this.props.howl.howlId, this.props.howl.sentTo);
+          this.handleCloseDisc();
+          this.handleClose();
+      }
 
     render(){
 
@@ -121,9 +133,32 @@ class EditHowl extends Component{
             <Button onClick={this.handleSubmit} color="primary" variant="contained">
               <strong className="orange">SAVE</strong>
             </Button>
+            <Button onClick={this.handleOpenDisc} color="primary" variant="contained">
+                <strong className="orange">ERASE</strong>
+            </Button>
           </DialogActions>
         </Dialog>
+        <Dialog
+    open={this.state.openDisc}
+    onClose={this.handleCloseDisc}
+    fullWidth
+    maxWidth="sm"
+    className="container"
+    >
+    <DialogTitle variant="h5" className="rusty">
+       Are you sure you wish to erase this howl? This action is irreversible.
+    </DialogTitle>
+    <DialogActions>
+        <Button onClick={this.handleCloseDisc} color="primary" variant="contained">
+            CANCEL
+        </Button>
+        <Button onClick={this.handleErase} color="primary" variant="contained">
+            ERASE
+        </Button>
+    </DialogActions>
+    </Dialog>
       </Fragment>
+
     );
   }
 }
@@ -131,14 +166,15 @@ class EditHowl extends Component{
 EditHowl.propTypes = {
     classes: PropTypes.object.isRequired,
     editHowl: PropTypes.func.isRequired,
-    howl: PropTypes.object.isRequired
+    howl: PropTypes.object.isRequired,
+    eraseHowl: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
     UI: state.UI
 });
 
-export default connect(mapStateToProps,{ editHowl })(withStyles(styles)(EditHowl));
+export default connect(mapStateToProps,{ editHowl, eraseHowl })(withStyles(styles)(EditHowl));
 
 
 
