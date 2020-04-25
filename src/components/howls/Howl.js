@@ -15,7 +15,7 @@ const styles = {
 		float: "right",
 		lineHeight: '20px',
 		letterSpacing: '1px',
-		margin: "0 8px",
+		margin: "8px",
 		wordWrap: "break-word",
 		fontWeight: 700,
 		borderRadius: "16px 0 16px 0",
