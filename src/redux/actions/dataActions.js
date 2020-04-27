@@ -188,7 +188,7 @@ export const fetchSingleHowl = (docKey) => (dispatch) => {
 		.get(`/howl/${docKey}`)
 		.then((res) => {
 			dispatch({
-				type: SET_HOWL,
+				type: SET_HOWLS,
 				payload: res.data,
 			});
 			dispatch({ type: STOP_LOADING_UI });
@@ -408,12 +408,12 @@ export const eraseOkelist = (okeId) => (dispatch) => {
 		.catch((err) => console.log(err));
 };
 
-export const eraseHowl = (howlId, fuser) => (dispatch) => {
+export const eraseHowl = (howlId, docKey) => (dispatch) => {
 	axios
 		.delete(`howl/${howlId}`)
 		.then(() => {
 			dispatch({ type: ERASE_HOWL, payload: howlId });
-			dispatch(fetchFuserHowls(fuser));
+			dispatch(fetchSingleHowl(docKey));
 		})
 		.catch((err) => console.log(err));
 };
@@ -470,12 +470,12 @@ export const editBoozDetails = (boozId, boozDetails) => (dispatch) => {
 		.catch((err) => console.log(err));
 };
 
-export const editHowl = (howlId, howlDetails, fuser) => (dispatch) => {
+export const editHowl = (howlId, howlDetails, docKey) => (dispatch) => {
 	dispatch({ type: LOADING_UI });
 	axios
 		.post(`/howl/edit/${howlId}`, howlDetails)
 		.then(() => {
-			dispatch(fetchFuserHowls(fuser));
+			dispatch(fetchSingleHowl(docKey));
 			dispatch({ type: STOP_LOADING_UI });
 		})
 		.catch((err) => console.log(err));
