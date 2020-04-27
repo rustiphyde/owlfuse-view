@@ -13,6 +13,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 
 import FusePanel from '../FusePanel';
 import HowlButton from '../howls/HowlButton';
+import HowlBox from '../howls/HowlBox';
 
 import { fetchSilencedList, unsilenceFuser, silenceFuser } from "../../redux/actions/dataActions";
 
@@ -120,7 +121,7 @@ class Fuser extends Component {
 			</Paper>
 			<Paper className={classes.paper2}>
 				<FusePanel/>
-				<HowlButton/>
+				<HowlBox docKey={[this.props.fuser, this.props.user.credentials.clozang].sort().join("::")} fuser={fuser}/>
 				{toggleMarkup}
 			</Paper>
 			<hr className="bar-separator" />
@@ -136,12 +137,14 @@ Fuser.propTypes = {
 	fetchSilencedList: PropTypes.func.isRequired,
 	loading: PropTypes.bool.isRequired,
     unsilenceFuser: PropTypes.func.isRequired,
-    silenceFuser: PropTypes.func.isRequired
+	silenceFuser: PropTypes.func.isRequired,
+	user: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
 	silenced: state.data.silenced,
-	loading: state.data.loading
+	loading: state.data.loading,
+	user: state.user
 });
 
 const mapActionsToProps = {
