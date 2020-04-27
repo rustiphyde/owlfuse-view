@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
-import { fetchUserHowls, postHowl, fetchFuserHowls, fetchSingleHowl } from "../redux/actions/dataActions";
+import { getHowlings, fetchUserHowls, postHowl, fetchFuserHowls, fetchSingleHowl } from "../redux/actions/dataActions";
 import OwlFuseButton from "../util/OwlFuseButton";
 import Howler from '../components/howls/Howler';
 import Howl from '../components/howls/Howl';
@@ -139,54 +139,6 @@ class howls extends Component {
 			credentials: { clozang, imageUrl }
 		} = this.props.user;
 
-		let drawerMockup = !loading ? (
-			howls && howls.length > 0 ? (
-				<Fragment>
-					<List className={classes.scroll}>
-						{howls.map((howl) => {
-							let howler = howl.howlers.filter((howlr) => howlr !== clozang).toString();
-							return (
-								<ListItem button key={howler} className={classes.listItem}>
-									<ListItemAvatar>
-										<Avatar className={classes.ava}>
-                                            {howler.slice(1,3)}
-                                        </Avatar>
-									</ListItemAvatar>
-									<ListItem>
-                                        <Howler docKey={howl.docKey} howler={howler}/>
-                                    </ListItem>
-								</ListItem>
-							);
-						})}
-						<hr className="bar-separator" />
-					</List>
-				</Fragment>
-			) : (
-				<Fragment>
-					<div />
-					<List>
-						<ListItem className={classes.listItem}>
-							<ListItemAvatar>
-								<Avatar>0</Avatar>
-							</ListItemAvatar>
-							<ListItemText className={classes.fusers}>
-								<strong>
-									You do not currently have any active howls to open
-								</strong>
-							</ListItemText>
-						</ListItem>
-						<hr className="bar-separator" />
-					</List>
-				</Fragment>
-			)
-		) : (
-			<CircularProgress
-				color="secondary"
-				size={30}
-				className={classes.progress}
-			/>
-		);
-
 		return (
 			<Grid container spacing={1}>
 				<Grid item sm={12} xs={12} className={classes.titleBar}>
@@ -266,7 +218,8 @@ howls.propTypes = {
 	fetchUserHowls: PropTypes.func.isRequired,
 	postHowl: PropTypes.func.isRequired,
 	fetchFuserHowls: PropTypes.func.isRequired,
-	fetchSingleHowl: PropTypes.func.isRequired
+	fetchSingleHowl: PropTypes.func.isRequired,
+	getHowlings: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -278,7 +231,8 @@ const mapActionsToProps = {
 	fetchUserHowls,
 	postHowl,
 	fetchFuserHowls,
-	fetchSingleHowl
+	fetchSingleHowl,
+	getHowlings
 };
 
 export default connect(
