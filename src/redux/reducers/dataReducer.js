@@ -37,7 +37,8 @@ import {
 	POST_HOWL,
 	SET_FUSER_HOWLS,
 	SET_FUSER,
-	ERASE_HOWL
+	ERASE_HOWL,
+	SET_HOWLINGS
 } from "../types";
 
 const initialState = {
@@ -57,6 +58,7 @@ const initialState = {
 	silenced: [],
 	howls: [],
 	howl: {},
+	howlings: [],
 	fuser: {},
 };
 
@@ -78,6 +80,12 @@ export default function (state = initialState, action) {
 				...state,
 				spark: action.payload,
 			};
+		case SET_HOWLINGS:
+			return {
+				...state,
+				howlings: action.payload,
+				loading: false
+			}
 		case SET_HOWL:
 			return {
 				...state,
