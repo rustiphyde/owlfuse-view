@@ -75,11 +75,11 @@ class EditHowl extends Component{
         const howlDetails = {
           howlBody: this.state.howlBody
         };
-        this.props.editHowl(this.props.howl.howlId, howlDetails, this.props.howl.sentTo);
+        this.props.editHowl(this.props.howl.howlId, howlDetails, this.props.howl.docKey);
         this.handleClose();
       };
       handleErase = () => {
-          this.props.eraseHowl(this.props.howl.howlId, this.props.howl.sentTo);
+          this.props.eraseHowl(this.props.howl.howlId, this.props.howl.docKey);
           this.handleCloseDisc();
           this.handleClose();
       }
