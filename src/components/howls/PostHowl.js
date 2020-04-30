@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import OwlFuseButton from '../../util/OwlFuseButton';
 import HowlPostIcon from '../icons/HowlPostIcon';
 import { connect } from 'react-redux';
-import { postHowl, fetchFuserHowls } from '../../redux/actions/dataActions';
+import { postHowl, fetchFuserHowls, getHowlings } from '../../redux/actions/dataActions';
 
 
 
@@ -17,10 +17,6 @@ class PostHowl extends Component{
 state = {
     howls: null,
 }   
-    componentDidMount(){
-        this.props.fetchFuserHowls(this.props.data.fuser.fuser);
-    }
-
     postHowl = () => {
         this.props.postHowl(this.props.data.fuser.fuser,({ howlBody: this.props.howlBody,
         avatar: this.props.user.credentials.imageUrl }));
