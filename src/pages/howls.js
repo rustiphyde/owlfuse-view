@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
-import { getHowlings, fetchUserHowls, postHowl, fetchFuserHowls, fetchSingleHowl } from "../redux/actions/dataActions";
+import { fetchUserHowls, postHowl, fetchFuserHowls, fetchSingleHowl } from "../redux/actions/dataActions";
 import OwlFuseButton from "../util/OwlFuseButton";
 import Howler from '../components/howls/Howler';
 import Howl from '../components/howls/Howl';
@@ -218,8 +218,7 @@ howls.propTypes = {
 	fetchUserHowls: PropTypes.func.isRequired,
 	postHowl: PropTypes.func.isRequired,
 	fetchFuserHowls: PropTypes.func.isRequired,
-	fetchSingleHowl: PropTypes.func.isRequired,
-	getHowlings: PropTypes.func.isRequired
+	fetchSingleHowl: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -231,8 +230,7 @@ const mapActionsToProps = {
 	fetchUserHowls,
 	postHowl,
 	fetchFuserHowls,
-	fetchSingleHowl,
-	getHowlings
+	fetchSingleHowl
 };
 
 export default connect(

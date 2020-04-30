@@ -43,8 +43,7 @@ import {
 	POST_HOWL,
 	SET_FUSER_HOWLS,
 	SET_FUSER,
-	ERASE_HOWL,
-	SET_HOWLINGS,
+	ERASE_HOWL
 } from "../types";
 import axios from "axios";
 
@@ -64,20 +63,6 @@ export const getSparks = () => (dispatch) => {
 				type: SET_SPARKS,
 				payload: [],
 			});
-		});
-};
-
-export const getHowlings = (docKey) => (dispatch) => {
-	dispatch({ type: LOADING_UI });
-	axios
-		.get(`/howlings/${docKey}`)
-		.then((res) => {
-			dispatch({ type: SET_HOWLINGS, payload: res.data });
-			dispatch({ type: STOP_LOADING_UI });
-		})
-		.catch((err) => {
-			console.log(err);
-			dispatch({ SET_HOWLINGS, payload: [] });
 		});
 };
 
