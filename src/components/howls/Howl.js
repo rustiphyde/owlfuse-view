@@ -50,13 +50,13 @@ class Howl extends Component {
 	state = {
         howls: []
 	};
-	
 	componentDidMount = () => {
 		const container = document.getElementById("howl-container");
 		if (container) {
 			container.scrollTo(0, container.scrollHeight);
 		}
-	}
+    };
+
 
 	componentDidUpdate = () => {
 		const container = document.getElementById("howl-container");

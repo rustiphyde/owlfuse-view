@@ -19,6 +19,9 @@ const styles = (theme) => ({
         padding: 16,
         borderRadius: "32px",
       },
+      cont: {
+          overflow: "hidden"
+      },
       form: {
         padding: 16
       },
@@ -99,7 +102,7 @@ const { credentials: { clozang }} = this.props.user;
                 <DialogTitle className={classes.title}>
         <strong className="rusty">{fuser}</strong>
                     </DialogTitle>  
-                <DialogContent>
+                <DialogContent className={classes.cont}>
                                       
                         {howlsMarkup}
                         <form className={classes.form}>
