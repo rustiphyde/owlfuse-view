@@ -2,7 +2,7 @@ import React, { Fragment, Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchSingleHowl, fetchFuserHowls } from '../../redux/actions/dataActions';
+import { getHowlCount, fetchSingleHowl } from '../../redux/actions/dataActions';
 
 const styles = {
 
@@ -14,23 +14,23 @@ class HowlCount extends Component{
     }
 
     componentDidMount(){
-        this.props.fetchSingleHowl(this.props.docKey)
-        this.setState({ howlCount: this.props.data.howl.howlCount });
+        this.props.getHowlCount(this.props.docKey)
+        this.setState({ howlCount: this.props.data.count.howlCount });
     }
 
     componentDidUpdate(){
         this.props.fetchSingleHowl(this.props.docKey);
-        this.setState({ howlCount: this.props.data.howl.howlCount });
+        this.setState({ howlCount: this.props.data.count.howlCount });
     }
 
     render(){
 
         const { classes, docKey } = this.props;
-        const { howl: { howlCount }} = this.props.data;
+        const { count: { howlCount }} = this.props.data;
         
         let countMarkup = howlCount > 0 ? (
             <Fragment>
-                <strong>{this.state.howlCount} Howls</strong>
+                <strong>{howlCount} Howls</strong>
             </Fragment>
         ) : ( <Fragment>
             <strong>No Howls Yet</strong>
@@ -52,7 +52,8 @@ const mapStateToProps = state => ({
 });
 
 mapActionsToProps = {
-    fetchSingleHowl
+    fetchSingleHowls,
+
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(HowlCount));
