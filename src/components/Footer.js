@@ -26,8 +26,10 @@ export class Footer extends Component {
            <div className="footer">
            <span><OwlClock/></span>
           
-          <hr className="bar-separator-footer"/>
+          
           { authenticated ? (
+            <Fragment>
+            <hr className="bar-separator-footer"/>
              <div className="candle centered">
              <OwlFuseButton
              tip="LOGOUT"
@@ -35,9 +37,11 @@ export class Footer extends Component {
            <LogoutIcon className="icon foam orange"/>
            </OwlFuseButton>
            </div>
+            <hr className="bar-separator-footer"/>
+            </Fragment>
            ) : null}
-          <hr className="bar-separator-footer"/>
-          <p className="footer-text">© {new Date().getFullYear()} Rusty Hoppins, All Rights Reserved.</p>
+         
+          <p className="footer-text">&emsp;© {new Date().getFullYear()} Rusty Hoppins, All Rights Reserved.</p>
             
         </div>
         

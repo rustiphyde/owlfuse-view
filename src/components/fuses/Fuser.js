@@ -12,7 +12,6 @@ import { connect } from "react-redux";
 import Tooltip from "@material-ui/core/Tooltip";
 
 import FusePanel from '../FusePanel';
-import HowlButton from '../howls/HowlButton';
 import HowlBox from '../howls/HowlBox';
 
 import { fetchSilencedList, unsilenceFuser, silenceFuser } from "../../redux/actions/dataActions";

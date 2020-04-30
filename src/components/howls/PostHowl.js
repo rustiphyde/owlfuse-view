@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import OwlFuseButton from '../../util/OwlFuseButton';
 import HowlPostIcon from '../icons/HowlPostIcon';
 import { connect } from 'react-redux';
-import { postHowl, fetchFuserHowls, getHowlings } from '../../redux/actions/dataActions';
+import { postHowl, fetchFuserHowls } from '../../redux/actions/dataActions';
 
 
 
