@@ -43,7 +43,8 @@ import {
 	POST_HOWL,
 	SET_FUSER_HOWLS,
 	SET_FUSER,
-	ERASE_HOWL
+	ERASE_HOWL,
+	SET_COUNT
 } from "../types";
 import axios from "axios";
 
