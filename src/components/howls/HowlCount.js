@@ -2,7 +2,7 @@ import React, { Fragment, Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchSingleHowl, getHowlings } from '../../redux/actions/dataActions';
+import { fetchSingleHowl, fetchFuserHowls } from '../../redux/actions/dataActions';
 
 const styles = {
 
@@ -19,7 +19,7 @@ class HowlCount extends Component{
     }
 
     componentDidUpdate(){
-        this.props.getHowlings(this.props.docKey);
+        this.props.fetchSingleHowl(this.props.docKey);
         this.setState({ howlCount: this.props.data.howl.howlCount });
     }
 
@@ -52,8 +52,7 @@ const mapStateToProps = state => ({
 });
 
 mapActionsToProps = {
-    fetchSingleHowl,
-    getHowlings
+    fetchSingleHowl
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(HowlCount));
