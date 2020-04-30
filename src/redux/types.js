@@ -52,4 +52,4 @@ export const POST_HOWL = 'POST_HOWL';
 export const SET_FUSER_HOWLS = 'SET_FUSER_HOWLS';
 export const SET_FUSER = 'SET_FUSER';
 export const ERASE_HOWL = 'ERASE_HOWL';
-export const SET_COUNTS = 'SET_COUNTS';
+export const SET_COUNT = 'SET_COUNT';
