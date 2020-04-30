@@ -38,7 +38,7 @@ import {
 	SET_FUSER_HOWLS,
 	SET_FUSER,
 	ERASE_HOWL,
-	SET_COUNTS
+	SET_COUNT
 } from "../types";
 
 const initialState = {
@@ -80,7 +80,7 @@ export default function (state = initialState, action) {
 				...state,
 				spark: action.payload,
 			};
-		case SET_COUNTS:
+		case SET_COUNT:
 			return {
 				...state,
 				count: action.payload
