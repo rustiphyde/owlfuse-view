@@ -697,12 +697,10 @@ export const getFuser = (fuser) => (dispatch) => {
 };
 
 export const getHowlCount = (docKey) => dispatch => {
-	dispatch({ type: LOADING_UI });
 	axios.get(`/count/${docKey}`)
 	.then(res => {
 		dispatch({ type: SET_COUNT,
 		payload: res.data});
-		dispatch({ STOP_LOADING_UI });
 	})
 	.catch(err => console.log(err));
 }

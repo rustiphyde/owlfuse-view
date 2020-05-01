@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import OwlFuseButton from "../../util/OwlFuseButton";
 import { connect } from "react-redux";
-import Avatar from "@material-ui/core/Avatar";
+import { Avatar, CircularProgress } from "@material-ui/core";
+import { fetchFuserHowls, getHowlCount } from '../../redux/actions/dataActions';
 import EditHowl from './EditHowl';
 
 const styles = {
@@ -48,22 +49,44 @@ const styles = {
 
 class Howl extends Component {
 	state = {
-        howls: []
+		howls: null,
+		howlCount: 0
 	};
 	componentDidMount = () => {
 		const container = document.getElementById("howl-container");
-		if (container) {
-			container.scrollTo(0, container.scrollHeight);
-		}
-    };
-
-
-	componentDidUpdate = () => {
+		this.setState({ howls: this.props.data.howls})
+		setTimeout(() => this.scrollFxn(container), 500);
+		setTimeout(() => this.scrollFxn(container), 1000);
+		setTimeout(() => this.scrollFxn(container), 2000);
+		setTimeout(() => this.scrollFxn(container), 3000);
+		setTimeout(() => this.scrollFxn(container), 4000);
+		setTimeout(() => this.scrollFxn(container), 5000);
+		setTimeout(() => this.scrollFxn(container), 10000);
+		setInterval(() => this.updaterFxn(this.state.howlCount, this.props.data.count.howlCount), 2000);
+	};
+	
+	updaterFxn = (numberOne, numberTwo) => {
 		const container = document.getElementById("howl-container");
-		if (container) {
-			container.scrollTo(0, container.scrollHeight);
+		this.props.getHowlCount([this.props.data.fuser.fuser, this.props.user.credentials.clozang].sort().join("::"));
+			this.setState({ howlCount: this.props.data.count.howlCount });
+		if(numberOne < numberTwo){
+			this.props.fetchFuserHowls(this.props.data.fuser.fuser);
+			this.setState({ howls: this.props.data.howls});
+			setTimeout(() => this.scrollFxn(container), 500);
+			setTimeout(() => this.scrollFxn(container), 1000);
+			setTimeout(() => this.scrollFxn(container), 2000);
+			setTimeout(() => this.scrollFxn(container), 3000);
+			setTimeout(() => this.scrollFxn(container), 4000);
+			setTimeout(() => this.scrollFxn(container), 5000);
+			setTimeout(() => this.scrollFxn(container), 10000);
 		}
-    };
+
+	}
+
+	scrollFxn = (container) => {
+		
+		container.scrollTo(0, container.scrollHeight);
+	}
     
 	render() {
 
@@ -105,7 +128,11 @@ class Howl extends Component {
 				</strong>
 			)
 		) : (
-			<div>Loading...</div>
+			<CircularProgress
+            color="secondary"
+            size={80}
+            className="candle centered"
+        />
 		);
 
 		return (
@@ -123,12 +150,16 @@ Howl.propTypes = {
 	howls: PropTypes.array.isRequired,
 	data: PropTypes.object.isRequired,
 	user: PropTypes.object.isRequired,
+	fuser: PropTypes.string,
+	fetchFuserHowls: PropTypes.func.isRequired,
+	getHowlCount: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
 	data: state.data,
 	user: state.user,
 	howls: state.data.howls,
+	howlCount: state.data.count.howlCount
 });
 
-export default connect(mapStateToProps, null)(withStyles(styles)(Howl));
+export default connect(mapStateToProps, { fetchFuserHowls, getHowlCount })(withStyles(styles)(Howl));

@@ -37,10 +37,10 @@ class Howler extends Component{
     }
 
     openHowl = () => {
-        this.props.fetchFuserHowls([this.props.howler, this.props.user.credentials.clozang].sort().join("::"));
+        this.props.fetchFuserHowls(this.props.howler);
         this.props.getFuser(this.props.howler);
-        this.setState({ fuser: this.props.data.fuser.fuser });
-        console.log(this.props.data.fuser);
+        this.setState({ fuser: this.props.howler });
+        console.log(this.props.howler);
     }
 
     render(){

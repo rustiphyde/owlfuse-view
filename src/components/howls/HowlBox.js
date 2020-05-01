@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import HowlIcon from '../icons/HowlIcon';
 import Howl from './Howl';
 import HowlPostIcon from '../icons/HowlPostIcon';
-import { fetchSingleHowl, fetchUserHowls, postHowl } from '../../redux/actions/dataActions';
+import { fetchSingleHowl, fetchFuserHowls, postHowl, getHowlCount } from '../../redux/actions/dataActions';
 //MUI Stuff
 import { Button, DialogTitle, DialogContent, DialogActions, TextField, Dialog, Paper, Typography, Grid, Modal } from '@material-ui/core';
 
@@ -45,23 +45,22 @@ class HowlBox extends Component {
     state = {
         howls: null,
         howlBody: "",
-        open: false
+        open: false,
+        howlCount: 0
     }
 
     handleOpen = () => {
         this.setState({ open: true });
         console.log("open");
         this.props.fetchSingleHowl(this.props.docKey)
-        console.log(this.props.howls);
+        this.props.getHowlCount(this.props.dockey);
+        this.setState({ howls: this.props.howls});
+        this.setState({ howlCount: this.props.count.howlCount});
     }
 
     handleClose = () => {
         this.setState({ open: false });
         console.log("closed")
-    }
-
-    updateHowlsFxn = () => {
-        this.props.fetchSingleHowl(this.props.docKey);
     }
 
     handleChange = event => {
@@ -78,7 +77,7 @@ class HowlBox extends Component {
 
     render(){
 
-const { classes, howls, fuser, UI: { loading } } = this.props;
+const { classes, howls, count:{ howlCount }, fuser, UI: { loading } } = this.props;
 const { credentials: { clozang }} = this.props.user;
         let howlsMarkup = !loading ? ( howls && howls.length > 0 ?
         (
@@ -100,7 +99,7 @@ const { credentials: { clozang }} = this.props.user;
             maxwidth="sm"
             >
                 <DialogTitle className={classes.title}>
-        <strong className="rusty">{fuser}</strong>
+        <strong className="rusty">{fuser}</strong> 
                     </DialogTitle>  
                 <DialogContent className={classes.cont}>
                                       
@@ -137,23 +136,27 @@ const { credentials: { clozang }} = this.props.user;
 HowlBox.propTypes = {
     classes: PropTypes.object.isRequired,
     howls: PropTypes.array,
+    count: PropTypes.object,
     fetchSingleHowl: PropTypes.func.isRequired,
     docKey: PropTypes.string,
     fuser: PropTypes.string,
     user: PropTypes.object.isRequired,
-    fetchUserHowls: PropTypes.func.isRequired,
+    fetchFuserHowls: PropTypes.func.isRequired,
     postHowl: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
     howls: state.data.howls,
     UI: state.UI,
-    user: state.user
+    user: state.user,
+    data: state.data,
+    count: state.data.count
 });
 
 const mapActionsToProps = {
     fetchSingleHowl,
-    fetchUserHowls,
+    fetchFuserHowls,
+    getHowlCount,
     postHowl
 }
 

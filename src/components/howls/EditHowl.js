@@ -60,7 +60,6 @@ class EditHowl extends Component{
         this.setState({
             howlBody: this.props.howl.howlBody 
         });
-        console.log(this.props.howl);
       }
       handleOpenDisc = () => {
         this.setState({ openDisc: true });

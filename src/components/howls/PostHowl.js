@@ -21,6 +21,7 @@ state = {
         this.props.postHowl(this.props.data.fuser.fuser,({ howlBody: this.props.howlBody,
         avatar: this.props.user.credentials.imageUrl }));
         this.props.clearFunction();
+
         setTimeout(() => this.props.fetchFuserHowls(this.props.data.fuser.fuser), 500);
     }
 

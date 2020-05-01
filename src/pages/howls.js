@@ -117,10 +117,6 @@ class howls extends Component {
 			this.setState({ menu: true });
 		}
 	};
-    postHowlFxn = () => {
-        const posting = document.getElementById('howlSubmit');
-		posting.click();
-    }
 
     handleChange = event => {
         this.setState({
