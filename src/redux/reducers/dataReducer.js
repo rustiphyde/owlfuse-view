@@ -38,7 +38,8 @@ import {
 	SET_FUSER_HOWLS,
 	SET_FUSER,
 	ERASE_HOWL,
-	SET_COUNT
+	SET_COUNT,
+	ADD_COUNT
 } from "../types";
 
 const initialState = {
@@ -85,6 +86,11 @@ export default function (state = initialState, action) {
 				...state,
 				count: action.payload
 			};
+		case ADD_COUNT:
+			return {
+				...state,
+				count: action.payload
+			}
 		case SET_HOWL:
 			return {
 				...state,

@@ -44,7 +44,7 @@ import {
 	SET_FUSER_HOWLS,
 	SET_FUSER,
 	ERASE_HOWL,
-	SET_COUNT
+	SET_COUNT,
 } from "../types";
 import axios from "axios";
 
