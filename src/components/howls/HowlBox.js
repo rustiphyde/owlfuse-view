@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import HowlIcon from '../icons/HowlIcon';
 import Howl from './Howl';
 import HowlPostIcon from '../icons/HowlPostIcon';
-import { fetchSingleHowl, fetchFuserHowls, postHowl, getHowlCount } from '../../redux/actions/dataActions';
+import { increaseHowlCount, fetchSingleHowl, fetchFuserHowls, postHowl, getHowlCount } from '../../redux/actions/dataActions';
 //MUI Stuff
 import { Button, DialogTitle, DialogContent, DialogActions, TextField, Dialog, Paper, Typography, Grid, Modal } from '@material-ui/core';
 
@@ -71,6 +71,7 @@ class HowlBox extends Component {
     postHowlFxn = () => {
         this.props.postHowl(this.props.fuser, ({ howlBody: this.state.howlBody,
             avatar: this.props.user.credentials.imageUrl }));
+        this.props.increaseHowlCount([this.props.fuser, this.props.user.credentials.clozang].sort().join("::"));
         setTimeout(() => this.setState({ howlBody: ''}), 20);    
         setTimeout(() => this.props.fetchFuserHowls(this.props.fuser), 500);
     }
@@ -142,7 +143,8 @@ HowlBox.propTypes = {
     fuser: PropTypes.string,
     user: PropTypes.object.isRequired,
     fetchFuserHowls: PropTypes.func.isRequired,
-    postHowl: PropTypes.func.isRequired
+    postHowl: PropTypes.func.isRequired,
+    increaseHowlCount: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -157,7 +159,8 @@ const mapActionsToProps = {
     fetchSingleHowl,
     fetchFuserHowls,
     getHowlCount,
-    postHowl
+    postHowl,
+    increaseHowlCount
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(HowlBox));

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import OwlFuseButton from '../../util/OwlFuseButton';
 import HowlPostIcon from '../icons/HowlPostIcon';
 import { connect } from 'react-redux';
-import { postHowl, fetchFuserHowls } from '../../redux/actions/dataActions';
+import { postHowl, increaseHowlCount, fetchFuserHowls } from '../../redux/actions/dataActions';
 
 
 
@@ -21,7 +21,8 @@ state = {
         this.props.postHowl(this.props.data.fuser.fuser,({ howlBody: this.props.howlBody,
         avatar: this.props.user.credentials.imageUrl }));
         this.props.clearFunction();
-
+        this.props.increaseHowlCount([this.props.data.fuser.fuser, this.props.user.credentials.clozang].sort().join("::"));
+        
         setTimeout(() => this.props.fetchFuserHowls(this.props.data.fuser.fuser), 500);
     }
 
@@ -58,7 +59,8 @@ PostHowl.propTypes = {
     user: PropTypes.object.isRequired,
     fetchFuserHowls: PropTypes.func.isRequired,
     howls: PropTypes.array,
-    clearFunction: PropTypes.func
+    clearFunction: PropTypes.func,
+    increaseHowlCount: PropTypes.func.isRequired
 
 }
 
@@ -67,4 +69,4 @@ const mapStateToProps = state => ({
     user: state.user
 });
 
-export default connect(mapStateToProps, { postHowl, fetchFuserHowls })(withStyles(styles)(PostHowl));
+export default connect(mapStateToProps, { postHowl, increaseHowlCount, fetchFuserHowls })(withStyles(styles)(PostHowl));
