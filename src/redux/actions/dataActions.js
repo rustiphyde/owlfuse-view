@@ -45,6 +45,7 @@ import {
 	SET_FUSER,
 	ERASE_HOWL,
 	SET_COUNT,
+	ADD_COUNT
 } from "../types";
 import axios from "axios";
 
@@ -344,6 +345,16 @@ export const addHeat = (sparkId) => (dispatch) => {
 		})
 		.catch((err) => console.log(err));
 };
+
+export const increaseHowlCount = (docKey) => (dispatch) => {
+	axios
+		.get(`/addCount/${docKey}`)
+		.then(res => {
+			dispatch({ type: ADD_HEAT,
+			payload: res.data });
+		})
+		.catch(err => console.error(err.code));
+}
 
 export const addCheers = (boozId) => (dispatch) => {
 	axios
