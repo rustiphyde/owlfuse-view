@@ -53,3 +53,4 @@ export const SET_FUSER_HOWLS = 'SET_FUSER_HOWLS';
 export const SET_FUSER = 'SET_FUSER';
 export const ERASE_HOWL = 'ERASE_HOWL';
 export const SET_COUNT = 'SET_COUNT';
+export const ADD_COUNT = 'ADD_COUNT';
