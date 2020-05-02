@@ -72,7 +72,7 @@ class HowlBox extends Component {
         this.props.postHowl(this.props.fuser, ({ howlBody: this.state.howlBody,
             avatar: this.props.user.credentials.imageUrl }));
         setTimeout(() => this.setState({ howlBody: ''}), 20);    
-        setTimeout(() => this.props.fetchSingleHowl(this.props.docKey), 500);
+        setTimeout(() => this.props.fetchFuserHowls(this.props.fuser), 500);
     }
 
     render(){

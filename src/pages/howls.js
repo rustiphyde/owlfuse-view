@@ -25,6 +25,9 @@ import MenuIcon from "../components/icons/MenuIcon";
 import RejectRequestIcon from "../components/icons/RejectRequestIcon";
 import HowlPostIcon from "../components/icons/HowlPostIcon";
 const styles = {
+	main: {
+		marginTop: "-26px"
+	},
 	title: {
 		display: "inline-block",
 		color: "#ff9800",
@@ -44,7 +47,7 @@ const styles = {
     },
     scroll: {
         overflowY: 'scroll',
-        height: '18rem',
+        height: '20rem',
         width: '100%',
         overflowX: 'hidden'
 
@@ -105,7 +108,7 @@ const styles = {
 class howls extends Component {
 	state = {
 		howls: null,
-		menu: true,
+		menu: false,
         howlBody: "",
 		docKey: null
 	};
@@ -136,7 +139,7 @@ class howls extends Component {
 		} = this.props.user;
 
 		return (
-			<Grid container spacing={1}>
+			<Grid container spacing={1} className={classes.main}>
 				<Grid item sm={12} xs={12} className={classes.titleBar}>
 					<Fragment>
 						<hr className="bar-separator" />
@@ -150,7 +153,7 @@ class howls extends Component {
 							/>
 						</OwlFuseButton>
 						<Typography variant="h4" className={classes.title}>
-							<strong>HOWLS</strong>
+							<strong>HOWLBOX</strong>
 						</Typography>
 						<hr className="bar-separator" />
 					</Fragment>{" "}
