@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { useState } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import OwlFuseButton from '../../util/OwlFuseButton';
@@ -7,50 +7,35 @@ import { connect } from 'react-redux';
 import { postHowl, increaseHowlCount, fetchFuserHowls } from '../../redux/actions/dataActions';
 
 
+const PostHowl = props => {
 
-
-const styles = {
-
-}
-
-class PostHowl extends Component{
-state = {
-    howls: null,
-}   
-    postHowl = () => {
-        this.props.postHowl(this.props.data.fuser.fuser,({ howlBody: this.props.howlBody,
-        avatar: this.props.user.credentials.imageUrl }));
-        this.props.clearFunction();
-        this.props.increaseHowlCount([this.props.data.fuser.fuser, this.props.user.credentials.clozang].sort().join("::"));
+   const postHowl = () => {
+        props.postHowl(props.fuser,({ howlBody: props.howlBody }));
+        props.clearFunction();
         
-        setTimeout(() => this.props.fetchFuserHowls(this.props.data.fuser.fuser), 500);
+        
     }
 
-    consoleLogger = () => {
+    const consoleLogger = () => {
         console.log("Can't post a silent howl");
     }
 
-    render(){
 
-        const { classes } = this.props;
-        const { fuser } = this.props.data.fuser;
-        let buttonMarkup = fuser ? (
-            <OwlFuseButton tip="POST HOWL" onClick={this.postHowl}>
-                <HowlPostIcon className="icon2 foam orange"/>
+        let buttonMarkup = props.data.fuser.fuser ? (
+            <OwlFuseButton tip="POST HOWL" onClick={postHowl}>
+                <HowlPostIcon className="icon foam orange"/>
             </OwlFuseButton>
-        ) : (<OwlFuseButton tip="OPEN A HOWL TO USE THIS BUTTON" onClick={this.consoleLogger}>
-            <HowlPostIcon className="icon2" />
+        ) : (<OwlFuseButton tip="OPEN A HOWL TO USE THIS BUTTON" onClick={consoleLogger}>
+            <HowlPostIcon className="icon" />
             </OwlFuseButton>)
         return(
-            <Fragment>
+            <div>
                 {buttonMarkup}
-            </Fragment>
+            </div>
         )
-    }
 }
 
 PostHowl.propTypes = {
-    classes: PropTypes.object.isRequired,
     howlBody: PropTypes.string.isRequired,
     howler: PropTypes.string,
     postHowl: PropTypes.func.isRequired,
@@ -66,7 +51,9 @@ PostHowl.propTypes = {
 
 const mapStateToProps = state => ({
     data: state.data,
-    user: state.user
+    user: state.user,
+    fuser: state.data.fuser.fuser,
+    clozang: state.user.credentials.clozang
 });
 
-export default connect(mapStateToProps, { postHowl, increaseHowlCount, fetchFuserHowls })(withStyles(styles)(PostHowl));
+export default connect(mapStateToProps, { postHowl, increaseHowlCount, fetchFuserHowls })(PostHowl);
