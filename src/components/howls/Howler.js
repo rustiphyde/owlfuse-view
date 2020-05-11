@@ -1,7 +1,9 @@
-import React, { Fragment, Component } from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import {  connect } from 'react-redux';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 import OwlFuseButton from '../../util/OwlFuseButton';
 import Typography from '@material-ui/core/Typography';
 import { fetchFuserHowls, getFuser } from '../../redux/actions/dataActions';
@@ -30,36 +32,28 @@ const styles = {
     }
 }
 
-class Howler extends Component{
+const Howler = props => {
 
-    state = {
-        fuser: null
+
+    const openHowl = () => {
+
+        props.getFuser(props.howler);
+
     }
 
-    openHowl = () => {
-        this.props.fetchFuserHowls(this.props.howler);
-        this.props.getFuser(this.props.howler);
-        this.setState({ fuser: this.props.howler });
-        console.log(this.props.howler);
-    }
-
-    render(){
-        const { classes, howler } = this.props;
-        const { fuser } = this.props.data.fuser;
         return(
             <Fragment>
-                <Typography className={classes.text}>
-        <strong className={ fuser === howler ? classes.selectedText : classes.unselectedText } onClick={this.openHowl}>{howler}</strong>
+                <Typography className={props.classes.text}>
+        <strong className={ props.fuser === props.howler ? props.classes.selectedText : props.classes.unselectedText } onClick={openHowl}>{props.howler}</strong>
                 </Typography>
                 <OwlFuseButton
                 tip="OPEN HOWL"
-                onClick={this.openHowl}
+                onClick={openHowl}
                 >
-                    <HowlIcon className={ fuser === howler ? classes.selected : classes.unselected}/>
+                    <HowlIcon className={ props.fuser === props.howler ? props.classes.selected : props.classes.unselected}/>
                 </OwlFuseButton>
             </Fragment>
         )
-    }
 }
 
 Howler.propTypes = {
@@ -73,7 +67,8 @@ Howler.propTypes = {
 
 const mapStateToProps = state => ({
     data: state.data,
-    user: state.user
+    user: state.user,
+    fuser: state.data.fuser.fuser
 })
 
 export default connect(mapStateToProps, { fetchFuserHowls, getFuser })(withStyles(styles)(Howler));
