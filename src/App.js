@@ -4,10 +4,18 @@ import "./App.css";
 import jwtDecode from "jwt-decode";
 import axios from 'axios';
 
+// Firebase
+import firebase from 'firebase/app';
+import { config } from './util/config';
+import 'firebase/firestore';
+import 'firebase/auth';
+
 // Redux
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { SET_AUTHENTICATED } from './redux/types';
+import { createFirestoreInstance } from 'redux-firestore';
+import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import { logoutUser, getUserDetails } from './redux/actions/userActions'
 
 // Util imports
@@ -49,12 +57,27 @@ if(token){
 
 } 
 
+firebase.initializeApp(config);
+firebase.firestore();
+
+const rrfConfig = {
+  userProfile: 'Users',
+  useFirestoreForProfile: true
+}
+
+const rrfProps = {
+  firebase,
+  config: rrfConfig,
+  dispatch: store.dispatch,
+  createFirestoreInstance
+}
 
 class App extends Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
         <Provider store={store}>
+        <ReactReduxFirebaseProvider {...rrfProps}>
         <BrowserRouter>
           <Navbar />
           <div className="container">
@@ -86,7 +109,8 @@ class App extends Component {
             </div>
             <Footer />
         </BrowserRouter>
-        </Provider>
+        </ReactReduxFirebaseProvider>
+        </Provider>        
       </MuiThemeProvider>
     );
   }
