@@ -420,12 +420,11 @@ export const eraseOkelist = (okeId) => (dispatch) => {
 		.catch((err) => console.log(err));
 };
 
-export const eraseHowl = (howlId, docKey) => (dispatch) => {
+export const eraseHowl = (howlId) => (dispatch) => {
 	axios
 		.delete(`howl/${howlId}`)
 		.then(() => {
 			dispatch({ type: ERASE_HOWL, payload: howlId });
-			dispatch(fetchSingleHowl(docKey));
 		})
 		.catch((err) => console.log(err));
 };
