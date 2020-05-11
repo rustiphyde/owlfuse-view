@@ -1,10 +1,13 @@
-import React, { Component, Fragment } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import OwlFuseButton from "../../util/OwlFuseButton";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
+import { compose } from 'redux';
+import firebase from 'firebase/app';
+import 'firebase/firestore'
+import { useFirestoreConnect } from 'react-redux-firebase';
 import { Avatar, CircularProgress } from "@material-ui/core";
-import { fetchFuserHowls, getHowlCount } from '../../redux/actions/dataActions';
 import EditHowl from './EditHowl';
 
 const styles = {
@@ -47,80 +50,56 @@ const styles = {
 	},
 };
 
-class Howl extends Component {
-	state = {
-		howls: null,
-		howlCount: 0
-	};
-	componentDidMount = () => {
-		const container = document.getElementById("howl-container");
-		this.setState({ howls: this.props.data.howls})
-		setTimeout(() => this.scrollFxn(container), 500);
-		setTimeout(() => this.scrollFxn(container), 1000);
-		setTimeout(() => this.scrollFxn(container), 2000);
-		setTimeout(() => this.scrollFxn(container), 3000);
-		setTimeout(() => this.scrollFxn(container), 4000);
-		setTimeout(() => this.scrollFxn(container), 5000);
-		setTimeout(() => this.scrollFxn(container), 10000);
-		setInterval(() => this.updaterFxn(this.state.howlCount, this.props.data.count.howlCount), 2000);
-	};
+const Howl = (props) => {
+
+	// const [ howls, setHowls ] = useState([]);
+
 	
-	updaterFxn = (numberOne, numberTwo) => {
-		const container = document.getElementById("howl-container");
-		this.props.getHowlCount([this.props.data.fuser.fuser, this.props.user.credentials.clozang].sort().join("::"));
-			this.setState({ howlCount: this.props.data.count.howlCount });
-		if(numberOne < numberTwo){
-			this.props.fetchFuserHowls(this.props.data.fuser.fuser);
-			this.setState({ howls: this.props.data.howls});
-			setTimeout(() => this.scrollFxn(container), 500);
-			setTimeout(() => this.scrollFxn(container), 1000);
-			setTimeout(() => this.scrollFxn(container), 2000);
-			setTimeout(() => this.scrollFxn(container), 3000);
-			setTimeout(() => this.scrollFxn(container), 4000);
-			setTimeout(() => this.scrollFxn(container), 5000);
-			setTimeout(() => this.scrollFxn(container), 10000);
+
+	useFirestoreConnect({collection: 'Howls', orderBy: ["createdAt", "asc"]});
+	const howls = useSelector(state => state.firestore.ordered.Howls);
+
+	useEffect(() => {
+		let cont = document.getElementById("howl-container");
+			
+		if(cont){
+		setInterval(() => {
+			
+			cont.scrollTo(0, cont.scrollHeight);
+		}, 500)
 		}
+	},
+	[howls]);
 
-	}
 
-	scrollFxn = (container) => {
-		
-		container.scrollTo(0, container.scrollHeight);
-	}
     
-	render() {
-
-
-		const { classes, howls } = this.props;
-		const { loading } = this.props.data;
-		const {
-			credentials: { clozang, imageUrl },
-		} = this.props.user;
-		let howlingsMarkup = !loading ? (
+		let howlingsMarkup = !props.loading ? (
 			howls && howls.length > 0 ? (
 				howls.map((howl) => {
+				if(howl.docKey === [props.fuser, props.clozang].sort().join("::")){
 					let index = howls.indexOf(howl);
 					return (
-						<Fragment key={index + "54"}>
+						<div key={index + "54"}>
 							
 							<div
 								key={index}
 								className={
-									howl.sentBy === clozang ? classes.userSent : classes.fuserSent
+									howl.sentBy === props.clozang ? props.classes.userSent : props.classes.fuserSent
 								}
 							>
 								
                                {
-								   howl.sentBy === clozang ? (<EditHowl howl={howl} className={classes.userSentPic} />) : <Avatar key={index + "83"} src={howl.avatar} className={
-									classes.fuserSentPic
+								   howl.sentBy === props.clozang ? (<EditHowl howl={howl} howlId={howl.howlId} className={props.classes.userSentPic} />) : <Avatar key={index + "83"} src={howl.avatar} className={
+									props.classes.fuserSentPic
 								}>
 
 </Avatar>
 							   }
 								{howl.howlBody}
 							</div>
-						</Fragment>
+						</div>
 					);
+							}
 				})
 			) : (
 				<strong className="candle centered">
@@ -136,30 +115,31 @@ class Howl extends Component {
 		);
 
 		return (
-			<Fragment>
-				<div id="howl-container" className={classes.content}>
+			<div>
+				<div id="howl-container" className={props.classes.content}>
 					{howlingsMarkup}
 				</div>
-			</Fragment>
+			</div>
 		);
-	}
 }
 
 Howl.propTypes = {
 	classes: PropTypes.object.isRequired,
-	howls: PropTypes.array.isRequired,
+	howls: PropTypes.array,
 	data: PropTypes.object.isRequired,
 	user: PropTypes.object.isRequired,
-	fuser: PropTypes.string,
-	fetchFuserHowls: PropTypes.func.isRequired,
-	getHowlCount: PropTypes.func.isRequired
+	fuser: PropTypes.string
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => {	
+return {	
 	data: state.data,
 	user: state.user,
-	howls: state.data.howls,
-	howlCount: state.data.count.howlCount
-});
+	fuser: state.data.fuser.fuser,
+	clozang: state.user.credentials.clozang,
+	loading: state.UI.loading
 
-export default connect(mapStateToProps, { fetchFuserHowls, getHowlCount })(withStyles(styles)(Howl));
+	}
+};
+
+export default compose(connect(mapStateToProps, null))(withStyles(styles)(Howl));
