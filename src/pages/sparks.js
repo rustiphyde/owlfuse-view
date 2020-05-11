@@ -63,8 +63,8 @@ class sparks extends Component {
         )
 
         return(<Grid container spacing={1}>
-            <Grid item sm={2}/>
-            <Grid item sm={8}>
+            <Grid item sm={1}/>
+            <Grid item sm={10} xs={12}>
             <div className="boozTitle1">
             <strong>SPARKS</strong>
             <hr className="bar-separator" />
@@ -94,7 +94,7 @@ class sparks extends Component {
                     <hr className="bar-separator"/>
 					{sparksMarkup}
             </Grid>
-            <grid item sm={2}/>
+            <grid item sm={1}/>
 
         </Grid>)
     }
