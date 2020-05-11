@@ -78,7 +78,7 @@ class EditHowl extends Component{
         this.handleClose();
       };
       handleErase = () => {
-          this.props.eraseHowl(this.props.howl.howlId, this.props.howl.docKey);
+          this.props.eraseHowl(this.props.howlId);
           this.handleCloseDisc();
           this.handleClose();
       }
@@ -166,11 +166,13 @@ EditHowl.propTypes = {
     classes: PropTypes.object.isRequired,
     editHowl: PropTypes.func.isRequired,
     howl: PropTypes.object.isRequired,
-    eraseHowl: PropTypes.func.isRequired
+    eraseHowl: PropTypes.func.isRequired,
+    howlId: PropTypes.string
 }
 
 const mapStateToProps = state => ({
-    UI: state.UI
+    UI: state.UI,
+    howls: state.firestore.ordered.Howls
 });
 
 export default connect(mapStateToProps,{ editHowl, eraseHowl })(withStyles(styles)(EditHowl));
