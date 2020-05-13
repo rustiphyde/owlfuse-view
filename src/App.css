@@ -27,12 +27,26 @@ body {
   max-width: 1200px;
 }
 
+img {
+  -webkit-touch-callout: none; 
+  -webkit-user-select: none;
+}
+
 .nav-logo {
   width: 300px;
   height: 74px;
   margin-top: 3px;
   margin-right: auto;
   margin-left: auto;
+}
+
+@media(max-width: 767px){
+  .nav-logo {
+    display: none;
+  }
+  .container {
+    margin: 9rem auto 0 auto;
+  }
 }
 .nav-container {
   margin: auto;
@@ -201,6 +215,17 @@ input {
   font-size: 200% !important;
   margin-top: -20px;
   margin-bottom: -16px;
+}
+
+.icon16 {
+    font-size: 3.5rem !important;
+    margin-top: 6px;
+}
+
+.icon16-2 {
+  font-size: 3.5rem !important;
+  margin-top: 6px;
+  float: right;
 }
 
 .icon4:hover{
@@ -601,7 +626,7 @@ body > div > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.MuiPopover-pape
     }
 }
 
-#root > div.container > div > div > div:nth-child(5) > div > button > span.MuiIconButton-label > svg {
+.needs-padding {
   padding-bottom: 16px;
   margin-top: 8px;
 }
