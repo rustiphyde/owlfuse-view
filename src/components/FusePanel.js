@@ -13,7 +13,7 @@ class FusePanel extends Component {
     render(){
         return(<OwlFuseButton
            tip="OPEN FUSE PANEL">
-            <OwlFuseLogo className="foam orange icon13"/>
+            <OwlFuseLogo className="foam orange icon13 needs-padding"/>
         </OwlFuseButton>);
     }
 }
