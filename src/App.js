@@ -41,6 +41,8 @@ import boozulas from './pages/boozulas';
 import howls from './pages/howls';
 import sparks from './pages/sparks';
 
+axios.defaults.baseURL = "https://us-central1-owlfuse-app.cloudfunctions.net/api";
+
 const theme = createMuiTheme(themeFile);
 
 const token = localStorage.FBIdToken;
