@@ -52,21 +52,25 @@ const styles = {
 
 const Howl = (props) => {
 
-	// const [ howls, setHowls ] = useState([]);
-
-	
-
 	useFirestoreConnect({collection: 'Howls', orderBy: ["createdAt", "asc"]});
 	const howls = useSelector(state => state.firestore.ordered.Howls);
+
+	useEffect(() => {
+		
+		setTimeout(() => {
+			let cont = document.getElementById("howl-container");
+			if(cont){
+				cont.scrollTo(0, cont.scrollHeight);
+				}
+		}, 3000);
+	},
+	[]);
 
 	useEffect(() => {
 		let cont = document.getElementById("howl-container");
 			
 		if(cont){
-		setInterval(() => {
-			
-			cont.scrollTo(0, cont.scrollHeight);
-		}, 500)
+		cont.scrollTo(0, cont.scrollHeight);
 		}
 	},
 	[howls]);
