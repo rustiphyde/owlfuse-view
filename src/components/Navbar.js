@@ -8,7 +8,7 @@ import OwlFuseTitle from "../images/owlfuse-title.png";
 
 // Components
 import PostSpark from "./sparks/PostSpark";
-import SizzlesAndClinks from "./SizzlesAndClinks";
+import Sizzles from "./Sizzles";
 import Toggle from "./Toggle";
 
 // MUI Components
@@ -104,7 +104,7 @@ export class Navbar extends Component {
 										<HeatIcon />
 									</OwlFuseButton>
 								</Link>
-								<SizzlesAndClinks />
+								<Sizzles clozang={this.props.clozang}/>
 							</Fragment>
 						) : (
 							<Fragment>
@@ -124,7 +124,7 @@ export class Navbar extends Component {
 										<OkelistIcon />
 									</OwlFuseButton>
 								</Link>
-								<SizzlesAndClinks />
+								<Sizzles clozang={this.props.clozang}/>
 							</Fragment>
 						)
 					) : (
@@ -153,6 +153,7 @@ Navbar.propTypes = {
 
 const mapStateToProps = (state) => ({
 	authenticated: state.user.authenticated,
+	clozang: state.user.credentials.clozang
 });
 
 export default connect(mapStateToProps)(withStyles(styles)(Navbar));
