@@ -110,8 +110,14 @@ class howls extends Component {
 		howls: null,
 		menu: false,
         howlBody: "",
-		docKey: null
+		docKey: null,
+		howler: ""
 	};
+
+
+	closeMenu = () => {
+		this.setState({ menu: false });
+	}
 
 	toggleMenu = () => {
 		if (this.state.menu === true) {
@@ -165,7 +171,7 @@ class howls extends Component {
 					xs={12}
 					className={!this.state.menu ? classes.hidden : classes.listBack}
 				>
-					<HowlList/>
+					<HowlList closeMenu={this.closeMenu}/>
 				</Grid>
 				<Grid
 					item
