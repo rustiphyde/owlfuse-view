@@ -24,3 +24,4 @@ yarn-error.log*
 
 /src/serviceAccountKey.json
 /src/util/config.js
+/src/util/adminUser.js
