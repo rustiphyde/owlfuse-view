@@ -56,7 +56,7 @@ class HowlList extends Component{
                     </Avatar>
 				</ListItemAvatar>
                 <ListItem key={howlr + fusers.indexOf(howlr).toString()}>
-                    <Howler key={howlr + "amigo"} howler={howlr} />
+                    <Howler key={howlr + "amigo"} howler={howlr} closeMenu={this.props.closeMenu}/>
                 </ListItem>
                 </ListItem>
                 <hr className="bar-separator" />
@@ -98,7 +98,8 @@ class HowlList extends Component{
 HowlList.propTypes = {
     classes: PropTypes.object.isRequired,
     howls: PropTypes.array,
-    getFusers: PropTypes.func.isRequired
+    getFusers: PropTypes.func.isRequired,
+    closeMenu: PropTypes.func
 
 }
 
