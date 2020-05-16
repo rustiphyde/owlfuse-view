@@ -1,0 +1,215 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "Boozulas",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "userAlias",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdAt",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Boozulas",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "userClozang",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdAt",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Clinks",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "recipient",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdAt",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Howlings",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "docKey",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdAt",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Howls",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "docKey",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdAt",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Infernals",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "userClozang",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "heatCount",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Okelists",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "userAlias",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdAt",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Okelists",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "userClozang",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdAt",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Requests",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "sender",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "sentAt",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Sizzles",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "recipient",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdAt",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Sparks",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "userAlias",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdAt",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Sparks",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "userClozang",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdAt",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Sparks",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "userClozang",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "heatCount",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Stokes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "sparkId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdAt",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Toasts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "boozId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdAt",
+          "order": "DESCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}
