@@ -1,14 +1,16 @@
-import React, { Component, Fragment } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import OwlFuseButton from '../../util/OwlFuseButton';
 import { withStyles } from '@material-ui/core/styles';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import HowlIcon from '../icons/HowlIcon';
 import Howl from './Howl';
+import EditHowl from './EditHowl';
+import { useFirestoreConnect } from 'react-redux-firebase';
 import HowlPostIcon from '../icons/HowlPostIcon';
 import { increaseHowlCount, fetchSingleHowl, fetchFuserHowls, postHowl, getHowlCount } from '../../redux/actions/dataActions';
 //MUI Stuff
-import { Button, DialogTitle, DialogContent, DialogActions, TextField, Dialog, Paper, Typography, Grid, Modal } from '@material-ui/core';
+import { CircularProgress, Button, DialogTitle, DialogContent, DialogActions, Avatar, TextField, Dialog, Paper, Typography, Grid, Modal } from '@material-ui/core';
 
 
 
@@ -16,12 +18,12 @@ const styles = (theme) => ({
     ...theme.themeMinusPalette,
   
     dialog: {
-        padding: 16,
         borderRadius: "32px",
+        width: '100%'
       },
-      cont: {
-          overflow: "hidden"
-      },
+    //   cont: {
+    //       overflow: "hidden"
+    //   },
       form: {
         padding: 16
       },
@@ -37,86 +39,162 @@ const styles = (theme) => ({
 		marginBottom: "8px",
 		marginTop: "8px",
         width: "100%"
-	},
+    },
+    userSent: {
+		backgroundColor: "#263238",
+		padding: "16px",
+		color: "#f4db9d",
+		width: "75%",
+		float: "right",
+		lineHeight: '20px',
+		letterSpacing: '1px',
+		margin: "8px",
+		wordWrap: "break-word",
+		fontWeight: 700,
+		borderRadius: "16px 0 16px 0",
+    },
+    fuserSentPic: {
+        float: 'left',
+        margin: '6px 16px',
+        border: '1.5px solid #f4db9d'
+    },
+    	fuserSent: {
+		backgroundColor: "#ff9800",
+		padding: "16px",
+		letterSpacing: '1px',
+		lineHeight: '20px',
+		color: "#263238",
+		width: "75%",
+		float: "left",
+		margin: "8px",
+		fontWeight: 700,
+		borderRadius: "0 16px 0 16px",
+	}
 });
 
-class HowlBox extends Component {
+const HowlBox = (props) => {
+    
+    useFirestoreConnect({collection: 'Howls', orderBy: ["createdAt", "asc"]});
+	const howls = useSelector(state => state.firestore.ordered.Howls);
 
-    state = {
-        howls: null,
-        howlBody: "",
-        open: false,
-        howlCount: 0
+    const [ howlBody, setHowlBody] = useState("");
+
+    const [ open, setOpen ] = useState(false);
+
+    const [ howlCount, setHowlCount ] = useState(0);
+    
+
+    const handleOpen = () => {
+        setOpen(true);
+        
+		setTimeout(() => {
+			let cont = document.getElementById("howl-container");
+			cont.scrollTo(0, cont.scrollHeight);
+		}, 500)
+        
     }
 
-    handleOpen = () => {
-        this.setState({ open: true });
-        console.log("open");
-        this.props.fetchSingleHowl(this.props.docKey)
-        this.props.getHowlCount(this.props.dockey);
-        this.setState({ howls: this.props.howls});
-        this.setState({ howlCount: this.props.count.howlCount});
+    const handleClose = () => {
+        setOpen(false);
     }
 
-    handleClose = () => {
-        this.setState({ open: false });
-        console.log("closed")
-    }
-
-    handleChange = event => {
-        this.setState({
-          [event.target.name]: event.target.value
-        });
+    const handleChange = event => {
+        setHowlBody(event.target.value);
       };
-    postHowlFxn = () => {
-        this.props.postHowl(this.props.fuser, ({ howlBody: this.state.howlBody,
-            avatar: this.props.user.credentials.imageUrl }));
-        this.props.increaseHowlCount([this.props.fuser, this.props.user.credentials.clozang].sort().join("::"));
-        setTimeout(() => this.setState({ howlBody: ''}), 20);    
-        setTimeout(() => this.props.fetchFuserHowls(this.props.fuser), 500);
+
+    useEffect(() => {
+		let cont = document.getElementById("howl-container");
+			
+		if(cont){
+		setTimeout(() => {
+			
+			cont.scrollTo(0, cont.scrollHeight);
+		}, 0)
+		}
+	},
+	[howls]);
+
+
+    const postHowlFxn = () => {
+        props.postHowl(props.fuser, ({ howlBody: howlBody }));
     }
 
-    render(){
+    
 
-const { classes, howls, count:{ howlCount }, fuser, UI: { loading } } = this.props;
-const { credentials: { clozang }} = this.props.user;
-        let howlsMarkup = !loading ? ( howls && howls.length > 0 ?
-        (
-            <Howl/>
-        ) : null ) : (<div>Loading...</div>)
+    let howlsMarkup = !props.loading ? (
+        howls && howls.length > 0 ? (
+            howls.map((howl) => {
+            if(howl.docKey === props.docKey){
+                let index = howls.indexOf(howl);
+                return (
+                    <div key={index + "54"}>
+                        
+                        <div
+                            key={index}
+                            className={
+                                howl.sentBy === props.clozang ? props.classes.userSent : props.classes.fuserSent
+                            }
+                        >
+                            
+                           {
+                               howl.sentBy === props.clozang ? (<EditHowl howl={howl} howlId={howl.howlId} className={props.classes.userSentPic} />) : <Avatar key={index + "83"} src={howl.avatar} className={
+                                props.classes.fuserSentPic
+                            }>
+
+</Avatar>
+                           }
+                            {howl.howlBody}
+                        </div>
+                    </div>
+                );
+                        }
+            })
+        ) : (
+            <strong className="candle centered">
+                You do not have any howls to view at this time
+            </strong>
+        )
+    ) : (
+        <CircularProgress
+        color="secondary"
+        size={100}
+        className="candle centered"
+    />
+    );
         return(
         <Fragment>
             <OwlFuseButton
-            onClick={this.handleOpen}
+            onClick={handleOpen}
             tip="OPEN HOWLBOX"
             >
-                <HowlIcon className="icon14 foam orange"/>
+                <HowlIcon className="icon14 foam orange needs-padding"/>
             </OwlFuseButton>
             <Dialog
-            open={this.state.open}
-            onClose={this.handleClose}
-            className={classes.dialog}
+            open={open}
+            onClose={handleClose}
+            className={props.classes.dialog}
             disableBackdropClick={true}
-            maxwidth="sm"
+            maxWidth={false}
+            fullScreen={true}
             >
-                <DialogTitle className={classes.title}>
-        <strong className="rusty">{fuser}</strong> 
+                <DialogTitle className={props.classes.title}>
+        <strong className="rusty">{props.fuser}</strong> 
                     </DialogTitle>  
-                <DialogContent className={classes.cont}>
+                <DialogContent className={props.classes.cont} id="howl-container">
                                       
                         {howlsMarkup}
-                        <form className={classes.form}>
+                        <form className={props.classes.form}>
                                 <TextField fullWidth 
-                                value={this.state.howlBody}
-                                onChange={this.handleChange}
+                                value={howlBody}
+                                onChange={handleChange}
                                 id="howlBody"
                                 name="howlBody"
                                 type="text"
                                 placeholder="POST A HOWL"
                                 multiline
-                                className={classes.field} />
+                                className={props.classes.field} />
                         <OwlFuseButton tip="POST HOWL"
-                        onClick={this.postHowlFxn}>
+                        onClick={postHowlFxn}>
                         <HowlPostIcon className="icon2 orange"/>
                         </OwlFuseButton>
 						
@@ -124,14 +202,14 @@ const { credentials: { clozang }} = this.props.user;
                             
                         </DialogContent>
                         <DialogActions>
-            <Button onClick={this.handleClose} color="secondary">
+            <Button onClick={handleClose} color="secondary">
               EXIT HOWL
             </Button>
                         </DialogActions>
             </Dialog>
         </Fragment>
+        
         )
-    }
 }
 
 HowlBox.propTypes = {
@@ -152,7 +230,8 @@ const mapStateToProps = state => ({
     UI: state.UI,
     user: state.user,
     data: state.data,
-    count: state.data.count
+    count: state.data.count,
+    clozang: state.user.credentials.clozang
 });
 
 const mapActionsToProps = {
