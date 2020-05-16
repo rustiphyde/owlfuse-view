@@ -87,7 +87,7 @@ class EditBoozulaImage extends Component {
 
 EditBoozulaImage.propTypes = {
   uploadBoozImage: PropTypes.func.isRequired,
-  boozId: PropTypes.string.isRequired,
+  boozId: PropTypes.string,
   UI: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired
 };
