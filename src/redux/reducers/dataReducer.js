@@ -63,8 +63,7 @@ const initialState = {
 	howls: [],
 	howl: {},
 	fuser: {},
-	count: {},
-	sparkImages: []
+	count: {}
 };
 
 export default function (state = initialState, action) {
@@ -78,12 +77,6 @@ export default function (state = initialState, action) {
 			return {
 				...state,
 				sparks: action.payload,
-				loading: false,
-			};
-		case SET_SPARK_IMAGES:
-			return {
-				...state,
-				sparkImages: action.payload,
 				loading: false,
 			};
 		case SET_SPARK:

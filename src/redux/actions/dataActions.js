@@ -70,18 +70,6 @@ export const getSparks = () => (dispatch) => {
 		});
 };
 
-export const getSparkImages = () => () => {
-	dispatch({ type: LOADING_DATA });
-	axios
-		.get("/sparkimages")
-		.then((res) => {
-			dispatch({ type: SET_SPARK_IMAGES, payload: res.data });
-		})
-		.catch((err) => {
-			dispatch({ type: SET_SPARK_IMAGES, payload: [] });
-		});
-};
-
 export const getSpark = (sparkId) => (dispatch) => {
 	dispatch({ type: LOADING_UI });
 	axios

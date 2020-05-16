@@ -49,7 +49,8 @@ class home extends Component {
 		fusers: null,
 		fuserequests: null,
 		sentrequests: null,
-		boozulas: null
+		boozulas: null,
+		sparkImages: null
 	};
 
 	toggleFunx = () => {};
@@ -61,6 +62,7 @@ class home extends Component {
 		this.props.fetchRequestedFuses();
 		this.props.getAllSentFuses();
 		this.props.getBoozulas();
+		this.props.getSparkImages();
 	}
 
 	handleToggle = event => {

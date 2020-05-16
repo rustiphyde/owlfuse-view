@@ -23,7 +23,7 @@ import InfernalIcon from "../icons/InfernalIcon";
 
 // Redux
 import { connect } from "react-redux";
-import { addHeat, removeHeat, getFusers, getSparkImages } from "../../redux/actions/dataActions";
+import { addHeat, removeHeat, getFusers } from "../../redux/actions/dataActions";
 
 const styles = {
   card: {
@@ -57,12 +57,13 @@ const styles = {
 
 class Spark extends Component {
 state = {
-  fusers: null
+  fusers: null,
+  sparkImages: null
 }
 
   componentDidMount(){
     this.props.getFusers();
-    this.props.getSparkImages();
+    this.setState({ sparkImages: this.props.sparkImages });
   }
 
  
@@ -70,7 +71,6 @@ state = {
   render() {
     dayjs.extend(relativeTime);
 
-    const spimages = this.props.sparkImages.filter(img => img.sparkId === this.props.spark.sparkId );
 
     const {
       classes,
@@ -95,6 +95,11 @@ state = {
     const fuseButton = fusers !== null && !fusers.includes(userClozang) && userClozang !== clozang ? (
       <FuseButton fuser={userClozang} clozang={clozang}/>
     ) : null
+    
+    let sparkImg = 
+      sparkImage ? (
+              <img src={sparkImage} width={200} height={150} alt="spark image"/>
+      ) : null
 
     const deleteButton = authenticated && userClozang === clozang ? (
       <ExtinguishSpark sparkId={sparkId}/>
@@ -118,14 +123,7 @@ state = {
           <Typography variant="body2" color="primary" className="breaks">
             <b>{body}</b>
           </Typography>
-          {
-            sparkImage ? (
-              spimages.map(spim => {
-                <img src={spim.url} width={300} height={200} alt="spark image"/>
-              })
-              
-            ) : null
-          }
+          {sparkImg}
           <HeatButton sparkId={sparkId}/>
           <span>{heatCount}</span>
           <SparkBox sparkId={sparkId} userClozang={userClozang} openDialog={this.props.openDialog}/>
@@ -147,7 +145,6 @@ Spark.propTypes = {
   spark: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
   openDialog: PropTypes.bool,
-  getSparkImages: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -160,8 +157,7 @@ const mapStateToProps = state => ({
 const mapActionsToProps = {
   addHeat,
   removeHeat,
-  getFusers,
-  getSparkImages
+  getFusers
 
 };
 
