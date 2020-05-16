@@ -40,12 +40,31 @@ img {
   margin-left: auto;
 }
 
-@media(max-width: 767px){
+ @media(max-width: 767px){
   .nav-logo {
     display: none;
   }
   .container {
     margin: 9rem auto 0 auto;
+  }
+  /* .desktop-howls {
+    display: none;
+    height: 0px;
+    width: 0px;
+  }
+  .mobile-howls {
+    display: block;
+  } */
+} 
+
+@media(min-width: 768px){
+  .desktop-howls {
+    display: block;
+  }
+  .mobile-howls{
+    display: none;
+    height: 0px;
+    width: 0px;
   }
 }
 .nav-container {
@@ -223,7 +242,7 @@ input {
 }
 
 .icon16-2 {
-  font-size: 3.5rem !important;
+  font-size: 2.5rem !important;
   margin-top: 6px;
   float: right;
 }
