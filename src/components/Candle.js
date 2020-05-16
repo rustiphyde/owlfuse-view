@@ -226,7 +226,8 @@ Candle.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  user: state.user
+  user: state.user,
+  auth: state.firebase.auth
 });
 
 const mapActionsToProps = {
