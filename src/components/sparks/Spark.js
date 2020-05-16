@@ -23,7 +23,7 @@ import InfernalIcon from "../icons/InfernalIcon";
 
 // Redux
 import { connect } from "react-redux";
-import { addHeat, removeHeat, getFusers } from "../../redux/actions/dataActions";
+import { addHeat, removeHeat, getFusers, getSparkImages } from "../../redux/actions/dataActions";
 
 const styles = {
   card: {
@@ -62,10 +62,16 @@ state = {
 
   componentDidMount(){
     this.props.getFusers();
+    this.props.getSparkImages();
   }
+
+ 
 
   render() {
     dayjs.extend(relativeTime);
+
+    const spimages = this.props.sparkImages.filter(img => img.sparkId === this.props.spark.sparkId );
+
     const {
       classes,
       fusers,
@@ -79,7 +85,10 @@ state = {
         fire,
         sparkId,
         emberable,
-        infernal
+        infernal,
+        sparkImage,
+        sparkVideo,
+        sparkLink
       },
       user: { authenticated,  credentials: { clozang }   }
     } = this.props;
@@ -109,6 +118,14 @@ state = {
           <Typography variant="body2" color="primary" className="breaks">
             <b>{body}</b>
           </Typography>
+          {
+            sparkImage ? (
+              spimages.map(spim => {
+                <img src={spim.url} width={300} height={200} alt="spark image"/>
+              })
+              
+            ) : null
+          }
           <HeatButton sparkId={sparkId}/>
           <span>{heatCount}</span>
           <SparkBox sparkId={sparkId} userClozang={userClozang} openDialog={this.props.openDialog}/>
@@ -129,18 +146,22 @@ Spark.propTypes = {
   user: PropTypes.object.isRequired,
   spark: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
-  openDialog: PropTypes.bool
+  openDialog: PropTypes.bool,
+  getSparkImages: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   user: state.user,
-  fusers: state.data.fusers
+  fusers: state.data.fusers,
+  sparkImages: state.data.sparkImages
+  
 });
 
 const mapActionsToProps = {
   addHeat,
   removeHeat,
-  getFusers
+  getFusers,
+  getSparkImages
 
 };
 
