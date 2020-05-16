@@ -219,8 +219,8 @@ export const postSpark = (newSpark) => (dispatch) => {
 		.then((res) => {
 			dispatch({ type: POST_SPARK, payload: res.data });
 			dispatch(clearErrors());
-			dispatch({ type: SET_SPARK_ID, payload: res.id });
-			console.log(res.id);
+			dispatch({ type: SET_SPARK_ID, payload: res.data.sparkId });
+			console.log(res.data.sparkId);
 			dispatch({ type: STOP_LOADING_UI });
 			
 		})
