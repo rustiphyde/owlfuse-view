@@ -26,10 +26,7 @@ const reducers = combineReducers({
   firestore: firestoreReducer
 });
 
-const composeEnhancers =
-  typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
-    : compose;
+const composeEnhancers = compose;
 
 const enhancer = composeEnhancers(applyMiddleware(...middleware), reduxFirestore(config));
 const store = createStore(reducers, initialState, enhancer);
