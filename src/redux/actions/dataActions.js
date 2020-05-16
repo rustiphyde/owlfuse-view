@@ -45,7 +45,8 @@ import {
 	SET_FUSER,
 	ERASE_HOWL,
 	SET_COUNT,
-	ADD_COUNT
+	ADD_COUNT,
+	SET_SPARK_ID
 } from "../types";
 import axios from "axios";
 
@@ -218,7 +219,10 @@ export const postSpark = (newSpark) => (dispatch) => {
 		.then((res) => {
 			dispatch({ type: POST_SPARK, payload: res.data });
 			dispatch(clearErrors());
+			dispatch({ type: SET_SPARK_ID, payload: res.id });
+			console.log(res.id);
 			dispatch({ type: STOP_LOADING_UI });
+			
 		})
 		.catch((err) => {
 			dispatch({
