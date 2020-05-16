@@ -39,12 +39,14 @@ import {
 	SET_FUSER,
 	ERASE_HOWL,
 	SET_COUNT,
-	ADD_COUNT
+	ADD_COUNT,
+	SET_SPARK_ID
 } from "../types";
 
 const initialState = {
 	sparks: [],
 	spark: {},
+	sparkID: "",
 	okelists: [],
 	okelist: {},
 	boozulas: [],
@@ -80,6 +82,11 @@ export default function (state = initialState, action) {
 			return {
 				...state,
 				spark: action.payload,
+			};
+		case SET_SPARK_ID:
+			return {
+				...state,
+				sparkID: action.payload
 			};
 		case SET_COUNT:
 			return {
