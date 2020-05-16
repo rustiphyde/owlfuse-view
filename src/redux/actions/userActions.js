@@ -7,13 +7,17 @@ import {
   LOADING_USER,
   SET_SUCCESS,
   CLEAR_SUCCESS,
-  MARK_SIZZLES_READ,
-  MARK_CLINKS_READ,
+  MARK_SIZZLES_READ
 } from "../types";
+
+import adminUser from '../../util/adminUser';
+
 import axios from "axios";
 
-export const loginUser = (userData, history) => dispatch => {
+export const loginUser = (userData, history) => (dispatch, getState, { getFirebase }) => {
   dispatch({ type: LOADING_UI });
+  const firebase = getFirebase();
+  firebase.login({ email: adminUser.email, password: adminUser.password });
   axios
     .post("/login", userData)
     .then(res => {
@@ -117,17 +121,6 @@ export const markSizzlesRead = (sizzleIds) => dispatch => {
     })
     .catch(err => console.log(err));
 } 
-
-export const markClinksRead = (clinkIds) => dispatch => {
-  axios.post('/clinks', clinkIds)
-    .then(res => {
-      dispatch({
-        type: MARK_CLINKS_READ
-      })
-    })
-    .catch(err => console.log(err));
-} 
-
 
 
 // Helper fxn for setting authorization header in various places
