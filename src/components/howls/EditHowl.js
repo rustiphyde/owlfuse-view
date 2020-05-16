@@ -23,11 +23,10 @@ const styles = (theme) => ({
       color: "#ff9800",
       textAlign: "center"
     },
-    userSentPic: {
-        float: 'right',
-        margin: '6px 16px',
-        border: '1.5px solid #ff9800'
+    button: {
+      float: 'right'
     }
+
   });
 
 class EditHowl extends Component{
@@ -37,8 +36,9 @@ class EditHowl extends Component{
         openDisc: false
     }
 
-    handleLongPress = () => {
-        this.longPressTimer = setTimeout(() => this.handleOpen(), 1500);
+   handleLongPress = (e) => {
+     e.preventDefault();
+        this.longPressTimer = setTimeout(() => this.handleOpen(), 1000);
     }
 
     handleLongRelease = () => {
@@ -88,18 +88,22 @@ class EditHowl extends Component{
         const { classes, howl } = this.props;
     return (
       <Fragment>
-        <Tooltip title="HOLD TO EDIT HOWL">
-        <Avatar src={this.props.howl.avatar}
-        onTouchStart={this.handleLongPress}
+        <div className={classes.button}>
+        <OwlFuseButton
+        
+        tip="HOLD TO EDIT HOWL">
+          <HowlEditIcon 
+        onTouchStart={this.handleLongPress }
         onTouchEnd={this.handleLongRelease}
         onMouseDown={this.handleLongPress}
         onMouseUp={this.handleLongRelease}
         onMouseLeave={this.handleLongRelease}
-        className={classes.userSentPic}
-        >
+        className="icon16-2 foam orange"
+        />
+        </OwlFuseButton>
 
-        </Avatar>
-        </Tooltip>
+        </div>
+        
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
