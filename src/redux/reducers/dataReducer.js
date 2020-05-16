@@ -40,7 +40,8 @@ import {
 	ERASE_HOWL,
 	SET_COUNT,
 	ADD_COUNT,
-	SET_SPARK_ID
+	SET_SPARK_ID,
+	SET_SPARK_IMAGES
 } from "../types";
 
 const initialState = {
@@ -62,7 +63,8 @@ const initialState = {
 	howls: [],
 	howl: {},
 	fuser: {},
-	count: {}
+	count: {},
+	sparkImages: []
 };
 
 export default function (state = initialState, action) {
@@ -76,6 +78,12 @@ export default function (state = initialState, action) {
 			return {
 				...state,
 				sparks: action.payload,
+				loading: false,
+			};
+		case SET_SPARK_IMAGES:
+			return {
+				...state,
+				sparkImages: action.payload,
 				loading: false,
 			};
 		case SET_SPARK:
