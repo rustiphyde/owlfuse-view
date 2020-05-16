@@ -47,7 +47,7 @@ export class Footer extends Component {
          <LoginIcon className="icon foam orange"/>
          </OwlFuseButton>)}
           <hr className="bar-separator-footer"/>
-          <p className="footer-text">&emsp;© {new Date().getFullYear()} Rusty Hoppins, All Rights Reserved.</p>
+          <p className="footer-text">&emsp;© 2019 - {new Date().getFullYear()} Rusty Hoppins, All Rights Reserved.</p>
             
         </div>
         
