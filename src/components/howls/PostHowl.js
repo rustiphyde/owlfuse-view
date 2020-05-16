@@ -23,10 +23,10 @@ const PostHowl = props => {
 
         let buttonMarkup = props.data.fuser.fuser ? (
             <OwlFuseButton tip="POST HOWL" onClick={postHowl}>
-                <HowlPostIcon className="icon foam orange"/>
+                <HowlPostIcon className="icon16 foam orange"/>
             </OwlFuseButton>
         ) : (<OwlFuseButton tip="OPEN A HOWL TO USE THIS BUTTON" onClick={consoleLogger}>
-            <HowlPostIcon className="icon" />
+            <HowlPostIcon className="icon16" />
             </OwlFuseButton>)
         return(
             <div>
