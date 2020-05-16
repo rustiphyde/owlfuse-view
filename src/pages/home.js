@@ -62,7 +62,6 @@ class home extends Component {
 		this.props.fetchRequestedFuses();
 		this.props.getAllSentFuses();
 		this.props.getBoozulas();
-		this.props.getSparkImages();
 	}
 
 	handleToggle = event => {
