@@ -36,7 +36,7 @@ const Howler = props => {
 
 
     const openHowl = () => {
-
+        props.closeMenu();
         props.getFuser(props.howler);
 
     }
@@ -61,7 +61,7 @@ Howler.propTypes = {
     howler: PropTypes.string.isRequired,
     user: PropTypes.object.isRequired,
     data: PropTypes.object.isRequired,
-    fetchFuserHowls: PropTypes.func,
+    closeMenu: PropTypes.func,
     getFuser: PropTypes.func
 }
 
