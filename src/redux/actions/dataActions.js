@@ -46,7 +46,8 @@ import {
 	ERASE_HOWL,
 	SET_COUNT,
 	ADD_COUNT,
-	SET_SPARK_ID
+	SET_SPARK_ID,
+	SET_SPARK_IMAGES,
 } from "../types";
 import axios from "axios";
 
@@ -66,6 +67,18 @@ export const getSparks = () => (dispatch) => {
 				type: SET_SPARKS,
 				payload: [],
 			});
+		});
+};
+
+export const getSparkImages = () => () => {
+	dispatch({ type: LOADING_DATA });
+	axios
+		.get("/sparkimages")
+		.then((res) => {
+			dispatch({ type: SET_SPARK_IMAGES, payload: res.data });
+		})
+		.catch((err) => {
+			dispatch({ type: SET_SPARK_IMAGES, payload: [] });
 		});
 };
 
@@ -222,7 +235,6 @@ export const postSpark = (newSpark) => (dispatch) => {
 			dispatch({ type: SET_SPARK_ID, payload: res.data.sparkId });
 			console.log(res.data.sparkId);
 			dispatch({ type: STOP_LOADING_UI });
-			
 		})
 		.catch((err) => {
 			dispatch({
@@ -230,6 +242,15 @@ export const postSpark = (newSpark) => (dispatch) => {
 				payload: err.response.data,
 			});
 		});
+};
+
+export const addSparkImage = (sparkID, formData) => (dispatch) => {
+	axios
+		.post(`/image/spark/${sparkID}`, formData)
+		.then(() => {
+			setTimeout(() => dispatch(getSparks()), 2000);
+		})
+		.catch((err) => console.log(err));
 };
 
 export const postHowl = (friend, newHowl) => (dispatch) => {
@@ -353,12 +374,11 @@ export const addHeat = (sparkId) => (dispatch) => {
 export const increaseHowlCount = (docKey) => (dispatch) => {
 	axios
 		.get(`/addCount/${docKey}`)
-		.then(res => {
-			dispatch({ type: ADD_HEAT,
-			payload: res.data });
+		.then((res) => {
+			dispatch({ type: ADD_HEAT, payload: res.data });
 		})
-		.catch(err => console.error(err.code));
-}
+		.catch((err) => console.error(err.code));
+};
 
 export const addCheers = (boozId) => (dispatch) => {
 	axios
@@ -710,11 +730,11 @@ export const getFuser = (fuser) => (dispatch) => {
 		});
 };
 
-export const getHowlCount = (docKey) => dispatch => {
-	axios.get(`/count/${docKey}`)
-	.then(res => {
-		dispatch({ type: SET_COUNT,
-		payload: res.data});
-	})
-	.catch(err => console.log(err));
-}
+export const getHowlCount = (docKey) => (dispatch) => {
+	axios
+		.get(`/count/${docKey}`)
+		.then((res) => {
+			dispatch({ type: SET_COUNT, payload: res.data });
+		})
+		.catch((err) => console.log(err));
+};
