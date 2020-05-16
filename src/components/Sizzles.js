@@ -204,7 +204,8 @@ Sizzles.propTypes = {
 const mapStateToProps = state => ({
   sizzles: state.user.sizzles,
   user: state.user,
-  clozang: state.user.credentials.clozang
+  clozang: state.user.credentials.clozang,
+  auth: state.firebase.auth
 });
 
 export default connect(mapStateToProps, { markSizzlesRead })(Sizzles);
