@@ -49,8 +49,7 @@ class home extends Component {
 		fusers: null,
 		fuserequests: null,
 		sentrequests: null,
-		boozulas: null,
-		sparkImages: null
+		boozulas: null
 	};
 
 	toggleFunx = () => {};
