@@ -4,6 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import OwlFuseButton from "../../util/OwlFuseButton";
 import AddSparkIcon from "../icons/AddSparkIcon";
 import CloseIcon from "../icons/CloseIcon";
+import SparkImage from './SparkImage';
 //MUI Stuff
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -38,8 +39,10 @@ const styles = theme => ({
 class PostSpark extends Component {
   state = {
     open: false,
+    mediaOpen: false,
     body: "",
-    errors: {}
+    errors: {},
+    sparkID: ""
   };
   
   UNSAFE_componentWillReceiveProps(nextProps){
@@ -51,6 +54,14 @@ class PostSpark extends Component {
       if(!nextProps.UI.errors && !nextProps.UI.loading){
           this.setState({ body: '', open: false, errors: {} })
       }
+  }
+
+  openMediaPanel = (sparkID) => {
+      this.setState({ sparkID, mediaOpen: true });
+  }
+
+  closeMediaPanel = () => {
+    this.setState({ mediaOpen: false });
   }
 
   handleOpen = () => {
@@ -65,7 +76,8 @@ class PostSpark extends Component {
   }
   handleSubmit = (event) => {
       event.preventDefault();
-      this.props.postSpark({ body: this.state.body })
+      this.props.postSpark({ body: this.state.body });
+      setTimeout(() => this.openMediaPanel(this.props.sparkID), 2000);
   }
   render() {
     const { errors } = this.state;
@@ -125,6 +137,16 @@ class PostSpark extends Component {
             </form>
           </DialogContent>
         </Dialog>
+        <Dialog
+        open={this.state.mediaOpen}
+        onClose={this.closeMediaPanel}
+        fullWidth
+        maxWidth="sm">
+          <DialogTitle variant="h5" className="orng">DO YOU WANT TO ADD EXTRA ELEMENTS TO YOUR SPARK?</DialogTitle>
+          <DialogContent>
+            <SparkImage sparkID={this.state.sparkID}/>
+          </DialogContent>
+        </Dialog>
       </Fragment>
     );
   }
@@ -133,11 +155,13 @@ class PostSpark extends Component {
 PostSpark.propTypes = {
   postSpark: PropTypes.func.isRequired,
   UI: PropTypes.object.isRequired,
-  clearErrors: PropTypes.func.isRequired
+  clearErrors: PropTypes.func.isRequired,
+  sparkID: PropTypes.string
 };
 
 const mapStateToProps = state => ({
-  UI: state.UI
+  UI: state.UI,
+  sparkID: state.data.sparkID
 });
 
 export default connect(
