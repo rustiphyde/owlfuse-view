@@ -27,10 +27,9 @@ class EditBoozulaImage extends Component {
   handleImageChange = event => {
     const { boozId } = this.props;
     const image = event.target.files[0];
-    console.log(image);
     const formData = new FormData();
     formData.append("image", image, image.name);
-    this.props.uploadBoozImage(this.props.boozId, formData);
+    this.props.uploadBoozImage(boozId, formData);
     console.log(boozId);
     this.handleClose();
   };
@@ -68,16 +67,14 @@ class EditBoozulaImage extends Component {
                   hidden="hidden"
                   onChange={this.handleImageChange}
                 />
-                <OwlFuseButton
-                  tip="EDIT BOOZULA IMAGE"
-                  onClick={this.handleEditPicture}
-                >
-                  <EditBoozulaImageIcon className="icon rust oaky" />
-                </OwlFuseButton>
               </div>
             </form>
           </DialogContent>
+          
           <DialogActions>
+          <Button onClick={this.handleEditPicture} color="primary" variant="contained">
+              EDIT
+            </Button>
             <Button onClick={this.handleClose} color="primary" variant="contained">
               CANCEL
             </Button>
