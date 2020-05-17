@@ -59,7 +59,12 @@ const styles = theme => ({
       spinnerDiv: {
         textAlign: 'center',
         margin: 'auto'
-      }
+      },
+      spimg: {
+        width: '100%',
+        objectFit: 'cover',
+        marginTop: '16px'
+      },
 });
 
 class SparkBox extends Component {
@@ -104,10 +109,21 @@ class SparkBox extends Component {
         stokeCount,
         userImage,
         userClozang,
-        stokes
+        stokes,
+        sparkImage,
+        emberable,
+        fire,
+        infernal
       },
       UI: { loading }
     } = this.props;
+
+    let sparkImg = sparkImage ? (
+			<Fragment>
+				<img src={sparkImage} alt="spark image" className={classes.spimg} />
+				<br />
+			</Fragment>
+		) : null;
 
     const dialogMarkup = loading ? (
       <div className={classes.spinnerDiv}>
@@ -133,6 +149,7 @@ class SparkBox extends Component {
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body1"><strong>{body}</strong></Typography>
+          {sparkImg}
             <HeatButton sparkId={sparkId}/>
           <span>{heatCount}</span>
           <OwlFuseButton tip="STOKES">
@@ -158,7 +175,7 @@ class SparkBox extends Component {
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
-          fullWidth maxWidth="sm"
+          fullWidth fullScreen
           >
           <OwlFuseButton
             tip="CLOSE"

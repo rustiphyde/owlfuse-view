@@ -40,7 +40,7 @@ const styles = theme => ({
         height: 160,
         objectFit: "cover",
         borderRadius: "16px 0 16px 0",
-        border: "2px solid #b7410e",
+        border: "2px solid #ff9800",
 
       },
       dialogContent: {
@@ -170,7 +170,7 @@ class ViewBoozulaDetails extends Component {
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
-          fullWidth maxWidth="sm"
+          fullWidth fullScreen
           className="charcoal-border">
           <OwlFuseButton
             tip="CLOSE"

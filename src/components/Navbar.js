@@ -22,6 +22,9 @@ import OkelistIcon from "./icons/OkelistIcon";
 import BoozulaIcon from "./icons/BoozulaIcon";
 import HowlIcon from "./icons/HowlIcon";
 import HeatIcon from "./icons/HeatIcon";
+import LoginIcon from './icons/LoginIcon';
+import SignUpIcon from './icons/SignUpIcon';
+import ResetPWIcon from './icons/ResetPWIcon';
 
 const styles = {
 	toggleIsActive: {
@@ -52,11 +55,6 @@ export class Navbar extends Component {
 		return (
 			<AppBar>
 				<Fragment>
-					<img
-						src={OwlFuseTitle}
-						alt="OwlFuse Title Logo"
-						className="nav-logo"
-					/>
 					<hr className="bar-separator" />
 					{authenticated ? (
 						<Fragment>
@@ -129,15 +127,21 @@ export class Navbar extends Component {
 						)
 					) : (
 						<Fragment>
-							<Button color="inherit" component={Link} to="/login">
-								<strong>LOGIN</strong>
-							</Button>
-							<Button color="inherit" component={Link} to="/signup">
-								<strong>SIGN UP</strong>
-							</Button>
-							<Button color="inherit" component={Link} to="/reset">
-								<strong>RESET PW</strong>
-							</Button>
+							<Link to="/login">
+									<OwlFuseButton tip="LOGIN">
+										<LoginIcon />
+									</OwlFuseButton>
+								</Link>
+								<Link to="/signup">
+									<OwlFuseButton tip="SIGN UP">
+										<SignUpIcon />
+									</OwlFuseButton>
+								</Link>
+								<Link to="/reset">
+									<OwlFuseButton tip="RESET PASSWORD">
+										<ResetPWIcon />
+									</OwlFuseButton>
+								</Link>
 						</Fragment>
 					)}
 				</Toolbar>

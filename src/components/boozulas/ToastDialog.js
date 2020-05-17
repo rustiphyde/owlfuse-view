@@ -157,7 +157,7 @@ class ToastDialog extends Component {
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
-          fullWidth maxWidth="sm"
+          fullWidth fullScreen
         >
           <OwlFuseButton
             tip="CLOSE"

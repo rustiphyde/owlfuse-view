@@ -11,6 +11,7 @@ import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogActions from '@material-ui/core/DialogActions';
 import CircularProgress from "@material-ui/core/CircularProgress";
 // Redux Stuff
 import { connect } from "react-redux";
@@ -41,8 +42,7 @@ class PostSpark extends Component {
     open: false,
     mediaOpen: false,
     body: "",
-    errors: {},
-    sparkID: ""
+    errors: {}
   };
   
   UNSAFE_componentWillReceiveProps(nextProps){
@@ -146,6 +146,11 @@ class PostSpark extends Component {
           <DialogContent>
             <SparkImage sparkID={this.state.sparkID}/>
           </DialogContent>
+          <DialogActions>
+          <Button onClick={this.closeMediaPanel} color="primary" variant="contained">
+              <strong className="orange">DONE</strong>
+            </Button>
+          </DialogActions>
         </Dialog>
       </Fragment>
     );

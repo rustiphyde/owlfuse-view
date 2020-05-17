@@ -34,7 +34,6 @@ const styles = theme => ({
     borderRadius: "16px 0 16px 0",
     borderTop: "2px solid #ff9800",
     borderBottom: "2px solid #ff9800",
-    borderLeft: "2px solid #ff9800",
     backgroundColor: "#263238"
   },
   candle: {
