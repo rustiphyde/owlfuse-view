@@ -150,7 +150,7 @@ class PostSpark extends Component {
           <DialogTitle variant="h5" className="orng">DO YOU WANT TO ADD EXTRA ELEMENTS TO YOUR SPARK?</DialogTitle>
           <DialogContent className={classes.mediaButtons}>
             <SparkImage sparkID={this.state.sparkID}/>
-            <SarkVideo sparkID={this.state.sparkID}/>
+            <SparkVideo sparkID={this.state.sparkID}/>
           </DialogContent>
           <DialogActions>
           <Button onClick={this.closeMediaPanel} color="primary" variant="contained">
