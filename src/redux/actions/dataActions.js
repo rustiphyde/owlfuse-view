@@ -237,6 +237,7 @@ export const postSparkImage = (newSparkImage) => (dispatch) => {
 			dispatch({ type: POST_SPARK_IMAGE, payload: res.data });
 			dispatch(clearErrors());
 			dispatch({ type: STOP_LOADING_UI});
+			dispatch({ type: SET_SPARK_ID, payload: res.id });
 		})
 		.catch((err) => {
 			dispatch({
