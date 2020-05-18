@@ -78,7 +78,7 @@ class UserSpark extends Component {
         fire,
         sparkId,
         sparkImage,
-        sparkiVideo,
+        sparkVideo,
         sparkLink,
         emberable,
         infernal
