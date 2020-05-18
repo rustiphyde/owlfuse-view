@@ -5,6 +5,7 @@ import OwlFuseButton from "../../util/OwlFuseButton";
 import AddSparkIcon from "../icons/AddSparkIcon";
 import CloseIcon from "../icons/CloseIcon";
 import SparkImage from './SparkImage';
+import SparkVideo from './SparkVideo';
 //MUI Stuff
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -34,6 +35,10 @@ const styles = theme => ({
   },
   textField: {
       textAlign: 'center'
+  },
+  mediaButtons: {
+    display: 'flex',
+    justifyContent: 'space-around'
   }
 });
 
@@ -143,8 +148,9 @@ class PostSpark extends Component {
         fullWidth
         maxWidth="sm">
           <DialogTitle variant="h5" className="orng">DO YOU WANT TO ADD EXTRA ELEMENTS TO YOUR SPARK?</DialogTitle>
-          <DialogContent>
+          <DialogContent className={classes.mediaButtons}>
             <SparkImage sparkID={this.state.sparkID}/>
+            <SarkVideo sparkID={this.state.sparkID}/>
           </DialogContent>
           <DialogActions>
           <Button onClick={this.closeMediaPanel} color="primary" variant="contained">
