@@ -1,2 +1,4 @@
+Sitemap: https://owlfuse.com/sitemap_index.xml
+
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *

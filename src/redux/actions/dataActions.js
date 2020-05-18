@@ -39,7 +39,6 @@ import {
 	SILENCE_FUSER,
 	UNSILENCE_FUSER,
 	SET_HOWLS,
-	SET_HOWL,
 	POST_HOWL,
 	SET_FUSER_HOWLS,
 	SET_FUSER,
@@ -47,7 +46,6 @@ import {
 	SET_COUNT,
 	ADD_COUNT,
 	SET_SPARK_ID,
-	SET_SPARK_IMAGES,
 } from "../types";
 import axios from "axios";
 
@@ -239,6 +237,28 @@ export const addSparkImage = (sparkID, formData) => (dispatch) => {
 			setTimeout(() => dispatch(getSparks()), 2000);
 		})
 		.catch((err) => console.log(err));
+};
+
+export const addSparkVideo = (sparkID, formData) => (dispatch) => {
+	axios
+		.post(`/video/spark/${sparkID}`, formData)
+		.then(() => {
+			setTimeout(() => dispatch(getSparks()), 2000);
+		})
+		.catch((err) => {
+			console.log(err.code);
+		});
+};
+
+export const addVideoLink = (sparkID, formData) => (dispatch) => {
+	axios
+		.post(`/video/link/${sparkID}`)
+		.then(() => {
+			setTimeout(() => dispatch(getSparks()), 2000);
+		})
+		.catch((err) => {
+			console.log(err.code);
+		});
 };
 
 export const postHowl = (friend, newHowl) => (dispatch) => {
