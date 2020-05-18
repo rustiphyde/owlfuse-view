@@ -116,7 +116,16 @@ class Spark extends Component {
 				<img src={sparkImage} alt="spark image" className={classes.spimg} />
 				<br />
 			</Fragment>
-		) : null;
+    ) : null;
+    
+    let sparkVid = sparkVideo ? (
+      <Fragment>
+        <video className={classes.spimg} controls>
+          <source src={sparkVideo}/>
+        </video>
+        <br/>
+      </Fragment>
+    ) : null;
 
 		const deleteButton =
 			authenticated && userClozang === clozang ? (
@@ -149,6 +158,7 @@ class Spark extends Component {
 						<b>{body}</b>
 					</Typography>
 					{sparkImg}
+          {sparkVid}
 					<HeatButton sparkId={sparkId} />
 					<span>{heatCount}</span>
 					<SparkBox

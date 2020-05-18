@@ -96,6 +96,15 @@ class UserSpark extends Component {
 				<br />
 			</Fragment>
     ) : null;
+
+    let sparkVid = sparkVideo ? (
+      <Fragment>
+        <video className={classes.spimg} controls>
+          <source src={sparkVideo}/>
+        </video>
+        <br/>
+      </Fragment>
+    ) : null;
     
     return (
       <Card className={classes.card}>
@@ -123,6 +132,7 @@ class UserSpark extends Component {
           <b>{body}</b>
         </Typography>
         {sparkImg}
+        {sparkVid}
         <HeatButton sparkId={sparkId} />
         <span>{heatCount}</span>
         <SparkBox
