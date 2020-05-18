@@ -55,3 +55,4 @@ export const ERASE_HOWL = 'ERASE_HOWL';
 export const SET_COUNT = 'SET_COUNT';
 export const ADD_COUNT = 'ADD_COUNT';
 export const SET_SPARK_ID = 'SET_SPARK_ID';
+export const POST_SPARK_IMAGE = 'POST_SPARK_IMAGE';

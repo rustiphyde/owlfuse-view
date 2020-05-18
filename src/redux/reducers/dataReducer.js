@@ -41,7 +41,7 @@ import {
 	SET_COUNT,
 	ADD_COUNT,
 	SET_SPARK_ID,
-	SET_SPARK_IMAGES
+	POST_SPARK_IMAGE
 } from "../types";
 
 const initialState = {
@@ -174,6 +174,11 @@ export default function (state = initialState, action) {
 				loading: false,
 			};
 		case POST_SPARK:
+			return {
+				...state,
+				sparks: [action.payload, ...state.sparks],
+			};
+		case POST_SPARK_IMAGE:
 			return {
 				...state,
 				sparks: [action.payload, ...state.sparks],

@@ -70,7 +70,6 @@ const styles = {
 class Spark extends Component {
 	state = {
 		fusers: null,
-		sparkImages: null,
 	};
 
 	componentDidMount() {
@@ -190,8 +189,7 @@ Spark.propTypes = {
 
 const mapStateToProps = (state) => ({
 	user: state.user,
-	fusers: state.data.fusers,
-	sparkImages: state.data.sparkImages,
+	fusers: state.data.fusers
 });
 
 const mapActionsToProps = {
