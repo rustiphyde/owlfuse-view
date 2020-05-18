@@ -55,6 +55,3 @@ export const ERASE_HOWL = 'ERASE_HOWL';
 export const SET_COUNT = 'SET_COUNT';
 export const ADD_COUNT = 'ADD_COUNT';
 export const SET_SPARK_ID = 'SET_SPARK_ID';
-export const ADD_SPARK_IMAGE = 'ADD_SPARK_IMAGE';
-export const ADD_SPARK_VIDEO = 'ADD_SPARK_VIDEO';
-export const ADD_VIDEO_LINK = 'ADD_VIDEO_LINK';
