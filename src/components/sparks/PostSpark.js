@@ -141,15 +141,17 @@ class PostSpark extends Component {
               </Button>
             </form>
           </DialogContent>
+          <DialogActions>
+          <SparkImage sparkID={this.state.sparkID} body={this.state.body} closeFunx={this.handleClose}/>
+          </DialogActions>
         </Dialog>
-        <Dialog
+        {/* <Dialog
         open={this.state.mediaOpen}
         onClose={this.closeMediaPanel}
         fullWidth
         maxWidth="sm">
           <DialogTitle variant="h5" className="orng">DO YOU WANT TO ADD EXTRA ELEMENTS TO YOUR SPARK?</DialogTitle>
           <DialogContent className={classes.mediaButtons}>
-            <SparkImage sparkID={this.state.sparkID}/>
             <SparkVideo sparkID={this.state.sparkID}/>
           </DialogContent>
           <DialogActions>
@@ -157,7 +159,7 @@ class PostSpark extends Component {
               <strong className="orange">DONE</strong>
             </Button>
           </DialogActions>
-        </Dialog>
+        </Dialog> */}
       </Fragment>
     );
   }
