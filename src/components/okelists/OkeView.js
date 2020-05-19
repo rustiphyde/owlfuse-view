@@ -112,6 +112,7 @@ class OkeView extends Component {
           open={this.state.open}
           onClose={this.handleClose}
           fullWidth
+          fullScreen
           maxWidth="sm"
         >
           <OwlFuseButton
