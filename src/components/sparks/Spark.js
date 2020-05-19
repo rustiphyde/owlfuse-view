@@ -157,7 +157,7 @@ class Spark extends Component {
 						<b>{body}</b>
 					</Typography>
 					{sparkImg}
-          {sparkVid}
+          			{sparkVid}
 					<HeatButton sparkId={sparkId} />
 					<span>{heatCount}</span>
 					<SparkBox
