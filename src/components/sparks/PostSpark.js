@@ -5,6 +5,7 @@ import OwlFuseButton from "../../util/OwlFuseButton";
 import AddSparkIcon from "../icons/AddSparkIcon";
 import CloseIcon from "../icons/CloseIcon";
 import SparkImage from './SparkImage';
+import SparkVideo from './SparkVideo';
 import AddTextIcon from '../icons/AddTextIcon';
 //MUI Stuff
 import Button from "@material-ui/core/Button";
@@ -148,7 +149,8 @@ class PostSpark extends Component {
           <OwlFuseButton onClick={this.handleOpen} tip="TEXT SPARK">
           <AddTextIcon className="icon5 orange oaky"/>
         </OwlFuseButton>
-            <SparkImage sparkID={this.state.sparkID}/>
+            <SparkImage/>
+            <SparkVideo/>            
           </DialogContent>
           <DialogActions>
           <Button onClick={this.closeMediaPanel} color="primary" variant="contained">
