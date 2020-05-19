@@ -46,7 +46,8 @@ import {
 	SET_COUNT,
 	ADD_COUNT,
 	SET_SPARK_ID,
-	POST_SPARK_IMAGE
+	POST_SPARK_IMAGE,
+	POST_SPARK_VIDEO
 } from "../types";
 import axios from "axios";
 
@@ -242,10 +243,12 @@ export const addSparkImage = (formData) => (dispatch) => {
 		.catch((err) => console.log(err));
 };
 
-export const addSparkVideo = (sparkID, formData) => (dispatch) => {
+export const addSparkVideo = (formData) => (dispatch) => {
 	axios
-		.post(`/video/spark/${sparkID}`, formData)
-		.then(() => {
+		.post(`/video/spark/`, formData)
+		.then((res) => {
+			dispatch({ type: POST_SPARK_VIDEO,
+			payload: res.data});
 			setTimeout(() => dispatch(getSparks()), 2000);
 		})
 		.catch((err) => {
