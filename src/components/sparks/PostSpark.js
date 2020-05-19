@@ -5,6 +5,7 @@ import OwlFuseButton from "../../util/OwlFuseButton";
 import AddSparkIcon from "../icons/AddSparkIcon";
 import CloseIcon from "../icons/CloseIcon";
 import SparkImage from './SparkImage';
+import AddTextIcon from '../icons/AddTextIcon';
 //MUI Stuff
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -77,7 +78,6 @@ class PostSpark extends Component {
   handleSubmit = (event) => {
       event.preventDefault();
       this.props.postSpark({ body: this.state.body });
-      setTimeout(() => this.openMediaPanel(this.props.sparkID), 2000);
   }
   
   render() {
@@ -88,7 +88,7 @@ class PostSpark extends Component {
     } = this.props;
     return (
       <Fragment>
-        <OwlFuseButton onClick={this.handleOpen} tip="SPARK AN INTEREST">
+        <OwlFuseButton onClick={this.openMediaPanel} tip="SPARK AN INTEREST">
           <AddSparkIcon className="icon5 rust oaky"/>
         </OwlFuseButton>
         <Dialog
@@ -143,8 +143,11 @@ class PostSpark extends Component {
         onClose={this.closeMediaPanel}
         fullWidth
         maxWidth="sm">
-          <DialogTitle variant="h5" className="orng">DO YOU WANT TO ADD EXTRA ELEMENTS TO YOUR SPARK?</DialogTitle>
+          <DialogTitle variant="h5" className="orng candle centered"><strong>WHAT KIND OF SPARK?</strong></DialogTitle>
           <DialogContent>
+          <OwlFuseButton onClick={this.handleOpen} tip="TEXT SPARK">
+          <AddTextIcon className="icon5 orange oaky"/>
+        </OwlFuseButton>
             <SparkImage sparkID={this.state.sparkID}/>
           </DialogContent>
           <DialogActions>

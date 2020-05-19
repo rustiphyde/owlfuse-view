@@ -17,7 +17,7 @@ class SparkImage extends Component{
         const image = event.target.files[0];
         const formData = new FormData();
         formData.append("image", image, image.name);
-        this.props.addSparkImage(this.props.sparkID, formData);
+        this.props.addSparkImage(formData);
       };
       handleAddImage = () => {
         const fileInput = document.getElementById("sparkImageInput");
@@ -26,7 +26,7 @@ class SparkImage extends Component{
 
     render(){
 
-        const { classes, sparkID } = this.props;
+        const { classes } = this.props;
 
         return(
            <Fragment>
@@ -37,9 +37,9 @@ class SparkImage extends Component{
                 onChange={this.handleImageAdd}
               />
                <OwlFuseButton
-               tip="ADD AN IMAGE"
+               tip="IMAGE SPARK"
                onClick={this.handleAddImage}>
-                   <AddImageIcon className="oaky orange icon16"/>
+                   <AddImageIcon className="oaky orange icon5"/>
                </OwlFuseButton>
            </Fragment>
         )
@@ -47,7 +47,6 @@ class SparkImage extends Component{
 }
 
 SparkImage.propTypes = {
-    sparkID: PropTypes.string,
     addSparkImage: PropTypes.func.isRequired
 }
 
