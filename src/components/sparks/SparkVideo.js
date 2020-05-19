@@ -39,7 +39,7 @@ class SparkVideo extends Component{
                <OwlFuseButton
                tip="ADD A VIDEO"
                onClick={this.handleAddVideo}>
-                   <AddVideoIcon className="oaky orange icon16"/>
+                   <AddVideoIcon className="oaky orange icon5"/>
                </OwlFuseButton>
            </Fragment>
         )
