@@ -17,7 +17,7 @@ class SparkVideo extends Component{
         const video = event.target.files[0];
         const formData = new FormData();
         formData.append("video", video, video.name);
-        this.props.addSparkVideo(this.props.sparkID, formData);
+        this.props.addSparkVideo(formData);
       };
       handleAddVideo = () => {
         const fileInput = document.getElementById("sparkVideoInput");
@@ -26,7 +26,7 @@ class SparkVideo extends Component{
 
     render(){
 
-        const { classes, sparkID } = this.props;
+        const { classes } = this.props;
 
         return(
            <Fragment>
@@ -47,7 +47,6 @@ class SparkVideo extends Component{
 }
 
 SparkVideo.propTypes = {
-    sparkID: PropTypes.string,
     addSparkVideo: PropTypes.func.isRequired
 }
 
