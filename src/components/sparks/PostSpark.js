@@ -5,7 +5,6 @@ import OwlFuseButton from "../../util/OwlFuseButton";
 import AddSparkIcon from "../icons/AddSparkIcon";
 import CloseIcon from "../icons/CloseIcon";
 import SparkImage from './SparkImage';
-import SparkVideo from './SparkVideo';
 //MUI Stuff
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -35,10 +34,6 @@ const styles = theme => ({
   },
   textField: {
       textAlign: 'center'
-  },
-  mediaButtons: {
-    display: 'flex',
-    justifyContent: 'space-around'
   }
 });
 
@@ -84,6 +79,7 @@ class PostSpark extends Component {
       this.props.postSpark({ body: this.state.body });
       setTimeout(() => this.openMediaPanel(this.props.sparkID), 2000);
   }
+  
   render() {
     const { errors } = this.state;
     const {
@@ -141,25 +137,22 @@ class PostSpark extends Component {
               </Button>
             </form>
           </DialogContent>
-          <DialogActions>
-          <SparkImage sparkID={this.state.sparkID} body={this.state.body} closeFunx={this.handleClose}/>
-          </DialogActions>
         </Dialog>
-        {/* <Dialog
+        <Dialog
         open={this.state.mediaOpen}
         onClose={this.closeMediaPanel}
         fullWidth
         maxWidth="sm">
           <DialogTitle variant="h5" className="orng">DO YOU WANT TO ADD EXTRA ELEMENTS TO YOUR SPARK?</DialogTitle>
-          <DialogContent className={classes.mediaButtons}>
-            <SparkVideo sparkID={this.state.sparkID}/>
+          <DialogContent>
+            <SparkImage sparkID={this.state.sparkID}/>
           </DialogContent>
           <DialogActions>
           <Button onClick={this.closeMediaPanel} color="primary" variant="contained">
               <strong className="orange">DONE</strong>
             </Button>
           </DialogActions>
-        </Dialog> */}
+        </Dialog>
       </Fragment>
     );
   }

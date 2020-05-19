@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import OwlFuseButton from '../../util/OwlFuseButton';
 import { withStyles } from '@material-ui/core/styles';
 import AddImageIcon from '../icons/AddImageIcon';
-import { postSparkImage } from '../../redux/actions/dataActions';
+import { addSparkImage } from '../../redux/actions/dataActions';
 
 const styles = {
 
@@ -17,8 +17,7 @@ class SparkImage extends Component{
         const image = event.target.files[0];
         const formData = new FormData();
         formData.append("image", image, image.name);
-        this.props.postSparkImage(formData);
-        setTimeout(() => this.props.closeFunx(), 3000);
+        this.props.addSparkImage(this.props.sparkID, formData);
       };
       handleAddImage = () => {
         const fileInput = document.getElementById("sparkImageInput");
@@ -40,7 +39,7 @@ class SparkImage extends Component{
                <OwlFuseButton
                tip="ADD AN IMAGE"
                onClick={this.handleAddImage}>
-                   <AddImageIcon className="foam orange icon16"/>
+                   <AddImageIcon className="oaky orange icon16"/>
                </OwlFuseButton>
            </Fragment>
         )
@@ -49,9 +48,7 @@ class SparkImage extends Component{
 
 SparkImage.propTypes = {
     sparkID: PropTypes.string,
-    postSparkImage: PropTypes.func.isRequired,
-    body: PropTypes.string,
-    closeFunx: PropTypes.func.isRequired
+    addSparkImage: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -61,7 +58,7 @@ const mapStateToProps = state => ({
 });
 
 const mapActionsToProps = {
-    postSparkImage
+    addSparkImage
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(SparkImage));

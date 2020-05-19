@@ -46,7 +46,6 @@ import {
 	SET_COUNT,
 	ADD_COUNT,
 	SET_SPARK_ID,
-	POST_SPARK_IMAGE,
 } from "../types";
 import axios from "axios";
 
@@ -219,6 +218,8 @@ export const postSpark = (newSpark) => (dispatch) => {
 		.then((res) => {
 			dispatch({ type: POST_SPARK, payload: res.data });
 			dispatch(clearErrors());
+			dispatch({ type: SET_SPARK_ID, payload: res.data.sparkId });
+			console.log(res.data.sparkId);
 			dispatch({ type: STOP_LOADING_UI });
 		})
 		.catch((err) => {
@@ -229,22 +230,13 @@ export const postSpark = (newSpark) => (dispatch) => {
 		});
 };
 
-export const postSparkImage = (newSparkImage) => (dispatch) => {
-	dispatch({ type: LOADING_UI });
+export const addSparkImage = (sparkID, formData) => (dispatch) => {
 	axios
-		.post(`/image/spark`, newSparkImage)
-		.then((res) => {
-			dispatch({ type: POST_SPARK_IMAGE, payload: res.data });
-			dispatch(clearErrors());
-			dispatch({ type: STOP_LOADING_UI});
-			dispatch({ type: SET_SPARK_ID, payload: res.id });
+		.post(`/image/spark/${sparkID}`, formData)
+		.then(() => {
+			setTimeout(() => dispatch(getSparks()), 2000);
 		})
-		.catch((err) => {
-			dispatch({
-				type:SET_ERRORS,
-				payload: err.response.data
-			});
-		});
+		.catch((err) => console.log(err));
 };
 
 export const addSparkVideo = (sparkID, formData) => (dispatch) => {
@@ -531,19 +523,6 @@ export const editHowl = (howlId, howlDetails, docKey) => (dispatch) => {
 		})
 		.catch((err) => console.log(err));
 };
-
-export const editSpark = (sparkId, sparkDetails ) => (dispatch) => {
-	dispatch({ type: LOADING_UI });
-	axios
-	.post(`/spark/edit/${sparkId}`, sparkDetails)
-	.then(() => {
-		dispatch({ type: STOP_LOADING_UI });
-		dispatch(getSparks());
-	})
-	.catch(err => {
-		console.log(err.code);
-	})
-}
 
 export const choozByList = (okeId) => (dispatch) => {
 	dispatch({ type: LOADING_UI });
