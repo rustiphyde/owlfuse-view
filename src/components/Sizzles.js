@@ -48,7 +48,7 @@ const Sizzles = (props) => {
   };
   const onMenuOpened = () => {
     let unreadSizzleIds = sizzles
-      .filter(sizz => !sizz.read)
+      .filter(sizz => !sizz.read && sizz.recipient === cloze)
       .map(sizz => sizz.sizzleId);
     props.markSizzlesRead(unreadSizzleIds);
   }
@@ -61,7 +61,7 @@ const Sizzles = (props) => {
         ? (sizzleIcon = (
             <Badge
               badgeContent= {
-                (sizzles.filter(sizz => sizz.read === false).length)
+                (sizzles.filter(sizz => sizz.read === false && sizz.recipient === cloze).length)
               }
               className="rusty"
             >
@@ -197,12 +197,10 @@ const Sizzles = (props) => {
 
 Sizzles.propTypes = {
   markSizzlesRead: PropTypes.func.isRequired,
-  sizzles: PropTypes.array.isRequired,
   clozang: PropTypes.string
 };
 
 const mapStateToProps = state => ({
-  sizzles: state.user.sizzles,
   user: state.user,
   clozang: state.user.credentials.clozang,
   auth: state.firebase.auth
