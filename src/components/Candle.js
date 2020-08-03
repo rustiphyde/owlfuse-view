@@ -157,7 +157,7 @@ class Candle extends Component {
               <hr />
               {location && (
                 <Fragment>
-                  <LocationIcon color="secondary" className="icon" />{" "}
+                  <Typography variant="body2"><strong className="rusty">Fusing From</strong></Typography>
                   <Typography variant="body2"><b>{location}</b></Typography>
                   <hr />
                 </Fragment>
