@@ -74,14 +74,15 @@ const Howl = (props) => {
 			cont.scrollTo(0, cont.scrollHeight);
 		}
 	}, [howls]);
-	let howlText = "";
+	let howlText;
 	let howlingsMarkup = !props.loading ? (
 		howls && howls.length > 0 ? (
 			
 			howls.map((howl) => {
 				if (howl.docKey === [props.fuser, props.clozang].sort().join("::")) {
-					let index = howls.indexOf(howl);
 					howlText = "";
+					let index = howls.indexOf(howl);
+					
 					return (
 						<div key={index + "54"}>
 							<div
