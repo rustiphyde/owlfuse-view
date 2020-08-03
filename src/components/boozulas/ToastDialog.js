@@ -129,7 +129,7 @@ class ToastDialog extends Component {
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body2" className="foam">
-            {dayjs(createdAt).format("h:mm a, MMMM DD, YYYY")}
+            {dayjs(createdAt).format("h:mm a, MMMM D, YYYY")}
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <CheersButton boozId={boozId}/>

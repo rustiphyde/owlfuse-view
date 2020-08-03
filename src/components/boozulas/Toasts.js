@@ -10,8 +10,8 @@ import Typography from "@material-ui/core/Typography";
 
 const styles = {
   toastImg: {
-    maxWidth: 80,
-    height: 80,
+    maxWidth: 64,
+    height: 64,
     objectFit: 'cover',
     borderRadius: '16px 0 16px 0',
     marginLeft: '32px',
@@ -19,11 +19,13 @@ const styles = {
 },
 toastData: {
     marginLeft: 16,
-    width: 208,
-    padding: 16,
+    width: 'auto',
+    padding: '8px 16px',
     borderRadius: '16px 0 16px 0',
     borderTop: '3px solid #f4db9d',
-    borderBottom: '3px solid #f4db9d'
+    borderBottom: '3px solid #f4db9d',
+    borderRight: '1px solid #f4db9d',
+    borderLeft: '1px solid #f4db9d'
 },
 };
 class Toasts extends Component {
@@ -45,7 +47,7 @@ class Toasts extends Component {
                       className={classes.toastImg}
                     />
                   </Grid>
-                  <Grid item sm={9}>
+                  <Grid item sm={8}>
                     <div className={classes.toastData}>
                       <Typography
                         variant="body2"
@@ -56,7 +58,7 @@ class Toasts extends Component {
                         <strong className="foam rust">{userClozang}</strong>
                       </Typography>
                       <Typography variant="body2" className="foam">
-                        {dayjs(createdAt).format('h:mm a, MMMM DD, YYYY')}
+                        {dayjs(createdAt).format('h:mm a, MMMM D, YYYY')}
                       </Typography>
                       <hr className="bar-separator"/>
                       <Typography variant="body1" className="foam">{body}</Typography>
