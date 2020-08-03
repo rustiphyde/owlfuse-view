@@ -30,12 +30,11 @@ import InfernalIcon from './icons/InfernalIcon';
 import { connect, useSelector } from "react-redux";
 import { markSizzlesRead } from "../redux/actions/userActions";
 
+
 const Sizzles = (props) => {
   
 
   const [ anchorEl, setAnchorEl ] = useState(null);
-
-  const cloze = props.clozang;
 
   useFirestoreConnect({ collection: "Sizzles", orderBy: ["createdAt", "desc"]});
   const sizzles = useSelector(state => state.firestore.ordered.Sizzles);
@@ -48,7 +47,7 @@ const Sizzles = (props) => {
   };
   const onMenuOpened = () => {
     let unreadSizzleIds = sizzles
-      .filter(sizz => !sizz.read && sizz.recipient === cloze)
+      .filter(sizz => !sizz.read && sizz.recipient === props.clozang)
       .map(sizz => sizz.sizzleId);
     props.markSizzlesRead(unreadSizzleIds);
   }
@@ -61,7 +60,7 @@ const Sizzles = (props) => {
         ? (sizzleIcon = (
             <Badge
               badgeContent= {
-                (sizzles.filter(sizz => sizz.read === false && sizz.recipient === cloze).length)
+                (sizzles.filter(sizz => sizz.read === false && sizz.recipient === props.clozang).length)
               }
               className="rusty"
             >
@@ -129,7 +128,7 @@ const Sizzles = (props) => {
                   style={{ backgroundColor: "#fefaf4" }}
                 >
                   {icon}{
-                    sizz.type === "spark"
+                    sizz.type === "heat"
                     || sizz.type === "stoke" 
                     || sizz.type === "fire" 
                     || sizz.type === "infernal" ? (
@@ -139,7 +138,7 @@ const Sizzles = (props) => {
                     color={iconColor}
                     variant="body1"
                     to={`/${sizz.recipient}/spark/${sizz.sizzleId}`}
-                  > {verb}
+                  > {verb} {time}
                   </Typography>
                     ) :
                       sizz.type === "cheers" 
@@ -150,7 +149,7 @@ const Sizzles = (props) => {
                     color={iconColor}
                     variant="body1"
                     to={`/${sizz.recipient}/boozula/${sizz.sizzleId}`}
-                  > {verb}
+                  > {verb} {time}
                   </Typography>
                     ) : (
                       <Typography
@@ -159,7 +158,7 @@ const Sizzles = (props) => {
                     color={iconColor}
                     variant="body1"
                     to={`/${sizz.sender}`}
-                  > {verb}
+                  > {verb} {time}
                   </Typography>
                     )
                   }
@@ -187,8 +186,10 @@ const Sizzles = (props) => {
           open={Boolean(anchorEl)}
           onClose={handleClose}
           onEntered={onMenuOpened}
-        >
-          <strong>SIZZLES</strong>
+        > 
+        <div style={{backgroundColor: "#263238", textAlign: "center"}}>
+        <strong style={{color: "#ff9800"}}>SIZZLES</strong>
+        </div>          
           {sizzlesMarkup}
         </Menu>
       </Fragment>
@@ -197,7 +198,8 @@ const Sizzles = (props) => {
 
 Sizzles.propTypes = {
   markSizzlesRead: PropTypes.func.isRequired,
-  clozang: PropTypes.string
+  clozang: PropTypes.string,
+  sizzles: PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => ({
