@@ -131,9 +131,7 @@ class SparkBox extends Component {
         </div>
     ) : (
      <Grid container spacing={6} className="charcoal-border">
-        <Grid item sm={4}>
-          <img src={userImage} alt="Profile" className={classes.profileImage} />
-        </Grid>
+
         <Grid item sm={6} className={classes.stuff}>
           <Typography
             component={Link}
@@ -145,7 +143,7 @@ class SparkBox extends Component {
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body2" color="textSecondary">
-            {dayjs(createdAt).format("h:mm a, MMMM DD YYYY")}
+            {dayjs(createdAt).format("h:mm a, MMMM D, YYYY")}
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body1"><strong>{body}</strong></Typography>

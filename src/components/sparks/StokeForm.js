@@ -13,7 +13,7 @@ import { addStoke } from "../../redux/actions/dataActions";
 
 const styles = {
     form: {
-        borderRadius: 16,
+        borderRadius: '16px 0 16px 0',
         padding: 16,
     border: '6px double #ff9800',
       backgroundColor: '#fefaf4'
@@ -25,7 +25,8 @@ const styles = {
       margin: "20px auto 2px",
       width: "144px",
       position: 'relative',
-      color: '#ff9800'
+      color: '#ff9800',
+      borderRadius: '16px 0 16px 0'
     },
     gridItem: {
       textAlign: "center",

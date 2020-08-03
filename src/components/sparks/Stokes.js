@@ -56,7 +56,7 @@ class Stokes extends Component {
                         <strong>{userClozang}</strong>
                       </Typography>
                       <Typography variant="body2" color="textSecondary">
-                        {dayjs(createdAt).format("h:mm a, MM/DD/YY")}
+                        {dayjs(createdAt).format("h:mm a, MMMM D, YYYY")}
                       </Typography>
                       <Typography variant="body2" className="breaks">{body}</Typography>
                     </div>
