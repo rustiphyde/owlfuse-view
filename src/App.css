@@ -9,6 +9,10 @@
   --beerfoam: #f4db9d;
 }
 
+html { 
+  overflow-y: scroll;
+}
+
 html,
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
