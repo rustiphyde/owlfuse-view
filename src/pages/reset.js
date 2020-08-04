@@ -77,6 +77,7 @@ class reset extends Component {
               value={this.state.email}
               onChange={this.handleChange}
               fullWidth
+              autoComplete="email"
             />
             {errors.reset && (
               <Typography variant="body2" className={classes.customError}>

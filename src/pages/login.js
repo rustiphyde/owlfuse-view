@@ -77,7 +77,7 @@ class login extends Component {
               value={this.state.email}
               onChange={this.handleChange}
               fullWidth
-              autoComplete={false}
+              autoComplete="email"
             />
             <TextField
               id="password"
@@ -90,7 +90,7 @@ class login extends Component {
               value={this.state.password}
               onChange={this.handleChange}
               fullWidth
-              autoComplete={false}
+              autoComplete="current-password"
             />
             {errors.general && (
               <Typography variant="body2" className={classes.customError}>
