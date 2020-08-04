@@ -64,7 +64,7 @@ const Howl = (props) => {
 			if (cont) {
 				cont.scrollTo(0, cont.scrollHeight);
 			}
-		}, 3000);
+		}, 5000);
 	}, []);
 
 	useEffect(() => {

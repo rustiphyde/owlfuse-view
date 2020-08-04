@@ -149,6 +149,7 @@ class Candle extends Component {
                 to={`/${clozang}`}
                 color="primary"
                 variant="h5"
+                style={{textDecoration: "none"}}
               >
                 <strong>{clozang}</strong>
               </MuiLink>

@@ -38,6 +38,13 @@ const Howler = props => {
     const openHowl = () => {
         props.closeMenu();
         props.getFuser(props.howler);
+        setTimeout(() => {
+
+			let cont = document.getElementById("howl-container");
+			if (cont) {
+				cont.scrollTo(0, cont.scrollHeight);
+			}
+		}, 500);
 
     }
 
