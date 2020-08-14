@@ -149,7 +149,7 @@ class PostSpark extends Component {
           <OwlFuseButton onClick={this.handleOpen} tip="TEXT SPARK">
           <AddTextIcon className="icon5 orange oaky"/>
         </OwlFuseButton>
-            <SparkImage/>
+            <SparkImage closeFunx={this.closeMediaPanel}/>
             <SparkVideo/>            
           </DialogContent>
           <DialogActions>
