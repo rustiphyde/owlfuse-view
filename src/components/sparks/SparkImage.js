@@ -13,6 +13,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogActions from "@material-ui/core/DialogActions";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { Typography } from "@material-ui/core";
 
 const styles = (theme) => ({
 	...theme.themeMinusPalette,
@@ -60,6 +61,10 @@ class SparkImage extends Component {
 	handleChange = (event) => {
 		this.setState({ [event.target.name]: event.target.value });
 	};
+	handlePress = () => {
+		const buttonPress = document.getElementById('postButton');
+		buttonPress.click();
+	}
 	handleSubmit = (event) => {
 		event.preventDefault();
 		this.formData.append("body", this.state.body);
@@ -100,34 +105,32 @@ class SparkImage extends Component {
                     <TextField
                 name="body"
                 type="text"
-                label="CAPTION YOUR SPARK IMAGE"
+                label="SPARK AN INTEREST"
                 multiline
                 rows="3"
-                placeholder="CAPTION IT"
+                placeholder="SPARK IT UP"
                 className={`${this.props.classes.textField} ${this.props.classes.displayLinebreaks}`}
                 onChange={this.handleChange}
                 fullWidth
               />
+			  <hr/>
+			  <strong className="candle centered rusty">CHOOSE YOUR IMAGE</strong>
               <OwlFuseButton tip="IMAGE SPARK" onClick={this.handleAddImage}>
 						<AddImageIcon className="oaky orange icon5" />
 					</OwlFuseButton>
-              <Button
-                type="submit"
+              <button
+				type="submit"
                 variant="contained"
                 color="primary"
-                className={classes.submitButton}
-                disabled={loading}
-              >
-                DONE
-                {loading && (
-                  <CircularProgress
-                    size={30}
-                    className={classes.progressSpinner}
-                  />
-                )}
-              </Button>
+				disabled={loading}
+				id="postButton"
+				hidden="hidden"
+              ></button>
                     </form>
                     <DialogActions>
+					<Button onClick={this.handlePress} color="primary" variant="contained">
+              <strong className="orange">SUBMIT</strong>
+            </Button>
           <Button onClick={this.handleClose} color="primary" variant="contained">
               <strong className="orange">CANCEL</strong>
             </Button>
