@@ -238,7 +238,6 @@ export const addSparkImage = (formData) => (dispatch) => {
 		.then((res) => {
 			dispatch({ type: POST_SPARK_IMAGE,
 			payload: res.data});
-			setTimeout(() => dispatch(getSparks()), 2000);
 		})
 		.catch((err) => console.log(err));
 };
