@@ -27,6 +27,6 @@ yarn-error.log*
 /src/util/adminUser.js
 
 
-/.firebase
-/.firebase/hosting.YnVpbGQ.cache
-/.firebase/hosting.cHVibGlj.cache
+.firebase
+.firebase/hosting.YnVpbGQ.cache
+.firebase/hosting.cHVibGlj.cache
