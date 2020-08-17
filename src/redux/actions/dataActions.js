@@ -248,7 +248,6 @@ export const addSparkVideo = (formData) => (dispatch) => {
 		.then((res) => {
 			dispatch({ type: POST_SPARK_VIDEO,
 			payload: res.data});
-			setTimeout(() => dispatch(getSparks()), 2000);
 		})
 		.catch((err) => {
 			console.log(err.code);
