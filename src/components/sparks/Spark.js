@@ -93,9 +93,11 @@ class Spark extends Component {
 				fire,
 				sparkId,
 				emberable,
+				embered,
 				infernal,
 				sparkImage,
 				sparkVideo,
+				sparkAudio,
 				sparkLink,
 			},
 			user: {
