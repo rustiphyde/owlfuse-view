@@ -13,8 +13,6 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogActions from "@material-ui/core/DialogActions";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { Typography } from "@material-ui/core";
-import { POST_SPARK_VIDEO } from "../../redux/types";
 
 const styles = (theme) => ({
 	...theme.themeMinusPalette,
@@ -40,6 +38,7 @@ class SparkVideo extends Component {
 	state = {
 		open: false,
 		body: "",
+		embedLink: ""
 	};
 
 	formData = new FormData();
@@ -50,15 +49,6 @@ class SparkVideo extends Component {
 	handleClose = () => {
 		this.setState({ open: false });
 	};
-
-	handleVideoAdd = (event) => {
-		const video = event.target.files[0];
-		this.formData.append("video", video, video.name);
-	};
-	handleAddVideo = () => {
-		const fileInput = document.getElementById("sparkVideoInput");
-		fileInput.click();
-	};
 	handleChange = (event) => {
 		this.setState({ [event.target.name]: event.target.value });
 	};
@@ -68,8 +58,10 @@ class SparkVideo extends Component {
 	}
 	handleSubmit = (event) => {
 		event.preventDefault();
-		this.formData.append("body", this.state.body);
-		this.props.addSparkVideo(this.formData);
+		this.props.addSparkVideo({
+			body: this.state.body,
+			embedLink: this.state.embedLink
+		});
 		this.handleClose();
 		this.props.closeFunx();
 	};
@@ -97,12 +89,6 @@ class SparkVideo extends Component {
                     <DialogTitle variant="h5" className="orng">POST A VIDEO SPARK</DialogTitle>
                     <DialogContent className="orange-border">
 					<form onSubmit={this.handleSubmit}>
-                    <input
-						type="file"
-						id="sparkVideoInput"
-						hidden="hidden"
-						onChange={this.handleVideoAdd}
-					/>
                     <TextField
                 name="body"
                 type="text"
@@ -115,10 +101,16 @@ class SparkVideo extends Component {
                 fullWidth
               />
 			  <hr/>
-			  <strong className="candle centered rusty">CHOOSE YOUR VIDEO</strong>
-              <OwlFuseButton tip="VIDEO SPARK" onClick={this.handleAddVideo}>
-						<AddVideoIcon className="oaky orange icon5" />
-					</OwlFuseButton>
+			  <TextField
+                name="embedLink"
+                type="text"
+                label="PASTE VIDEO LINK"
+                placeholder="VIDEO LINK GOES HERE"
+                className={`${this.props.classes.textField} ${this.props.classes.displayLinebreaks}`}
+                onChange={this.handleChange}
+                fullWidth
+              />
+			  <hr/>
               <button
 				type="submit"
                 variant="contained"
