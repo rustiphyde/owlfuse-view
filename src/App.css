@@ -346,6 +346,14 @@ input {
   font-size: .75rem;
 }
 
+audio::-webkit-media-controls-panel {
+  background-color: var(--rust);
+}
+
+audio::-webkit-media-controls-enclosure {
+  border-radius: 16px 0 16px 0;
+}
+
 .dark {
   background-color: var(--background-two);
   width: 960px;
