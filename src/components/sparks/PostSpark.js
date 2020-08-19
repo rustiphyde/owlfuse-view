@@ -6,6 +6,7 @@ import AddSparkIcon from "../icons/AddSparkIcon";
 import CloseIcon from "../icons/CloseIcon";
 import SparkImage from './SparkImage';
 import SparkVideo from './SparkVideo';
+import SparkAudio from './SparkAudio';
 import AddTextIcon from '../icons/AddTextIcon';
 //MUI Stuff
 import Button from "@material-ui/core/Button";
@@ -150,7 +151,8 @@ class PostSpark extends Component {
           <AddTextIcon className="icon5 orange oaky"/>
         </OwlFuseButton>
             <SparkImage closeFunx={this.closeMediaPanel}/>
-            <SparkVideo/>            
+            <SparkVideo closeFunx={this.closeMediaPanel}/>
+            <SparkAudio closeFunx={this.closeMediaPanel}/>            
           </DialogContent>
           <DialogActions>
           <Button onClick={this.closeMediaPanel} color="primary" variant="contained">
