@@ -42,7 +42,8 @@ import {
 	ADD_COUNT,
 	SET_SPARK_ID,
 	POST_SPARK_IMAGE,
-	POST_SPARK_VIDEO
+	POST_SPARK_VIDEO,
+	POST_SPARK_AUDIO
 } from "../types";
 
 const initialState = {
@@ -185,6 +186,11 @@ export default function (state = initialState, action) {
 				sparks: [action.payload, ...state.sparks],
 			};
 		case POST_SPARK_VIDEO:
+			return {
+				...state,
+				sparks: [action.payload, ...state.sparks],
+			};
+			case POST_SPARK_AUDIO:
 			return {
 				...state,
 				sparks: [action.payload, ...state.sparks],
