@@ -9,7 +9,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import Avatar from '@material-ui/core/Avatar';
+import Avatar from "@material-ui/core/Avatar";
 
 // Components
 import ExtinguishSpark from "./ExtinguishSpark";
@@ -40,10 +40,10 @@ const styles = {
 	},
 	content: {
 		padding: 25,
-		width: '100%',
+		width: "100%",
 		borderRadius: "0",
 		borderTop: "2px solid #ff9800",
-    borderBottom: "2px solid #ff9800",
+		borderBottom: "2px solid #ff9800",
 		margin: "8px 0",
 		backgroundColor: "#fff",
 	},
@@ -53,18 +53,18 @@ const styles = {
 		border: "2px solid #ff9800",
 	},
 	spimg: {
-    width: '100%',
-    objectFit: 'cover',
-    marginTop: '16px'
-  },
-  clozangBar: {
-    display: 'flex',
-  },
-  clozCol: {
-    diplay: 'flex',
-    flexDirection: 'column',
-    marginBottom: '16px'
-  }
+		width: "100%",
+		objectFit: "cover",
+		marginTop: "16px",
+	},
+	clozangBar: {
+		display: "flex",
+	},
+	clozCol: {
+		diplay: "flex",
+		flexDirection: "column",
+		marginBottom: "16px",
+	},
 };
 
 class Spark extends Component {
@@ -117,16 +117,30 @@ class Spark extends Component {
 				<img src={sparkImage} alt="spark image" className={classes.spimg} />
 				<br />
 			</Fragment>
-    ) : null;
-    
-    let sparkVid = sparkVideo ? (
-      <Fragment>
-        <video className={classes.spimg} controls>
-          <source src={sparkVideo}/>
-        </video>
-        <br/>
-      </Fragment>
-    ) : null;
+		) : null;
+
+		let sparkVid = sparkVideo ? (
+			<Fragment>
+				<iframe
+					className={classes.spimg}
+					src={sparkVideo}
+					allowFullScreen
+					height="315"
+					width="560"
+				></iframe>
+				<br />
+			</Fragment>
+		) : null;
+
+		let sparkAud = sparkAudio ? (
+			<Fragment>
+				<hr className="bar-separator" />
+				<audio controls style={{backgroundColor: "transparent", outline: "none"}}>
+					<source style={{backgroundColor: "#ff9800", borderRadius: "16px 0 16px 0"}} src={sparkAudio}></source>
+				</audio>
+				<hr className="bar-separator" />
+			</Fragment>
+		) : null;
 
 		const deleteButton =
 			authenticated && userClozang === clozang ? (
@@ -135,31 +149,34 @@ class Spark extends Component {
 		return (
 			<Card className={classes.card}>
 				<CardContent className={classes.content}>
-          <div className={classes.clozangBar}>
-          <span><Avatar src={userImage} className={classes.image}></Avatar></span>
-					<div className={classes.clozCol}>
-          <span><Typography
-						variant="h6"
-						color="primary"
-						component={Link}
-						to={`/${userClozang}`}
-					>
-						<strong>{userClozang}</strong>
-					</Typography></span>
-					<span>{fuseButton}</span>
-          <Typography variant="body2" color="textSecondary">
-						{dayjs(createdAt).fromNow()}
-					</Typography>
-          </div>
-          
-          </div>
-        
-					
+					<div className={classes.clozangBar}>
+						<span>
+							<Avatar src={userImage} className={classes.image}></Avatar>
+						</span>
+						<div className={classes.clozCol}>
+							<span>
+								<Typography
+									variant="h6"
+									color="primary"
+									component={Link}
+									to={`/${userClozang}`}
+								>
+									<strong>{userClozang}</strong>
+								</Typography>
+							</span>
+							<span>{fuseButton}</span>
+							<Typography variant="body2" color="textSecondary">
+								{dayjs(createdAt).fromNow()}
+							</Typography>
+						</div>
+					</div>
+
 					<Typography variant="body2" color="primary" className="breaks">
 						<b>{body}</b>
 					</Typography>
 					{sparkImg}
-          			{sparkVid}
+					{sparkVid}
+					{sparkAud}
 					<HeatButton sparkId={sparkId} />
 					<span>{heatCount}</span>
 					<SparkBox
@@ -191,7 +208,7 @@ Spark.propTypes = {
 
 const mapStateToProps = (state) => ({
 	user: state.user,
-	fusers: state.data.fusers
+	fusers: state.data.fusers,
 });
 
 const mapActionsToProps = {
