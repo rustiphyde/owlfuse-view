@@ -47,7 +47,8 @@ import {
 	ADD_COUNT,
 	SET_SPARK_ID,
 	POST_SPARK_IMAGE,
-	POST_SPARK_VIDEO
+	POST_SPARK_VIDEO,
+	POST_SPARK_AUDIO
 } from "../types";
 import axios from "axios";
 
@@ -234,17 +235,17 @@ export const postSpark = (newSpark) => (dispatch) => {
 
 export const addSparkImage = (formData) => (dispatch) => {
 	axios
-		.post(`/image/spark/`, formData)
+		.post(`/image/spark`, formData)
 		.then((res) => {
 			dispatch({ type: POST_SPARK_IMAGE,
 			payload: res.data});
 		})
-		.catch((err) => console.log(err));
+		.catch((err) => console.log(err.code));
 };
 
 export const addSparkVideo = (formData) => (dispatch) => {
 	axios
-		.post(`/video/spark/`, formData)
+		.post(`/video/spark`, formData)
 		.then((res) => {
 			dispatch({ type: POST_SPARK_VIDEO,
 			payload: res.data});
@@ -254,15 +255,14 @@ export const addSparkVideo = (formData) => (dispatch) => {
 		});
 };
 
-export const addVideoLink = (sparkID, formData) => (dispatch) => {
+export const addSparkAudio = (formData) => (dispatch) => {
 	axios
-		.post(`/video/link/${sparkID}`)
-		.then(() => {
-			setTimeout(() => dispatch(getSparks()), 2000);
+		.post(`/audio/spark`, formData)
+		.then((res) => {
+			dispatch({ type: POST_SPARK_AUDIO,
+			payload: res.data});
 		})
-		.catch((err) => {
-			console.log(err.code);
-		});
+		.catch((err) => console.log(err.code));
 };
 
 export const postHowl = (friend, newHowl) => (dispatch) => {
