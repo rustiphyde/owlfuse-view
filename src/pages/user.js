@@ -47,11 +47,11 @@ class user extends Component {
   render() {
     const {  clozang: username } = this.props;
     const { sparks, boozulas, loading } = this.props.data;
+    const { loading: loaded } = this.props.UI
     const { sparkIdParam, boozIdParam } = this.state;
 
-    let sparksMarkup = loading ? (
-      <SparkSkeleton length={2}/>
-    ) : sparks === null || sparks.length === 0 ? (
+    let sparksMarkup = 
+    sparks === null || sparks.length === 0 ? (
       <strong className="center">This user has not lit any sparks yet.</strong>
     ) : !sparkIdParam ? (
       sparks.map(spark => <UserSpark key={spark.sparkId} spark={spark} />)
@@ -63,9 +63,7 @@ class user extends Component {
       })
     );
 
-    let boozulasMarkup = loading ? (
-      <BoozulaSkeleton />
-    ) : boozulas === null || boozulas.length === 0 ? (
+    let boozulasMarkup = boozulas === null || boozulas.length === 0 ? (
       <strong className="center">This user has not created any boozulas yet.</strong>
     ) : !boozIdParam ? (
       boozulas.map(boozula => (
@@ -80,7 +78,8 @@ class user extends Component {
     );
 
     return (
-      <Grid container spacing={2}>
+      loading || loaded ? (
+        <Grid container spacing={2}>
         <Grid item sm={4} xs={12}>
         
           <div className="sparkTitle">
@@ -90,11 +89,35 @@ class user extends Component {
           <div className="candle" width="100%">
             <FlameIcon className="icon7"/>
         </div>
-          {this.state.profile === null ? (
-            <CandleSkeleton/>
-          ) : (
-            <StaticProfile profile={this.state.profile} username={username}/>
-          )}
+          <CandleSkeleton/>            
+        </Grid>
+        <Grid item sm={8} xs={12}>
+          <div className="sparkTitle">
+            <strong>SPARKS</strong>
+            <hr className="bar-separator" />
+          </div>
+          <SparkSkeleton length={2}/>
+          <div className="sparkTitle">
+            <strong>BOOZULAS</strong>
+            <hr className="bar-separator" />
+          </div>
+          <BoozulaSkeleton />
+        </Grid>        
+      </Grid>
+      ) : (
+        this.state.profile !== null && !loading ? (
+          <Grid container spacing={2}>
+        <Grid item sm={4} xs={12}>
+        
+          <div className="sparkTitle">
+            <strong>CANDLE</strong>
+            <hr className="bar-separator" />
+          </div>
+          <div className="candle" width="100%">
+            <FlameIcon className="icon7"/>
+        </div>
+          <StaticProfile profile={this.state.profile} username={username}/>         
+            
         </Grid>
         <Grid item sm={8} xs={12}>
           <div className="sparkTitle">
@@ -107,9 +130,47 @@ class user extends Component {
             <hr className="bar-separator" />
           </div>
           {boozulasMarkup}
-        </Grid>
-        
+        </Grid>        
       </Grid>
+          )
+          : ( this.props.match.params.clozang.split("")[0] === ">" ? (
+            <Grid container spacing={2}>
+        <Grid item sm={4} xs={12}>
+        
+          <div className="sparkTitle">
+            <strong>CANDLE</strong>
+            <hr className="bar-separator" />
+          </div>
+          <div className="candle" width="100%">
+            <FlameIcon className="icon7"/>
+        </div>
+          <CandleSkeleton/>            
+        </Grid>
+        <Grid item sm={8} xs={12}>
+          <div className="sparkTitle">
+            <strong>SPARKS</strong>
+            <hr className="bar-separator" />
+          </div>
+          <SparkSkeleton length={2}/>
+          <div className="sparkTitle">
+            <strong>BOOZULAS</strong>
+            <hr className="bar-separator" />
+          </div>
+          <BoozulaSkeleton />
+        </Grid>        
+      </Grid>
+          ) : (
+            <Grid container spacing={2}>
+              <div className="sparkTitle centered">
+                <strong>404 Page Not Found</strong>
+                <hr className="bar-separator" />
+              </div>
+            </Grid>
+            
+      ))
+       
+      )
+      
     );
   }
 }
@@ -121,7 +182,8 @@ user.propTypes = {
 
 const mapStateToProps = state => ({
   data: state.data,
-  clozang: state.user.credentials.clozang
+  clozang: state.user.credentials.clozang,
+  UI: state.UI
 });
 
 export default connect(

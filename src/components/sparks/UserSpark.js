@@ -69,22 +69,25 @@ class UserSpark extends Component {
     const {
       classes,
       spark: {
-        userClozang,
-        userImage,
-        heatCount,
-        stokeCount,
-        body,
-        createdAt,
-        fire,
-        sparkId,
-        sparkImage,
-        sparkVideo,
-        sparkLink,
-        emberable,
-        infernal
-      },
+				userClozang,
+				userImage,
+				heatCount,
+				stokeCount,
+				body,
+				createdAt,
+				fire,
+				sparkId,
+				emberable,
+				embered,
+				infernal,
+				sparkImage,
+				sparkVideo,
+				sparkAudio,
+				sparkLink,
+			},
       user: { authenticated,  credentials: { clozang }   }
     } = this.props;
+
 
     const deleteButton = authenticated && userClozang === clozang ? (
       <ExtinguishSpark sparkId={sparkId}/>
@@ -98,13 +101,29 @@ class UserSpark extends Component {
     ) : null;
 
     let sparkVid = sparkVideo ? (
-      <Fragment>
-        <video className={classes.spimg} controls>
-          <source src={sparkVideo}/>
-        </video>
-        <br/>
-      </Fragment>
-    ) : null;
+			<Fragment>
+				<iframe
+					className={classes.spimg}
+					src={sparkVideo}
+					allowFullScreen
+					height="315"
+					width="560"
+				></iframe>
+				<br />
+			</Fragment>
+		) : null;
+
+		let sparkAud = sparkAudio ? (
+			<Fragment>
+				<hr className="bar-separator" />
+				<div id="aPlayer" className="centered">
+				<audio controls style={{backgroundColor: "transparent", outline: "none"}}>
+					<source style={{backgroundColor: "#ff9800", borderRadius: "16px 0 16px 0"}} src={sparkAudio}></source>
+				</audio>
+				</div>
+				<hr className="bar-separator" />
+			</Fragment>
+		) : null;
     
     return (
       <Card className={classes.card}>
@@ -133,6 +152,7 @@ class UserSpark extends Component {
         </Typography>
         {sparkImg}
         {sparkVid}
+        {sparkAud}
         <HeatButton sparkId={sparkId} />
         <span>{heatCount}</span>
         <SparkBox

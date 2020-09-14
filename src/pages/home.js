@@ -100,7 +100,7 @@ class home extends Component {
 		} = this.props;
 
 		let boozulasMarkup = authenticated ? (
-			!loading ? (
+			!loading && boozulas ? (
 				boozulas.filter(filt => filt.userClozang === clozang).length > 0 ? (
 					boozulas.filter(filt => filt.userClozang === clozang).map(boozula => <Boozula key={boozula.boozId} boozula={boozula}/> )
 				) : (
@@ -118,7 +118,7 @@ class home extends Component {
 		) : ( <strong className="candle centered">Please Login</strong>)
 
 		let recentSparksMarkup = authenticated ? (
-			!loading ? (
+			!loading && sparks ? (
 				!this.state.toggleChecked ? (
 					sparks.filter(filt => filt.userClozang === clozang).length > 0 ? (
 						sparks
@@ -157,7 +157,7 @@ class home extends Component {
 		
 
 		let fusersMarkup = authenticated ? (
-			!loading ? (
+			!loading && fusers ? (
 				fusers && fusers.length > 1 && fusers !== [] && fusers !== null ? (
 					fusers
 						.filter(fuse => fusers.indexOf(fuse) !== 0)

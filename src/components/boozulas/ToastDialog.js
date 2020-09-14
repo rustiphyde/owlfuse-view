@@ -68,10 +68,22 @@ class ToastDialog extends Component {
     newPath: ''
   };
   componentDidMount(){
-      if(this.props.openDialog){
-          this.handleOpen();
-      }
-  }
+    if(this.props.openDialog){
+        this.handleOpen();
+        window.addEventListener("beforeunload", this.handleRefresh());
+    }
+    
+}
+
+componentWillUnmount(){
+window.removeEventListener("beforeunload", this.handleRefresh());
+}
+
+handleRefresh(){
+  window.location.href = `/${this.props.userClozang}`;
+  this.setState({ open: false });
+  this.props.clearErrors();
+}
   handleOpen = () => {
     let oldPath = window.location.pathname;
 

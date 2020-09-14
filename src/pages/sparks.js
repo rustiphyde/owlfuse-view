@@ -56,13 +56,23 @@ class sparks extends Component {
 
         let sparksMarkup = loading ? (
             <SparkSkeleton/>
-        ) : ( !this.state.toggleChecked ? (
+        ) : ( !this.state.toggleChecked && sparks? (
          sparks.map(spark => <Spark key={spark.sparkId} spark={spark}/>)
-        ) : ( infernals.map(infernal => <Spark key={infernal.sparkId} spark={infernal}/>))
+        ) : ( infernals ? (infernals.map(infernal => <Spark key={infernal.sparkId} spark={infernal}/>)) : (
+            <Fragment>
+							<div className="candle centered" width="100%">
+							<strong className="post-text">
+								SPARK AN INTEREST
+							</strong>
+							<PostSpark className="icon"/>
+							</div>
+						</Fragment>
+        ))
 
         )
 
-        return(<Grid container spacing={1}>
+        return(
+        <Grid container spacing={1}>
             <Grid item sm={1}/>
             <Grid item sm={10} xs={12}>
             <div className="boozTitle1">

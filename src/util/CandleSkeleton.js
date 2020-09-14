@@ -10,9 +10,7 @@ import Typography from "@material-ui/core/Typography";
 // Components
 
 // Icons
-import LocationIcon from "../components/icons/LocationIcon";
 import CandleIcon from '../components/icons/CandleIcon';
-import LinkIcon from '../components/icons/LinkIcon';
 
 // Utils
 import OwlFuseButton from './OwlFuseButton';
@@ -85,11 +83,11 @@ const CandleSkeleton = (props) => {
             color="primary"
             variant="h5"
           >
-            <strong>>owl-fuser</strong>
+            <strong>{'>'}owl-fuser</strong>
           </Typography>
           <hr />
           <CandleIcon color="secondary" className="icon" />
-          <Typography variant="body2"><strong>Candle was ignited</strong></Typography>
+          <Typography variant="body2"><strong>Candle never ignited</strong></Typography>
         </div>
       </div>
     </Paper>

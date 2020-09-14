@@ -76,16 +76,35 @@ class SparkBox extends Component {
   componentDidMount(){
       if(this.props.openDialog){
           this.handleOpen();
+          window.addEventListener("beforeunload", this.handleRefresh());
       }
+      
+}
+
+componentWillUnmount(){
+window.removeEventListener("beforeunload", this.handleRefresh());
+}
+  
+  handleRefresh(){
+    window.location.href = `/${this.props.userClozang}`;
+    this.setState({ open: false });
+    this.props.clearErrors();
   }
+
   handleOpen = () => {
     let oldPath = window.location.pathname;
+
+    
 
     const { userClozang, sparkId } = this.props;
     const newPath = `/${userClozang}/spark/${sparkId}`;
 
-    if (this.state.oldPath === this.state.newPath) oldPath = `/${userClozang}`;
+    if (this.state.oldPath === this.state.newPath){
+      oldPath = `/${userClozang}`;
+    } 
     else oldPath = this.state.oldPath;
+
+    
 
     window.history.pushState(null, null, newPath);
 
@@ -102,19 +121,23 @@ class SparkBox extends Component {
     const {
       classes,
       spark: {
+				userClozang,
+				userImage,
+				heatCount,
+				stokeCount,
+				body,
+				createdAt,
+				fire,
         sparkId,
-        body,
-        createdAt,
-        heatCount,
-        stokeCount,
-        userImage,
-        userClozang,
         stokes,
-        sparkImage,
-        emberable,
-        fire,
-        infernal
-      },
+				emberable,
+				embered,
+				infernal,
+				sparkImage,
+				sparkVideo,
+				sparkAudio,
+				sparkLink,
+			},
       UI: { loading }
     } = this.props;
 
@@ -122,6 +145,30 @@ class SparkBox extends Component {
 			<Fragment>
 				<img src={sparkImage} alt="spark image" className={classes.spimg} />
 				<br />
+			</Fragment>
+    ) : null;
+    
+    let sparkVid = sparkVideo ? (
+			<Fragment>
+				<div className="centered">
+        <iframe					
+					src={sparkVideo}
+					allowFullScreen
+				></iframe>
+        </div>
+				<br />
+			</Fragment>
+		) : null;
+
+		let sparkAud = sparkAudio ? (
+			<Fragment>
+				<hr className="bar-separator" />
+				<div id="aPlayer" className="centered">
+				<audio controls style={{backgroundColor: "transparent", outline: "none"}}>
+					<source style={{backgroundColor: "#ff9800", borderRadius: "16px 0 16px 0"}} src={sparkAudio}></source>
+				</audio>
+				</div>
+				<hr className="bar-separator" />
 			</Fragment>
 		) : null;
 
@@ -148,6 +195,8 @@ class SparkBox extends Component {
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body1"><strong>{body}</strong></Typography>
           {sparkImg}
+          {sparkVid}
+          {sparkAud}
             <HeatButton sparkId={sparkId}/>
           <span>{heatCount}</span>
           <OwlFuseButton tip="STOKES">

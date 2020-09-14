@@ -74,7 +74,6 @@ class Spark extends Component {
 
 	componentDidMount() {
 		this.props.getFusers();
-		this.setState({ sparkImages: this.props.sparkImages });
 	}
 
 	render() {
@@ -121,6 +120,7 @@ class Spark extends Component {
 
 		let sparkVid = sparkVideo ? (
 			<Fragment>
+				<div className="vid-cont">
 				<iframe
 					className={classes.spimg}
 					src={sparkVideo}
@@ -128,6 +128,8 @@ class Spark extends Component {
 					height="315"
 					width="560"
 				></iframe>
+				</div>
+				
 				<br />
 			</Fragment>
 		) : null;
@@ -135,9 +137,11 @@ class Spark extends Component {
 		let sparkAud = sparkAudio ? (
 			<Fragment>
 				<hr className="bar-separator" />
+				<div id="aPlayer" className="centered">
 				<audio controls style={{backgroundColor: "transparent", outline: "none"}}>
 					<source style={{backgroundColor: "#ff9800", borderRadius: "16px 0 16px 0"}} src={sparkAudio}></source>
 				</audio>
+				</div>
 				<hr className="bar-separator" />
 			</Fragment>
 		) : null;
