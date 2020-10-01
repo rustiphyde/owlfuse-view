@@ -15,19 +15,20 @@ import Avatar from "@material-ui/core/Avatar";
 import ExtinguishSpark from "./ExtinguishSpark";
 import SparkBox from "./SparkBox";
 import HeatButton from "./HeatButton";
-import FuseButton from "../fuses/FuseButton";
+
 
 // Icons
 import FireIcon from "../icons/FireIcon";
 import InfernalIcon from "../icons/InfernalIcon";
+import EmberIcon from "../icons/EmberIcon";
 
 // Redux
 import { connect } from "react-redux";
 import {
 	addHeat,
-	removeHeat,
-	getFusers,
+	removeHeat
 } from "../../redux/actions/dataActions";
+import OwlFuseButton from "../../util/OwlFuseButton";
 
 const styles = {
 	card: {
@@ -72,9 +73,6 @@ class Spark extends Component {
 		fusers: null,
 	};
 
-	componentDidMount() {
-		this.props.getFusers();
-	}
 
 	render() {
 		dayjs.extend(relativeTime);
@@ -93,6 +91,7 @@ class Spark extends Component {
 				sparkId,
 				emberable,
 				embered,
+				emberCount,
 				infernal,
 				sparkImage,
 				sparkVideo,
@@ -104,12 +103,7 @@ class Spark extends Component {
 				credentials: { clozang },
 			},
 		} = this.props;
-		const fuseButton =
-			fusers !== null &&
-			!fusers.includes(userClozang) &&
-			userClozang !== clozang ? (
-				<FuseButton fuser={userClozang} clozang={clozang} />
-			) : null;
+		
 
 		let sparkImg = sparkImage ? (
 			<Fragment>
@@ -168,7 +162,6 @@ class Spark extends Component {
 									<strong>{userClozang}</strong>
 								</Typography>
 							</span>
-							<span>{fuseButton}</span>
 							<Typography variant="body2" color="textSecondary">
 								{dayjs(createdAt).fromNow()}
 							</Typography>
@@ -189,11 +182,16 @@ class Spark extends Component {
 						openDialog={this.props.openDialog}
 					/>
 					<span>{stokeCount}</span>
+					<OwlFuseButton tip="SHARE AN EMBER">
+					<EmberIcon className="orange" color="primary"/>
+					</OwlFuseButton>
+					<span>{emberCount}</span>
+					
 					<span>{deleteButton}</span>
 				</CardContent>
 				{fire === true && <FireIcon color="secondary" className="icon9" />}
 				{infernal === true && (
-					<InfernalIcon color="secondary" className="icon9" />
+					<FireIcon className="icon9 torch" />
 				)}
 			</Card>
 		);
@@ -203,7 +201,6 @@ class Spark extends Component {
 Spark.propTypes = {
 	addHeat: PropTypes.func.isRequired,
 	removeHeat: PropTypes.func.isRequired,
-	getFusers: PropTypes.func.isRequired,
 	user: PropTypes.object.isRequired,
 	spark: PropTypes.object.isRequired,
 	classes: PropTypes.object.isRequired,
@@ -212,13 +209,11 @@ Spark.propTypes = {
 
 const mapStateToProps = (state) => ({
 	user: state.user,
-	fusers: state.data.fusers,
 });
 
 const mapActionsToProps = {
 	addHeat,
-	removeHeat,
-	getFusers,
+	removeHeat
 };
 
 export default connect(
