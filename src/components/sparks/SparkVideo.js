@@ -71,7 +71,7 @@ class SparkVideo extends Component {
 
 		return (
 			<Fragment>
-				<OwlFuseButton tip="IMAGE SPARK" onClick={this.openVideoSpark}>
+				<OwlFuseButton tip="VIDEO SPARK" onClick={this.openVideoSpark}>
 					<AddVideoIcon className="oaky orange icon5" />
 				</OwlFuseButton>
 				<Dialog
