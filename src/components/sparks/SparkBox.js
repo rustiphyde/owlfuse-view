@@ -19,6 +19,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 // Icons
 import CloseIcon from "../icons/CloseIcon";
 import StokeIcon from '../icons/StokeIcon';
+import EmberIcon from '../icons/EmberIcon';
 
 // Redux
 import { connect } from "react-redux";
@@ -73,66 +74,69 @@ class SparkBox extends Component {
     oldPath: '',
     newPath: ''
   };
-  componentDidMount(){
-      if(this.props.openDialog){
-          this.handleOpen();
-          window.addEventListener("beforeunload", this.handleRefresh());
-      }
-      
-}
 
-componentWillUnmount(){
-window.removeEventListener("beforeunload", this.handleRefresh());
+  componentDidMount(){
+    if(this.props.openDialog){
+      console.log(this.props.openDialog);
+        if(this.state.oldPath === '' && this.state.newPath === ''){
+          this.setState({ open: false });
+          this.props.clearErrors();
+          console.log('closed');
+          return window.location.href = `/sparks`;
+        }
+        this.handleOpen();
+      }      
 }
-  
-  handleRefresh(){
-    window.location.href = `/${this.props.userClozang}`;
-    this.setState({ open: false });
-    this.props.clearErrors();
-  }
 
   handleOpen = () => {
-    let oldPath = window.location.pathname;
-
-    
-
+    let oldPath = window.location.pathname.replace('%3E', '>');
+    console.log(oldPath);
+    this.setState({ oldPath: window.location.pathname.replace('%3E', '>') });
+    console.log(this.state.oldPath);
     const { userClozang, sparkId } = this.props;
     const newPath = `/${userClozang}/spark/${sparkId}`;
+    this.setState({ newPath: `/${userClozang}/spark/${sparkId}` });
+    console.log(newPath);
 
     if (this.state.oldPath === this.state.newPath){
+      console.log('Oldpath:', this.state.oldPath);
+      console.log('Newpath: ', this.state.newPath);
       oldPath = `/${userClozang}`;
-    } 
-    else oldPath = this.state.oldPath;
-
+      this.setState({ oldPath });
+    } else {
+      oldPath = this.state.oldPath;
+      this.setState({ oldPath });
+    }
+      
     
 
     window.history.pushState(null, null, newPath);
 
 
     this.setState({ open: true, oldPath, newPath });
+    console.log('open');
     this.props.getSpark(this.props.sparkId);
   };
   handleClose = () => {
-    window.history.pushState(null, null, this.state.oldPath)
     this.setState({ open: false });
+    console.log('closed');
     this.props.clearErrors();
+    window.location.href = this.state.oldPath;
   };
   render() {
     const {
       classes,
       spark: {
 				userClozang,
-				userImage,
 				heatCount,
 				stokeCount,
 				body,
 				createdAt,
-				fire,
         sparkId,
         stokes,
 				emberable,
-				embered,
-				infernal,
+        embered,
+        emberCount,
 				sparkImage,
 				sparkVideo,
 				sparkAudio,
@@ -203,6 +207,10 @@ window.removeEventListener("beforeunload", this.handleRefresh());
             <StokeIcon color="secondary" />
           </OwlFuseButton>
           <span>{stokeCount}</span>
+          <OwlFuseButton tip="SHARE AN EMBER">
+					<EmberIcon color="secondary"/>
+					</OwlFuseButton>
+					<span>{emberCount}</span>
         </Grid>
           <hr className="bar-separator" />
           <StokeForm sparkId={sparkId} className="center"/>
@@ -245,7 +253,8 @@ SparkBox.propTypes = {
   getSpark: PropTypes.func.isRequired,
   sparkId: PropTypes.string.isRequired,
   spark: PropTypes.object.isRequired,
-  UI: PropTypes.object.isRequired
+  UI: PropTypes.object.isRequired,
+  openDialog: PropTypes.bool,
 };
 
 const mapStateToProps = state => ({
