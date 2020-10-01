@@ -7,6 +7,7 @@
   --leaf: #b75a0e;
   --bark: #5f3c0f;
   --beerfoam: #f4db9d;
+  --bluetorch: #21b1ff;
 }
 
 html { 
@@ -364,6 +365,18 @@ audio::-webkit-media-controls-enclosure {
 
 .foam {
   color: var(--beerfoam);
+}
+
+.torch {
+  color: var(--bluetorch);
+}
+
+.redhot {
+  color: var(--delete);
+}
+
+.infernal {
+  color: var(--background-two);
 }
 
 .viewer {
