@@ -5,16 +5,12 @@ import { withStyles } from "@material-ui/core/styles";
 // Components
 import Spark from "../components/sparks/Spark";
 import Fuser from "../components/fuses/Fuser";
-import Boozula from "../components/boozulas/Boozula";
 import Candle from "../components/Candle";
 import SparkSkeleton from "../util/SparkSkeleton";
 import Toggle from "../components/Toggle";
 import FuseRequest from "../components/fuses/FuseRequest";
 import SentRequest from "../components/fuses/SentRequest";
-import PostSpark from "../components/sparks/PostSpark";
-import PostBoozula from "../components/boozulas/PostBoozula";
-import BoozulaSkeleton from "../util/BoozulaSkeleton";
-// Icons
+import PostSpark from "../components/sparks/PostSpark";// Icons
 import FlameIcon from "../components/icons/FlameIcon";
 
 // MUI Components
@@ -27,8 +23,7 @@ import {
 	getInfernals,
 	getFusers,
 	fetchRequestedFuses,
-	getAllSentFuses,
-	getBoozulas
+	getAllSentFuses
 } from "../redux/actions/dataActions";
 
 const styles = {
@@ -60,7 +55,6 @@ class home extends Component {
 		this.props.getFusers();
 		this.props.fetchRequestedFuses();
 		this.props.getAllSentFuses();
-		this.props.getBoozulas();
 	}
 
 	handleToggle = event => {
@@ -87,7 +81,6 @@ class home extends Component {
 		const {
 			fusers,
 			sparks,
-			boozulas,
 			infernals,
 			loading,
 			fuserequests,
@@ -98,24 +91,6 @@ class home extends Component {
 				credentials: { clozang }
 			}
 		} = this.props;
-
-		let boozulasMarkup = authenticated ? (
-			!loading && boozulas ? (
-				boozulas.filter(filt => filt.userClozang === clozang).length > 0 ? (
-					boozulas.filter(filt => filt.userClozang === clozang).map(boozula => <Boozula key={boozula.boozId} boozula={boozula}/> )
-				) : (
-					<Fragment>
-					<div className="candle centered" width="100%">
-					<strong className="post-text">
-						POST A BOOZULA
-					</strong>
-					<PostBoozula className="icon"/>
-					</div>
-				</Fragment>)
-			) : (
-				<BoozulaSkeleton/>
-			)
-		) : ( <strong className="candle centered">Please Login</strong>)
 
 		let recentSparksMarkup = authenticated ? (
 			!loading && sparks ? (
@@ -277,13 +252,6 @@ class home extends Component {
 						<hr className="bar-separator" />
 					</div>
 					{recentSparksMarkup}
-					<hr className="bar-separator" />
-					<br/>
-					<div className="sparkTitle">
-						<strong>YOUR BOOZULAS</strong>
-						<hr className="bar-separator" />
-					</div>
-					{boozulasMarkup}
 				</Grid>
 			</Grid>
 		);
@@ -296,7 +264,6 @@ home.propTypes = {
 	getInfernals: PropTypes.func.isRequired,
 	fetchRequestedFuses: PropTypes.func.isRequired,
 	getAllSentFuses: PropTypes.func.isRequired,
-	getBoozulas: PropTypes.func.isRequired,
 	data: PropTypes.object.isRequired,
 	classes: PropTypes.object.isRequired,
 	user: PropTypes.object.isRequired
@@ -312,5 +279,5 @@ export default connect(mapStateToProps, {
 	getInfernals,
 	getFusers,
 	fetchRequestedFuses,
-	getAllSentFuses, getBoozulas
+	getAllSentFuses
 })(withStyles(styles)(home));
