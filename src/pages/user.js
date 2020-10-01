@@ -3,11 +3,9 @@ import PropTypes from "prop-types";
 import axios from "axios";
 
 // Components
-import UserSpark from "../components/sparks/UserSpark";
-import Boozula from "../components/boozulas/Boozula";
+import Spark from "../components/sparks/Spark";
 import StaticProfile from "../components/StaticProfile";
 import SparkSkeleton from '../util/SparkSkeleton';
-import BoozulaSkeleton from '../util/BoozulaSkeleton';
 import CandleSkeleton from '../util/CandleSkeleton';
 
 // MUI Stuff
@@ -23,16 +21,13 @@ import { getUserData } from "../redux/actions/dataActions";
 class user extends Component {
   state = {
     profile: null,
-    sparkIdParam: null,
-    boozIdParam: null
+    sparkIdParam: null
   };
   componentDidMount() {
     const clozang = this.props.match.params.clozang;
     const sparkId = this.props.match.params.sparkId;
-    const boozId = this.props.match.params.boozId;
     
     if (sparkId) this.setState({ sparkIdParam: sparkId });
-    if (boozId) this.setState({ boozIdParam: boozId });
 
     this.props.getUserData(clozang);
     axios
@@ -46,35 +41,21 @@ class user extends Component {
   }
   render() {
     const {  clozang: username } = this.props;
-    const { sparks, boozulas, loading } = this.props.data;
+    const { sparks, loading } = this.props.data;
     const { loading: loaded } = this.props.UI
-    const { sparkIdParam, boozIdParam } = this.state;
+    const { sparkIdParam } = this.state;
 
     let sparksMarkup = 
     sparks === null || sparks.length === 0 ? (
       <strong className="center">This user has not lit any sparks yet.</strong>
     ) : !sparkIdParam ? (
-      sparks.map(spark => <UserSpark key={spark.sparkId} spark={spark} />)
+      sparks.map(spark => <Spark key={spark.sparkId} spark={spark} />)
         ) : (
             sparks.map(spark => {
               if (spark.sparkId !== sparkIdParam)
-                return <UserSpark key={spark.sparkId} spark={spark} />
-              else return <UserSpark key={spark.sparkId} spark={spark} openDialog/>
+                return <Spark key={spark.sparkId} spark={spark} />
+              else return <Spark key={spark.sparkId} spark={spark} openDialog={true}/>
       })
-    );
-
-    let boozulasMarkup = boozulas === null || boozulas.length === 0 ? (
-      <strong className="center">This user has not created any boozulas yet.</strong>
-    ) : !boozIdParam ? (
-      boozulas.map(boozula => (
-        <Boozula key={boozula.boozId} boozula={boozula} />
-      ))
-        ) : (
-            boozulas.map(boozula => {
-              if (boozula.boozId !== boozIdParam)
-                return <Boozula key={boozula.boozId} boozula={boozula} />
-              else return <Boozula key={boozula.boozId} boozula={boozula} openDialog/>
-        })    
     );
 
     return (
@@ -97,11 +78,6 @@ class user extends Component {
             <hr className="bar-separator" />
           </div>
           <SparkSkeleton length={2}/>
-          <div className="sparkTitle">
-            <strong>BOOZULAS</strong>
-            <hr className="bar-separator" />
-          </div>
-          <BoozulaSkeleton />
         </Grid>        
       </Grid>
       ) : (
@@ -125,11 +101,6 @@ class user extends Component {
             <hr className="bar-separator" />
           </div>
           {sparksMarkup}
-          <div className="sparkTitle">
-            <strong>BOOZULAS</strong>
-            <hr className="bar-separator" />
-          </div>
-          {boozulasMarkup}
         </Grid>        
       </Grid>
           )
@@ -152,11 +123,6 @@ class user extends Component {
             <hr className="bar-separator" />
           </div>
           <SparkSkeleton length={2}/>
-          <div className="sparkTitle">
-            <strong>BOOZULAS</strong>
-            <hr className="bar-separator" />
-          </div>
-          <BoozulaSkeleton />
         </Grid>        
       </Grid>
           ) : (
