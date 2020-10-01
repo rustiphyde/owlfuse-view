@@ -6,23 +6,23 @@ import dayjs from "dayjs";
 
 // MUI Stuff
 import Grid from "@material-ui/core/Grid";
+import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 
 const styles = theme => ({
   ...theme.themeMinusPalette,
-  stokeImg: {
-    maxWidth: 64,
-    height: 64,
-    objectFit: "cover",
-    borderRadius: "16px 0 16px 0",
-    marginLeft: "8px",
-    border: "3px solid #ff9800"
-  },
   stokeData: {
-    width: 'auto',
+    width: '100%',
     padding: '8px 16px',
     borderRadius: "16px 0 16px 0",
     backgroundColor: '#fefaf4'
+  }, 
+  stretch: {
+    width: '100%'
+  },
+  avatar: {
+    border: '2px solid #ff9800',
+    borderRadius: '16px 0 16px 0'
   }
 });
 class Stokes extends Component {
@@ -37,15 +37,10 @@ class Stokes extends Component {
               <hr className="bar-separator" />
               <Grid item sm={12}>
                 <Grid container>
-                  <Grid item sm={3}>
-                    <img
-                      src={userImage}
-                      alt="Stoke"
-                      className={classes.stokeImg}
-                    />
-                  </Grid>
-                  <Grid item sm={8}>
+                  <Grid item sm={12} className={classes.stretch}>
                     <div className={classes.stokeData}>
+                      <span>
+                        <Avatar className={classes.avatar} src={userImage}></Avatar>
                       <Typography
                         variant="body2"
                         component={Link}
@@ -55,6 +50,7 @@ class Stokes extends Component {
                       >
                         <strong>{userClozang}</strong>
                       </Typography>
+                        </span>
                       <Typography variant="body2" color="textSecondary">
                         {dayjs(createdAt).format("h:mm a, MMMM D, YYYY")}
                       </Typography>
