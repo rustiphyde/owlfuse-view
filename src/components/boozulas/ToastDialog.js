@@ -69,20 +69,13 @@ class ToastDialog extends Component {
   };
   componentDidMount(){
     if(this.props.openDialog){
+      if(this.state.oldPath === '' && this.state.newPath === ''){
+        this.setState({ open: false });
+        this.props.clearErrors();
+        return window.location.href = `/`;
+      }        
         this.handleOpen();
-        window.addEventListener("beforeunload", this.handleRefresh());
     }
-    
-}
-
-componentWillUnmount(){
-window.removeEventListener("beforeunload", this.handleRefresh());
-}
-
-handleRefresh(){
-  window.location.href = `/${this.props.userClozang}`;
-  this.setState({ open: false });
-  this.props.clearErrors();
 }
   handleOpen = () => {
     let oldPath = window.location.pathname;
