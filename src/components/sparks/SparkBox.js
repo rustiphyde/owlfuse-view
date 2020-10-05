@@ -134,16 +134,158 @@ class SparkBox extends Component {
 				createdAt,
         sparkId,
         stokes,
-				emberable,
         embered,
         emberCount,
 				sparkImage,
 				sparkVideo,
 				sparkAudio,
-				sparkLink,
+        sparkLink,
+        emberId,
+        emberBody,
+        emberPoster,
+        emberDate,
+        emberVideo,
+        emberImage,
+        emberAudio,
+        emberLink
 			},
       UI: { loading }
     } = this.props;
+
+    let sparkEmber = emberId !== "" ? (
+			emberVideo !== "" ? (
+				<Fragment>
+				
+				<hr className="bar-separator" />
+				<div className="centered">
+				<EmberIcon className="rusty"/>
+				</div>				
+				<hr className="bar-separator" />
+				<span>
+								<Typography
+									variant="body2"
+									color="primary"
+									component={Link}
+									to={`/${emberPoster}`}
+								>
+									<strong>{emberPoster} </strong>
+								</Typography>
+							<Typography variant="body2" color="textSecondary">
+							{dayjs(emberDate).format("h:mm a, MMMM D, YYYY")}
+							</Typography></span>
+							<Typography variant="body2" color="primary" className="breaks">
+						<b>{emberBody}</b>
+					</Typography>
+				<div className="vid-cont">
+				<iframe
+					className={classes.spimg}
+					src={emberVideo}
+					allowFullScreen
+					height="315"
+					width="560"
+				></iframe>
+				</div>
+				
+				<br />
+				<hr className="bar-separator" />
+				<div className="centered">
+				<EmberIcon className="rusty"/>
+				</div>
+				<hr className="bar-separator" />
+
+			</Fragment>
+			) : emberImage !== "" ? (
+				<Fragment>
+						<hr className="bar-separator" />
+				<div className="centered">
+				<EmberIcon className="rusty"/>
+				</div>				
+				<hr className="bar-separator" />
+				<span>
+								<Typography
+									variant="body2"
+									color="primary"
+									component={Link}
+									to={`/${emberPoster}`}
+								>
+									<strong>{emberPoster} </strong>
+								</Typography>
+							<Typography variant="body2" color="textSecondary">
+							{dayjs(emberDate).format("h:mm a, MMMM D, YYYY")}
+							</Typography></span>
+							<Typography variant="body2" color="primary" className="breaks">
+						<b>{emberBody}</b>
+					</Typography>
+					<img src={emberImage} alt="ember image" className={classes.spimg} />
+				<br />
+				<hr className="bar-separator" />
+				<div className="centered">
+				<EmberIcon className="rusty"/>
+				</div>
+				<hr className="bar-separator" />
+			</Fragment>
+			) : emberAudio !== "" ? (
+				<Fragment>
+						<hr className="bar-separator" />
+				<div className="centered">
+				<EmberIcon className="rusty"/>
+				</div>				
+				<hr className="bar-separator" />
+				<span>
+								<Typography
+									variant="body2"
+									color="primary"
+									component={Link}
+									to={`/${emberPoster}`}
+								>
+									<strong>{emberPoster} </strong>
+								</Typography>
+							<Typography variant="body2" color="textSecondary">
+							{dayjs(emberDate).format("h:mm a, MMMM D, YYYY")}
+							</Typography></span>
+							<Typography variant="body2" color="primary" className="breaks">
+						<b>{emberBody}</b>
+					</Typography>
+					<div id="aPlayer" className="centered">
+				<audio controls style={{backgroundColor: "transparent", outline: "none"}}>
+					<source style={{backgroundColor: "#ff9800", borderRadius: "16px 0 16px 0"}} src={emberAudio}></source>
+				</audio>
+				</div>
+				<br/>
+				<hr className="bar-separator" />
+				<div className="centered">
+				<EmberIcon className="rusty"/>
+				</div>
+				<hr className="bar-separator" />
+			</Fragment>
+			) : (<Fragment>
+				<hr className="bar-separator" />
+				<div className="centered">
+				<EmberIcon className="rusty"/>
+				</div>				
+				<hr className="bar-separator" />
+				<span>
+								<Typography
+									variant="body2"
+									color="primary"
+									component={Link}
+									to={`/${emberPoster}`}
+								>
+									<strong>{emberPoster} </strong>
+								</Typography>
+							<Typography variant="body2" color="textSecondary">
+							{dayjs(emberDate).format("h:mm a, MMMM D, YYYY")}
+							</Typography></span>
+							<Typography variant="body2" color="primary" className="breaks">
+						<b>{emberBody}</b>
+					</Typography>
+					<br/>
+					<hr className="bar-separator" />
+				<div className="centered">
+				<EmberIcon className="rusty"/>
+				</div>
+				<hr className="bar-separator" />
+			</Fragment>) ) : null;
 
     let sparkImg = sparkImage ? (
 			<Fragment>
@@ -172,8 +314,19 @@ class SparkBox extends Component {
 					<source style={{backgroundColor: "#ff9800", borderRadius: "16px 0 16px 0"}} src={sparkAudio}></source>
 				</audio>
 				</div>
+				<br/>
 				<hr className="bar-separator" />
 			</Fragment>
+    ) : null;
+    
+    const emberButton =
+		emberId === "" ? (
+			<Fragment>
+				<OwlFuseButton tip="SHARE AN EMBER">
+					<EmberIcon className="orange" color="primary"/>
+					</OwlFuseButton>
+					<span>{emberCount}</span>
+			</Fragment>			
 		) : null;
 
     const dialogMarkup = loading ? (
@@ -201,16 +354,14 @@ class SparkBox extends Component {
           {sparkImg}
           {sparkVid}
           {sparkAud}
+          {sparkEmber}
             <HeatButton sparkId={sparkId}/>
           <span>{heatCount}</span>
           <OwlFuseButton tip="STOKES">
             <StokeIcon color="secondary" />
           </OwlFuseButton>
           <span>{stokeCount}</span>
-          <OwlFuseButton tip="SHARE AN EMBER">
-					<EmberIcon color="secondary"/>
-					</OwlFuseButton>
-					<span>{emberCount}</span>
+          {emberButton}
         </Grid>
           <hr className="bar-separator" />
           <StokeForm sparkId={sparkId} className="center"/>
