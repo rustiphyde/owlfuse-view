@@ -59,8 +59,8 @@ class PostSpark extends Component {
       }
   }
 
-  openMediaPanel = (sparkID) => {
-      this.setState({ sparkID, mediaOpen: true });
+  openMediaPanel = () => {
+      this.setState({ mediaOpen: true });
   }
 
   closeMediaPanel = () => {
@@ -173,8 +173,7 @@ PostSpark.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  UI: state.UI,
-  sparkID: state.data.sparkID
+  UI: state.UI
 });
 
 export default connect(
