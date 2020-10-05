@@ -48,7 +48,8 @@ import {
 	SET_SPARK_ID,
 	POST_SPARK_IMAGE,
 	POST_SPARK_VIDEO,
-	POST_SPARK_AUDIO
+	POST_SPARK_AUDIO,
+	SHARE_EMBER,
 } from "../types";
 import axios from "axios";
 
@@ -233,12 +234,24 @@ export const postSpark = (newSpark) => (dispatch) => {
 		});
 };
 
+export const shareEmber = (emberId, newEmber) => (dispatch) => {
+	dispatch({ type: LOADING_UI });
+	axios
+		.post(`/ember/${emberId}`, newEmber)
+		.then((res) => {
+			dispatch({ type: SHARE_EMBER, payload: res.data });
+			dispatch({ type: STOP_LOADING_UI });
+		})
+		.catch((err) => {
+			console.log(err.code);
+		});
+};
+
 export const addSparkImage = (formData) => (dispatch) => {
 	axios
 		.post(`/image/spark`, formData)
 		.then((res) => {
-			dispatch({ type: POST_SPARK_IMAGE,
-			payload: res.data});
+			dispatch({ type: POST_SPARK_IMAGE, payload: res.data });
 		})
 		.catch((err) => console.log(err.code));
 };
@@ -247,8 +260,7 @@ export const addSparkVideo = (formData) => (dispatch) => {
 	axios
 		.post(`/video/spark`, formData)
 		.then((res) => {
-			dispatch({ type: POST_SPARK_VIDEO,
-			payload: res.data});
+			dispatch({ type: POST_SPARK_VIDEO, payload: res.data });
 		})
 		.catch((err) => {
 			console.log(err.code);
@@ -259,8 +271,7 @@ export const addSparkAudio = (formData) => (dispatch) => {
 	axios
 		.post(`/audio/spark`, formData)
 		.then((res) => {
-			dispatch({ type: POST_SPARK_AUDIO,
-			payload: res.data});
+			dispatch({ type: POST_SPARK_AUDIO, payload: res.data });
 		})
 		.catch((err) => console.log(err.code));
 };
