@@ -168,8 +168,7 @@ class PostSpark extends Component {
 PostSpark.propTypes = {
   postSpark: PropTypes.func.isRequired,
   UI: PropTypes.object.isRequired,
-  clearErrors: PropTypes.func.isRequired,
-  sparkID: PropTypes.string
+  clearErrors: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({

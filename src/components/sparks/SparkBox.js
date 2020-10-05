@@ -77,7 +77,6 @@ class SparkBox extends Component {
 
   componentDidMount(){
     if(this.props.openDialog){
-      console.log(this.props.openDialog);
         if(this.state.oldPath === '' && this.state.newPath === ''){
           this.setState({ open: false });
           this.props.clearErrors();
@@ -314,7 +313,6 @@ class SparkBox extends Component {
 					<source style={{backgroundColor: "#ff9800", borderRadius: "16px 0 16px 0"}} src={sparkAudio}></source>
 				</audio>
 				</div>
-				<br/>
 				<hr className="bar-separator" />
 			</Fragment>
     ) : null;

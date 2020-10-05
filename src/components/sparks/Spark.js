@@ -275,7 +275,7 @@ class Spark extends Component {
 				<hr className="bar-separator" />
 				<div id="aPlayer" className="centered">
 				<audio controls style={{backgroundColor: "transparent", outline: "none"}}>
-					<source style={{backgroundColor: "#ff9800", borderRadius: "16px 0 16px 0"}} src={sparkAudio}></source>
+					<source style={{backgroundColor: "#ff9800", borderRadius: "16px 0 16px 0"}} src={emberAudio}></source>
 				</audio>
 				</div>
 				<br/>
