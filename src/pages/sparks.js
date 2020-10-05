@@ -98,7 +98,7 @@ class sparks extends Component {
 									: classes.toggleIsInactive
 							}`}
 						>
-							Scorch Rank
+							Most Heat
 						</span>
 					</div>
                     <hr className="bar-separator"/>

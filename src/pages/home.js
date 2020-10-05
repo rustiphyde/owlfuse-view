@@ -244,7 +244,7 @@ class home extends Component {
 									: classes.toggleIsInactive
 							}`}
 						>
-							Scorch Rank
+							Most Heat
 						</span>
 					</div>
 					<div className="sparkTitle">
