@@ -58,3 +58,4 @@ export const SET_SPARK_ID = 'SET_SPARK_ID';
 export const POST_SPARK_IMAGE = 'POST_SPARK_IMAGE';
 export const POST_SPARK_VIDEO = 'POST_SPARK_VIDEO';
 export const POST_SPARK_AUDIO = 'POST_SPARK_AUDIO';
+export const SHARE_EMBER = 'SHARE_EMBER';
