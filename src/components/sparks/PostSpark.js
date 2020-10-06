@@ -80,6 +80,7 @@ class PostSpark extends Component {
   handleSubmit = (event) => {
       event.preventDefault();
       this.props.postSpark({ body: this.state.body });
+      this.closeMediaPanel();
   }
   
   render() {

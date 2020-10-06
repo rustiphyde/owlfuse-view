@@ -25,10 +25,6 @@ const styles = (theme) => ({
 	textField: {
 		textAlign: "center",
     },
-    halfHeight: {
-        height: 'auto',
-        width: '100%'
-    },
 	dialogContent: {
 		padding: 20,
 		color: "#ff9800",
@@ -141,7 +137,7 @@ class ShareEmber extends Component {
 				<OwlFuseButton tip="SHARE AN EMBER" onClick={this.handleOpen}>
 					<EmberIcon color="primary" className="icon6 orange" />
 				</OwlFuseButton>
-				<Dialog open={this.state.open} onClose={this.handleClose} className={classes.halfHeight}>
+				<Dialog open={this.state.open} onClose={this.handleClose} fullWidth fullScreen>
 					<OwlFuseButton
 						tip="CLOSE"
 						onClick={this.handleClose}
