@@ -89,22 +89,13 @@ class SparkBox extends Component {
 
   handleOpen = () => {
     let oldPath = window.location.pathname.replace('%3E', '>');
-    console.log(oldPath);
-    this.setState({ oldPath: window.location.pathname.replace('%3E', '>') });
-    console.log(this.state.oldPath);
     const { userClozang, sparkId } = this.props;
     const newPath = `/${userClozang}/spark/${sparkId}`;
-    this.setState({ newPath: `/${userClozang}/spark/${sparkId}` });
-    console.log(newPath);
-
+    
     if (this.state.oldPath === this.state.newPath){
-      console.log('Oldpath:', this.state.oldPath);
-      console.log('Newpath: ', this.state.newPath);
       oldPath = `/${userClozang}`;
-      this.setState({ oldPath });
     } else {
       oldPath = this.state.oldPath;
-      this.setState({ oldPath });
     }
       
     
@@ -113,12 +104,10 @@ class SparkBox extends Component {
 
 
     this.setState({ open: true, oldPath, newPath });
-    console.log('open');
     this.props.getSpark(this.props.sparkId);
   };
   handleClose = () => {
     this.setState({ open: false });
-    console.log('closed');
     this.props.clearErrors();
     window.location.href = this.state.oldPath;
   };
