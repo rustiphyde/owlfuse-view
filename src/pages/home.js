@@ -60,20 +60,16 @@ class home extends Component {
 	handleToggle = event => {
 		if (event.target.checked) {
 			this.setState({ toggleChecked: true });
-			console.log("toggle is checked");
 		} else {
 			this.setState({ toggleChecked: false });
-			console.log("toggle is not checked");
 		}
 	};
 
 	handleToggleFuse = event => {
 		if (event.target.checked) {
 			this.setState({ toggleFuse: true });
-			console.log("toggle is checked");
 		} else {
 			this.setState({ toggleFuse: false });
-			console.log("toggle is not checked");
 		}
 	};
 	render() {

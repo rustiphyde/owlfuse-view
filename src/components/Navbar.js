@@ -43,10 +43,8 @@ export class Navbar extends Component {
 	handleToggle = (event) => {
 		if (event.target.checked) {
 			this.setState({ toggleChecked: true });
-			console.log("toggle is checked");
 		} else {
 			this.setState({ toggleChecked: false });
-			console.log("toggle is not checked");
 		}
 	};
 
