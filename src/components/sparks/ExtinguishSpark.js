@@ -12,7 +12,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import ExtinguishIcon from '../icons/ExtinguishIcon';
 
 import { connect } from 'react-redux';
-import { extinguishSpark } from '../../redux/actions/dataActions';
+import { extinguishSpark, getSparks } from '../../redux/actions/dataActions';
 
 const styles = {
 }
@@ -30,7 +30,8 @@ class ExtinguishSpark extends Component {
     }
     extinguishSpark = () => {
         this.props.extinguishSpark(this.props.sparkId)
-        this.setState({ open: false });
+        setTimeout(this.props.getSparks, 5000);
+        this.handleClose();
     }
     render() {
         const { classes } = this.props;
@@ -69,8 +70,9 @@ class ExtinguishSpark extends Component {
 ExtinguishSpark.propTypes = {
     extinguishSpark: PropTypes.func.isRequired,
     classes: PropTypes.object.isRequired,
-    sparkId: PropTypes.string.isRequired
+    sparkId: PropTypes.string.isRequired,
+    getSparks: PropTypes.func.isRequired
 }
 
 
-export default connect(null, { extinguishSpark })(withStyles(styles)(ExtinguishSpark));
+export default connect(null, { extinguishSpark, getSparks })(withStyles(styles)(ExtinguishSpark));
