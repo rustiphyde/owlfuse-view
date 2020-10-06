@@ -113,6 +113,20 @@
       ]
     },
     {
+      "collectionGroup": "Songs",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "userClozang",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "songTitle",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "Requests",
       "queryScope": "COLLECTION",
       "fields": [

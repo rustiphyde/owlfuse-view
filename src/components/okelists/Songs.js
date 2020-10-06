@@ -12,8 +12,7 @@ const styles = theme => ({
       marginLeft: 16,
       marginRight: 16,
       backgroundColor: '#263238',
-      padding: 16,
-      maxWidth: 352,
+      padding: 16
   },
   frag: {
       backgroundColor: '#263238'
@@ -24,13 +23,13 @@ class Songs extends Component {
     const { classes, songs } = this.props;
     return (
       <Grid container className={classes.frag}>
-        {songs.map((song, index) => {
+        {songs.sort((a, b) => (a.songTitle > b.songTitle) ? 1 : -1).map((song) => {
           const { songTitle, songArtist } = song;
           return (
             <Fragment key={songTitle}>
               <Grid item sm={12}>
                 <Grid container>
-                  <Typography variant="body1" className={`${this.props.classes.songData} foam`}>{index +1}. <strong>{songTitle}</strong> by <em className="rusty"><u>{songArtist}</u></em></Typography>
+                  <Typography variant="body1" className={`${this.props.classes.songData} foam`}>. <strong>{songTitle}</strong> by <em className="rusty"><u>{songArtist}</u></em></Typography>
                 </Grid>
               </Grid>
               <hr className="bar-separator"/>
