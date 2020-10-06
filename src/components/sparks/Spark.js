@@ -15,6 +15,7 @@ import Avatar from "@material-ui/core/Avatar";
 import ExtinguishSpark from "./ExtinguishSpark";
 import SparkBox from "./SparkBox";
 import HeatButton from "./HeatButton";
+import ShareEmber from "./ShareEmber";
 
 
 // Icons
@@ -275,7 +276,7 @@ class Spark extends Component {
 				<hr className="bar-separator" />
 				<div id="aPlayer" className="centered">
 				<audio controls style={{backgroundColor: "transparent", outline: "none"}}>
-					<source style={{backgroundColor: "#ff9800", borderRadius: "16px 0 16px 0"}} src={emberAudio}></source>
+					<source style={{backgroundColor: "#ff9800", borderRadius: "16px 0 16px 0"}} src={sparkAudio}></source>
 				</audio>
 				</div>
 				<br/>
@@ -291,9 +292,7 @@ class Spark extends Component {
 		const emberButton =
 		emberId === "" ? (
 			<Fragment>
-				<OwlFuseButton tip="SHARE AN EMBER">
-					<EmberIcon className="orange" color="primary"/>
-					</OwlFuseButton>
+				<ShareEmber emberId={sparkId} spark={this.props.spark}/>
 					<span>{emberCount}</span>
 			</Fragment>			
 		) : null;
