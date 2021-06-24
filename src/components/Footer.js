@@ -7,7 +7,7 @@ import { logoutUser } from '../redux/actions/userActions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-export class Footer extends Component {
+class Footer extends Component {
 
   handleLogout = () => {
     this.props.logoutUser();
