@@ -22,6 +22,7 @@ import ToastIcon from "./icons/ToastIcon";
 import CheersIcon from "./icons/CheersIcon";
 import StokeIcon from "./icons/StokeIcon";
 import FireIcon from "./icons/FireIcon";
+import EmberIcon from './icons/EmberIcon';
 import FuseRequestIcon from './icons/FuseRequestIcon';
 import AcceptRequestIcon from './icons/AcceptRequestIcon';
 import RejectRequestIcon from './icons/RejectRequestIcon';
@@ -93,8 +94,12 @@ const Sizzles = (props) => {
                   : sizz.type === "request"
                   ? `${sizz.sender} sent you a fuse request`
                   : sizz.type === "accept"
-                  ? `${sizz.sender} accepted your fuse request` 
-                  : `${sizz.sender} rejected your fuse request`;
+                  ? `${sizz.sender} accepted your fuse request`
+                  : sizz.type === "reject"
+                  ? `${sizz.sender} rejected your fuse request`
+                  : sizz.type === "ember"
+                  ? `${sizz.sender} embered your spark`
+                  : null;
     
                   const time = dayjs(sizz.createdAt).fromNow();
     
@@ -118,8 +123,11 @@ const Sizzles = (props) => {
                   <RejectRequestIcon color={iconColor} style={{ marginRight: 10 }} />) 
                   : sizz.type === "infernal" ? (
                     <InfernalIcon color={iconColor} style={{ marginRight: 10 }} />) 
-                  : (                
-                  <FireIcon color={iconColor} style={{ marginRight: 10 }} />);
+                  : sizz.type === "fire" ? (                
+                  <FireIcon color={iconColor} style={{ marginRight: 10 }} />)
+                  : sizz.type === "ember" ? (
+                    <EmberIcon color={iconColor} style={{ marginRight: 10 }} />)
+                    : null;
                 
                   return (
                 <MenuItem

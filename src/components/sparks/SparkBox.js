@@ -77,12 +77,6 @@ class SparkBox extends Component {
 
   componentDidMount(){
     if(this.props.openDialog){
-        if(this.state.oldPath === '' && this.state.newPath === ''){
-          this.setState({ open: false });
-          this.props.clearErrors();
-          console.log('closed');
-          return window.location.href = `/sparks`;
-        }
         this.handleOpen();
       }      
 }
@@ -164,13 +158,17 @@ class SparkBox extends Component {
 							<Typography variant="body2" color="primary" className="breaks">
 						<b>{emberBody}</b>
 					</Typography>
-				<div className="vid-cont">
+          <div className="vid-cont" style={{textAlign: 'center', marginTop: '16px', position: 'relative', height: 0, paddingBottom: '56.25%', width: '100%' }}>
 				<iframe
-					className={classes.spimg}
 					src={emberVideo}
 					allowFullScreen
-					height="315"
-					width="560"
+					style={{
+						position: 'absolute',
+						top: 0,
+						left: 0,
+						width: '100%',
+						height: '100%'
+					}}
 				></iframe>
 				</div>
 				
@@ -284,12 +282,19 @@ class SparkBox extends Component {
     
     let sparkVid = sparkVideo ? (
 			<Fragment>
-				<div className="centered">
-        <iframe					
+				<div className="vid-cont" style={{textAlign: 'center', marginTop: '16px', position: 'relative', height: 0, paddingBottom: '56.25%', width: '100%' }}>
+				<iframe
 					src={sparkVideo}
 					allowFullScreen
+					style={{
+						position: 'absolute',
+						top: 0,
+						left: 0,
+						width: '100%',
+						height: '100%'
+					}}
 				></iframe>
-        </div>
+				</div>
 				<br />
 			</Fragment>
 		) : null;
@@ -321,9 +326,9 @@ class SparkBox extends Component {
         <CircularProgress className="rusty2" size={100} thickness={4}/>
         </div>
     ) : (
-     <Grid container spacing={6} className="charcoal-border">
+     <Grid container spacing={10} className="charcoal-border" >
 
-        <Grid item sm={6} className={classes.stuff}>
+        <Grid item sm={12} className={classes.stuff}>
           <Typography
             component={Link}
             color="primary"

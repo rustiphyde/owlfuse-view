@@ -106,8 +106,18 @@ class ShareEmber extends Component {
 			</Fragment>
 		) : sparkVideo ? (
 			<Fragment>
-				<div className="centered">
-					<iframe src={sparkVideo} allowFullScreen></iframe>
+				<div className="vid-cont" style={{textAlign: 'center', marginTop: '16px', position: 'relative', height: 0, paddingBottom: '56.25%', width: '100%' }}>
+				<iframe
+					src={sparkVideo}
+					allowFullScreen
+					style={{
+						position: 'absolute',
+						top: 0,
+						left: 0,
+						width: '100%',
+						height: '100%'
+					}}
+				></iframe>
 				</div>
 				<br />
 			</Fragment>

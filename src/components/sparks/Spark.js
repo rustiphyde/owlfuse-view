@@ -122,13 +122,17 @@ class Spark extends Component {
 
 		let sparkVid = sparkVideo ? (
 			<Fragment>
-				<div className="vid-cont">
+				<div className="vid-cont" style={{textAlign: 'center', marginTop: '16px', position: 'relative', height: 0, paddingBottom: '56.25%', width: '100%' }}>
 				<iframe
-					className={classes.spimg}
 					src={sparkVideo}
 					allowFullScreen
-					height="315"
-					width="560"
+					style={{
+						position: 'absolute',
+						top: 0,
+						left: 0,
+						width: '100%',
+						height: '100%'
+					}}
 				></iframe>
 				</div>
 				
@@ -160,13 +164,17 @@ class Spark extends Component {
 							<Typography variant="body2" color="primary" className="breaks">
 						<b>{emberBody}</b>
 					</Typography>
-				<div className="vid-cont">
+					<div className="vid-cont" style={{textAlign: 'center', marginTop: '16px', position: 'relative', height: 0, paddingBottom: '56.25%', width: '100%' }}>
 				<iframe
-					className={classes.spimg}
 					src={emberVideo}
 					allowFullScreen
-					height="315"
-					width="560"
+					style={{
+						position: 'absolute',
+						top: 0,
+						left: 0,
+						width: '100%',
+						height: '100%'
+					}}
 				></iframe>
 				</div>
 				
