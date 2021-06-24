@@ -1,6 +1,7 @@
 // store file "stores" the application state
-import { createStore, combineReducers, applyMiddleware, compose } from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { config } from '../util/config';
 import { firestoreReducer, getFirestore, reduxFirestore } from 'redux-firestore';
 import { firebaseReducer, getFirebase } from 'react-redux-firebase';
@@ -26,9 +27,7 @@ const reducers = combineReducers({
   firestore: firestoreReducer
 });
 
-const composeEnhancers = compose;
-
-const enhancer = composeEnhancers(applyMiddleware(...middleware), reduxFirestore(config));
+const enhancer = composeWithDevTools(applyMiddleware(...middleware), reduxFirestore(config));
 const store = createStore(reducers, initialState, enhancer);
 
 export default store;
