@@ -40,6 +40,7 @@ import okelists from './pages/okelists';
 import boozulas from './pages/boozulas';
 import howls from './pages/howls';
 import sparks from './pages/sparks';
+import about from './pages/about';
 
 axios.defaults.baseURL = "https://us-central1-owlfuse-app.cloudfunctions.net/api";
 
@@ -89,6 +90,7 @@ class App extends Component {
                 <Route exact path="/boozulas" component={boozulas} />
                 <Route exact path="/howls" component={howls} />
                 <Route exact path="/sparks" component={sparks} />
+                <Route exact path="/about" component={about} />
                 <AuthRoute
                   exact
                   path="/login"
