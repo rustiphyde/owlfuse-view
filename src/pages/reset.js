@@ -23,18 +23,9 @@ class reset extends Component {
     this.state = {
       email: "",
       loading: false,
-      errors: {},
-      success: {}
     };
   }
-  UNSAFE_componentWillReceiveProps(nextProps){
-      if(nextProps.UI.errors){
-        this.setState({ errors: nextProps.UI.errors });
-      }
-      if(nextProps.UI.success){
-          this.setState({ success: nextProps.UI.success });
-      }
-  }
+
   handleSubmit = event => {
     event.preventDefault();
     // Save input to userData variable
@@ -50,8 +41,7 @@ class reset extends Component {
     });
   };
   render() {
-    const { classes, UI: { loading } } = this.props;
-    const { errors, success } = this.state;
+    const { classes, UI: { loading, errors, success } } = this.props;
     return (
       <Grid className={classes.form}>
         <Grid item sm />
@@ -72,19 +62,19 @@ class reset extends Component {
               type="email"
               label="EMAIL ADDRESS"
               className={classes.textField}
-              helperText={errors.email}
-              error={errors.email ? true : false}
+              helperText={errors && errors.email ? errors.email : ""}
+              error={errors && errors.email ? true : false}
               value={this.state.email}
               onChange={this.handleChange}
               fullWidth
               autoComplete="email"
             />
-            {errors.reset && (
+            {errors && errors.reset && (
               <Typography variant="body2" className={classes.customError}>
                 {errors.reset}
               </Typography>
             )}
-            {success.message && (
+            {success && success.message && (
               <Typography variant="body2" className={classes.customMessage}>
                 {success.message}
               </Typography>

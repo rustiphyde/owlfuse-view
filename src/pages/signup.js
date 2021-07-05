@@ -28,15 +28,9 @@ class signup extends Component {
       confirmPassword: "",
       alias: "",
       loading: false,
-      errors: {}
     };
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.UI.errors) {
-      this.setState({ errors: nextProps.UI.errors });
-    }
-  }
   handleSubmit = event => {
     event.preventDefault();
     this.setState({
@@ -57,8 +51,7 @@ class signup extends Component {
     });
   };
   render() {
-    const { classes, UI: { loading }} = this.props;
-    const { errors } = this.state;
+    const { classes, UI: { loading, errors }} = this.props;
     return (
       <Grid container className={classes.form}>
         <Grid item sm />
@@ -79,8 +72,8 @@ class signup extends Component {
               type="email"
               label="EMAIL ADDRESS"
               className={classes.textField}
-              helperText={errors.email}
-              error={errors.email ? true : false}
+              helperText={errors && errors.email ? errors.email : ""}
+              error={errors && errors.email ? true : false}
               value={this.state.email}
               onChange={this.handleChange}
               fullWidth
@@ -92,8 +85,8 @@ class signup extends Component {
               type="password"
               label="PASSWORD"
               className={classes.textField}
-              helperText={errors.password}
-              error={errors.password ? true : false}
+              helperText={errors && errors.password ? errors.password : ""}
+              error={errors && errors.password ? true : false}
               value={this.state.password}
               onChange={this.handleChange}
               fullWidth
@@ -105,8 +98,8 @@ class signup extends Component {
               type="password"
               label="CONFIRM PASSWORD"
               className={classes.textField}
-              helperText={errors.confirmPassword}
-              error={errors.confirmPassword ? true : false}
+              helperText={errors && errors.confirmPassword ? errors.confirmPassword : ""}
+              error={errors && errors.confirmPassword ? true : false}
               value={this.state.confirmPassword}
               onChange={this.handleChange}
               fullWidth
@@ -118,14 +111,14 @@ class signup extends Component {
               type="name"
               label="ALIAS"
               className={classes.textField}
-              helperText={errors.alias}
-              error={errors.alias ? true : false}
+              helperText={errors && errors.alias ? errors.alias : ""}
+              error={errors && errors.alias ? true : false}
               value={this.state.alias}
               onChange={this.handleChange}
               fullWidth
               autoComplete="username"
             />
-            {errors.general && (
+            {errors && errors.general && (
               <Typography variant="body2" className={classes.customError}>
                 {errors.general}
               </Typography>
