@@ -38,17 +38,7 @@ const styles = {
 class StokeForm extends Component {
   state = {
     body: "",
-    errors: {}
   };
-
-  UNSAFE_componentWillReceiveProps(nextProps){
-      if(nextProps.UI.errors){
-          this.setState({ errors: nextProps.UI.errors });
-      }
-      if(!nextProps.UI.errors && !nextProps.UI.loading){
-          this.setState({ body: ''});
-      }
-  }
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -59,8 +49,9 @@ class StokeForm extends Component {
   };
 
   render() {
-    const { classes, authenticated } = this.props;
-    const errors = this.state.errors;
+    const { classes, authenticated, UI: {
+      errors
+    } } = this.props;
 
     const stokeFormMarkup = authenticated ? (
       <Grid item sm={12} className={classes.gridItem}>
@@ -69,8 +60,8 @@ class StokeForm extends Component {
             name="body"
             type="text"
             label="ADD A STOKE"
-            error={errors.stoke ? true : false}
-            helperText={errors.stoke}
+            error={errors && errors.stoke ? true : false}
+            helperText={errors && errors.stoke ? errors.stoke : ""}
             value={this.state.body}
             onChange={this.handleChange}
             fullWidth

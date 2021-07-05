@@ -34,17 +34,7 @@ const styles = {
 class ToastForm extends Component {
   state = {
     body: "",
-    errors: {}
   };
-
-  UNSAFE_componentWillReceiveProps(nextProps){
-      if(nextProps.UI.errors){
-          this.setState({ errors: nextProps.UI.errors });
-      }
-      if(!nextProps.UI.errors && !nextProps.UI.loading){
-          this.setState({ body: ''});
-      }
-  }
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -55,8 +45,9 @@ class ToastForm extends Component {
   };
 
   render() {
-    const { classes, authenticated } = this.props;
-    const errors = this.state.errors;
+    const { classes, authenticated, UI: {
+      errors
+    } } = this.props;
 
     const toastFormMarkup = authenticated ? (
       <Grid item sm={12} className={classes.gridItem}>
@@ -65,8 +56,8 @@ class ToastForm extends Component {
             name="body"
             type="text"
             label="ADD A TOAST"
-            error={errors.toast ? true : false}
-            helperText={errors.toast}            
+            error={errors && errors.toast ? true : false}
+            helperText={errors && errors.toast ? errors.toast : ""}            
             value={this.state.body}
             onChange={this.handleChange}
             fullWidth

@@ -45,19 +45,7 @@ class PostSpark extends Component {
     open: false,
     mediaOpen: false,
     body: "",
-    errors: {}
   };
-  
-  UNSAFE_componentWillReceiveProps(nextProps){
-      if(nextProps.UI.errors){
-          this.setState({
-              errors: nextProps.UI.errors
-          })
-      }
-      if(!nextProps.UI.errors && !nextProps.UI.loading){
-          this.setState({ body: '', open: false, errors: {} })
-      }
-  }
 
   openMediaPanel = () => {
       this.setState({ mediaOpen: true });
@@ -84,10 +72,9 @@ class PostSpark extends Component {
   }
   
   render() {
-    const { errors } = this.state;
     const {
       classes,
-      UI: { loading }
+      UI: { loading, errors }
     } = this.props;
     return (
       <Fragment>
@@ -117,8 +104,8 @@ class PostSpark extends Component {
                 multiline
                 rows="3"
                 placeholder="SPARK IT"
-                error={errors.spark ? true : false}
-                helperText={errors.spark}
+                error={errors && errors.spark ? true : false}
+                helperText={errors && errors.spark ? errors.spark : ""}
                 className={`${this.props.classes.textField} ${this.props.classes.displayLinebreaks}`}
                 onChange={this.handleChange}
                 fullWidth

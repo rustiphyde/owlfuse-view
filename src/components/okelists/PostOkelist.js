@@ -41,24 +41,8 @@ class PostOkelist extends Component {
     open: false,
     listName: '',
     description: '',
-    errors: {}
   };
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.UI.errors) {
-      this.setState({
-        errors: nextProps.UI.errors
-      });
-    }
-    if (!nextProps.UI.errors && !nextProps.UI.loading) {
-      this.setState({
-        listName: '',
-        description: '',
-        open: false,
-        errors: {}
-      });
-    }
-  }
   handleOpen = () => {
     this.setState({ open: true });
   };
@@ -77,10 +61,9 @@ class PostOkelist extends Component {
   };
 
   render() {
-    const { errors } = this.state;
     const {
       classes,
-      UI: { loading }
+      UI: { loading, errors }
     } = this.props;
     return (
       <Fragment>
@@ -108,8 +91,8 @@ class PostOkelist extends Component {
                 type="text"
                 label="THE NAME OF YOUR OKE LIST"
                 placeholder="OKE LIST NAME"
-                error={errors.okeList ? true : false}
-                helperText={errors.okeList}
+                error={errors && errors.okeList ? true : false}
+                helperText={errors && errors.okelist ? errors.okeList : ""}
                 className={classes.textField}
                 onChange={this.handleChange}
                 fullWidth
@@ -121,8 +104,8 @@ class PostOkelist extends Component {
                 placeholder="A BRIEF DESCRIPTION"
                 multiline
                 rows="3"
-                error={errors.description ? true : false}
-                helperText={errors.description}
+                error={errors && errors.description ? true : false}
+                helperText={errors && errors.description ? errors.description : ""}
                 className={classes.textField}
                 onChange={this.handleChange}
                 fullWidth

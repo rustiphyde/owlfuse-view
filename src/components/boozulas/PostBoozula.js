@@ -46,29 +46,8 @@ class PostBoozula extends Component {
     drinkWare: "",
     garnish: "",
     boozImage: "",
-    errors: {}
   };
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.UI.errors) {
-      this.setState({
-        errors: nextProps.UI.errors
-      });
-    }
-    if (!nextProps.UI.errors && !nextProps.UI.loading) {
-      this.setState({
-        drinkName: "",
-        mainAlcohol: "",
-        ingredients: "",
-        preparation: "",
-        drinkWare: "",
-        garnish: "",
-        boozImage: "",
-        open: false,
-        errors: {}
-      });
-    }
-  }
   handleOpen = () => {
     this.setState({ open: true });
   };
@@ -92,10 +71,9 @@ class PostBoozula extends Component {
   };
 
   render() {
-    const { errors } = this.state;
     const {
       classes,
-      UI: { loading }
+      UI: { loading, errors }
     } = this.props;
     return (
       <Fragment>
@@ -123,8 +101,8 @@ class PostBoozula extends Component {
                 type="text"
                 label="Boozula Name"
                 placeholder="BOOZULA NAME"
-                error={errors.drinkName ? true : false}
-                helperText={errors.drinkName}
+                error={errors && errors.drinkName ? true : false}
+                helperText={errors && errors.drinkName ? errors.drinkName : ""}
                 className={classes.textField}
                 onChange={this.handleChange}
                 fullWidth
@@ -134,8 +112,8 @@ class PostBoozula extends Component {
                 type="text"
                 label="Main Alcohol"
                 placeholder="MAIN ALCOHOL"
-                error={errors.mainAlcohol ? true : false}
-                helperText={errors.mainAlcohol}
+                error={errors && errors.mainAlcohol ? true : false}
+                helperText={errors && errors.mainAlcohol ? errors.mainAlcohol : ""}
                 className={classes.textField}
                 onChange={this.handleChange}
                 fullWidth
