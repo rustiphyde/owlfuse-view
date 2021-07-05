@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import OwlFuseButton from './OwlFuseButton';
 
 // MUI Components
+import Avatar from "@material-ui/core/Avatar";
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
@@ -13,6 +14,8 @@ import Typography from '@material-ui/core/Typography';
 // Icons
 import HeatIcon from '../components/icons/HeatIcon';
 import StokeIcon from '../components/icons/StokeIcon';
+import EmberIcon from '../components/icons/EmberIcon';
+import ExtinguishIcon from '../components/icons/ExtinguishIcon';
 
 const styles = (theme) => ({
   card: {
@@ -23,16 +26,34 @@ const styles = (theme) => ({
     borderRadius: "16px 0 16px 0",
     backgroundColor: "#263238"
   },
-  cardContent: {
-    padding: 25,
-    width: 600,
-    flexDirection: 'column',
-    borderRadius: "0 0 16px 16px",
-    borderTop: "2px solid #ff9800",
-    borderRight: "2px solid #ff9800",
-    margin: "8px 8px 8px 0",
-    backgroundColor: "#fff"
-  },
+	content: {
+		padding: 25,
+		width: "100%",
+		borderRadius: "0",
+		borderTop: "2px solid #ff9800",
+		borderBottom: "2px solid #ff9800",
+		margin: "8px 0",
+		backgroundColor: "#fff",
+    textAlign: "left"
+	},
+	image: {
+		margin: "8px",
+		objectFit: "cover",
+		border: "2px solid #ff9800",
+	},
+	spimg: {
+		width: "100%",
+		objectFit: "cover",
+		marginTop: "16px",
+	},
+	clozangBar: {
+		display: "flex",
+	},
+	clozCol: {
+		diplay: "flex",
+		flexDirection: "column",
+		marginBottom: "16px",
+	},
   cover: {
     margin: "8px 0 8px 8px",
     minWidth: 112,
@@ -64,7 +85,15 @@ const styles = (theme) => ({
   },
   halfLine: {
     height: 12,
-    width: '45%'
+    width: '45%',
+    marginBottom: 8,
+    backgroundColor: '#263238'
+  },
+  num: {
+    fontSize: "1.5rem"
+  },
+  baloo: {
+    fontFamily: "Baloo"
   }
 
 })
@@ -74,29 +103,45 @@ const SparkSkeleton = (props) => {
 
   const content = Array.from({ length }).map((item, index) => (
     <Card className={classes.card} key={index}>
-      <CardMedia className={classes.cover} image={NoImg} />
-      <CardContent className={classes.cardContent}>
-      <Typography
-            variant="h6"
-            color="primary"
-          >
-            <strong>>owl-fuser</strong>
-          </Typography>
-          <Typography variant="body2" color="textSecondary">
-            ? days ago
-          </Typography>
-          <Typography variant="body2" color="primary" className="breaks">
-            <b>Spark an interest</b>
-          </Typography>
-        <OwlFuseButton tip="HEAT">
-          <HeatIcon color="primary"/>
-        </OwlFuseButton>
-        <span>?</span>
-        <OwlFuseButton tip="STOKES">
-          <StokeIcon color="primary"/>
-        </OwlFuseButton>
-        <span>?</span>
-      </CardContent>
+       <CardContent className={classes.content}>
+					<div className={classes.clozangBar}>
+						<span>
+							<Avatar src={NoImg} className={classes.image}></Avatar>
+						</span>
+						<div className={classes.clozCol}>
+							<span>
+								<Typography
+									variant="h6"
+									color="primary"
+								>
+									<strong>&gt;owl-fuser</strong>
+								</Typography>
+							</span>
+							<Typography variant="body2" color="textSecondary">
+								? days ago
+							</Typography>
+						</div>
+					</div>
+          <hr className="bar-separator" />
+					<Typography variant="body2" color="primary" className="breaks">
+          <b className={classes.baloo}>Spark an interest</b>
+          <div className={classes.halfLine}></div>
+          <div className={classes.fullLine}></div>
+          <div className={classes.fullLine}></div>
+          <div className={classes.fullLine}></div>
+          <div className={classes.fullLine}></div>
+					</Typography>
+					<hr className="bar-separator" />
+					<HeatIcon/>
+					<span className={classes.num}>  ? </span>
+					<StokeIcon/>
+					<span className={classes.num}> ? </span>
+					<EmberIcon/>
+          <span className={classes.num}> ? </span>	
+					<hr className="bar-separator" />
+					<ExtinguishIcon/> <span className="warning-label"><b className="smaller">IN CASE OF EMERGENCY</b></span>
+          
+				</CardContent>
     </Card>
   ))
 
