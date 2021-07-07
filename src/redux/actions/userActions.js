@@ -102,9 +102,10 @@ export const resetPassword = (userData) => dispatch => {
     });
   })
   .then(() => {
-    dispatch({ type: CLEAR_SUCCESS })
+    setTimeout(() => {dispatch({ type: CLEAR_SUCCESS })}, 5000);      
   })
   .catch(err => {
+    dispatch({ type: CLEAR_SUCCESS });
     dispatch({
       type: SET_ERRORS,
       payload: err.response.data
