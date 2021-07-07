@@ -143,6 +143,7 @@ class howls extends Component {
 		const {
 			credentials: { clozang, imageUrl }
 		} = this.props.user;
+		const { errors } = this.props.UI;
 
 		return (
 			<Grid container spacing={1} className={classes.main}>
@@ -201,6 +202,8 @@ class howls extends Component {
                                 onChange={this.handleChange}
                                 id="howlBody"
                                 name="howlBody"
+								helperText={errors && errors.howlBody ? errors.howlBody : ""}
+								error={errors && errors.howlBody ? true : false}
                                 type="text"
                                 placeholder="POST A HOWL"
                                 multiline
@@ -220,6 +223,7 @@ howls.propTypes = {
 	classes: PropTypes.object.isRequired,
 	data: PropTypes.object.isRequired,
 	user: PropTypes.object.isRequired,
+	UI: PropTypes.object.isRequired,
 	fetchUserHowls: PropTypes.func.isRequired,
 	postHowl: PropTypes.func.isRequired,
 	fetchFuserHowls: PropTypes.func.isRequired,
@@ -229,6 +233,7 @@ howls.propTypes = {
 const mapStateToProps = (state) => ({
 	user: state.user,
 	data: state.data,
+	UI: state.UI
 });
 
 const mapActionsToProps = {
