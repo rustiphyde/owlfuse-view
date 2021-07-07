@@ -282,9 +282,14 @@ export const postHowl = (friend, newHowl) => (dispatch) => {
 		.post(`/howl/${friend}`, newHowl)
 		.then((res) => {
 			dispatch({ type: POST_HOWL, payload: res.data });
+			dispatch(clearErrors());
 			dispatch({ type: STOP_LOADING_UI });
 		})
 		.catch((err) => {
+			dispatch({
+				type: SET_ERRORS,
+				payload: err.response.data,
+			});
 			console.log(err);
 		});
 };

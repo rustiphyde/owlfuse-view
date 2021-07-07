@@ -69,7 +69,7 @@ class about extends Component {
 								how things work around here. So let's get to it!! :)
 							</p>
 						</span>
-						<hr className="bar-separator" />
+						{/* <hr className="bar-separator" />
 						<strong className={classes.subtitle}>ORIGIN STORY</strong>
 						<hr className="bar-separator" />
 						<span className={classes.para}>
@@ -86,7 +86,7 @@ class about extends Component {
                             <p>
 
                             </p>
-						</span>
+						</span> */}
 						<hr className="bar-separator" />
 						<strong className={classes.subtitle}>SPARKS</strong>
 						<hr className="bar-separator" />

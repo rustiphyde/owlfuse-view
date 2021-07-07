@@ -117,6 +117,7 @@ const HowlBox = (props) => {
 
     const postHowlFxn = () => {
         props.postHowl(props.fuser, ({ howlBody: howlBody }));
+        setHowlBody('');
     }
 
     
@@ -174,8 +175,8 @@ const HowlBox = (props) => {
             onClose={handleClose}
             className={props.classes.dialog}
             disableBackdropClick={true}
-            maxWidth={false}
-            fullScreen={true}
+            maxWidth={true}
+            // fullScreen={true}
             >
                 <DialogTitle className={props.classes.title}>
         <strong className="rusty">{props.fuser}</strong> 
@@ -189,6 +190,8 @@ const HowlBox = (props) => {
                                 onChange={handleChange}
                                 id="howlBody"
                                 name="howlBody"
+                                helperText={props.UI.errors && props.UI.errors.howlBody ? props.UI.errors.howlBody : ''}
+                                error={props.UI.errors && props.UI.errors.howlBody ? true : false}
                                 type="text"
                                 placeholder="POST A HOWL"
                                 multiline
